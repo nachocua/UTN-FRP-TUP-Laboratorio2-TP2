@@ -6,7 +6,23 @@ using System.Threading.Tasks;
 
 namespace Biblioteca
 {
-    internal class ManejoAlquiler
+    public class ManejoAlquiler
     {
+        private int ReservasTotales = 0;
+        public ManejoAlquiler() 
+        {
+        }
+        public void Reservar()
+        {
+            ReservasTotales++;
+        }
+        public void AgregarHotel()
+        {
+
+        }
+        public void AgregarCasa()
+        {
+
+        }
     }
 }
