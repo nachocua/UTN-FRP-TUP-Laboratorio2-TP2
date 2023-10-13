@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace Biblioteca
 {
-    internal class Propiedad
+    abstract class Propiedad
     {
+        public string Ubicacion {  get; protected set; }
+        public string Nombre {  get; protected set; }
+        public string Propietario { get; protected set; }
+        protected List<string> imagenes;
+        public Propiedad(string nombre, string ubicacion, string propietario)
+        {
+            Nombre = nombre;
+            Ubicacion = ubicacion;
+            Propietario = propietario;
+            imagenes = new List<string>();
+        }
+        public abstract double Costo(int dias);
     }
 }
