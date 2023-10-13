@@ -9,10 +9,15 @@ namespace Biblioteca
     internal class Caracteristicas
     {
         private List<string> servicios;
-        public int Capacidad {  get; private set; }
+        public int Capacidad { get; private set; }
         public Caracteristicas(int capacidad)
         {
-            Capacidad = capacidad;
+            if (capacidad <= 0)
+                throw new ArgumentException("La capacidad no puede ser negativa");
+            else
+            {
+                Capacidad = capacidad;
+            }
         }
         public void AgregarServicio(string servicio)
         {
