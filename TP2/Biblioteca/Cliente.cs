@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Authentication;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Biblioteca
@@ -38,6 +40,15 @@ namespace Biblioteca
             }
             private set
             {
+                Regex expRegular = new Regex(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$");
+                if(expRegular.IsMatch(value))
+                {
+                    email = value;
+                }
+                else
+                {
+                    throw new InvalidCredentialException("El correo no tiene el formato correcto");
+                }
             }
         }
         public int Telefono
@@ -48,6 +59,14 @@ namespace Biblioteca
             }
             private set
             {
+                if (value.ToString().Length == 16)
+                {
+                    telefono = value;
+                }
+                else
+                {
+                    throw new InvalidCredentialException("El número de telefono debe tener 16 digitos");
+                }
             }
         }
         public string Nombres { get; private set; }
