@@ -12,12 +12,7 @@ namespace Biblioteca
         public int Capacidad { get; private set; }
         public Caracteristicas(int capacidad)
         {
-            if (capacidad <= 0)
-                throw new ArgumentException("La capacidad no puede ser negativa");
-            else
-            {
-                Capacidad = capacidad;
-            }
+            Capacidad = capacidad > 0 ? capacidad : throw new ArgumentException("La capacidad no puede ser negativa");
         }
         public void AgregarServicio(string servicio)
         {

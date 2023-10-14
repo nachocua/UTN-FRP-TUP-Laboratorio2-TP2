@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Biblioteca
 {
-    abstract class Propiedad
+    public abstract class Propiedad
     {
         public string Ubicacion { get; protected set; }
         public string Nombre { get; protected set; }
