@@ -1,3 +1,7 @@
+#Carpetas Ignoradas
 .vs
 bin
 obj
+
+#Archivos Ignorados
+tp2lab.~ml
