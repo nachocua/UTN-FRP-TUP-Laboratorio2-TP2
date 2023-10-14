@@ -17,7 +17,15 @@ namespace TP2
         public VentanaPrincipal()
         {
             InitializeComponent();
-            elSistema =new ManejoAlquiler();
+            elSistema = new ManejoAlquiler();
+        }
+        private void BtnNuevoCliente_Click(object sender, EventArgs e)
+        {
+            Alta_Cliente ventanaCliente = new Alta_Cliente();
+            if (ventanaCliente.ShowDialog() == DialogResult.OK)
+            {
+
+            }
         }
     }
 }
