@@ -11,7 +11,7 @@ namespace Biblioteca
         private int nroReserva;
         private int nroCliente;
         private string estado;
-        string[] posiblesEstados = {"Reservado","Ocupado","Concretado"};
+        private string[] posiblesEstados = {"Reservado","Ocupado","Concretado"};
         public int NroReserva
         {
             get
@@ -51,7 +51,7 @@ namespace Biblioteca
                 }
             }
         }
-        public Reserva(int nroReserva, Cliente cliente, Propiedad propiedad, fecha)
+        public Reserva(int nroReserva, Cliente cliente, Propiedad propiedad)
         {
             NroReserva = nroReserva;
             if(cliente == null)
