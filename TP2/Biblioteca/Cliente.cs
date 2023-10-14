@@ -41,7 +41,7 @@ namespace Biblioteca
             private set
             {
                 Regex expRegular = new Regex(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$");
-                if(expRegular.IsMatch(value))
+                if (expRegular.IsMatch(value))
                 {
                     email = value;
                 }
@@ -74,7 +74,7 @@ namespace Biblioteca
         public Cliente(int dni)
         {
             Dni = dni;
-            List<int> idReserva = new List<int>();
+            idReservas = new List<int>();
         }
         public void AgregarReserva(int idReserva)
         {

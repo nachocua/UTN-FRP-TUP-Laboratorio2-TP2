@@ -1,6 +1,6 @@
 ﻿namespace TP2
 {
-    partial class Form1
+    partial class VentanaPrincipal
     {
         /// <summary>
         /// Variable del diseñador necesaria.

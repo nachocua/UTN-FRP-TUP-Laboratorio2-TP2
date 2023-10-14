@@ -46,11 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Alquiler.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Alquiler.Designer.cs">
+      <DependentUpon>Alquiler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Alta Cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alta Cliente.Designer.cs">
+      <DependentUpon>Alta Cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NuevaPropiedad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NuevaPropiedad.Designer.cs">
+      <DependentUpon>NuevaPropiedad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaPrincipal.Designer.cs">
+      <DependentUpon>VentanaPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

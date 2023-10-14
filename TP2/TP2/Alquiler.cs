@@ -7,17 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Biblioteca;
 
 namespace TP2
 {
-    public partial class Form1 : Form
+    public partial class Alquiler : Form
     {
-        ManejoAlquiler elSistema;
-        public Form1()
+        public Alquiler()
         {
             InitializeComponent();
-            elSistema =new ManejoAlquiler();
         }
     }
 }
