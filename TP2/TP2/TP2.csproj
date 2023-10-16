@@ -82,6 +82,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Ventanas\Alquiler.resx">
+      <DependentUpon>Alquiler.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Alta Cliente.resx">
       <DependentUpon>Alta Cliente.cs</DependentUpon>
     </EmbeddedResource>

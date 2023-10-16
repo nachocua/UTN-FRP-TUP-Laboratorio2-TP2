@@ -1,5 +1,4 @@
-﻿using Biblioteca;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,7 +33,7 @@ namespace TP2
                     throw new Exception("El Número de Teléfono debe tener 10 digitos");
                 }
             }
-            catch (FormatException ex)
+            catch (FormatException)
             {
                 MessageBox.Show("Dni y Telefono deben ser numéricos");
                 state = false;

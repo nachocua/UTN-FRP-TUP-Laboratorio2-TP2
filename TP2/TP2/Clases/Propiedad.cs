@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Biblioteca
+namespace TP2
 {
     public abstract class Propiedad
     {

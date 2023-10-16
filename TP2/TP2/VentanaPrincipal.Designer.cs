@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.btnNuevoCliente = new System.Windows.Forms.Button();
+            this.btnAlquiler = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnNuevoCliente
             // 
             this.btnNuevoCliente.Location = new System.Drawing.Point(11, 11);
-            this.btnNuevoCliente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNuevoCliente.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevoCliente.Name = "btnNuevoCliente";
             this.btnNuevoCliente.Size = new System.Drawing.Size(131, 43);
             this.btnNuevoCliente.TabIndex = 0;
@@ -42,13 +43,25 @@
             this.btnNuevoCliente.UseVisualStyleBackColor = true;
             this.btnNuevoCliente.Click += new System.EventHandler(this.BtnNuevoCliente_Click);
             // 
+            // btnAlquiler
+            // 
+            this.btnAlquiler.Location = new System.Drawing.Point(11, 78);
+            this.btnAlquiler.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAlquiler.Name = "btnAlquiler";
+            this.btnAlquiler.Size = new System.Drawing.Size(131, 43);
+            this.btnAlquiler.TabIndex = 1;
+            this.btnAlquiler.Text = "Alquilar";
+            this.btnAlquiler.UseVisualStyleBackColor = true;
+            this.btnAlquiler.Click += new System.EventHandler(this.btnAlquiler_Click);
+            // 
             // VentanaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.btnAlquiler);
             this.Controls.Add(this.btnNuevoCliente);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "VentanaPrincipal";
             this.Text = "Rentify";
             this.ResumeLayout(false);
@@ -58,6 +71,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnNuevoCliente;
+        private System.Windows.Forms.Button btnAlquiler;
     }
 }
 

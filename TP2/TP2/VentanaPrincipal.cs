@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Biblioteca;
 
 namespace TP2
 {
@@ -26,6 +25,11 @@ namespace TP2
             {
 
             }
+        }
+
+        private void btnAlquiler_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
