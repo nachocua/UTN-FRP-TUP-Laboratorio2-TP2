@@ -8,7 +8,7 @@ namespace TP2
 {
     internal class CasaFinSemana : Casa
     {
-        public CasaFinSemana(string nombre, string ubicacion, string propietario) : base(nombre, ubicacion, propietario)
+        public CasaFinSemana(string nombre, string ubicacion, string propietario, List<string> servicios, int cantCamas) : base(nombre, ubicacion, propietario, servicios, cantCamas)
         {
 
         }

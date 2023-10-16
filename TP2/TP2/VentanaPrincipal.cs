@@ -32,7 +32,8 @@ namespace TP2
             NuevaPropiedad ventanaPropiedad = new NuevaPropiedad();
             if(ventanaPropiedad.ShowDialog() == DialogResult.OK)
             {
-
+                string nombre = ventanaPropiedad.tbNombre.Text, ubicacion = ventanaPropiedad.tbUbicacion.Text, propietario = ventanaPropiedad.tbPropietario.Text;
+                
             }
         }
     }

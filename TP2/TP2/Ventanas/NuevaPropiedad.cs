@@ -15,6 +15,29 @@ namespace TP2
         public NuevaPropiedad()
         {
             InitializeComponent();
+            gbCasa.Visible = true;
+            gbHotel.Visible = false;
+            rbCasa.Checked = true;
+        }
+
+        private void btnImagen_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void CambiarGroupBox(object sender, EventArgs e)
+        {
+            switch (((RadioButton)sender).Text)
+            {
+                case "Hotel":
+                    gbCasa.Visible = false;
+                    gbHotel.Visible = true;
+                    break;
+                default:
+                    gbCasa.Visible = true;
+                    gbHotel.Visible = false;
+                    break;
+            }
+
         }
     }
 }
