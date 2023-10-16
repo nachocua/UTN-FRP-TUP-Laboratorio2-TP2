@@ -8,83 +8,25 @@ namespace TP2
 {
     public class Reserva
     {
-        private int nroPropiedad;
-        private int nroReserva;
-        private int nroCliente;
-        private string estado;
-        private string[] posiblesEstados = {"Reservado","Ocupado","Concretado"};
-        public int NroReserva
+        private static int reservasEfectuadas = 0;
+        private string[] posiblesEstados = { "Reservado", "Ocupado", "Concretado", "Cancelada" };
+        public int NroReserva { get; private set; }
+        public int NroPropiedad { get; private set; }
+        public int NroCliente { get; private set; }
+        public string Estado { get; private set; }
+        public DateTime FechaInicio { get; private set; }
+        public int CantDias { get; private set; }
+        public double Costo { get; private set; }
+        public Reserva(int idCliente, int idPropiedad, DateTime fechaDesde, int cantDias, double costo)
         {
-            get
-            {
-                return nroReserva;
-            }
-            private set
-            {
-                nroReserva = value + 1;
-            }
-        }
-        public int NroPropiedadd
-        {
-            get
-            {
-                return nroPropiedad;
-            }
-            private set
-            {
-                NroPropiedadd = value;
-            }
-        }
-        public int NroCliente
-        {
-            get
-            {
-                return nroCliente;
-            }
-            private set
-            {
-                nroCliente = value;
-            }
-        }
-        public string Estado
-        {
-            get
-            {
-                return estado;
-            }
-            private set
-            {
-                if (posiblesEstados.Contains(value))
-                {
-                    estado = value;
-                }
-                else
-                {
-                    throw new Exception("No es un estado posible");
-                }
-            }
-        }
-        public Reserva(int ultimaReserva, Cliente cliente, Propiedad propiedad)
-        {
-            NroReserva = ultimaReserva;
-            if (cliente == null)
-            {
-                throw new ArgumentNullException("Debe asignar un cliente valido");
-            }
-            else
-            {
-                NroCliente = cliente.Dni;
-            }
-            if (propiedad == null)
-            {
-                throw new ArgumentNullException("Debe asignar una propiedad valida");
-            }
-            else
-            {
-                NroCliente = cliente.Dni;
-            }
+            NroReserva = reservasEfectuadas;
+            reservasEfectuadas++;
+            NroCliente = idCliente;
+            NroPropiedad = idPropiedad;
             Estado = posiblesEstados[0];
-
+            FechaInicio = fechaDesde;
+            CantDias = cantDias;
+            Costo = costo;
         }
         public void CheckIn()
         {
@@ -93,6 +35,10 @@ namespace TP2
         public void Checkout()
         {
             Estado = posiblesEstados[2];
+        }
+        public void Cancelar()
+        {
+            Estado = posiblesEstados[3];
         }
     }
 }
