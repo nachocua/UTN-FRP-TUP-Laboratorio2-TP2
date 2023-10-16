@@ -45,6 +45,7 @@
     <Compile Include="Casa.cs" />
     <Compile Include="CasaFinSemana.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="Funciones Adicionales.cs" />
     <Compile Include="Habitacion.cs" />
     <Compile Include="Hotel.cs" />
     <Compile Include="ManejoAlquiler.cs" />

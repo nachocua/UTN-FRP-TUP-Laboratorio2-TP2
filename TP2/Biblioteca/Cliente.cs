@@ -12,7 +12,6 @@ namespace Biblioteca
     {
         private int dni;
         private int telefono;
-        private string email;
         private List<int> idReservas = null;
         public int Dni
         {
@@ -29,25 +28,6 @@ namespace Biblioteca
                 else
                 {
                     dni = value;
-                }
-            }
-        }
-        public string Email
-        {
-            get
-            {
-                return email;
-            }
-            private set
-            {
-                Regex expRegular = new Regex(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$");
-                if (expRegular.IsMatch(value))
-                {
-                    email = value;
-                }
-                else
-                {
-                    throw new InvalidCredentialException("El correo no tiene el formato correcto");
                 }
             }
         }
@@ -71,9 +51,12 @@ namespace Biblioteca
         }
         public string Nombres { get; private set; }
         public string Apellidos { get; private set; }
-        public Cliente(int dni)
+        public Cliente(int dni, string nombres, string apellidos, int nroTelefono)
         {
             Dni = dni;
+            Nombres = nombres;
+            Apellidos = apellidos;
+            Telefono = nroTelefono;
             idReservas = new List<int>();
         }
         public void AgregarReserva(int idReserva)

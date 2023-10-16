@@ -33,9 +33,10 @@
             // 
             // btnNuevoCliente
             // 
-            this.btnNuevoCliente.Location = new System.Drawing.Point(144, 178);
+            this.btnNuevoCliente.Location = new System.Drawing.Point(11, 11);
+            this.btnNuevoCliente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnNuevoCliente.Name = "btnNuevoCliente";
-            this.btnNuevoCliente.Size = new System.Drawing.Size(175, 53);
+            this.btnNuevoCliente.Size = new System.Drawing.Size(131, 43);
             this.btnNuevoCliente.TabIndex = 0;
             this.btnNuevoCliente.Text = "Nuevo Cliente";
             this.btnNuevoCliente.UseVisualStyleBackColor = true;
@@ -43,10 +44,11 @@
             // 
             // VentanaPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.btnNuevoCliente);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "VentanaPrincipal";
             this.Text = "Rentify";
             this.ResumeLayout(false);

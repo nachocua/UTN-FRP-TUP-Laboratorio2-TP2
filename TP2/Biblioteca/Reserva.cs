@@ -8,6 +8,7 @@ namespace Biblioteca
 {
     public class Reserva
     {
+        private int nroPropiedad;
         private int nroReserva;
         private int nroCliente;
         private string estado;
@@ -23,6 +24,17 @@ namespace Biblioteca
                 nroReserva = value + 1;
             }
         }
+        public int NroPropiedadd
+        {
+            get
+            {
+                return nroPropiedad;
+            }
+            private set
+            {
+                NroPropiedadd = value;
+            }
+        }
         public int NroCliente
         {
             get
@@ -31,6 +43,7 @@ namespace Biblioteca
             }
             private set
             {
+                nroCliente = value;
             }
         }
         public string Estado
@@ -51,10 +64,10 @@ namespace Biblioteca
                 }
             }
         }
-        public Reserva(int nroReserva, Cliente cliente, Propiedad propiedad)
+        public Reserva(int ultimaReserva, Cliente cliente, Propiedad propiedad)
         {
-            NroReserva = nroReserva;
-            if(cliente == null)
+            NroReserva = ultimaReserva;
+            if (cliente == null)
             {
                 throw new ArgumentNullException("Debe asignar un cliente valido");
             }
@@ -62,16 +75,24 @@ namespace Biblioteca
             {
                 NroCliente = cliente.Dni;
             }
-            Estado = "Reservada";
+            if (propiedad == null)
+            {
+                throw new ArgumentNullException("Debe asignar una propiedad valida");
+            }
+            else
+            {
+                NroCliente = cliente.Dni;
+            }
+            Estado = posiblesEstados[0];
 
         }
         public void CheckIn()
         {
-            Estado = "Ocupado";
+            Estado = posiblesEstados[1];
         }
         public void Checkout()
         {
-            Estado = "Concretado";
+            Estado = posiblesEstados[2];
         }
     }
 }
