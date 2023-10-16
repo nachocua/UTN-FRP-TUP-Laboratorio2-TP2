@@ -41,17 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Caracteristicas.cs" />
-    <Compile Include="Casa.cs" />
-    <Compile Include="CasaFinSemana.cs" />
-    <Compile Include="Cliente.cs" />
-    <Compile Include="Funciones Adicionales.cs" />
-    <Compile Include="Habitacion.cs" />
-    <Compile Include="Hotel.cs" />
-    <Compile Include="ManejoAlquiler.cs" />
+    <Compile Include="Clases\Caracteristicas.cs" />
+    <Compile Include="Clases\Casa.cs" />
+    <Compile Include="Clases\CasaFinSemana.cs" />
+    <Compile Include="Clases\Cliente.cs" />
+    <Compile Include="Tools\ExepcionesAdicionales.cs" />
+    <Compile Include="Tools\Funciones Adicionales.cs" />
+    <Compile Include="Clases\Habitacion.cs" />
+    <Compile Include="Clases\Hotel.cs" />
+    <Compile Include="Clases\ManejoAlquiler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Propiedad.cs" />
-    <Compile Include="Reserva.cs" />
+    <Compile Include="Clases\Propiedad.cs" />
+    <Compile Include="Clases\Reserva.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

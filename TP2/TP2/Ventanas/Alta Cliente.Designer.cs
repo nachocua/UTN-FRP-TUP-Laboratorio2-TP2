@@ -30,13 +30,13 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnNuevoUsuario = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.leApellido = new System.Windows.Forms.TextBox();
+            this.leNombre = new System.Windows.Forms.TextBox();
+            this.leTelefono = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.leDni = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -44,18 +44,18 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnNuevoUsuario);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.leApellido);
+            this.groupBox1.Controls.Add(this.leNombre);
+            this.groupBox1.Controls.Add(this.leTelefono);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.leDni);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(9, 10);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(215, 227);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -63,39 +63,39 @@
             // 
             // btnNuevoUsuario
             // 
-            this.btnNuevoUsuario.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnNuevoUsuario.Location = new System.Drawing.Point(47, 180);
-            this.btnNuevoUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNuevoUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevoUsuario.Name = "btnNuevoUsuario";
             this.btnNuevoUsuario.Size = new System.Drawing.Size(113, 30);
             this.btnNuevoUsuario.TabIndex = 10;
             this.btnNuevoUsuario.Text = "Nuevo Usuario";
             this.btnNuevoUsuario.UseVisualStyleBackColor = true;
+            this.btnNuevoUsuario.Click += new System.EventHandler(this.btnNuevoUsuario_Click);
             // 
-            // textBox5
+            // leApellido
             // 
-            this.textBox5.Location = new System.Drawing.Point(102, 37);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(76, 20);
-            this.textBox5.TabIndex = 9;
+            this.leApellido.Location = new System.Drawing.Point(102, 37);
+            this.leApellido.Margin = new System.Windows.Forms.Padding(2);
+            this.leApellido.Name = "leApellido";
+            this.leApellido.Size = new System.Drawing.Size(76, 20);
+            this.leApellido.TabIndex = 9;
             // 
-            // textBox3
+            // leNombre
             // 
-            this.textBox3.Location = new System.Drawing.Point(102, 74);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(76, 20);
-            this.textBox3.TabIndex = 8;
+            this.leNombre.Location = new System.Drawing.Point(102, 74);
+            this.leNombre.Margin = new System.Windows.Forms.Padding(2);
+            this.leNombre.Name = "leNombre";
+            this.leNombre.Size = new System.Drawing.Size(76, 20);
+            this.leNombre.TabIndex = 8;
             // 
-            // textBox4
+            // leTelefono
             // 
-            this.textBox4.Location = new System.Drawing.Point(102, 108);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox4.MaxLength = 16;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(76, 20);
-            this.textBox4.TabIndex = 7;
+            this.leTelefono.Location = new System.Drawing.Point(102, 108);
+            this.leTelefono.Margin = new System.Windows.Forms.Padding(2);
+            this.leTelefono.MaxLength = 16;
+            this.leTelefono.Name = "leTelefono";
+            this.leTelefono.Size = new System.Drawing.Size(76, 20);
+            this.leTelefono.TabIndex = 7;
             // 
             // label5
             // 
@@ -127,14 +127,14 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Teléfono";
             // 
-            // textBox1
+            // leDni
             // 
-            this.textBox1.Location = new System.Drawing.Point(102, 140);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox1.MaxLength = 8;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(76, 20);
-            this.textBox1.TabIndex = 1;
+            this.leDni.Location = new System.Drawing.Point(102, 140);
+            this.leDni.Margin = new System.Windows.Forms.Padding(2);
+            this.leDni.MaxLength = 8;
+            this.leDni.Name = "leDni";
+            this.leDni.Size = new System.Drawing.Size(76, 20);
+            this.leDni.TabIndex = 1;
             // 
             // label1
             // 
@@ -152,7 +152,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(233, 247);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Alta_Cliente";
             this.Text = "Nuevo Cliente";
             this.groupBox1.ResumeLayout(false);
@@ -169,9 +169,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnNuevoUsuario;
-        public System.Windows.Forms.TextBox textBox1;
-        public System.Windows.Forms.TextBox textBox5;
-        public System.Windows.Forms.TextBox textBox3;
-        public System.Windows.Forms.TextBox textBox4;
+        public System.Windows.Forms.TextBox leDni;
+        public System.Windows.Forms.TextBox leApellido;
+        public System.Windows.Forms.TextBox leNombre;
+        public System.Windows.Forms.TextBox leTelefono;
     }
 }

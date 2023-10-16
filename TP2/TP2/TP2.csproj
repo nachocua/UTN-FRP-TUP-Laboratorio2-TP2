@@ -46,24 +46,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alquiler.cs">
+    <Compile Include="Ventanas\Alquiler.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Alquiler.Designer.cs">
+    <Compile Include="Ventanas\Alquiler.Designer.cs">
       <DependentUpon>Alquiler.cs</DependentUpon>
     </Compile>
-    <Compile Include="Alta Cliente.cs">
+    <Compile Include="Ventanas\Alta Cliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Alta Cliente.Designer.cs">
+    <Compile Include="Ventanas\Alta Cliente.Designer.cs">
       <DependentUpon>Alta Cliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="NuevaPropiedad.cs">
+    <Compile Include="Clases\Caracteristicas.cs" />
+    <Compile Include="Clases\Casa.cs" />
+    <Compile Include="Clases\CasaFinSemana.cs" />
+    <Compile Include="Clases\Cliente.cs" />
+    <Compile Include="Clases\Habitacion.cs" />
+    <Compile Include="Clases\Hotel.cs" />
+    <Compile Include="Clases\ManejoAlquiler.cs" />
+    <Compile Include="Clases\Propiedad.cs" />
+    <Compile Include="Clases\Reserva.cs" />
+    <Compile Include="Ventanas\NuevaPropiedad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NuevaPropiedad.Designer.cs">
+    <Compile Include="Ventanas\NuevaPropiedad.Designer.cs">
       <DependentUpon>NuevaPropiedad.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\ExepcionesAdicionales.cs" />
+    <Compile Include="Tools\Funciones Adicionales.cs" />
     <Compile Include="VentanaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,7 +83,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Alta Cliente.resx">
+    <EmbeddedResource Include="Ventanas\Alta Cliente.resx">
       <DependentUpon>Alta Cliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -99,12 +110,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Biblioteca\Biblioteca.csproj">
-      <Project>{5132dbfe-56a4-48f3-a5c1-453e439ef94b}</Project>
-      <Name>Biblioteca</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
