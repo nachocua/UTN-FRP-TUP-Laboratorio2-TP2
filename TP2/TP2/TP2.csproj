@@ -73,7 +73,6 @@
     <Compile Include="Ventanas\NuevaPropiedad.Designer.cs">
       <DependentUpon>NuevaPropiedad.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tools\ExepcionesAdicionales.cs" />
     <Compile Include="Tools\Funciones Adicionales.cs" />
     <Compile Include="VentanaPrincipal.cs">
       <SubType>Form</SubType>

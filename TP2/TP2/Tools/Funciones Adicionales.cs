@@ -21,13 +21,17 @@ namespace Biblioteca
         }
         public static List<string[]> LeerSeparandoArchivo(string nombreArchivo, string delimitador)
         {
-            List<string[]> renglones = new List<string[]>();
+            List<string[]> renglones = null;
             string[] resultado = LeerArchivo(nombreArchivo);
-            string[] partes;
-            foreach (string unResultado in resultado)
+            if(resultado!=null)
             {
-                partes = unResultado.Split(nombreArchivo.ToCharArray());
-                renglones.Add(partes);
+                renglones = new List<string[]>();
+                string[] partes;
+                foreach (string unResultado in resultado)
+                {
+                    partes = unResultado.Split(delimitador.ToCharArray());
+                    renglones.Add(partes);
+                }
             }
             return renglones;
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteca;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,16 +20,23 @@ namespace TP2
         private void btnNuevoUsuario_Click(object sender, EventArgs e)
         {
             bool state = true;
+            int dni, tel;
             try
             {
-                if (Convert.ToInt32(leDni.Text) < 1000000 || Convert.ToInt32(leDni.Text) > 99999999)
+                dni = Convert.ToInt32(leDni.Text);
+                tel = Convert.ToInt32(leTelefono.Text);
+                if (!(leDni.Text.Length == 8))
                 {
-                    throw new ArgumentException("DNI inválido");
+                    throw new Exception("El dni debe contener 8 digitos. Si su dni tiene 7 digitos agregue un 0 al inicio");
+                }
+                if (!(leTelefono.Text.Length == 10))
+                {
+                    throw new Exception("El Número de Teléfono debe tener 10 digitos");
                 }
             }
-            catch (InvalidCastException ex)
+            catch (FormatException ex)
             {
-                MessageBox.Show("El DNI debe ser solo numeros");
+                MessageBox.Show("Dni y Telefono deben ser numéricos");
                 state = false;
             }
             catch (Exception ex)
