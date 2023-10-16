@@ -29,7 +29,11 @@ namespace TP2
 
         private void btnAlquiler_Click(object sender, EventArgs e)
         {
+            NuevaPropiedad ventanaPropiedad = new NuevaPropiedad();
+            if(ventanaPropiedad.ShowDialog() == DialogResult.OK)
+            {
 
+            }
         }
     }
 }

@@ -30,6 +30,7 @@
         {
             this.btnNuevoCliente = new System.Windows.Forms.Button();
             this.btnAlquiler = new System.Windows.Forms.Button();
+            this.btnPropiedad = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnNuevoCliente
@@ -54,11 +55,23 @@
             this.btnAlquiler.UseVisualStyleBackColor = true;
             this.btnAlquiler.Click += new System.EventHandler(this.btnAlquiler_Click);
             // 
+            // btnPropiedad
+            // 
+            this.btnPropiedad.Location = new System.Drawing.Point(11, 143);
+            this.btnPropiedad.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPropiedad.Name = "btnPropiedad";
+            this.btnPropiedad.Size = new System.Drawing.Size(131, 43);
+            this.btnPropiedad.TabIndex = 1;
+            this.btnPropiedad.Text = "Nueva propiedad";
+            this.btnPropiedad.UseVisualStyleBackColor = true;
+            this.btnPropiedad.Click += new System.EventHandler(this.btnAlquiler_Click);
+            // 
             // VentanaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.btnPropiedad);
             this.Controls.Add(this.btnAlquiler);
             this.Controls.Add(this.btnNuevoCliente);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -72,6 +85,7 @@
 
         private System.Windows.Forms.Button btnNuevoCliente;
         private System.Windows.Forms.Button btnAlquiler;
+        private System.Windows.Forms.Button btnPropiedad;
     }
 }
 
