@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP2
 {
+    [Serializable]
     public class Reserva
     {
         private static int reservasEfectuadas = 0;
