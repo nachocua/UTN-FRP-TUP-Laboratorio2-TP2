@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP2
 {
-    internal class Habitacion
+    public class Habitacion
     {
         Caracteristicas caracteristicas;
         public Habitacion(int capacidadPersonas)

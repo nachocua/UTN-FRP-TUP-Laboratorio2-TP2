@@ -12,7 +12,7 @@ namespace TP2
     [Serializable]
     public class Cliente
     {
-        private List<int> idReservas = null;
+        private List<int> idReservas;
         public int Dni { get; private set; }
         public int Telefono { get; private set; }
         public string Nombres { get; private set; }

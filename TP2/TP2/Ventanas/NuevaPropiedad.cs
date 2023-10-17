@@ -39,5 +39,20 @@ namespace TP2
             }
 
         }
+        public List<string> ObtenerServicios()
+        {
+            List<string> list = new List<string>();
+            foreach (Control c in gbServicios.Controls)
+            {
+                if (c is CheckBox)
+                {
+                    if ( ( (CheckBox) c ).Checked)
+                    {
+                        list.Add(c.Text);
+                    }
+                }
+            }
+            return list;
+        }
     }
 }

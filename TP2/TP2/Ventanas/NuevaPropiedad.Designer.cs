@@ -39,7 +39,7 @@
             this.gbCasa = new System.Windows.Forms.GroupBox();
             this.numUpDown_Camas = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.gbServicios = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
@@ -53,7 +53,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.gbCasa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_Camas)).BeginInit();
-            this.groupBox3.SuspendLayout();
+            this.gbServicios.SuspendLayout();
             this.gbPropiedad.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -131,7 +131,7 @@
             // 
             this.gbCasa.Controls.Add(this.numUpDown_Camas);
             this.gbCasa.Controls.Add(this.label4);
-            this.gbCasa.Controls.Add(this.groupBox3);
+            this.gbCasa.Controls.Add(this.gbServicios);
             this.gbCasa.Location = new System.Drawing.Point(116, 131);
             this.gbCasa.Name = "gbCasa";
             this.gbCasa.Size = new System.Drawing.Size(200, 212);
@@ -170,20 +170,20 @@
             this.label4.TabIndex = 17;
             this.label4.Text = "Cantidad de Camas:";
             // 
-            // groupBox3
+            // gbServicios
             // 
-            this.groupBox3.Controls.Add(this.checkBox2);
-            this.groupBox3.Controls.Add(this.checkBox1);
-            this.groupBox3.Controls.Add(this.checkBox4);
-            this.groupBox3.Controls.Add(this.checkBox5);
-            this.groupBox3.Controls.Add(this.checkBox3);
-            this.groupBox3.Controls.Add(this.checkBox6);
-            this.groupBox3.Location = new System.Drawing.Point(22, 39);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(139, 158);
-            this.groupBox3.TabIndex = 18;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Servicios";
+            this.gbServicios.Controls.Add(this.checkBox2);
+            this.gbServicios.Controls.Add(this.checkBox1);
+            this.gbServicios.Controls.Add(this.checkBox4);
+            this.gbServicios.Controls.Add(this.checkBox5);
+            this.gbServicios.Controls.Add(this.checkBox3);
+            this.gbServicios.Controls.Add(this.checkBox6);
+            this.gbServicios.Location = new System.Drawing.Point(22, 39);
+            this.gbServicios.Name = "gbServicios";
+            this.gbServicios.Size = new System.Drawing.Size(139, 158);
+            this.gbServicios.TabIndex = 18;
+            this.gbServicios.TabStop = false;
+            this.gbServicios.Text = "Servicios";
             // 
             // checkBox2
             // 
@@ -320,8 +320,8 @@
             this.gbCasa.ResumeLayout(false);
             this.gbCasa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_Camas)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.gbServicios.ResumeLayout(false);
+            this.gbServicios.PerformLayout();
             this.gbPropiedad.ResumeLayout(false);
             this.gbPropiedad.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -349,10 +349,10 @@
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.CheckBox checkBox6;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.NumericUpDown numUpDown_Camas;
-        private System.Windows.Forms.RadioButton rbCasa;
-        private System.Windows.Forms.RadioButton rbHotel;
+        private System.Windows.Forms.GroupBox gbServicios;
         private System.Windows.Forms.GroupBox groupBox2;
+        public System.Windows.Forms.RadioButton rbCasa;
+        public System.Windows.Forms.RadioButton rbHotel;
+        public System.Windows.Forms.NumericUpDown numUpDown_Camas;
     }
 }

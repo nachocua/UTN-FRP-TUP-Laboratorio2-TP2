@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms.VisualStyles;
 
 namespace TP2
 {
@@ -34,5 +35,6 @@ namespace TP2
             return Regex.IsMatch(input, pattern);
         }
         public abstract double Costo(int dias);
+        public abstract string[] getData();
     }
 }

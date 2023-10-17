@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP2
 {
-    internal class Hotel : Propiedad
+    public class Hotel : Propiedad
     {
         List<Habitacion> habitaciones;
         public Hotel(string nombre, string ubicacion, string propietario) : base(nombre, ubicacion, propietario)
@@ -24,6 +24,10 @@ namespace TP2
         public Habitacion GetHabitacion(int i) 
         {
             return habitaciones[i];
+        }
+        public override string[] getData()
+        {
+            throw new NotImplementedException();
         }
     }
 }
