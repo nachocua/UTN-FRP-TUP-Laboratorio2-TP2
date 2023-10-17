@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,8 @@ namespace TP2
     public partial class VentanaPrincipal : Form
     {
         ManejoAlquiler elSistema;
+
+        int i = 0; // Contador Temporal
         public VentanaPrincipal()
         {
             InitializeComponent();
@@ -25,9 +28,14 @@ namespace TP2
             {
 
             }
+            ventanaCliente.Dispose();
         }
 
         private void btnAlquiler_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void btnPropiedad_Click(object sender, EventArgs e)
         {
             NuevaPropiedad ventanaPropiedad = new NuevaPropiedad();
             if (ventanaPropiedad.ShowDialog() == DialogResult.OK)
@@ -43,8 +51,10 @@ namespace TP2
                 {
                     //Hotel
                 }
+                string[] arr = (elSistema.getPropiedad(i++)).getData();
+                dataGridView1.Rows.Add(arr);
             }
-
+            ventanaPropiedad.Dispose();
         }
     }
 }

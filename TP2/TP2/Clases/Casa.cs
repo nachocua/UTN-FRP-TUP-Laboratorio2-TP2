@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -22,7 +23,13 @@ namespace TP2
         }
         public override string[] getData()
         {
-            throw new NotImplementedException();
+            List<string> arr = new List<string>();
+            arr.Add(Nombre);
+            arr.Add(Ubicacion);
+            arr.Add(Propietario);
+            arr.Add(Servicios.Count.ToString());
+            arr.Add(CantCamas.ToString());
+            return arr.ToArray();
         }
     }
 }

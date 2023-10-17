@@ -71,7 +71,7 @@
             this.btnPropiedad.TabIndex = 1;
             this.btnPropiedad.Text = "Nueva propiedad";
             this.btnPropiedad.UseVisualStyleBackColor = true;
-            this.btnPropiedad.Click += new System.EventHandler(this.btnAlquiler_Click);
+            this.btnPropiedad.Click += new System.EventHandler(this.btnPropiedad_Click);
             // 
             // dataGridView1
             // 
