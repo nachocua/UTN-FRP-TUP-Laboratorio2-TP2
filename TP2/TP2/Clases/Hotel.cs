@@ -9,7 +9,7 @@ namespace TP2
     public class Hotel : Propiedad
     {
         List<Habitacion> habitaciones;
-        public Hotel(string nombre, string ubicacion, string propietario) : base(nombre, ubicacion, propietario)
+        public Hotel(string nombre, string ubicacion, int plazas, List<string> servicios) : base(nombre, ubicacion,plazas,servicios)
         {
             habitaciones = new List<Habitacion>();
         }

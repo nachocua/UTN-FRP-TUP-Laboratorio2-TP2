@@ -33,23 +33,30 @@ namespace TP2
 
         private void btnAlquiler_Click(object sender, EventArgs e)
         {
-            
+
         }
         private void btnPropiedad_Click(object sender, EventArgs e)
         {
             NuevaPropiedad ventanaPropiedad = new NuevaPropiedad();
             if (ventanaPropiedad.ShowDialog() == DialogResult.OK)
             {
-                string nombre = ventanaPropiedad.tbNombre.Text, ubicacion = ventanaPropiedad.tbUbicacion.Text, propietario = ventanaPropiedad.tbPropietario.Text;
+                // Nombre de la propiedad, Ubicacion, Plazas, Servicios
+
+                string nombre = ventanaPropiedad.tbNombre.Text, ubicacion = ventanaPropiedad.tbUbicacion.Text;
+                int plazas = Convert.ToInt32(ventanaPropiedad.numUpDown_Plazas.Value);
+                List<string> servicios = ventanaPropiedad.ObtenerServicios();
                 if (ventanaPropiedad.rbCasa.Checked)
                 {
-                    List<string> servicios = ventanaPropiedad.ObtenerServicios();
-                    Casa unaCasa = new Casa(nombre, ubicacion, propietario, servicios, Convert.ToInt32(ventanaPropiedad.numUpDown_Camas.Value));
-                    elSistema.AgregarCasa(unaCasa);
+                    string propietario = ventanaPropiedad.tbPropietario.Text;
+                    Casa unaCasa = new Casa(nombre, ubicacion, plazas, servicios, propietario);
                 }
                 else
                 {
                     //Hotel
+                    if (ventanaPropiedad.rb2Estrellas.Checked)
+                    {
+
+                    }
                 }
                 string[] arr = (elSistema.getPropiedad(i++)).getData();
                 dataGridView1.Rows.Add(arr);

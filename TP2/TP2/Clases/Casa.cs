@@ -10,13 +10,11 @@ namespace TP2
 {
     public class Casa : Propiedad
     {
-        public int CantCamas { get; protected set; }
-        public Casa(string nombre, string ubicacion, string propietario, List<string> servicios, int cantCamas) : base(nombre, ubicacion, propietario)
+        public string Propietario { get; protected set; }
+        public Casa(string nombre, string ubicacion, int plazas, List<string> servicios, string propietario) : base(nombre, ubicacion,plazas,servicios)
         {
-            Servicios = servicios;
-            CantCamas = cantCamas;
+            Propietario = propietario;
         }
-        public List<string> Servicios { get; protected set; }
         public override double Costo(int dias)
         {
             throw new NotImplementedException();
@@ -28,7 +26,6 @@ namespace TP2
             arr.Add(Ubicacion);
             arr.Add(Propietario);
             arr.Add(Servicios.Count.ToString());
-            arr.Add(CantCamas.ToString());
             return arr.ToArray();
         }
     }

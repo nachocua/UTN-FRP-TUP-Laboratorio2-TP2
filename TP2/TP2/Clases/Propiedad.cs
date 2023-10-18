@@ -12,20 +12,22 @@ namespace TP2
     {
         public string Ubicacion { get; protected set; }
         public string Nombre { get; protected set; }
-        public string Propietario { get; protected set; }
+        public int Plazas { get; protected set; }
+        public List<string> Servicios { get; protected set; }
         protected List<string> imagenes;
-        public Propiedad(string nombre, string ubicacion, string propietario)
+        public Propiedad(string nombre, string ubicacion, int plazas, List<string> servicios)
         {
-            if (IsValidInput(nombre) && IsValidInput(ubicacion) && IsValidInput(propietario))
+            if (IsValidInput(nombre) && IsValidInput(ubicacion))
             {
                 Nombre = nombre ?? throw new ArgumentNullException("Campo vacio.");
                 Ubicacion = ubicacion ?? throw new ArgumentNullException("Campo vacio.");
-                Propietario = propietario ?? throw new ArgumentNullException("Campo vacio.");
+                Plazas = plazas;
+                Servicios = servicios;
                 imagenes = new List<string>();
             }
             else
             {
-                throw new ArgumentException("Los campos Nombre, Ubicación y Propietario solo deben contener caracteres.");
+                throw new ArgumentException("Los campos Nombre y Ubicación solo deben contener caracteres.");
             }
         }
         private bool IsValidInput(string input)
@@ -33,6 +35,10 @@ namespace TP2
             // [a-zA-Z ]+ permite letras mayúsculas, minúsculas y espacios.
             string pattern = "^[a-zA-Z ]+$";
             return Regex.IsMatch(input, pattern);
+        }
+        public void ModificarServicios(string[] servicios)
+        {
+            Servicios = servicios.ToList();
         }
         public abstract double Costo(int dias);
         public abstract string[] getData();
