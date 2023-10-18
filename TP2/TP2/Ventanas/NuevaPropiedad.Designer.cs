@@ -47,17 +47,25 @@
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.gbHotel = new System.Windows.Forms.GroupBox();
-            this.btnAgregarHabitacion = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.rb3Estrellas = new System.Windows.Forms.RadioButton();
+            this.rb2Estrellas = new System.Windows.Forms.RadioButton();
+            this.numUDTriple = new System.Windows.Forms.NumericUpDown();
+            this.numUDDoble = new System.Windows.Forms.NumericUpDown();
+            this.numUDSimple = new System.Windows.Forms.NumericUpDown();
             this.gbPropiedad = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbCasa = new System.Windows.Forms.RadioButton();
             this.rbHotel = new System.Windows.Forms.RadioButton();
-            this.rb2Estrellas = new System.Windows.Forms.RadioButton();
-            this.rb3Estrellas = new System.Windows.Forms.RadioButton();
             this.gbCasa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_Plazas)).BeginInit();
             this.gbServicios.SuspendLayout();
             this.gbHotel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUDTriple)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUDDoble)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUDSimple)).BeginInit();
             this.gbPropiedad.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -135,16 +143,18 @@
             // 
             this.gbCasa.Controls.Add(this.label3);
             this.gbCasa.Controls.Add(this.tbPropietario);
-            this.gbCasa.Location = new System.Drawing.Point(289, 19);
+            this.gbCasa.Controls.Add(this.numUpDown_Plazas);
+            this.gbCasa.Controls.Add(this.label4);
+            this.gbCasa.Location = new System.Drawing.Point(289, 21);
             this.gbCasa.Name = "gbCasa";
-            this.gbCasa.Size = new System.Drawing.Size(200, 58);
+            this.gbCasa.Size = new System.Drawing.Size(200, 98);
             this.gbCasa.TabIndex = 13;
             this.gbCasa.TabStop = false;
             this.gbCasa.Text = "Casa";
             // 
             // numUpDown_Plazas
             // 
-            this.numUpDown_Plazas.Location = new System.Drawing.Point(224, 90);
+            this.numUpDown_Plazas.Location = new System.Drawing.Point(83, 43);
             this.numUpDown_Plazas.Maximum = new decimal(new int[] {
             300,
             0,
@@ -167,7 +177,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(177, 92);
+            this.label4.Location = new System.Drawing.Point(36, 45);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 13);
             this.label4.TabIndex = 17;
@@ -250,31 +260,128 @@
             // 
             // gbHotel
             // 
+            this.gbHotel.Controls.Add(this.label7);
+            this.gbHotel.Controls.Add(this.label6);
+            this.gbHotel.Controls.Add(this.label5);
             this.gbHotel.Controls.Add(this.rb3Estrellas);
             this.gbHotel.Controls.Add(this.rb2Estrellas);
-            this.gbHotel.Controls.Add(this.btnAgregarHabitacion);
-            this.gbHotel.Location = new System.Drawing.Point(289, 83);
+            this.gbHotel.Controls.Add(this.numUDTriple);
+            this.gbHotel.Controls.Add(this.numUDDoble);
+            this.gbHotel.Controls.Add(this.numUDSimple);
+            this.gbHotel.Location = new System.Drawing.Point(289, 126);
             this.gbHotel.Name = "gbHotel";
-            this.gbHotel.Size = new System.Drawing.Size(200, 136);
+            this.gbHotel.Size = new System.Drawing.Size(200, 158);
             this.gbHotel.TabIndex = 14;
             this.gbHotel.TabStop = false;
             this.gbHotel.Text = "Hotel";
             // 
-            // btnAgregarHabitacion
+            // label7
             // 
-            this.btnAgregarHabitacion.Location = new System.Drawing.Point(32, 92);
-            this.btnAgregarHabitacion.Name = "btnAgregarHabitacion";
-            this.btnAgregarHabitacion.Size = new System.Drawing.Size(113, 30);
-            this.btnAgregarHabitacion.TabIndex = 0;
-            this.btnAgregarHabitacion.Text = "Agregar habitacion";
-            this.btnAgregarHabitacion.UseVisualStyleBackColor = true;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(59, 127);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 13);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Triples:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(59, 97);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 13);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Dobles:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(54, 71);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Simples:";
+            // 
+            // rb3Estrellas
+            // 
+            this.rb3Estrellas.AutoSize = true;
+            this.rb3Estrellas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb3Estrellas.Location = new System.Drawing.Point(99, 20);
+            this.rb3Estrellas.Name = "rb3Estrellas";
+            this.rb3Estrellas.Size = new System.Drawing.Size(52, 20);
+            this.rb3Estrellas.TabIndex = 2;
+            this.rb3Estrellas.TabStop = true;
+            this.rb3Estrellas.Text = "☆☆☆";
+            this.rb3Estrellas.UseVisualStyleBackColor = true;
+            // 
+            // rb2Estrellas
+            // 
+            this.rb2Estrellas.AutoSize = true;
+            this.rb2Estrellas.Checked = true;
+            this.rb2Estrellas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb2Estrellas.Location = new System.Drawing.Point(49, 19);
+            this.rb2Estrellas.Name = "rb2Estrellas";
+            this.rb2Estrellas.Size = new System.Drawing.Size(43, 20);
+            this.rb2Estrellas.TabIndex = 1;
+            this.rb2Estrellas.TabStop = true;
+            this.rb2Estrellas.Text = "☆☆";
+            this.rb2Estrellas.UseVisualStyleBackColor = true;
+            // 
+            // numUDTriple
+            // 
+            this.numUDTriple.Location = new System.Drawing.Point(106, 125);
+            this.numUDTriple.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numUDTriple.Name = "numUDTriple";
+            this.numUDTriple.Size = new System.Drawing.Size(41, 20);
+            this.numUDTriple.TabIndex = 19;
+            this.numUDTriple.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numUDDoble
+            // 
+            this.numUDDoble.Location = new System.Drawing.Point(106, 95);
+            this.numUDDoble.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numUDDoble.Name = "numUDDoble";
+            this.numUDDoble.Size = new System.Drawing.Size(41, 20);
+            this.numUDDoble.TabIndex = 19;
+            this.numUDDoble.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numUDSimple
+            // 
+            this.numUDSimple.Location = new System.Drawing.Point(106, 69);
+            this.numUDSimple.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numUDSimple.Name = "numUDSimple";
+            this.numUDSimple.Size = new System.Drawing.Size(41, 20);
+            this.numUDSimple.TabIndex = 19;
+            this.numUDSimple.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // gbPropiedad
             // 
             this.gbPropiedad.Controls.Add(this.gbServicios);
             this.gbPropiedad.Controls.Add(this.tbNombre);
-            this.gbPropiedad.Controls.Add(this.numUpDown_Plazas);
-            this.gbPropiedad.Controls.Add(this.label4);
             this.gbPropiedad.Controls.Add(this.btnImagen);
             this.gbPropiedad.Controls.Add(this.btnNuevaPropiedad);
             this.gbPropiedad.Controls.Add(this.groupBox2);
@@ -292,7 +399,7 @@
             // 
             this.groupBox2.Controls.Add(this.rbCasa);
             this.groupBox2.Controls.Add(this.rbHotel);
-            this.groupBox2.Location = new System.Drawing.Point(148, 164);
+            this.groupBox2.Location = new System.Drawing.Point(148, 90);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(112, 65);
             this.groupBox2.TabIndex = 18;
@@ -323,33 +430,11 @@
             this.rbHotel.UseVisualStyleBackColor = true;
             this.rbHotel.CheckedChanged += new System.EventHandler(this.CambiarGroupBox);
             // 
-            // rb2Estrellas
-            // 
-            this.rb2Estrellas.AutoSize = true;
-            this.rb2Estrellas.Location = new System.Drawing.Point(7, 20);
-            this.rb2Estrellas.Name = "rb2Estrellas";
-            this.rb2Estrellas.Size = new System.Drawing.Size(43, 17);
-            this.rb2Estrellas.TabIndex = 1;
-            this.rb2Estrellas.TabStop = true;
-            this.rb2Estrellas.Text = "☆☆";
-            this.rb2Estrellas.UseVisualStyleBackColor = true;
-            // 
-            // rb3Estrellas
-            // 
-            this.rb3Estrellas.AutoSize = true;
-            this.rb3Estrellas.Location = new System.Drawing.Point(7, 43);
-            this.rb3Estrellas.Name = "rb3Estrellas";
-            this.rb3Estrellas.Size = new System.Drawing.Size(52, 17);
-            this.rb3Estrellas.TabIndex = 2;
-            this.rb3Estrellas.TabStop = true;
-            this.rb3Estrellas.Text = "☆☆☆";
-            this.rb3Estrellas.UseVisualStyleBackColor = true;
-            // 
             // NuevaPropiedad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(666, 373);
+            this.ClientSize = new System.Drawing.Size(497, 291);
             this.Controls.Add(this.gbCasa);
             this.Controls.Add(this.gbPropiedad);
             this.Controls.Add(this.gbHotel);
@@ -362,6 +447,9 @@
             this.gbServicios.PerformLayout();
             this.gbHotel.ResumeLayout(false);
             this.gbHotel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUDTriple)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUDDoble)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUDSimple)).EndInit();
             this.gbPropiedad.ResumeLayout(false);
             this.gbPropiedad.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -394,8 +482,13 @@
         public System.Windows.Forms.RadioButton rbCasa;
         public System.Windows.Forms.RadioButton rbHotel;
         public System.Windows.Forms.NumericUpDown numUpDown_Plazas;
-        private System.Windows.Forms.Button btnAgregarHabitacion;
         public System.Windows.Forms.RadioButton rb3Estrellas;
         public System.Windows.Forms.RadioButton rb2Estrellas;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.NumericUpDown numUDTriple;
+        public System.Windows.Forms.NumericUpDown numUDDoble;
+        public System.Windows.Forms.NumericUpDown numUDSimple;
     }
 }

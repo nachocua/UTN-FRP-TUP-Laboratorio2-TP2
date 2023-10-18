@@ -15,8 +15,8 @@ namespace TP2
         public NuevaPropiedad()
         {
             InitializeComponent();
-            gbCasa.Visible = true;
-            gbHotel.Visible = false;
+            gbCasa.Enabled = true;
+            gbHotel.Enabled = false;
             rbCasa.Checked = true;
         }
 
@@ -29,12 +29,12 @@ namespace TP2
             switch (((RadioButton)sender).Text)
             {
                 case "Hotel":
-                    gbCasa.Visible = false;
-                    gbHotel.Visible = true;
+                    gbCasa.Enabled = false;
+                    gbHotel.Enabled = true;
                     break;
                 default:
-                    gbCasa.Visible = true;
-                    gbHotel.Visible = false;
+                    gbCasa.Enabled = true;
+                    gbHotel.Enabled = false;
                     break;
             }
 

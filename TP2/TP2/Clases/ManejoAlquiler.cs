@@ -10,6 +10,7 @@ namespace TP2
     {
         private int ReservasTotales = 0;
         private List<Propiedad> propiedades;
+        public int CantidadPropidades => propiedades.Count;
         public ManejoAlquiler() 
         {
             propiedades = new List<Propiedad>();
@@ -17,6 +18,10 @@ namespace TP2
         public void Reservar()
         {
             ReservasTotales++;
+        }
+        public void AgregarPropiedad(Propiedad propiedad)
+        {
+            propiedades.Add(propiedad);
         }
         public void AgregarHotel(Hotel unHotel)
         {
