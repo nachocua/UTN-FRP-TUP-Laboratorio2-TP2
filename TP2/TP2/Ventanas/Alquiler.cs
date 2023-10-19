@@ -13,24 +13,37 @@ namespace TP2
 {
     public partial class Alquiler : Form
     {
+        private List<string[]> renglones = null;
         public Alquiler()
         {
             InitializeComponent();
         }
         private void Alquiler_Load(object sender, EventArgs e)
         {
-            List<string[]> renglones = null;
             try
             {
                 renglones = Funciones_Adicionales.LeerSeparandoArchivo("..//..//Data//propiedades.csv", ";");
             }
-            catch 
+            catch
             {
                 MessageBox.Show("No se encontró el archivo propiedades.csv");
             }
-            foreach (string[] unRenglon in renglones) 
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            dgView.RowCount = 0;
+            foreach (string[] unRenglon in renglones)
             {
                 dgView.Rows.Add(unRenglon);
+            }
+        }
+
+        private void btnReservar_Click(object sender, EventArgs e)
+        {
+            if (true)
+            {
+
             }
         }
     }

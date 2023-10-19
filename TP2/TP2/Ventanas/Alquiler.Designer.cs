@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
             this.dgView = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,38 +38,40 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbDías = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nudCantidadDias = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbServicios = new System.Windows.Forms.GroupBox();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.checkBox9 = new System.Windows.Forms.CheckBox();
             this.checkBox10 = new System.Windows.Forms.CheckBox();
             this.checkBox11 = new System.Windows.Forms.CheckBox();
             this.checkBox12 = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.gbTipoPropiedad = new System.Windows.Forms.GroupBox();
+            this.rbCasaFinde = new System.Windows.Forms.RadioButton();
+            this.rbCasa = new System.Windows.Forms.RadioButton();
+            this.rbHotel = new System.Windows.Forms.RadioButton();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnInfo = new System.Windows.Forms.Button();
+            this.btnReservar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).BeginInit();
             this.gbDías.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidadDias)).BeginInit();
+            this.gbServicios.SuspendLayout();
+            this.gbTipoPropiedad.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dateTimePicker1
+            // dtpFechaDesde
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(83, 17);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 0;
+            this.dtpFechaDesde.Location = new System.Drawing.Point(83, 17);
+            this.dtpFechaDesde.Name = "dtpFechaDesde";
+            this.dtpFechaDesde.Size = new System.Drawing.Size(200, 20);
+            this.dtpFechaDesde.TabIndex = 0;
             // 
             // dgView
             // 
+            this.dgView.AllowUserToAddRows = false;
+            this.dgView.AllowUserToDeleteRows = false;
             this.dgView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -80,6 +82,7 @@
             this.Column5});
             this.dgView.Location = new System.Drawing.Point(12, 187);
             this.dgView.Name = "dgView";
+            this.dgView.ReadOnly = true;
             this.dgView.Size = new System.Drawing.Size(646, 162);
             this.dgView.TabIndex = 4;
             // 
@@ -116,9 +119,9 @@
             // gbDías
             // 
             this.gbDías.Controls.Add(this.label8);
-            this.gbDías.Controls.Add(this.numericUpDown1);
+            this.gbDías.Controls.Add(this.nudCantidadDias);
             this.gbDías.Controls.Add(this.label9);
-            this.gbDías.Controls.Add(this.dateTimePicker1);
+            this.gbDías.Controls.Add(this.dtpFechaDesde);
             this.gbDías.Location = new System.Drawing.Point(12, 12);
             this.gbDías.Name = "gbDías";
             this.gbDías.Size = new System.Drawing.Size(303, 89);
@@ -135,23 +138,23 @@
             this.label8.TabIndex = 3;
             this.label8.Text = "Fecha desde";
             // 
-            // numericUpDown1
+            // nudCantidadDias
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(85, 50);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.nudCantidadDias.Location = new System.Drawing.Point(85, 50);
+            this.nudCantidadDias.Maximum = new decimal(new int[] {
             300,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.nudCantidadDias.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(41, 20);
-            this.numericUpDown1.TabIndex = 19;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.nudCantidadDias.Name = "nudCantidadDias";
+            this.nudCantidadDias.Size = new System.Drawing.Size(41, 20);
+            this.nudCantidadDias.TabIndex = 19;
+            this.nudCantidadDias.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -166,20 +169,20 @@
             this.label9.TabIndex = 17;
             this.label9.Text = "Cantidad días";
             // 
-            // groupBox1
+            // gbServicios
             // 
-            this.groupBox1.Controls.Add(this.checkBox7);
-            this.groupBox1.Controls.Add(this.checkBox8);
-            this.groupBox1.Controls.Add(this.checkBox9);
-            this.groupBox1.Controls.Add(this.checkBox10);
-            this.groupBox1.Controls.Add(this.checkBox11);
-            this.groupBox1.Controls.Add(this.checkBox12);
-            this.groupBox1.Location = new System.Drawing.Point(355, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(139, 158);
-            this.groupBox1.TabIndex = 20;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Servicios";
+            this.gbServicios.Controls.Add(this.checkBox7);
+            this.gbServicios.Controls.Add(this.checkBox8);
+            this.gbServicios.Controls.Add(this.checkBox9);
+            this.gbServicios.Controls.Add(this.checkBox10);
+            this.gbServicios.Controls.Add(this.checkBox11);
+            this.gbServicios.Controls.Add(this.checkBox12);
+            this.gbServicios.Location = new System.Drawing.Point(355, 12);
+            this.gbServicios.Name = "gbServicios";
+            this.gbServicios.Size = new System.Drawing.Size(139, 158);
+            this.gbServicios.TabIndex = 20;
+            this.gbServicios.TabStop = false;
+            this.gbServicios.Text = "Servicios";
             // 
             // checkBox7
             // 
@@ -241,95 +244,91 @@
             this.checkBox12.Text = "Servicio de Limpieza";
             this.checkBox12.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
+            // gbTipoPropiedad
             // 
-            this.groupBox3.Controls.Add(this.radioButton3);
-            this.groupBox3.Controls.Add(this.radioButton1);
-            this.groupBox3.Controls.Add(this.radioButton2);
-            this.groupBox3.Location = new System.Drawing.Point(12, 107);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(303, 63);
-            this.groupBox3.TabIndex = 21;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Tipo de propiedad";
+            this.gbTipoPropiedad.Controls.Add(this.rbCasaFinde);
+            this.gbTipoPropiedad.Controls.Add(this.rbCasa);
+            this.gbTipoPropiedad.Controls.Add(this.rbHotel);
+            this.gbTipoPropiedad.Location = new System.Drawing.Point(12, 107);
+            this.gbTipoPropiedad.Name = "gbTipoPropiedad";
+            this.gbTipoPropiedad.Size = new System.Drawing.Size(303, 63);
+            this.gbTipoPropiedad.TabIndex = 21;
+            this.gbTipoPropiedad.TabStop = false;
+            this.gbTipoPropiedad.Text = "Tipo de propiedad";
             // 
-            // radioButton1
+            // rbCasaFinde
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(77, 30);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(49, 17);
-            this.radioButton1.TabIndex = 22;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Casa";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbCasaFinde.AutoSize = true;
+            this.rbCasaFinde.Checked = true;
+            this.rbCasaFinde.Location = new System.Drawing.Point(146, 30);
+            this.rbCasaFinde.Name = "rbCasaFinde";
+            this.rbCasaFinde.Size = new System.Drawing.Size(118, 17);
+            this.rbCasaFinde.TabIndex = 23;
+            this.rbCasaFinde.Text = "Casa fin de semana";
+            this.rbCasaFinde.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbCasa
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(9, 30);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(50, 17);
-            this.radioButton2.TabIndex = 23;
-            this.radioButton2.Text = "Hotel";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbCasa.AutoSize = true;
+            this.rbCasa.Location = new System.Drawing.Point(77, 30);
+            this.rbCasa.Name = "rbCasa";
+            this.rbCasa.Size = new System.Drawing.Size(49, 17);
+            this.rbCasa.TabIndex = 22;
+            this.rbCasa.Text = "Casa";
+            this.rbCasa.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // rbHotel
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Checked = true;
-            this.radioButton3.Location = new System.Drawing.Point(146, 30);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(118, 17);
-            this.radioButton3.TabIndex = 23;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Casa fin de semana";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rbHotel.AutoSize = true;
+            this.rbHotel.Location = new System.Drawing.Point(9, 30);
+            this.rbHotel.Name = "rbHotel";
+            this.rbHotel.Size = new System.Drawing.Size(50, 17);
+            this.rbHotel.TabIndex = 23;
+            this.rbHotel.Text = "Hotel";
+            this.rbHotel.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnBuscar
             // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(528, 19);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 30);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Buscar disponibles";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnBuscar.Location = new System.Drawing.Point(528, 19);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(113, 30);
+            this.btnBuscar.TabIndex = 22;
+            this.btnBuscar.Text = "Buscar disponibles";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // button2
+            // btnInfo
             // 
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button2.Location = new System.Drawing.Point(528, 70);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 30);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "Ver Información";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnInfo.Location = new System.Drawing.Point(528, 70);
+            this.btnInfo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnInfo.Name = "btnInfo";
+            this.btnInfo.Size = new System.Drawing.Size(113, 30);
+            this.btnInfo.TabIndex = 23;
+            this.btnInfo.Text = "Ver Información";
+            this.btnInfo.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnReservar
             // 
-            this.button3.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button3.Location = new System.Drawing.Point(528, 124);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(113, 30);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "Reservar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnReservar.Location = new System.Drawing.Point(528, 124);
+            this.btnReservar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReservar.Name = "btnReservar";
+            this.btnReservar.Size = new System.Drawing.Size(113, 30);
+            this.btnReservar.TabIndex = 24;
+            this.btnReservar.Text = "Reservar";
+            this.btnReservar.UseVisualStyleBackColor = true;
+            this.btnReservar.Click += new System.EventHandler(this.btnReservar_Click);
             // 
             // Alquiler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(690, 364);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(670, 364);
+            this.Controls.Add(this.btnReservar);
+            this.Controls.Add(this.btnInfo);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.gbTipoPropiedad);
+            this.Controls.Add(this.gbServicios);
             this.Controls.Add(this.gbDías);
             this.Controls.Add(this.dgView);
             this.Name = "Alquiler";
@@ -338,18 +337,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).EndInit();
             this.gbDías.ResumeLayout(false);
             this.gbDías.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidadDias)).EndInit();
+            this.gbServicios.ResumeLayout(false);
+            this.gbServicios.PerformLayout();
+            this.gbTipoPropiedad.ResumeLayout(false);
+            this.gbTipoPropiedad.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpFechaDesde;
         public System.Windows.Forms.DataGridView dgView;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
@@ -359,21 +358,21 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.GroupBox gbDías;
         private System.Windows.Forms.Label label8;
-        public System.Windows.Forms.NumericUpDown numericUpDown1;
+        public System.Windows.Forms.NumericUpDown nudCantidadDias;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbServicios;
         private System.Windows.Forms.CheckBox checkBox7;
         private System.Windows.Forms.CheckBox checkBox8;
         private System.Windows.Forms.CheckBox checkBox9;
         private System.Windows.Forms.CheckBox checkBox10;
         private System.Windows.Forms.CheckBox checkBox11;
         private System.Windows.Forms.CheckBox checkBox12;
-        private System.Windows.Forms.GroupBox groupBox3;
-        public System.Windows.Forms.RadioButton radioButton3;
-        public System.Windows.Forms.RadioButton radioButton1;
-        public System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.GroupBox gbTipoPropiedad;
+        public System.Windows.Forms.RadioButton rbCasaFinde;
+        public System.Windows.Forms.RadioButton rbCasa;
+        public System.Windows.Forms.RadioButton rbHotel;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Button btnInfo;
+        private System.Windows.Forms.Button btnReservar;
     }
 }
