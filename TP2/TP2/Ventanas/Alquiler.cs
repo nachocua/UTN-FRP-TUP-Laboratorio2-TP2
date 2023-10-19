@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteca;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,22 @@ namespace TP2
         public Alquiler()
         {
             InitializeComponent();
+        }
+        private void Alquiler_Load(object sender, EventArgs e)
+        {
+            List<string[]> renglones = null;
+            try
+            {
+                renglones = Funciones_Adicionales.LeerSeparandoArchivo("..//..//Data//propiedades.csv", ";");
+            }
+            catch 
+            {
+                MessageBox.Show("No se encontró el archivo propiedades.csv");
+            }
+            foreach (string[] unRenglon in renglones) 
+            {
+                dgView.Rows.Add(unRenglon);
+            }
         }
     }
 }

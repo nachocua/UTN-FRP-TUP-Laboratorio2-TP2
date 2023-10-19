@@ -35,7 +35,8 @@ namespace TP2
 
         private void btnAlquiler_Click(object sender, EventArgs e)
         {
-
+            Alquiler unaVentana = new Alquiler();
+            unaVentana.Show();
         }
         private void btnPropiedad_Click(object sender, EventArgs e)
         {

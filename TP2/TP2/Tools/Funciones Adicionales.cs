@@ -19,21 +19,24 @@ namespace Biblioteca
             }
             return resultado;
         }
-        public static List<string[]> LeerSeparandoArchivo(string nombreArchivo, string delimitador)
+        public static List<string[]> SplitRenglones(string[] renglon, string delimitador)
         {
             List<string[]> renglones = null;
-            string[] resultado = LeerArchivo(nombreArchivo);
-            if(resultado!=null)
+            if (renglon != null)
             {
                 renglones = new List<string[]>();
                 string[] partes;
-                foreach (string unResultado in resultado)
+                foreach (string unResultado in renglon)
                 {
                     partes = unResultado.Split(delimitador.ToCharArray());
                     renglones.Add(partes);
                 }
             }
             return renglones;
+        }
+        public static List<string[]> LeerSeparandoArchivo(string nombreArchivo, string delimitador)
+        {
+            return SplitRenglones(LeerArchivo(nombreArchivo), delimitador);
         }
     }
 }
