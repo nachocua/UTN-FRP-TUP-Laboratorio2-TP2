@@ -54,6 +54,8 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnInfo = new System.Windows.Forms.Button();
             this.btnReservar = new System.Windows.Forms.Button();
+            this.tbUbicación = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).BeginInit();
             this.gbDías.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidadDias)).BeginInit();
@@ -65,7 +67,7 @@
             // 
             this.dtpFechaDesde.Location = new System.Drawing.Point(83, 17);
             this.dtpFechaDesde.Name = "dtpFechaDesde";
-            this.dtpFechaDesde.Size = new System.Drawing.Size(200, 20);
+            this.dtpFechaDesde.Size = new System.Drawing.Size(214, 20);
             this.dtpFechaDesde.TabIndex = 0;
             // 
             // dgView
@@ -90,34 +92,42 @@
             // 
             this.Column1.HeaderText = "Nombre";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "Tipo";
             this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Ubicacion";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Propietario";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Servicios";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Capacidad";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // gbDías
             // 
+            this.gbDías.Controls.Add(this.label1);
+            this.gbDías.Controls.Add(this.tbUbicación);
             this.gbDías.Controls.Add(this.label8);
             this.gbDías.Controls.Add(this.nudCantidadDias);
             this.gbDías.Controls.Add(this.label9);
@@ -127,7 +137,7 @@
             this.gbDías.Size = new System.Drawing.Size(303, 89);
             this.gbDías.TabIndex = 19;
             this.gbDías.TabStop = false;
-            this.gbDías.Text = "Días";
+            this.gbDías.Text = "Cuando y Donde";
             // 
             // label8
             // 
@@ -264,6 +274,7 @@
             this.rbCasaFinde.Name = "rbCasaFinde";
             this.rbCasaFinde.Size = new System.Drawing.Size(118, 17);
             this.rbCasaFinde.TabIndex = 23;
+            this.rbCasaFinde.TabStop = true;
             this.rbCasaFinde.Text = "Casa fin de semana";
             this.rbCasaFinde.UseVisualStyleBackColor = true;
             // 
@@ -318,6 +329,22 @@
             this.btnReservar.Text = "Reservar";
             this.btnReservar.UseVisualStyleBackColor = true;
             this.btnReservar.Click += new System.EventHandler(this.btnReservar_Click);
+            // 
+            // tbUbicación
+            // 
+            this.tbUbicación.Location = new System.Drawing.Point(197, 49);
+            this.tbUbicación.Name = "tbUbicación";
+            this.tbUbicación.Size = new System.Drawing.Size(100, 20);
+            this.tbUbicación.TabIndex = 20;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(136, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Ubicación";
             // 
             // Alquiler
             // 
@@ -374,5 +401,7 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnInfo;
         private System.Windows.Forms.Button btnReservar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbUbicación;
     }
 }

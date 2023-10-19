@@ -13,32 +13,68 @@ namespace TP2
 {
     public partial class Alquiler : Form
     {
-        private List<string[]> renglones = null;
+        private List<Reserva> reservas;
+        private List<Propiedad> propiedades;
         public Alquiler()
         {
             InitializeComponent();
         }
         private void Alquiler_Load(object sender, EventArgs e)
         {
+            List<string[]> datosPropiedades = null;
+            List<string[]> datosReservas = null;
             try
             {
-                renglones = Funciones_Adicionales.LeerSeparandoArchivo("..//..//Data//propiedades.csv", ";");
+                datosPropiedades = Funciones_Adicionales.LeerSeparandoArchivo("..//..//Data//propiedades.csv", ";");
             }
             catch
             {
-                MessageBox.Show("No se encontró el archivo propiedades.csv");
+                MessageBox.Show("No se encontró el archivo de propiedades");
+            }
+            try
+            {
+                datosReservas = Funciones_Adicionales.LeerSeparandoArchivo("..//..//Data//reservas.csv", ";");
+            }
+            catch
+            {
+                MessageBox.Show("No se encontró el archivo de reservas");
+            }
+            if (datosPropiedades != null && datosReservas != null)
+            {
+                foreach (string[] unDato in datosPropiedades)
+                {
+                    Propiedad unaPropiedad = null;
+                    List<string> servicios = null;
+                    if (unDato[1] == "casa")
+                    {
+                        unaPropiedad = new Casa("", "", 1, servicios, "");
+                    }
+                    else
+                    {
+                        if (unDato[1] == "hotel")
+                        {
+                            unaPropiedad = new Hotel("", "", 1, servicios, 1);
+                        }
+                        else
+                        {
+                            unaPropiedad = new CasaFinSemana("", "", 1, servicios, "");
+                        }
+                    }
+                    propiedades.Add(unaPropiedad);
+                }
             }
         }
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             dgView.RowCount = 0;
-            foreach (string[] unRenglon in renglones)
+            string[] datos = null;
+            foreach (Propiedad unaPropiedad in propiedades)
             {
-                dgView.Rows.Add(unRenglon);
+                datos = unaPropiedad.getData();
+                //if(datos)
+                //dgView.Rows.Add(unRenglon);
             }
         }
-
         private void btnReservar_Click(object sender, EventArgs e)
         {
             if (true)

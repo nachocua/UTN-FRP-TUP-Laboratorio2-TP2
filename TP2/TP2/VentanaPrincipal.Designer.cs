@@ -36,10 +36,10 @@
             // 
             // btnNuevoCliente
             // 
-            this.btnNuevoCliente.Location = new System.Drawing.Point(11, 25);
+            this.btnNuevoCliente.Location = new System.Drawing.Point(11, 11);
             this.btnNuevoCliente.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevoCliente.Name = "btnNuevoCliente";
-            this.btnNuevoCliente.Size = new System.Drawing.Size(131, 43);
+            this.btnNuevoCliente.Size = new System.Drawing.Size(157, 63);
             this.btnNuevoCliente.TabIndex = 0;
             this.btnNuevoCliente.Text = "Nuevo Cliente";
             this.btnNuevoCliente.UseVisualStyleBackColor = true;
@@ -47,10 +47,10 @@
             // 
             // btnAlquiler
             // 
-            this.btnAlquiler.Location = new System.Drawing.Point(11, 85);
+            this.btnAlquiler.Location = new System.Drawing.Point(11, 102);
             this.btnAlquiler.Margin = new System.Windows.Forms.Padding(2);
             this.btnAlquiler.Name = "btnAlquiler";
-            this.btnAlquiler.Size = new System.Drawing.Size(131, 43);
+            this.btnAlquiler.Size = new System.Drawing.Size(157, 63);
             this.btnAlquiler.TabIndex = 1;
             this.btnAlquiler.Text = "Alquilar";
             this.btnAlquiler.UseVisualStyleBackColor = true;
@@ -58,10 +58,10 @@
             // 
             // btnPropiedad
             // 
-            this.btnPropiedad.Location = new System.Drawing.Point(11, 145);
+            this.btnPropiedad.Location = new System.Drawing.Point(11, 199);
             this.btnPropiedad.Margin = new System.Windows.Forms.Padding(2);
             this.btnPropiedad.Name = "btnPropiedad";
-            this.btnPropiedad.Size = new System.Drawing.Size(131, 43);
+            this.btnPropiedad.Size = new System.Drawing.Size(157, 62);
             this.btnPropiedad.TabIndex = 1;
             this.btnPropiedad.Text = "Nueva propiedad";
             this.btnPropiedad.UseVisualStyleBackColor = true;
@@ -69,9 +69,9 @@
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Location = new System.Drawing.Point(11, 205);
+            this.btnConsultar.Location = new System.Drawing.Point(273, 199);
             this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(131, 43);
+            this.btnConsultar.Size = new System.Drawing.Size(157, 62);
             this.btnConsultar.TabIndex = 3;
             this.btnConsultar.Text = "Consultar propiedades";
             this.btnConsultar.UseVisualStyleBackColor = true;
@@ -89,6 +89,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "VentanaPrincipal";
             this.Text = "Rentify";
+            this.Load += new System.EventHandler(this.VentanaPrincipal_Load);
             this.ResumeLayout(false);
 
         }

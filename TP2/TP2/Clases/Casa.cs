@@ -22,10 +22,19 @@ namespace TP2
         public override string[] getData()
         {
             List<string> arr = new List<string>();
+            //string aux = "";
             arr.Add(Nombre);
             arr.Add("Casa");
             arr.Add(Ubicacion);
             arr.Add(Propietario);
+            /*foreach (string unServicio in Servicios)
+            {
+                if(aux != "")
+                {
+                    aux += "-";
+                }
+                aux += unServicio;
+            }*/
             arr.Add(Servicios.Count.ToString());
             arr.Add(Plazas.ToString());
             return arr.ToArray();

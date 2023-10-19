@@ -12,7 +12,7 @@ namespace TP2
     [Serializable]
     public class Cliente
     {
-        private List<int> idReservas;
+        public List<int> IdReservas { get; }
         public int Dni { get; private set; }
         public int Telefono { get; private set; }
         public string Nombres { get; private set; }
@@ -23,11 +23,11 @@ namespace TP2
             Nombres = nombres;
             Apellidos = apellidos;
             Telefono = nroTelefono;
-            idReservas = new List<int>();
+            IdReservas = new List<int>();
         }
         public void AgregarReserva(int idReserva)
         {
-            idReservas.Add(idReserva);
+            IdReservas.Add(idReserva);
         }
     }
 }

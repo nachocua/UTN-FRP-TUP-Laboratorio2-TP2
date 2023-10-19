@@ -64,11 +64,9 @@
     <Compile Include="Ventanas\Alta Cliente.Designer.cs">
       <DependentUpon>Alta Cliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Clases\Caracteristicas.cs" />
     <Compile Include="Clases\Casa.cs" />
     <Compile Include="Clases\CasaFinSemana.cs" />
     <Compile Include="Clases\Cliente.cs" />
-    <Compile Include="Clases\Habitacion.cs" />
     <Compile Include="Clases\Hotel.cs" />
     <Compile Include="Clases\ManejoAlquiler.cs" />
     <Compile Include="Clases\Propiedad.cs" />

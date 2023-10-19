@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteca;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,13 +11,13 @@ using System.Runtime.Remoting.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace TP2
 {
     public partial class VentanaPrincipal : Form
     {
         ManejoAlquiler elSistema;
-
         int i = 0; // Contador Temporal
         public VentanaPrincipal()
         {
@@ -32,11 +33,10 @@ namespace TP2
             }
             ventanaCliente.Dispose();
         }
-
         private void btnAlquiler_Click(object sender, EventArgs e)
         {
             Alquiler ventanaAlquiler = new Alquiler();
-            if(ventanaAlquiler.ShowDialog() == DialogResult.OK)
+            if (ventanaAlquiler.ShowDialog() == DialogResult.OK)
             {
 
             }
@@ -48,7 +48,6 @@ namespace TP2
             if (ventanaPropiedad.ShowDialog() == DialogResult.OK)
             {
                 // Nombre de la propiedad, Ubicacion, Plazas, Servicios
-
                 string nombre = ventanaPropiedad.tbNombre.Text, ubicacion = ventanaPropiedad.tbUbicacion.Text;
                 int plazas;
                 List<string> servicios = ventanaPropiedad.ObtenerServicios();
@@ -77,7 +76,6 @@ namespace TP2
             }
             ventanaPropiedad.Dispose();
         }
-
         private void btnConsultar_Click(object sender, EventArgs e)
         {
             MostrarDatos vMostrar = new MostrarDatos();
@@ -88,6 +86,21 @@ namespace TP2
             }
             vMostrar.ShowDialog();
             vMostrar.Dispose();
+        }
+        private void VentanaPrincipal_Load(object sender, EventArgs e)
+        {
+            if (!File.Exists("..//..//Data//propiedades.csv"))
+            {
+                File.Create("..//..//Data//propiedades.csv");
+            }
+            if (!File.Exists("..//..//Data//clientes.csv"))
+            {
+                File.Create("..//..//Data//clientes.csv");
+            }
+            if (!File.Exists("..//..//Data//reservas.csv"))
+            {
+                File.Create("..//..//Data//reservas.csv");
+            }
         }
     }
 }
