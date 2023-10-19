@@ -14,7 +14,8 @@ namespace TP2
         }
         public override double Costo(int dias)
         {
-            throw new NotImplementedException();
+            //Implementar
+            return 0;
         }
     }
 }

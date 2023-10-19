@@ -10,17 +10,21 @@ namespace TP2
 {
     public abstract class Propiedad
     {
-        public string Ubicacion { get; protected set; }
+        private static int propiedadesTotales = 0;
+        public static int idPropiedad { get; private set; }
+        public string Ciudad { get; protected set; }
         public string Nombre { get; protected set; }
         public int Plazas { get; protected set; }
         public List<string> Servicios { get; protected set; }
         protected List<string> imagenes;
         public Propiedad(string nombre, string ubicacion, int plazas, List<string> servicios)
         {
+            idPropiedad = propiedadesTotales;
+            propiedadesTotales++;
             if (IsValidInput(nombre) && IsValidInput(ubicacion))
             {
                 Nombre = nombre ?? throw new ArgumentNullException("Campo vacio.");
-                Ubicacion = ubicacion ?? throw new ArgumentNullException("Campo vacio.");
+                Ciudad = ubicacion ?? throw new ArgumentNullException("Campo vacio.");
                 Plazas = plazas;
                 Servicios = servicios;
                 imagenes = new List<string>();

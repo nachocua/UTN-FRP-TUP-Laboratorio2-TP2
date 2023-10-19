@@ -53,7 +53,7 @@ namespace TP2
                     {
                         if (unDato[1] == "hotel")
                         {
-                            unaPropiedad = new Hotel("", "", 1, servicios, 1);
+                            //unaPropiedad = new Hotel("", "", 1, servicios, 1);
                         }
                         else
                         {

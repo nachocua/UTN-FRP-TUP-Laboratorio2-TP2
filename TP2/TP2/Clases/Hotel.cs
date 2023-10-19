@@ -3,24 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TP2;
+
+
+//Ej-> 2; Palms Springs; Parana; 100; Wifi* Cochera*Desayuno*Pet-Friendly; 2; 
+//     idPropiedad; nombre; Ciudad; Plazas; Servicios; Dueño; Estrellas; 
 
 namespace TP2
 {
     public class Hotel : Propiedad
     {
-        private List<Habitacion> habitaciones;
         public enum Tipo { Simple, Doble, Triple }
+        private int[] TipoHab = null;
         public int Estrella {  get; protected set; }
         private List<Tipo> habs;
         public Hotel(string nombre, string ubicacion, int plazas, List<string> servicios, int estrella) : base(nombre, ubicacion, plazas, servicios)
         {
-            habitaciones = new List<Habitacion>();
+            TipoHab = new int[3];
             habs = new List<Tipo>();
             Estrella = estrella;
         }
         public override double Costo(int dias)
         {
-            throw new NotImplementedException();
+            //Implementar
+            return 0;
         }
         public void CargarHabitaciones(int cant, Tipo tipo)
         {
@@ -28,10 +34,6 @@ namespace TP2
             {
                 habs.Add(tipo);
             }
-        }
-        public void AgregarHabitacion(Habitacion hab)
-        {
-            habitaciones.Add(hab);
         }
         public void AgregarHabitacion(Tipo unaHabitacion)
         {
@@ -41,16 +43,12 @@ namespace TP2
         {
             return habs[idx];
         }
-        public Habitacion GetHabitacion(int i)
-        {
-            return habitaciones[i];
-        }
         public override string[] getData()
         {
             List<string> arr = new List<string>();
             arr.Add(Nombre);
             arr.Add("Hotel");
-            arr.Add(Ubicacion);
+            arr.Add(Ciudad);
             arr.Add("-");
             arr.Add(Servicios.Count.ToString());
             arr.Add(Plazas.ToString());

@@ -15,3 +15,24 @@
         </li>
     </ul>
 </main>
+
+<footer>
+    <h2>Pendientes</h2>
+    <ul>
+        <li>
+            Calculo de Costos
+        </li>
+        <li>
+            Serialización
+        </li>
+        <li>
+            Modificar Hotel
+        </li>
+        <li>
+            Dejar solo comprobaciones en las Ventanas de Díalogo
+        </li>
+        <li>
+            Utilizar Sist. Principal
+        </li>
+    </ul>
+</footer>

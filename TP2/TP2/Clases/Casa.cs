@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
+//Ej-> 0;La huerta de Tony;Parana;4;Wifi*Cochera;Tony;img1;img2;img3
+//     idPropiedad; nombre; Ciudad; Plazas; Servicios; Dueño; imagenes....
+
 namespace TP2
 {
     public class Casa : Propiedad
@@ -17,24 +20,16 @@ namespace TP2
         }
         public override double Costo(int dias)
         {
-            throw new NotImplementedException();
+            //Implementar
+            return 0;
         }
         public override string[] getData()
         {
             List<string> arr = new List<string>();
-            //string aux = "";
             arr.Add(Nombre);
             arr.Add("Casa");
-            arr.Add(Ubicacion);
+            arr.Add(Ciudad);
             arr.Add(Propietario);
-            /*foreach (string unServicio in Servicios)
-            {
-                if(aux != "")
-                {
-                    aux += "-";
-                }
-                aux += unServicio;
-            }*/
             arr.Add(Servicios.Count.ToString());
             arr.Add(Plazas.ToString());
             return arr.ToArray();

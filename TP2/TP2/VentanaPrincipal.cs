@@ -24,6 +24,21 @@ namespace TP2
             InitializeComponent();
             elSistema = new ManejoAlquiler();
         }
+        private void VentanaPrincipal_Load(object sender, EventArgs e)
+        {
+            if (!File.Exists("..//..//Data//propiedades.csv"))
+            {
+                File.Create("..//..//Data//propiedades.csv");
+            }
+            if (!File.Exists("..//..//Data//clientes.csv"))
+            {
+                File.Create("..//..//Data//clientes.csv");
+            }
+            if (!File.Exists("..//..//Data//reservas.csv"))
+            {
+                File.Create("..//..//Data//reservas.csv");
+            }
+        }
         private void BtnNuevoCliente_Click(object sender, EventArgs e)
         {
             Alta_Cliente ventanaCliente = new Alta_Cliente();
@@ -60,6 +75,7 @@ namespace TP2
                 }
                 else
                 {
+                    /*
                     int simples = Convert.ToInt32(ventanaPropiedad.numUDSimple.Value), dobles = Convert.ToInt32(ventanaPropiedad.numUDDoble.Value), triples = Convert.ToInt32(ventanaPropiedad.numUDTriple.Value);
                     plazas = simples + dobles + triples;
                     int estrellas = 3;
@@ -72,6 +88,7 @@ namespace TP2
                     unHotel.CargarHabitaciones(dobles, Hotel.Tipo.Doble);
                     unHotel.CargarHabitaciones(triples, Hotel.Tipo.Triple);
                     elSistema.AgregarPropiedad(unHotel);
+                    */
                 }
             }
             ventanaPropiedad.Dispose();
@@ -86,21 +103,6 @@ namespace TP2
             }
             vMostrar.ShowDialog();
             vMostrar.Dispose();
-        }
-        private void VentanaPrincipal_Load(object sender, EventArgs e)
-        {
-            if (!File.Exists("..//..//Data//propiedades.csv"))
-            {
-                File.Create("..//..//Data//propiedades.csv");
-            }
-            if (!File.Exists("..//..//Data//clientes.csv"))
-            {
-                File.Create("..//..//Data//clientes.csv");
-            }
-            if (!File.Exists("..//..//Data//reservas.csv"))
-            {
-                File.Create("..//..//Data//reservas.csv");
-            }
         }
     }
 }

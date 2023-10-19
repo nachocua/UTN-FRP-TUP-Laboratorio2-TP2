@@ -268,6 +268,7 @@
             this.gbHotel.Controls.Add(this.numUDTriple);
             this.gbHotel.Controls.Add(this.numUDDoble);
             this.gbHotel.Controls.Add(this.numUDSimple);
+            this.gbHotel.Enabled = false;
             this.gbHotel.Location = new System.Drawing.Point(289, 126);
             this.gbHotel.Name = "gbHotel";
             this.gbHotel.Size = new System.Drawing.Size(200, 158);
@@ -440,6 +441,7 @@
             this.Controls.Add(this.gbHotel);
             this.Name = "NuevaPropiedad";
             this.Text = "NuevaPropiedad";
+            this.Load += new System.EventHandler(this.NuevaPropiedad_Load);
             this.gbCasa.ResumeLayout(false);
             this.gbCasa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_Plazas)).EndInit();
@@ -455,9 +457,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-
         }
-
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
