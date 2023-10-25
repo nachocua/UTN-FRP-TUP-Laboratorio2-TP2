@@ -18,6 +18,7 @@ namespace TP2
         public Alquiler()
         {
             InitializeComponent();
+            propiedades = new List<Propiedad>();
         }
         private void Alquiler_Load(object sender, EventArgs e)
         {
@@ -47,7 +48,7 @@ namespace TP2
                     List<string> servicios = null;
                     if (unDato[1] == "casa")
                     {
-                        unaPropiedad = new Casa("", "", 1, servicios, "");
+                        unaPropiedad = new Casa("a", "a", 1, servicios, "a");
                     }
                     else
                     {
@@ -57,7 +58,7 @@ namespace TP2
                         }
                         else
                         {
-                            unaPropiedad = new CasaFinSemana("", "", 1, servicios, "");
+                            unaPropiedad = new CasaFinSemana("a", "a", 1, servicios, "a");
                         }
                     }
                     propiedades.Add(unaPropiedad);
