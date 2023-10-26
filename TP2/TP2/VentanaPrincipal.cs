@@ -95,14 +95,16 @@ namespace TP2
         }
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            MostrarDatos vMostrar = new MostrarDatos();
-            for (int i = 0; i < elSistema.CantidadPropidades; i++)
-            {
-                string[] arr = (elSistema.getPropiedad(i)).getData();
-                vMostrar.dataGridView1.Rows.Add(arr);
-            }
+            MostrarDatos vMostrar = new MostrarDatos(elSistema);
             vMostrar.ShowDialog();
-            vMostrar.Dispose();
+            //MostrarDatos vMostrar = new MostrarDatos();
+            //for (int i = 0; i < elSistema.CantidadPropidades; i++)
+            //{
+            //    string[] arr = (elSistema.getPropiedad(i)).getData();
+            //    vMostrar.dgView.Rows.Add(arr);
+            //}
+            //vMostrar.ShowDialog();
+            //vMostrar.Dispose();
         }
     }
 }

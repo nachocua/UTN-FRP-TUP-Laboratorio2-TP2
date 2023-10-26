@@ -21,6 +21,7 @@ namespace TP2
             ReservasTotales++;
         }
         */
+        public List<Propiedad> Propiedades => propiedades;
         public void AgregarPropiedad(Propiedad propiedad)
         {
             propiedades.Add(propiedad);
