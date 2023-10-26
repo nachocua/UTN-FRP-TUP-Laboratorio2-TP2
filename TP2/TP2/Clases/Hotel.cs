@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using TP2;
 
-
 //Ej-> 2; Palms Springs; Parana; 100; Wifi* Cochera*Desayuno*Pet-Friendly; 2; 
 //     idPropiedad; nombre; Ciudad; Plazas; Servicios; Dueño; Estrellas; 
 
@@ -15,7 +14,7 @@ namespace TP2
     {
         public enum Tipo { Simple, Doble, Triple }
         private int[] TipoHab = null;
-        public int Estrella {  get; protected set; }
+        public int Estrella { get; protected set; }
         private List<Tipo> habs;
         public Hotel(string nombre, string ubicacion, int plazas, List<string> servicios, int estrella) : base(nombre, ubicacion, plazas, servicios)
         {
@@ -45,14 +44,45 @@ namespace TP2
         }
         public override string[] getData()
         {
-            List<string> arr = new List<string>();
-            arr.Add(Nombre);
-            arr.Add("Hotel");
-            arr.Add(Ciudad);
-            arr.Add("-");
-            arr.Add(Servicios.Count.ToString());
-            arr.Add(Plazas.ToString());
+            List<string> arr = new List<string>
+            {
+                Nombre,
+                "Hotel",
+                Ciudad,
+                "-",
+                Servicios.Count.ToString(),
+                Plazas.ToString()
+            };
             return arr.ToArray();
+        }
+        public override string ToString()
+        {
+            string datos = idPropiedad.ToString() + ";" + Nombre + ";" + Ciudad + ";" +
+                Plazas.ToString() + ";" + Servicios[0];
+            if (Servicios.Count > 1)
+            {
+                for (int i = 1; i < Servicios.Count; i++)
+                {
+                    datos += "*" + Servicios[i];
+                }
+            }
+            //Incompleto
+            /*
+            datos += ";" + Propietario + ";";
+            if (imagenes.Count > 0)
+            {
+                datos += imagenes[0];
+                if (imagenes.Count > 1)
+                {
+                    datos += "*" + imagenes[1];
+                }
+            }
+            else
+            {
+                datos += "ninguna";
+            }
+            */
+            return datos;
         }
     }
 }

@@ -36,10 +36,10 @@
             // 
             // btnNuevoCliente
             // 
-            this.btnNuevoCliente.Location = new System.Drawing.Point(11, 11);
-            this.btnNuevoCliente.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNuevoCliente.Location = new System.Drawing.Point(15, 14);
+            this.btnNuevoCliente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnNuevoCliente.Name = "btnNuevoCliente";
-            this.btnNuevoCliente.Size = new System.Drawing.Size(157, 63);
+            this.btnNuevoCliente.Size = new System.Drawing.Size(209, 78);
             this.btnNuevoCliente.TabIndex = 0;
             this.btnNuevoCliente.Text = "Nuevo Cliente";
             this.btnNuevoCliente.UseVisualStyleBackColor = true;
@@ -47,10 +47,10 @@
             // 
             // btnAlquiler
             // 
-            this.btnAlquiler.Location = new System.Drawing.Point(11, 102);
-            this.btnAlquiler.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAlquiler.Location = new System.Drawing.Point(15, 126);
+            this.btnAlquiler.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAlquiler.Name = "btnAlquiler";
-            this.btnAlquiler.Size = new System.Drawing.Size(157, 63);
+            this.btnAlquiler.Size = new System.Drawing.Size(209, 78);
             this.btnAlquiler.TabIndex = 1;
             this.btnAlquiler.Text = "Alquilar";
             this.btnAlquiler.UseVisualStyleBackColor = true;
@@ -58,10 +58,10 @@
             // 
             // btnPropiedad
             // 
-            this.btnPropiedad.Location = new System.Drawing.Point(11, 199);
-            this.btnPropiedad.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPropiedad.Location = new System.Drawing.Point(15, 245);
+            this.btnPropiedad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPropiedad.Name = "btnPropiedad";
-            this.btnPropiedad.Size = new System.Drawing.Size(157, 62);
+            this.btnPropiedad.Size = new System.Drawing.Size(209, 76);
             this.btnPropiedad.TabIndex = 1;
             this.btnPropiedad.Text = "Nueva propiedad";
             this.btnPropiedad.UseVisualStyleBackColor = true;
@@ -69,9 +69,10 @@
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Location = new System.Drawing.Point(273, 199);
+            this.btnConsultar.Location = new System.Drawing.Point(364, 245);
+            this.btnConsultar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(157, 62);
+            this.btnConsultar.Size = new System.Drawing.Size(209, 76);
             this.btnConsultar.TabIndex = 3;
             this.btnConsultar.Text = "Consultar propiedades";
             this.btnConsultar.UseVisualStyleBackColor = true;
@@ -79,16 +80,17 @@
             // 
             // VentanaPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 273);
+            this.ClientSize = new System.Drawing.Size(588, 336);
             this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.btnPropiedad);
             this.Controls.Add(this.btnAlquiler);
             this.Controls.Add(this.btnNuevoCliente);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "VentanaPrincipal";
             this.Text = "Rentify";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VentanaPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.VentanaPrincipal_Load);
             this.ResumeLayout(false);
 

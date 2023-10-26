@@ -16,7 +16,7 @@ namespace TP2
         public MostrarDatos(ManejoAlquiler unSistema)
         {
             InitializeComponent();
-            propiedades = unSistema.Propiedades;
+            propiedades = unSistema.GetPropiedades();
         }
         private void BuscarPropiedadesConServicios()
         {

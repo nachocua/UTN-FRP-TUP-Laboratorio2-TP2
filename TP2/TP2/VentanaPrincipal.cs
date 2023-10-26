@@ -18,6 +18,9 @@ namespace TP2
     public partial class VentanaPrincipal : Form
     {
         ManejoAlquiler elSistema;
+        bool cambiosPropiedades = false;
+        bool cambiosClientes = false;
+        bool cambiosReservas = false;
         int i = 0; // Contador Temporal
         public VentanaPrincipal()
         {
@@ -29,6 +32,10 @@ namespace TP2
             if (!File.Exists("..//..//Data//propiedades.csv"))
             {
                 File.Create("..//..//Data//propiedades.csv");
+            }
+            else
+            {
+
             }
             if (!File.Exists("..//..//Data//clientes.csv"))
             {
@@ -105,6 +112,21 @@ namespace TP2
             //}
             //vMostrar.ShowDialog();
             //vMostrar.Dispose();
+        }
+        private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (cambiosPropiedades)
+            {
+                elSistema.GetStringPropiedades();
+            }
+            if (cambiosClientes)
+            {
+
+            }
+            if (cambiosReservas)
+            {
+
+            }
         }
     }
 }
