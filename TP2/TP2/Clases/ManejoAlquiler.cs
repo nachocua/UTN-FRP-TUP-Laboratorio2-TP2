@@ -16,6 +16,7 @@ namespace TP2
         {
             propiedades = new List<Propiedad>();
             clientes = new List<Cliente>();
+            reservas = new List<Reserva>();
         }
         public int CantidadPropidades()
         {
@@ -29,6 +30,24 @@ namespace TP2
                 datosPropiedades.Add(unaPropiedad.ToString());
             }
             return datosPropiedades;
+        }
+        public List<string> GetStringClientes()
+        {
+            List<string> datosClientes = new List<string>();
+            foreach (Cliente unCliente in clientes)
+            {
+                datosClientes.Add(unCliente.ToString());
+            }
+            return datosClientes;
+        }
+        public List<string> GetStringReservas()
+        {
+            List<string> datosReservas = new List<string>();
+            foreach (Reserva unaReserva in reservas )
+            {
+                datosReservas.Add(unaReserva.ToString());
+            }
+            return datosReservas;
         }
         public List<Propiedad> GetPropiedades()
         {

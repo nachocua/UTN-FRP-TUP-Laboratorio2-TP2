@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TP2
 {
@@ -40,6 +41,13 @@ namespace TP2
         public void Cancelar()
         {
             Estado = posiblesEstados[3];
+        }
+        public override string ToString()
+        {
+            string datosReserva = NroReserva.ToString() + ";" + NroPropiedad.ToString() + ";" +
+                NroCliente.ToString() + ";" + Estado + ";" + FechaInicio.ToString() + ";" +
+                CantDias.ToString();
+            return datosReserva;
         }
     }
 }

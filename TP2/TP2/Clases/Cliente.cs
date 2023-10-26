@@ -29,5 +29,22 @@ namespace TP2
         {
             IdReservas.Add(idReserva);
         }
+        public override string ToString()
+        {
+            string datosCliente = Dni.ToString() + ";" + Telefono.ToString() + ";" +
+                Nombres + ";" + Apellidos + ";";
+            if(IdReservas.Count > 0) 
+            {
+                datosCliente += IdReservas[0];
+                if (IdReservas.Count > 1)
+                {
+                    foreach (int id in IdReservas)
+                    {
+                        datosCliente += "*" + id;
+                    }
+                }
+            }
+            return datosCliente;
+        }
     }
 }
