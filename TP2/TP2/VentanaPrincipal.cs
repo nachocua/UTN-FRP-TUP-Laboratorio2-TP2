@@ -35,16 +35,44 @@ namespace TP2
             }
             else
             {
-
+                List<string[]> datos = Funciones_Adicionales.LeerSeparandoArchivo("..//..//Data//propiedades.csv", ";");
+                foreach (string[] datosPropiedades in datos)
+                {
+                    switch (datosPropiedades[0])
+                    {
+                        case "Hotel":
+                            {
+                                break;
+                            }
+                        case "Casa":
+                            {
+                                break;
+                            }
+                        case "Casa Finde":
+                            {
+                                break;
+                            }
+                    }
+                }
             }
+            /*
             if (!File.Exists("..//..//Data//clientes.csv"))
             {
                 File.Create("..//..//Data//clientes.csv");
+            }
+            else
+            {
+                
             }
             if (!File.Exists("..//..//Data//reservas.csv"))
             {
                 File.Create("..//..//Data//reservas.csv");
             }
+            else
+            {
+                
+            }
+            */
         }
         private void BtnNuevoCliente_Click(object sender, EventArgs e)
         {
@@ -121,11 +149,11 @@ namespace TP2
             }
             if (cambiosClientes)
             {
-
+                elSistema.GetStringClientes();
             }
             if (cambiosReservas)
             {
-
+                elSistema.GetStringReservas();
             }
         }
     }

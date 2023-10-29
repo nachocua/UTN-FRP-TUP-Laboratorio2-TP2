@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TP2;
 
-//Ej-> 2; Palms Springs; Parana; 100; Wifi* Cochera*Desayuno*Pet-Friendly; 2; 
-//     idPropiedad; nombre; Ciudad; Plazas; Servicios; Dueño; Estrellas; 
+//Ej-> Hotel;2; Palms Springs; Parana; 100; Wifi* Cochera*Desayuno*Pet-Friendly; 2; 
+//     TipoPropiedad; idPropiedad; nombre; Ciudad; Plazas; Servicios; Dueño; Estrellas; 
 
 namespace TP2
 {
@@ -57,8 +57,8 @@ namespace TP2
         }
         public override string ToString()
         {
-            string datos = idPropiedad.ToString() + ";" + Nombre + ";" + Ciudad + ";" +
-                Plazas.ToString() + ";" + Servicios[0];
+            string datos = "Hotel;" + idPropiedad.ToString() + ";" + Nombre + ";" + Ciudad
+                + ";" + Plazas.ToString() + ";" + Servicios[0];
             if (Servicios.Count > 1)
             {
                 for (int i = 1; i < Servicios.Count; i++)

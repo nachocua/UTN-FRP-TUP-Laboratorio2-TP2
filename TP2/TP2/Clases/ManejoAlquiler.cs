@@ -8,7 +8,6 @@ namespace TP2
 {
     public class ManejoAlquiler
     {
-        //private int ReservasTotales = 0;
         private List<Propiedad> propiedades;
         private List<Cliente> clientes;
         private List<Reserva> reservas;
