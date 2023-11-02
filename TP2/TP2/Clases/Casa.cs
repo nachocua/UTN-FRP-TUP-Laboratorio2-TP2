@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace TP2
 {
+    [Serializable]
     public class Casa : Propiedad
     {
         public string Propietario { get; protected set; }

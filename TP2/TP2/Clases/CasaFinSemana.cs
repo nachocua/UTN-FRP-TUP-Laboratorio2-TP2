@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP2
 {
+    [Serializable]
     internal class CasaFinSemana : Casa
     {
         public CasaFinSemana(string nombre, string ubicacion, int plazas, List<string> servicios,

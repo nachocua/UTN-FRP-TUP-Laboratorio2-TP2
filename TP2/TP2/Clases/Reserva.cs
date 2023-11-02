@@ -7,7 +7,6 @@ using System.Windows.Forms;
 
 namespace TP2
 {
-    [Serializable]
     public class Reserva
     {
         private static int reservasEfectuadas = 0;

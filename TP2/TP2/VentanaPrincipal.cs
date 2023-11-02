@@ -18,10 +18,6 @@ namespace TP2
     public partial class VentanaPrincipal : Form
     {
         ManejoAlquiler elSistema;
-        bool cambiosPropiedades = false;
-        bool cambiosClientes = false;
-        bool cambiosReservas = false;
-        int i = 0; // Contador Temporal
         public VentanaPrincipal()
         {
             InitializeComponent();
@@ -29,50 +25,15 @@ namespace TP2
         }
         private void VentanaPrincipal_Load(object sender, EventArgs e)
         {
-            if (!File.Exists("..//..//Data//propiedades.csv"))
-            {
-                File.Create("..//..//Data//propiedades.csv");
-            }
-            else
-            {
-                List<string[]> datos = Funciones_Adicionales.LeerSeparandoArchivo("..//..//Data//propiedades.csv", ";");
-                foreach (string[] datosPropiedades in datos)
-                {
-                    switch (datosPropiedades[0])
-                    {
-                        case "Hotel":
-                            {
-                                break;
-                            }
-                        case "Casa":
-                            {
-                                break;
-                            }
-                        case "Casa Finde":
-                            {
-                                break;
-                            }
-                    }
-                }
-            }
-            /*
-            if (!File.Exists("..//..//Data//clientes.csv"))
-            {
-                File.Create("..//..//Data//clientes.csv");
-            }
-            else
-            {
-                
-            }
+            //DESERIALIZAR PROPS y CLIENTES
             if (!File.Exists("..//..//Data//reservas.csv"))
             {
                 File.Create("..//..//Data//reservas.csv");
             }
             else
             {
-                
+
             }
-            */
         }
         private void BtnNuevoCliente_Click(object sender, EventArgs e)
         {
@@ -143,18 +104,7 @@ namespace TP2
         }
         private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (cambiosPropiedades)
-            {
-                elSistema.GetStringPropiedades();
-            }
-            if (cambiosClientes)
-            {
-                elSistema.GetStringClientes();
-            }
-            if (cambiosReservas)
-            {
-                elSistema.GetStringReservas();
-            }
+            //SERIALIZAR PROPS y CLIENTES
         }
     }
 }

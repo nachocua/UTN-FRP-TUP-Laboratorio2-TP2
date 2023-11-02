@@ -13,7 +13,6 @@ namespace TP2
 {
     public partial class Alquiler : Form
     {
-        private List<Reserva> reservas;
         private List<Propiedad> propiedades;
         public Alquiler()
         {

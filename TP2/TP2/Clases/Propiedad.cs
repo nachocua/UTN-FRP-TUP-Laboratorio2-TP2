@@ -8,6 +8,7 @@ using System.Windows.Forms.VisualStyles;
 
 namespace TP2
 {
+    [Serializable]
     public abstract class Propiedad
     {
         private static int propiedadesTotales = 0;

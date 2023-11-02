@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,11 +13,52 @@ namespace TP2
         private List<Propiedad> propiedades;
         private List<Cliente> clientes;
         private List<Reserva> reservas;
-        public ManejoAlquiler()
+        public ManejoAlquiler(string FileNamePropiedades = null, string FileNameClientes = null, string FileNameReservas = null)
         {
-            propiedades = new List<Propiedad>();
-            clientes = new List<Cliente>();
-            reservas = new List<Reserva>();
+            if (FileNamePropiedades != null)
+            {
+                InitPropiedades(FileNamePropiedades);
+            }
+            else
+            {
+                propiedades = new List<Propiedad>();
+            }
+            if (FileNameClientes != null)
+            {
+                InitClientes(FileNameClientes);
+            }
+            else
+            {
+                clientes = new List<Cliente>();
+            }
+            if (FileNameReservas != null)
+            {
+                InitPropiedades(FileNameReservas);
+            }
+            else
+            {
+                reservas = new List<Reserva>();
+            }
+        }
+        private void InitPropiedades(string nameFilePropiedades)
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            using (FileStream fs = new FileStream(nameFilePropiedades, FileMode.Open))
+            {
+                propiedades = (List<Propiedad>)bf.Deserialize(fs);
+            }
+        }
+        private void InitClientes(string nameFileClientes)
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            using (FileStream fs = new FileStream(nameFileClientes, FileMode.Open))
+            {
+                clientes = (List<Cliente>)bf.Deserialize(fs);
+            }
+        }
+        private void InitReservas(string nameFileClientes)
+        {
+            // Completar por csv
         }
         public int CantidadPropidades()
         {
@@ -42,7 +85,7 @@ namespace TP2
         public List<string> GetStringReservas()
         {
             List<string> datosReservas = new List<string>();
-            foreach (Reserva unaReserva in reservas )
+            foreach (Reserva unaReserva in reservas)
             {
                 datosReservas.Add(unaReserva.ToString());
             }

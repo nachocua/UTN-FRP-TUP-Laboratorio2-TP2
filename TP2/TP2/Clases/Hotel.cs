@@ -10,6 +10,7 @@ using TP2;
 
 namespace TP2
 {
+    [Serializable]
     public class Hotel : Propiedad
     {
         public enum Tipo { Simple, Doble, Triple }
