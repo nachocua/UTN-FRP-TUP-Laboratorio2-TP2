@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TP2
 {
@@ -13,52 +15,71 @@ namespace TP2
         private List<Propiedad> propiedades;
         private List<Cliente> clientes;
         private List<Reserva> reservas;
-        public ManejoAlquiler(string FileNamePropiedades = null, string FileNameClientes = null, string FileNameReservas = null)
+        private string FilePropiedades;
+        private string FileClientes;
+        private string FileReservas;
+        public ManejoAlquiler(string FileNamePropiedades, string FileNameClientes, string FileNameReservas)
         {
-            if (FileNamePropiedades != null)
-            {
-                InitPropiedades(FileNamePropiedades);
-            }
-            else
-            {
-                propiedades = new List<Propiedad>();
-            }
-            if (FileNameClientes != null)
-            {
-                InitClientes(FileNameClientes);
-            }
-            else
-            {
-                clientes = new List<Cliente>();
-            }
-            if (FileNameReservas != null)
-            {
-                InitPropiedades(FileNameReservas);
-            }
-            else
-            {
-                reservas = new List<Reserva>();
-            }
-        }
-        private void InitPropiedades(string nameFilePropiedades)
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            using (FileStream fs = new FileStream(nameFilePropiedades, FileMode.Open))
+            BinaryFormatter bf;
+            FileStream fs;
+            FilePropiedades = FileNamePropiedades;
+            FileClientes = FileNameClientes;
+            FileReservas = FileNameReservas;
+            //Deserealizar Propiedades
+            bf = new BinaryFormatter();
+            fs = new FileStream(FilePropiedades, FileMode.Open);
+            try
             {
                 propiedades = (List<Propiedad>)bf.Deserialize(fs);
             }
-        }
-        private void InitClientes(string nameFileClientes)
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            using (FileStream fs = new FileStream(nameFileClientes, FileMode.Open))
+            catch
+            {
+            }
+            fs.Close();
+            //Deserealizar Clientes
+            bf = new BinaryFormatter();
+            fs = new FileStream(FileClientes, FileMode.Open);
+            try
             {
                 clientes = (List<Cliente>)bf.Deserialize(fs);
             }
+            catch
+            {
+            }
+            fs.Close();
+            //Importar Reservas
+            //....
         }
-        private void InitReservas(string nameFileClientes)
+        public void Export()
         {
-            // Completar por csv
+            BinaryFormatter bf;
+            FileStream fs;
+            //Serealizar Propiedades
+            bf = new BinaryFormatter();
+            fs = new FileStream(FilePropiedades, FileMode.OpenOrCreate);
+            try
+            {
+                bf.Serialize(fs, propiedades);
+            }
+            catch
+            {
+
+            }
+            fs.Close();
+            //Serealizar Propiedades
+            bf = new BinaryFormatter();
+            fs = new FileStream(FileClientes, FileMode.OpenOrCreate);
+            try
+            {
+                bf.Serialize(fs, clientes);
+            }
+            catch
+            {
+
+            }
+            fs.Close();
+            //Exportar Reservas
+            //....
         }
         public int CantidadPropidades()
         {
