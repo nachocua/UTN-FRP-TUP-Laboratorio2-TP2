@@ -22,7 +22,6 @@ namespace TP2
         {
             // Obtén los servicios seleccionados desde los CheckBox.
             List<string> serviciosSeleccionados = new List<string>();
-
             foreach (Control control in gbServicios.Controls)
             {
                 if (control is CheckBox)
@@ -34,20 +33,24 @@ namespace TP2
                     }
                 }
             }
-
-            // Utiliza LINQ para filtrar las propiedades que tienen los servicios seleccionados.
-            var propiedadesFiltradas = propiedades.Where(propiedad => propiedad.Servicios.All(servicio => serviciosSeleccionados.Contains(servicio)));
-
-            // Limpia el DataGridView.
             dgView.Rows.Clear();
-
-            // Agrega las propiedades filtradas al DataGridView.
-            foreach (var propiedad in propiedadesFiltradas)
+            foreach (Propiedad propiedad in propiedades)
             {
-                dgView.Rows.Add(propiedad.Nombre, " - ", propiedad.Ciudad, " - ", string.Join(", ", propiedad.Servicios), propiedad.Plazas.ToString());
+                bool propiedadTieneServicios = true;
+                foreach (string servicioSeleccionado in serviciosSeleccionados)
+                {
+                    if (!propiedad.Servicios.Contains(servicioSeleccionado))
+                    {
+                        propiedadTieneServicios = false;
+                        break;
+                    }
+                }
+                if (propiedadTieneServicios)
+                {
+                    dgView.Rows.Add(propiedad.Nombre, " - ", propiedad.Ciudad, " - ", string.Join(", ", propiedad.Servicios), propiedad.Plazas.ToString());
+                }
             }
         }
-
         //private void BuscarPropiedadesConServicios()
         //{
         //    // Obtén los servicios seleccionados desde los CheckBox.
