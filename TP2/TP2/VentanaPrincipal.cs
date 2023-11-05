@@ -23,9 +23,9 @@ namespace TP2
         }
         private void VentanaPrincipal_Load(object sender, EventArgs e)
         {
-            elSistema = new ManejoAlquiler("..//..//Data//reservas.csv",
-                                           "..//..//Data//propiedades.dat",
-                                           "..//..//Data//clientes.dat");
+            elSistema = new ManejoAlquiler("..//..//Data//propiedades.dat",
+                                           "..//..//Data//clientes.dat",
+                                           "..//..//Data//reservas.csv");
         }
         private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
