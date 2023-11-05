@@ -110,6 +110,9 @@
     <EmbeddedResource Include="Ventanas\NuevaPropiedad.resx">
       <DependentUpon>NuevaPropiedad.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Data\clientes.dat" />
+    <None Include="Data\propiedades.dat" />
+    <None Include="Data\reservas.csv" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
