@@ -20,6 +20,9 @@ namespace TP2
         private string FileReservas;
         public ManejoAlquiler(string FileNamePropiedades, string FileNameClientes, string FileNameReservas)
         {
+            propiedades = new List<Propiedad>();
+            clientes = new List<Cliente>();
+            reservas = new List<Reserva>();
             BinaryFormatter bf;
             FileStream fs;
             FilePropiedades = FileNamePropiedades;

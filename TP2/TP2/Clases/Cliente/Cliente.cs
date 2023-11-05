@@ -48,8 +48,9 @@ namespace TP2
         }
         public int CompareTo(Object obj)
         {
-            Cliente unCliente = obj as Cliente;
-            return this.Dni.CompareTo(unCliente.Dni);
+            return Dni.CompareTo(((Cliente)obj).Dni);
+            //Cliente unCliente = obj as Cliente;
+            //return this.Dni.CompareTo(unCliente.Dni);
         }
     }
 }
