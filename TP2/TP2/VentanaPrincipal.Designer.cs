@@ -70,7 +70,7 @@
             // btnConsultar
             // 
             this.btnConsultar.Location = new System.Drawing.Point(364, 245);
-            this.btnConsultar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnConsultar.Margin = new System.Windows.Forms.Padding(4);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(209, 76);
             this.btnConsultar.TabIndex = 3;

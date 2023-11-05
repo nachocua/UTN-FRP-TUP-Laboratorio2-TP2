@@ -23,27 +23,13 @@ namespace TP2
         }
         private void VentanaPrincipal_Load(object sender, EventArgs e)
         {
-            CreateImportantFiles();
-            elSistema = new ManejoAlquiler("..//..//Data//reservas.csv", "..//..//Data//propiedades.dat", "..//..//Data//clientes.dat");
+            elSistema = new ManejoAlquiler("..//..//Data//reservas.csv",
+                                           "..//..//Data//propiedades.dat",
+                                           "..//..//Data//clientes.dat");
         }
         private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
             elSistema.Export();
-        }
-        private void CreateImportantFiles()
-        {
-            if (!File.Exists("..//..//Data//reservas.csv"))
-            {
-                File.Create("..//..//Data//reservas.csv");
-            }
-            if (!File.Exists("..//..//Data//propiedades.dat"))
-            {
-                File.Create("..//..//Data//propiedades.dat");
-            }
-            if (!File.Exists("..//..//Data//clientes.dat"))
-            {
-                File.Create("..//..//Data//clientes.dat");
-            }
         }
         private void BtnNuevoCliente_Click(object sender, EventArgs e)
         {

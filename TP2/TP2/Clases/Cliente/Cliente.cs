@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace TP2
 {
     [Serializable]
-    public class Cliente
+    public class Cliente : IComparable
     {
         public List<int> IdReservas { get; }
         public int Dni { get; private set; }
@@ -45,6 +45,11 @@ namespace TP2
                 }
             }
             return datosCliente;
+        }
+        public int CompareTo(Object obj)
+        {
+            Cliente unCliente = obj as Cliente;
+            return this.Dni.CompareTo(unCliente.Dni);
         }
     }
 }

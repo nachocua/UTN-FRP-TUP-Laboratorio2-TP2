@@ -27,7 +27,7 @@ namespace TP2
             FileReservas = FileNameReservas;
             //Deserealizar Propiedades
             bf = new BinaryFormatter();
-            fs = new FileStream(FilePropiedades, FileMode.Open);
+            fs = new FileStream(FilePropiedades, FileMode.OpenOrCreate);
             try
             {
                 propiedades = (List<Propiedad>)bf.Deserialize(fs);
@@ -38,7 +38,7 @@ namespace TP2
             fs.Close();
             //Deserealizar Clientes
             bf = new BinaryFormatter();
-            fs = new FileStream(FileClientes, FileMode.Open);
+            fs = new FileStream(FileClientes, FileMode.OpenOrCreate);
             try
             {
                 clientes = (List<Cliente>)bf.Deserialize(fs);
