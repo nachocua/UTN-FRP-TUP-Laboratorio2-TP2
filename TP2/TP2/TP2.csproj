@@ -64,20 +64,20 @@
     <Compile Include="Ventanas\Alta Cliente.Designer.cs">
       <DependentUpon>Alta Cliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Clases\Casa.cs" />
-    <Compile Include="Clases\CasaFinSemana.cs" />
-    <Compile Include="Clases\Cliente.cs" />
-    <Compile Include="Clases\Hotel.cs" />
-    <Compile Include="Clases\ManejoAlquiler.cs" />
-    <Compile Include="Clases\Propiedad.cs" />
-    <Compile Include="Clases\Reserva.cs" />
+    <Compile Include="Clases\Propiedad\Casa.cs" />
+    <Compile Include="Clases\Propiedad\CasaFinSemana.cs" />
+    <Compile Include="Clases\Cliente\Cliente.cs" />
+    <Compile Include="Clases\Propiedad\Hotel.cs" />
+    <Compile Include="Clases\Sistema\ManejoAlquiler.cs" />
+    <Compile Include="Clases\Propiedad\Propiedad.cs" />
+    <Compile Include="Clases\Reservas\Reserva.cs" />
     <Compile Include="Ventanas\NuevaPropiedad.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Ventanas\NuevaPropiedad.Designer.cs">
       <DependentUpon>NuevaPropiedad.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tools\Funciones Adicionales.cs" />
+    <Compile Include="Clases\Tools\Funciones Adicionales.cs" />
     <Compile Include="VentanaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
