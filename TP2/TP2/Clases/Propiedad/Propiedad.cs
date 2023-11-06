@@ -9,10 +9,10 @@ using System.Windows.Forms.VisualStyles;
 namespace TP2
 {
     [Serializable]
-    public abstract class Propiedad
+    public abstract class Propiedad : IComparable
     {
         protected int propiedadesTotales = 0;
-        public int idPropiedad { get; protected set; }
+        public int idPropiedad { get; set; }
         public string Ciudad { get; protected set; }
         public string Nombre { get; protected set; }
         public int Plazas { get; protected set; }
@@ -47,5 +47,9 @@ namespace TP2
         }
         public abstract double Costo(int dias);
         public abstract string[] getData();
+        public int CompareTo(object obj)
+        {
+            return Nombre.CompareTo(((Propiedad)obj).Nombre);
+        }
     }
 }

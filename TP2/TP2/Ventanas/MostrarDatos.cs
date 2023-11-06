@@ -92,6 +92,7 @@ namespace TP2
         }
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            propiedades.Sort();
 
         }
         private void dgView_CellContentClick(object sender, DataGridViewCellEventArgs e)

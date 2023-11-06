@@ -33,7 +33,12 @@ namespace TP2
             fs = new FileStream(FilePropiedades, FileMode.OpenOrCreate);
             try
             {
+                int i = 0; // Temporal | BORRAR !
                 propiedades = (List<Propiedad>)bf.Deserialize(fs);
+                foreach(Propiedad p in propiedades)
+                {
+                    p.idPropiedad = i++;
+                }
             }
             catch
             {
