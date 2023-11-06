@@ -44,7 +44,14 @@ namespace TP2
                         elSistema.AgregarCliente(ventanaCliente.unCliente);
                         repetido = false;
                     }
-                    MessageBox.Show("Ya existe un cliente con este DNI.\n Verifique el DNI o busquelo en el sistema");
+                    else
+                    {
+                        MessageBox.Show("Ya existe un cliente con este DNI.\n Verifique el DNI o busquelo en el sistema");
+                    }
+                }
+                else
+                {
+                    repetido = false;
                 }
             } while (repetido);
             ventanaCliente.Dispose();

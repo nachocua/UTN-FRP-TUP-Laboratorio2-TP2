@@ -35,7 +35,7 @@ namespace TP2
             {
                 int i = 0; // Temporal | BORRAR !
                 propiedades = (List<Propiedad>)bf.Deserialize(fs);
-                foreach(Propiedad p in propiedades)
+                foreach (Propiedad p in propiedades)
                 {
                     p.idPropiedad = i++;
                 }
@@ -139,7 +139,16 @@ namespace TP2
         }
         public int BuscarCliente(Cliente unCliente)
         {
-            return clientes.IndexOf(unCliente);
+            int indx = -1, i = 0;
+            while (indx == -1 && i < clientes.Count)
+            {
+                if (clientes[i].Dni == unCliente.Dni)
+                {
+                    indx = i;
+                }
+                i++;
+            }
+            return indx;
         }
         public void AgregarCliente(Cliente unCliente)
         {
