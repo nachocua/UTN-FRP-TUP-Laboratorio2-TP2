@@ -27,16 +27,16 @@ namespace TP2
         }
         public override string[] getData()
         {
-            List<string> arr = new List<string>
+            string[] arr  = new string[]
             {
                 Nombre,
                 "Casa",
                 Ciudad,
                 Propietario,
-                Servicios.Count.ToString(),
+                string.Join(", ",Servicios),
                 Plazas.ToString()
             };
-            return arr.ToArray();
+            return arr;
         }
         public override string ToString()
         {

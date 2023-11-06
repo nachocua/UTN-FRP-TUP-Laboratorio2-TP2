@@ -84,7 +84,7 @@ namespace TP2
             //Exportar Reservas
             //....
         }
-        public int CantidadPropidades()
+        public int CantidadPropiedades()
         {
             return propiedades.Count;
         }

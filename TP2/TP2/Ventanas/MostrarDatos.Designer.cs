@@ -36,9 +36,6 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbTipoPropiedad = new System.Windows.Forms.GroupBox();
-            this.rbCasaFinde = new System.Windows.Forms.RadioButton();
-            this.rbCasa = new System.Windows.Forms.RadioButton();
-            this.rbHotel = new System.Windows.Forms.RadioButton();
             this.gbServicios = new System.Windows.Forms.GroupBox();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
@@ -47,6 +44,9 @@
             this.checkBox11 = new System.Windows.Forms.CheckBox();
             this.checkBox12 = new System.Windows.Forms.CheckBox();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.cbHotel = new System.Windows.Forms.CheckBox();
+            this.cbCasa = new System.Windows.Forms.CheckBox();
+            this.cbCasaFinde = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).BeginInit();
             this.gbTipoPropiedad.SuspendLayout();
             this.gbServicios.SuspendLayout();
@@ -64,10 +64,10 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
-            this.dgView.Location = new System.Drawing.Point(12, 276);
+            this.dgView.Location = new System.Drawing.Point(155, 12);
             this.dgView.Name = "dgView";
             this.dgView.ReadOnly = true;
-            this.dgView.Size = new System.Drawing.Size(646, 162);
+            this.dgView.Size = new System.Drawing.Size(646, 293);
             this.dgView.TabIndex = 5;
             // 
             // dataGridViewTextBoxColumn1
@@ -108,47 +108,15 @@
             // 
             // gbTipoPropiedad
             // 
-            this.gbTipoPropiedad.Controls.Add(this.rbCasaFinde);
-            this.gbTipoPropiedad.Controls.Add(this.rbCasa);
-            this.gbTipoPropiedad.Controls.Add(this.rbHotel);
+            this.gbTipoPropiedad.Controls.Add(this.cbCasaFinde);
+            this.gbTipoPropiedad.Controls.Add(this.cbHotel);
+            this.gbTipoPropiedad.Controls.Add(this.cbCasa);
             this.gbTipoPropiedad.Location = new System.Drawing.Point(12, 12);
             this.gbTipoPropiedad.Name = "gbTipoPropiedad";
-            this.gbTipoPropiedad.Size = new System.Drawing.Size(303, 63);
+            this.gbTipoPropiedad.Size = new System.Drawing.Size(137, 94);
             this.gbTipoPropiedad.TabIndex = 23;
             this.gbTipoPropiedad.TabStop = false;
             this.gbTipoPropiedad.Text = "Tipo de propiedad";
-            // 
-            // rbCasaFinde
-            // 
-            this.rbCasaFinde.AutoSize = true;
-            this.rbCasaFinde.Checked = true;
-            this.rbCasaFinde.Location = new System.Drawing.Point(146, 30);
-            this.rbCasaFinde.Name = "rbCasaFinde";
-            this.rbCasaFinde.Size = new System.Drawing.Size(118, 17);
-            this.rbCasaFinde.TabIndex = 23;
-            this.rbCasaFinde.TabStop = true;
-            this.rbCasaFinde.Text = "Casa fin de semana";
-            this.rbCasaFinde.UseVisualStyleBackColor = true;
-            // 
-            // rbCasa
-            // 
-            this.rbCasa.AutoSize = true;
-            this.rbCasa.Location = new System.Drawing.Point(77, 30);
-            this.rbCasa.Name = "rbCasa";
-            this.rbCasa.Size = new System.Drawing.Size(49, 17);
-            this.rbCasa.TabIndex = 22;
-            this.rbCasa.Text = "Casa";
-            this.rbCasa.UseVisualStyleBackColor = true;
-            // 
-            // rbHotel
-            // 
-            this.rbHotel.AutoSize = true;
-            this.rbHotel.Location = new System.Drawing.Point(9, 30);
-            this.rbHotel.Name = "rbHotel";
-            this.rbHotel.Size = new System.Drawing.Size(50, 17);
-            this.rbHotel.TabIndex = 23;
-            this.rbHotel.Text = "Hotel";
-            this.rbHotel.UseVisualStyleBackColor = true;
             // 
             // gbServicios
             // 
@@ -158,7 +126,7 @@
             this.gbServicios.Controls.Add(this.checkBox10);
             this.gbServicios.Controls.Add(this.checkBox11);
             this.gbServicios.Controls.Add(this.checkBox12);
-            this.gbServicios.Location = new System.Drawing.Point(321, 12);
+            this.gbServicios.Location = new System.Drawing.Point(10, 112);
             this.gbServicios.Name = "gbServicios";
             this.gbServicios.Size = new System.Drawing.Size(139, 158);
             this.gbServicios.TabIndex = 22;
@@ -227,20 +195,50 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(465, 18);
+            this.btnBuscar.Location = new System.Drawing.Point(12, 275);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(113, 30);
+            this.btnBuscar.Size = new System.Drawing.Size(137, 30);
             this.btnBuscar.TabIndex = 24;
             this.btnBuscar.Text = "Buscar disponibles";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
+            // cbHotel
+            // 
+            this.cbHotel.AutoSize = true;
+            this.cbHotel.Location = new System.Drawing.Point(6, 19);
+            this.cbHotel.Name = "cbHotel";
+            this.cbHotel.Size = new System.Drawing.Size(51, 17);
+            this.cbHotel.TabIndex = 0;
+            this.cbHotel.Text = "Hotel";
+            this.cbHotel.UseVisualStyleBackColor = true;
+            // 
+            // cbCasa
+            // 
+            this.cbCasa.AutoSize = true;
+            this.cbCasa.Location = new System.Drawing.Point(6, 42);
+            this.cbCasa.Name = "cbCasa";
+            this.cbCasa.Size = new System.Drawing.Size(50, 17);
+            this.cbCasa.TabIndex = 1;
+            this.cbCasa.Text = "Casa";
+            this.cbCasa.UseVisualStyleBackColor = true;
+            // 
+            // cbCasaFinde
+            // 
+            this.cbCasaFinde.AutoSize = true;
+            this.cbCasaFinde.Location = new System.Drawing.Point(6, 65);
+            this.cbCasaFinde.Name = "cbCasaFinde";
+            this.cbCasaFinde.Size = new System.Drawing.Size(124, 17);
+            this.cbCasaFinde.TabIndex = 2;
+            this.cbCasaFinde.Text = "Casa Fin de Semana";
+            this.cbCasaFinde.UseVisualStyleBackColor = true;
+            // 
             // MostrarDatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(672, 450);
+            this.ClientSize = new System.Drawing.Size(811, 312);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.gbTipoPropiedad);
             this.Controls.Add(this.gbServicios);
@@ -266,9 +264,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.GroupBox gbTipoPropiedad;
-        public System.Windows.Forms.RadioButton rbCasaFinde;
-        public System.Windows.Forms.RadioButton rbCasa;
-        public System.Windows.Forms.RadioButton rbHotel;
         private System.Windows.Forms.GroupBox gbServicios;
         private System.Windows.Forms.CheckBox checkBox7;
         private System.Windows.Forms.CheckBox checkBox8;
@@ -277,5 +272,8 @@
         private System.Windows.Forms.CheckBox checkBox11;
         private System.Windows.Forms.CheckBox checkBox12;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.CheckBox cbCasaFinde;
+        private System.Windows.Forms.CheckBox cbCasa;
+        private System.Windows.Forms.CheckBox cbHotel;
     }
 }

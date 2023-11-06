@@ -18,10 +18,20 @@ namespace TP2
             InitializeComponent();
             propiedades = unSistema.GetPropiedades();
         }
-        private void BuscarPropiedadesConServicios()
+        private void BuscarPropiedades()
         {
-            // Obtén los servicios seleccionados desde los CheckBox.
+            dgView.Rows.Clear();
+            // Filtro las propiedades segun los servicios seleccionados desde los CheckBox
             List<string> serviciosSeleccionados = new List<string>();
+            //Filtro propiedades segun el tipo
+            List<string> tiposSeleccionados = new List<string>();
+            foreach (Control control in gbTipoPropiedad.Controls)
+            {
+                if (((CheckBox)control).Checked)
+                {
+                    tiposSeleccionados.Add(control.Text);
+                }
+            }
             foreach (Control control in gbServicios.Controls)
             {
                 if (control is CheckBox)
@@ -33,7 +43,6 @@ namespace TP2
                     }
                 }
             }
-            dgView.Rows.Clear();
             foreach (Propiedad propiedad in propiedades)
             {
                 bool propiedadTieneServicios = true;
@@ -47,7 +56,37 @@ namespace TP2
                 }
                 if (propiedadTieneServicios)
                 {
-                    dgView.Rows.Add(propiedad.Nombre, " - ", propiedad.Ciudad, " - ", string.Join(", ", propiedad.Servicios), propiedad.Plazas.ToString());
+                    if (tiposSeleccionados.Count > 0)
+                    {
+                        if (tiposSeleccionados.Contains("Casa"))
+                        {
+                            if(propiedad is Casa)
+                            {
+                                if(!(propiedad is CasaFinSemana))
+                                {
+                                    dgView.Rows.Add(propiedad.getData());
+                                }
+                            }
+                        }
+                        if (tiposSeleccionados.Contains("Hotel"))
+                        {
+                            if (propiedad is Hotel)
+                            {
+                                dgView.Rows.Add(propiedad.getData());
+                            }
+                        }
+                        if (tiposSeleccionados.Contains("Casa Fin de Semana"))
+                        {
+                            if (propiedad is CasaFinSemana)
+                            {
+                                dgView.Rows.Add(propiedad.getData());
+                            }
+                        }
+                    }
+                    else
+                    {
+                        dgView.Rows.Add(propiedad.getData());
+                    }
                 }
             }
         }
@@ -83,7 +122,7 @@ namespace TP2
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            BuscarPropiedadesConServicios();
+            BuscarPropiedades();
         }
     }
 }

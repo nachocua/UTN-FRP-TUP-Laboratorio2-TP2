@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using TP2;
@@ -51,7 +52,7 @@ namespace TP2
                 "Hotel",
                 Ciudad,
                 "-",
-                Servicios.Count.ToString(),
+                string.Join(", ",Servicios),
                 Plazas.ToString()
             };
             return arr.ToArray();

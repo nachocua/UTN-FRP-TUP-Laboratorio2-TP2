@@ -19,6 +19,19 @@ namespace TP2
             //Implementar
             return 0;
         }
+        public override string[] getData()
+        {
+            string[] arr = new string[]
+            {
+                Nombre,
+                "Casa Finde",
+                Ciudad,
+                Propietario,
+                string.Join(", ",Servicios),
+                Plazas.ToString()
+            };
+            return arr;
+        }
         public override string ToString()
         {
             string datos = "Casa Finde;" + idPropiedad.ToString() + ";" + Nombre + ";" + Ciudad + ";"
