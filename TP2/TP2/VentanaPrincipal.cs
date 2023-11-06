@@ -39,11 +39,12 @@ namespace TP2
             {
                 if (ventanaCliente.ShowDialog() == DialogResult.OK)
                 {
-                    if (ManejoAlquiler.BuscarCliente(ventanaCliente.unCliente) < 0)
+                    if (elSistema.BuscarCliente(ventanaCliente.unCliente) < 0)
                     {
                         elSistema.AgregarCliente(ventanaCliente.unCliente);
                         repetido = false;
                     }
+                    MessageBox.Show("Ya existe un cliente con este DNI.\n Verifique el DNI o busquelo en el sistema");
                 }
             } while (repetido);
             ventanaCliente.Dispose();

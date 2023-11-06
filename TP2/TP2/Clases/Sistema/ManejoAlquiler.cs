@@ -134,8 +134,7 @@ namespace TP2
         }
         public int BuscarCliente(Cliente unCliente)
         {
-            int indx = 0;
-            return indx;
+            return clientes.IndexOf(unCliente);
         }
         public void AgregarCliente(Cliente unCliente)
         {
