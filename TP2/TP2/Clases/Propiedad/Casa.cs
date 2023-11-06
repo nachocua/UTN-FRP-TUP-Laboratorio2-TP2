@@ -29,6 +29,7 @@ namespace TP2
         {
             string[] arr  = new string[]
             {
+                idPropiedad.ToString(),
                 Nombre,
                 "Casa",
                 Ciudad,

@@ -18,7 +18,7 @@ namespace TP2
             InitializeComponent();
             propiedades = unSistema.GetPropiedades();
         }
-        private void BuscarPropiedades()
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
             dgView.Rows.Clear();
             // Filtro las propiedades segun los servicios seleccionados desde los CheckBox
@@ -60,9 +60,9 @@ namespace TP2
                     {
                         if (tiposSeleccionados.Contains("Casa"))
                         {
-                            if(propiedad is Casa)
+                            if (propiedad is Casa)
                             {
-                                if(!(propiedad is CasaFinSemana))
+                                if (!(propiedad is CasaFinSemana))
                                 {
                                     dgView.Rows.Add(propiedad.getData());
                                 }
@@ -90,39 +90,18 @@ namespace TP2
                 }
             }
         }
-        //private void BuscarPropiedadesConServicios()
-        //{
-        //    // Obtén los servicios seleccionados desde los CheckBox.
-        //    List<string> serviciosSeleccionados = new List<string>();
-
-        //    foreach (Control control in gbServicios.Controls)
-        //    {
-        //        if (control is CheckBox)
-        //        {
-        //            CheckBox checkBox = (CheckBox)control;
-        //            if (checkBox.Checked)
-        //            {
-        //                serviciosSeleccionados.Add(checkBox.Text);
-        //            }
-        //        }
-        //    }
-
-        //    // Utiliza LINQ para filtrar las propiedades que tienen los servicios seleccionados.
-        //    var propiedadesFiltradas = propiedades.Where(propiedad => propiedad.Servicios.All(servicio => serviciosSeleccionados.Contains(servicio)));
-
-        //    // Limpia el DataGridView.
-        //    dgView.Rows.Clear();
-
-        //    // Agrega las propiedades filtradas al DataGridView.
-        //    foreach (var propiedad in propiedadesFiltradas)
-        //    {
-        //        dgView.Rows.Add(propiedad.Nombre," - ", propiedad.Ciudad," - ", string.Join(", ", propiedad.Servicios), propiedad.Plazas.ToString());
-        //    }
-        //}
-
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void btnModificar_Click(object sender, EventArgs e)
         {
-            BuscarPropiedades();
+
+        }
+        private void dgView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int f = e.RowIndex, c = e.ColumnIndex;
+            if(e.ColumnIndex == 4)
+            {
+                string text = dgView[c,f].Value.ToString();
+                MessageBox.Show(text,"Servicios Disponibles");
+            }
         }
     }
 }

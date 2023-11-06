@@ -11,8 +11,8 @@ namespace TP2
     [Serializable]
     public abstract class Propiedad
     {
-        private static int propiedadesTotales = 0;
-        public static int idPropiedad { get; private set; }
+        protected int propiedadesTotales = 0;
+        public int idPropiedad { get; protected set; }
         public string Ciudad { get; protected set; }
         public string Nombre { get; protected set; }
         public int Plazas { get; protected set; }

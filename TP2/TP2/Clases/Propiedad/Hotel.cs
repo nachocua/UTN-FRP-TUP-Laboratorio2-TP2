@@ -48,6 +48,7 @@ namespace TP2
         {
             List<string> arr = new List<string>
             {
+                idPropiedad.ToString(),
                 Nombre,
                 "Hotel",
                 Ciudad,
