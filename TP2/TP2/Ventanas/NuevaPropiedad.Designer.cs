@@ -59,6 +59,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbCasa = new System.Windows.Forms.RadioButton();
             this.rbHotel = new System.Windows.Forms.RadioButton();
+            this.cbCasaFinde = new System.Windows.Forms.CheckBox();
             this.gbCasa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_Plazas)).BeginInit();
             this.gbServicios.SuspendLayout();
@@ -141,6 +142,7 @@
             // 
             // gbCasa
             // 
+            this.gbCasa.Controls.Add(this.cbCasaFinde);
             this.gbCasa.Controls.Add(this.label3);
             this.gbCasa.Controls.Add(this.tbPropietario);
             this.gbCasa.Controls.Add(this.numUpDown_Plazas);
@@ -402,7 +404,7 @@
             this.groupBox2.Controls.Add(this.rbHotel);
             this.groupBox2.Location = new System.Drawing.Point(148, 90);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(112, 65);
+            this.groupBox2.Size = new System.Drawing.Size(112, 64);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tipo de propiedad";
@@ -431,6 +433,16 @@
             this.rbHotel.UseVisualStyleBackColor = true;
             this.rbHotel.CheckedChanged += new System.EventHandler(this.CambiarGroupBox);
             // 
+            // cbCasaFinde
+            // 
+            this.cbCasaFinde.AutoSize = true;
+            this.cbCasaFinde.Location = new System.Drawing.Point(20, 69);
+            this.cbCasaFinde.Name = "cbCasaFinde";
+            this.cbCasaFinde.Size = new System.Drawing.Size(79, 17);
+            this.cbCasaFinde.TabIndex = 20;
+            this.cbCasaFinde.Text = "Casa Finde";
+            this.cbCasaFinde.UseVisualStyleBackColor = true;
+            // 
             // NuevaPropiedad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -457,6 +469,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+
         }
         #endregion
         private System.Windows.Forms.Label label1;
@@ -490,5 +503,6 @@
         public System.Windows.Forms.NumericUpDown numUDTriple;
         public System.Windows.Forms.NumericUpDown numUDDoble;
         public System.Windows.Forms.NumericUpDown numUDSimple;
+        public System.Windows.Forms.CheckBox cbCasaFinde;
     }
 }

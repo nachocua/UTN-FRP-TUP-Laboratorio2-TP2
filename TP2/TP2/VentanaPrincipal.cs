@@ -71,12 +71,19 @@ namespace TP2
                 {
                     plazas = Convert.ToInt32(ventanaPropiedad.numUpDown_Plazas.Value);
                     string propietario = ventanaPropiedad.tbPropietario.Text;
-                    Casa unaCasa = new Casa(nombre, ubicacion, plazas, servicios, propietario);
-                    elSistema.AgregarPropiedad(unaCasa);
+                    if (ventanaPropiedad.cbCasaFinde.Checked)
+                    {
+                        CasaFinSemana unaCasa = new CasaFinSemana(nombre, ubicacion, plazas, servicios, propietario);
+                        elSistema.AgregarPropiedad(unaCasa);
+                    }
+                    else
+                    {
+                        Casa unaCasa = new Casa(nombre, ubicacion, plazas, servicios, propietario);
+                        elSistema.AgregarPropiedad(unaCasa);
+                    }
                 }
                 else
                 {
-                    /*
                     int simples = Convert.ToInt32(ventanaPropiedad.numUDSimple.Value), dobles = Convert.ToInt32(ventanaPropiedad.numUDDoble.Value), triples = Convert.ToInt32(ventanaPropiedad.numUDTriple.Value);
                     plazas = simples + dobles + triples;
                     int estrellas = 3;
@@ -89,7 +96,6 @@ namespace TP2
                     unHotel.CargarHabitaciones(dobles, Hotel.Tipo.Doble);
                     unHotel.CargarHabitaciones(triples, Hotel.Tipo.Triple);
                     elSistema.AgregarPropiedad(unHotel);
-                    */
                 }
             }
             ventanaPropiedad.Dispose();
