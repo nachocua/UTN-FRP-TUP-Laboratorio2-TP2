@@ -132,5 +132,14 @@ namespace TP2
             }
             return propiedades[i];
         }
+        public int BuscarCliente(Cliente unCliente)
+        {
+            int indx = 0;
+            return indx;
+        }
+        public void AgregarCliente(Cliente unCliente)
+        {
+            clientes.Add(unCliente);
+        }
     }
 }

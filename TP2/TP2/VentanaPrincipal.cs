@@ -33,11 +33,19 @@ namespace TP2
         }
         private void BtnNuevoCliente_Click(object sender, EventArgs e)
         {
+            bool repetido = true;
             Alta_Cliente ventanaCliente = new Alta_Cliente();
-            if (ventanaCliente.ShowDialog() == DialogResult.OK)
+            do
             {
-
-            }
+                if (ventanaCliente.ShowDialog() == DialogResult.OK)
+                {
+                    if (ManejoAlquiler.BuscarCliente(ventanaCliente.unCliente) < 0)
+                    {
+                        elSistema.AgregarCliente(ventanaCliente.unCliente);
+                        repetido = false;
+                    }
+                }
+            } while (repetido);
             ventanaCliente.Dispose();
         }
         private void btnAlquiler_Click(object sender, EventArgs e)
