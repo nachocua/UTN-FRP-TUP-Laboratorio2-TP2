@@ -22,8 +22,11 @@ namespace TP2
         }
         public override double Costo(int dias)
         {
-            //Implementar
-            return 0;
+            return ( (Precio * dias ) * 0.10 * Servicios.Count * Plazas);
+        }
+        public override void EstablecerCosto(double costo)
+        {
+            Precio = costo;
         }
         public override string[] getData()
         {

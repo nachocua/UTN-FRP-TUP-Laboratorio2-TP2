@@ -37,6 +37,7 @@
             this.btnNuevaPropiedad = new System.Windows.Forms.Button();
             this.btnImagen = new System.Windows.Forms.Button();
             this.gbCasa = new System.Windows.Forms.GroupBox();
+            this.cbCasaFinde = new System.Windows.Forms.CheckBox();
             this.numUpDown_Plazas = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.gbServicios = new System.Windows.Forms.GroupBox();
@@ -59,7 +60,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbCasa = new System.Windows.Forms.RadioButton();
             this.rbHotel = new System.Windows.Forms.RadioButton();
-            this.cbCasaFinde = new System.Windows.Forms.CheckBox();
             this.gbCasa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_Plazas)).BeginInit();
             this.gbServicios.SuspendLayout();
@@ -153,6 +153,16 @@
             this.gbCasa.TabIndex = 13;
             this.gbCasa.TabStop = false;
             this.gbCasa.Text = "Casa";
+            // 
+            // cbCasaFinde
+            // 
+            this.cbCasaFinde.AutoSize = true;
+            this.cbCasaFinde.Location = new System.Drawing.Point(20, 69);
+            this.cbCasaFinde.Name = "cbCasaFinde";
+            this.cbCasaFinde.Size = new System.Drawing.Size(79, 17);
+            this.cbCasaFinde.TabIndex = 20;
+            this.cbCasaFinde.Text = "Casa Finde";
+            this.cbCasaFinde.UseVisualStyleBackColor = true;
             // 
             // numUpDown_Plazas
             // 
@@ -432,16 +442,6 @@
             this.rbHotel.Text = "Hotel";
             this.rbHotel.UseVisualStyleBackColor = true;
             this.rbHotel.CheckedChanged += new System.EventHandler(this.CambiarGroupBox);
-            // 
-            // cbCasaFinde
-            // 
-            this.cbCasaFinde.AutoSize = true;
-            this.cbCasaFinde.Location = new System.Drawing.Point(20, 69);
-            this.cbCasaFinde.Name = "cbCasaFinde";
-            this.cbCasaFinde.Size = new System.Drawing.Size(79, 17);
-            this.cbCasaFinde.TabIndex = 20;
-            this.cbCasaFinde.Text = "Casa Finde";
-            this.cbCasaFinde.UseVisualStyleBackColor = true;
             // 
             // NuevaPropiedad
             // 

@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace TP2
 {
     public partial class MostrarDatos : Form
     {
+        //enum Columnas { Id, Nombre, Tipo, Ubicacion, Propietario, Servicios, Capacidad };
         List<Propiedad> propiedades;
+        string[] propiedadSeleccionada = null;
         public MostrarDatos(ManejoAlquiler unSistema)
         {
             InitializeComponent();
@@ -92,17 +95,41 @@ namespace TP2
         }
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            propiedades.Sort();
-
+            if (propiedadSeleccionada != null)
+            {
+                propiedades.Sort();
+                MessageBox.Show(string.Join(", ",propiedadSeleccionada));
+            }
+            else
+            {
+                MessageBox.Show("Ninguna propiedad fue seleccionada");
+            }
         }
         private void dgView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int f = e.RowIndex, c = e.ColumnIndex;
-            if(e.ColumnIndex == 4)
+            if (c == 5) // Servicios
             {
-                string text = dgView[c,f].Value.ToString();
-                MessageBox.Show(text,"Servicios Disponibles");
+                string text = dgView[c, f].Value.ToString();
+                MessageBox.Show(text, "Servicios Disponibles");
             }
+        }
+
+        private void dgView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0)
+            {
+                propiedadSeleccionada = GetRow(dgView.Rows[e.RowIndex]);
+            }
+        }
+        private string[] GetRow(DataGridViewRow row)
+        {
+            List<string> data = new List<string>();
+            for(int i = 0; i < row.Cells.Count; i++)
+            {
+                data.Add(row.Cells[i].Value.ToString());
+            }
+            return data.ToArray();
         }
     }
 }

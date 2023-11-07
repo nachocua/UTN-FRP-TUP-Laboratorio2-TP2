@@ -19,6 +19,10 @@ namespace TP2
             //Implementar
             return 0;
         }
+        //public override void EstablecerCosto(double costo)
+        //{
+
+        //}
         public override string[] getData()
         {
             string[] arr = new string[]

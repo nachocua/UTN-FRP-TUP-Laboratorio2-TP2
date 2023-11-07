@@ -24,10 +24,13 @@ namespace TP2
             habs = new List<Tipo>();
             Estrella = estrella;
         }
+        public override void EstablecerCosto(double costo)
+        {
+            Precio = costo;
+        }
         public override double Costo(int dias)
         {
-            //Implementar
-            return 0;
+            return Precio * (dias * 1.03); // 3% adicional por cada dia | Implementar el resto
         }
         public void CargarHabitaciones(int cant, Tipo tipo)
         {

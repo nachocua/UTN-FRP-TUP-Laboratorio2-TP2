@@ -18,6 +18,8 @@ namespace TP2
         public int Plazas { get; protected set; }
         public List<string> Servicios { get; protected set; }
         protected List<string> imagenes;
+        protected List<int> IdReservas { get; }
+        public double Precio { get; protected set; }
         public Propiedad(string nombre, string ubicacion, int plazas, List<string> servicios)
         {
             idPropiedad = propiedadesTotales;
@@ -29,11 +31,16 @@ namespace TP2
                 Plazas = plazas;
                 Servicios = servicios;
                 imagenes = new List<string>();
+                IdReservas = new List<int>();
             }
             else
             {
                 throw new ArgumentException("Los campos Nombre y Ubicación solo deben contener caracteres.");
             }
+        }
+        public Propiedad(string nombrePropiedad) // Constructor para Busqueda
+        {
+            Nombre = nombrePropiedad;
         }
         private bool IsValidInput(string input)
         {
@@ -49,7 +56,8 @@ namespace TP2
         public abstract string[] getData();
         public int CompareTo(object obj)
         {
-            return Nombre.CompareTo(((Propiedad)obj).Nombre);
+            return idPropiedad.CompareTo(((Propiedad)obj).idPropiedad);
         }
+        public abstract void EstablecerCosto(double costo);
     }
 }

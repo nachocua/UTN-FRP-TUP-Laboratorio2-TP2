@@ -111,14 +111,7 @@ namespace TP2
         {
             MostrarDatos vMostrar = new MostrarDatos(elSistema);
             vMostrar.ShowDialog();
-            //MostrarDatos vMostrar = new MostrarDatos();
-            //for (int i = 0; i < elSistema.CantidadPropidades; i++)
-            //{
-            //    string[] arr = (elSistema.getPropiedad(i)).getData();
-            //    vMostrar.dgView.Rows.Add(arr);
-            //}
-            //vMostrar.ShowDialog();
-            //vMostrar.Dispose();
+            vMostrar.Dispose();
         }
     }
 }

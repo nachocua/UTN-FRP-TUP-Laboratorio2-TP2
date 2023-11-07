@@ -56,10 +56,6 @@ namespace TP2
                         {
                             unaPropiedad = new CasaFinSemana(datoPropiedad[2], datoPropiedad[3], Convert.ToInt32(datoPropiedad[4]), Servicios, datoPropiedad[6]);
                         }
-                        else
-                        {
-
-                        }
                     }
                     propiedades.Add(unaPropiedad);
                 }
