@@ -490,7 +490,6 @@
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.CheckBox checkBox6;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox gbServicios;
         private System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.RadioButton rbCasa;
         public System.Windows.Forms.RadioButton rbHotel;
@@ -504,5 +503,6 @@
         public System.Windows.Forms.NumericUpDown numUDDoble;
         public System.Windows.Forms.NumericUpDown numUDSimple;
         public System.Windows.Forms.CheckBox cbCasaFinde;
+        public System.Windows.Forms.GroupBox gbServicios;
     }
 }

@@ -89,9 +89,12 @@ namespace TP2
             //Exportar Reservas
             //....
         }
-        public int CantidadPropiedades()
+        public int CantidadPropiedades
         {
-            return propiedades.Count;
+            get
+            {
+                return propiedades.Count;
+            }
         }
         public List<string> GetStringPropiedades()
         {
@@ -120,15 +123,12 @@ namespace TP2
             }
             return datosReservas;
         }
-        public List<Propiedad> GetPropiedades()
-        {
-            return propiedades;
-        }
+        
         public void AgregarPropiedad(Propiedad propiedad)
         {
             propiedades.Add(propiedad);
         }
-        public Propiedad getPropiedad(int i)
+        public Propiedad GetPropiedad(int i)
         {
             StringBuilder datosAExportar = new StringBuilder();
             foreach (Propiedad unaPropiedad in propiedades)
@@ -150,9 +150,26 @@ namespace TP2
             }
             return indx;
         }
+        public Propiedad BuscarPropiedad(int id)
+        {
+            Propiedad unaPropiedad = null;
+            foreach (Propiedad p in propiedades)
+            {
+                if (p.idPropiedad == id)
+                {
+                    unaPropiedad = p;
+                    break;
+                }
+            }
+            return unaPropiedad;
+        }
         public void AgregarCliente(Cliente unCliente)
         {
             clientes.Add(unCliente);
+        }
+        public List<Propiedad> GetPropiedades() // Posible funcion a borrar
+        {
+            return propiedades;
         }
     }
 }
