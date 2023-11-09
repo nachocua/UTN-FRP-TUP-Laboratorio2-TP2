@@ -12,7 +12,7 @@ namespace TP2
     public abstract class Propiedad : IComparable
     {
         protected int propiedadesTotales = 0;
-        public int idPropiedad { get; set; }
+        public int idPropiedad { get; protected set; }
         public string Ciudad { get; protected set; }
         public string Nombre { get; protected set; }
         public int Plazas { get; protected set; }

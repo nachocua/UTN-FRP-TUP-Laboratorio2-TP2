@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
@@ -19,6 +20,13 @@ namespace TP2
             string propietario) : base(nombre, ubicacion, plazas, servicios)
         {
             Propietario = propietario;
+        }
+        public void ModificarDatos(string nombre, string ubicacion, int plazas,string propietario)
+        {
+            Nombre = nombre;
+            Propietario = propietario;
+            Plazas = plazas;
+            Ciudad = ubicacion;
         }
         public override double Costo(int dias)
         {

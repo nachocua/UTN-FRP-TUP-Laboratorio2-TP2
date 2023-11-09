@@ -24,6 +24,10 @@ namespace TP2
             habs = new List<Tipo>();
             Estrella = estrella;
         }
+        public void ModificarDatos(string nombre, string ubicacion, int plazas)
+        {
+
+        }
         public override void EstablecerCosto(double costo)
         {
             Precio = costo;

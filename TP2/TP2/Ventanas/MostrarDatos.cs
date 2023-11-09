@@ -110,99 +110,101 @@ namespace TP2
             if (propiedadSeleccionada != null)
             {
                 propiedades.Sort();
-                Propiedad modificarPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
+                Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
                 //MessageBox.Show(string.Join(", ",propiedadSeleccionada));
                 NuevaPropiedad ventanaPropiedad = new NuevaPropiedad();
                 #region CargandoDatos
-                if(modificarPropiedad != null)
+                if (unaPropiedad != null)
                 {
-
-                }
-                #endregion
-                #region ModificandoPropiedad
-                // { 0. Id, 1. Nombre, 2. Tipo, 3. Ubicacion, 4. Propietario, 5. Servicios, 6. Capacidad };
-                ventanaPropiedad.tbNombre.Text = propiedadSeleccionada[1];
-                ventanaPropiedad.tbUbicacion.Text = propiedadSeleccionada[3];
-
-                // Revisar si hay una mejor implementacion
-                string[] vServicios = propiedadSeleccionada[5].Split(',');
-                for (int i = 0; i < vServicios.Length; i++)
-                {
-                    vServicios[i] = vServicios[i].Trim();
-                }
-                foreach (Control control in ventanaPropiedad.gbServicios.Controls)
-                {
-                    if (control is CheckBox)
+                    ventanaPropiedad.tbNombre.Text = unaPropiedad.Nombre;
+                    ventanaPropiedad.tbUbicacion.Text = unaPropiedad.Ciudad;
+                    string[] vServicios = string.Join(", ", unaPropiedad.Servicios.ToArray()).Split(',');
+                    for (int i = 0; i < vServicios.Length; i++)
                     {
-                        CheckBox c = (CheckBox)control;
-                        foreach(string s in vServicios)
+                        vServicios[i] = vServicios[i].Trim();
+                    }
+                    foreach (Control control in ventanaPropiedad.gbServicios.Controls)
+                    {
+                        if (control is CheckBox)
                         {
-                            if(s == c.Text)
+                            CheckBox c = (CheckBox)control;
+                            foreach (string s in vServicios)
                             {
-                                c.Checked = true;
+                                if (s == c.Text)
+                                {
+                                    c.Checked = true;
+                                }
                             }
                         }
                     }
-                }
-                if (propiedadSeleccionada[2] == "Hotel")
-                {
-                    ventanaPropiedad.rbHotel.Checked = true;
+                    if (unaPropiedad is Hotel)
+                    {
+                        ventanaPropiedad.rbHotel.Checked = true;
 
-                }
-                else
-                {
-                    ventanaPropiedad.rbCasa.Checked = true;
-                    ventanaPropiedad.tbPropietario.Text = propiedadSeleccionada[4];
-                    ventanaPropiedad.numUpDown_Plazas.Value = Convert.ToDecimal(propiedadSeleccionada[6]);
-                    if (propiedadSeleccionada[2] == "Casa Finde")
-                    {
-                        ventanaPropiedad.cbCasaFinde.Checked = true;
                     }
-                }
-                ventanaPropiedad.ShowDialog();
-                #endregion
-                if (ventanaPropiedad.ShowDialog() == DialogResult.OK)
-                {
-                    // Nombre de la propiedad, Ubicacion, Plazas, Servicios
-                    string nombre = ventanaPropiedad.tbNombre.Text, ubicacion = ventanaPropiedad.tbUbicacion.Text;
-                    int plazas;
-                    List<string> servicios = ventanaPropiedad.ObtenerServicios();
-                    if (ventanaPropiedad.rbCasa.Checked)
+                    else
                     {
-                        plazas = Convert.ToInt32(ventanaPropiedad.numUpDown_Plazas.Value);
-                        string propietario = ventanaPropiedad.tbPropietario.Text;
-                        if (ventanaPropiedad.cbCasaFinde.Checked)
+                        ventanaPropiedad.rbCasa.Checked = true;
+                        ventanaPropiedad.tbPropietario.Text = ((Casa)unaPropiedad).Propietario;
+                        ventanaPropiedad.numUpDown_Plazas.Value = unaPropiedad.Plazas;
+                        if (unaPropiedad is CasaFinSemana)
                         {
-                            CasaFinSemana unaCasa = new CasaFinSemana(nombre, ubicacion, plazas, servicios, propietario);
-                            elSistema.AgregarPropiedad(unaCasa);
+                            ventanaPropiedad.cbCasaFinde.Checked = true;
+                        }
+                    }
+                    DialogResult res = ventanaPropiedad.ShowDialog();
+                    ventanaPropiedad.Dispose();
+                    #endregion
+                    #region CambiandoPropiedad
+                    if (res == DialogResult.OK)
+                    {
+                        // Nombre de la propiedad, Ubicacion, Plazas, Servicios
+                        string nombre = ventanaPropiedad.tbNombre.Text, ubicacion = ventanaPropiedad.tbUbicacion.Text;
+                        int plazas;
+                        List<string> servicios = ventanaPropiedad.ObtenerServicios();
+                        if (ventanaPropiedad.rbCasa.Checked)
+                        {
+                            plazas = Convert.ToInt32(ventanaPropiedad.numUpDown_Plazas.Value);
+                            string propietario = ventanaPropiedad.tbPropietario.Text;
+                            if (ventanaPropiedad.cbCasaFinde.Checked)
+                            {
+                                CasaFinSemana unaCasa = new CasaFinSemana(nombre, ubicacion, plazas, servicios, propietario);
+                                unaPropiedad = unaCasa;
+
+                                //elSistema.AgregarPropiedad(unaCasa);
+                            }
+                            else
+                            {
+                                Casa unaCasa = new Casa(nombre, ubicacion, plazas, servicios, propietario);
+                                //unaPropiedad = unaCasa;
+                                elSistema.ModificarPropiedad(unaPropiedad,unaCasa);
+                                //elSistema.AgregarPropiedad(unaCasa);
+                            }
                         }
                         else
                         {
-                            Casa unaCasa = new Casa(nombre, ubicacion, plazas, servicios, propietario);
-                            elSistema.AgregarPropiedad(unaCasa);
+                            int simples = Convert.ToInt32(ventanaPropiedad.numUDSimple.Value), dobles = Convert.ToInt32(ventanaPropiedad.numUDDoble.Value), triples = Convert.ToInt32(ventanaPropiedad.numUDTriple.Value);
+                            plazas = simples + dobles + triples;
+                            int estrellas = 3;
+                            if (ventanaPropiedad.rb2Estrellas.Checked)
+                            {
+                                estrellas = 2;
+                            }
+                            Hotel unHotel = new Hotel(nombre, ubicacion, plazas, servicios, estrellas);
+                            unHotel.CargarHabitaciones(simples, Hotel.Tipo.Simple);
+                            unHotel.CargarHabitaciones(dobles, Hotel.Tipo.Doble);
+                            unHotel.CargarHabitaciones(triples, Hotel.Tipo.Triple);
+                            unaPropiedad = unHotel;
+                            //elSistema.AgregarPropiedad(unHotel);
                         }
                     }
                     else
                     {
-                        int simples = Convert.ToInt32(ventanaPropiedad.numUDSimple.Value), dobles = Convert.ToInt32(ventanaPropiedad.numUDDoble.Value), triples = Convert.ToInt32(ventanaPropiedad.numUDTriple.Value);
-                        plazas = simples + dobles + triples;
-                        int estrellas = 3;
-                        if (ventanaPropiedad.rb2Estrellas.Checked)
-                        {
-                            estrellas = 2;
-                        }
-                        Hotel unHotel = new Hotel(nombre, ubicacion, plazas, servicios, estrellas);
-                        unHotel.CargarHabitaciones(simples, Hotel.Tipo.Simple);
-                        unHotel.CargarHabitaciones(dobles, Hotel.Tipo.Doble);
-                        unHotel.CargarHabitaciones(triples, Hotel.Tipo.Triple);
-                        elSistema.AgregarPropiedad(unHotel);
+                        MessageBox.Show("Ninguna propiedad fue seleccionada");
                     }
+
                 }
-                ventanaPropiedad.Dispose();
-            }
-            else
-            {
-                MessageBox.Show("Ninguna propiedad fue seleccionada");
+                #endregion
             }
         }
         private void dgView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -246,6 +248,23 @@ namespace TP2
 
             }
             return propiedades;
+        }
+        private void MostrarPropiedad(Propiedad unaPropiedad)
+        {
+            foreach (string s in unaPropiedad.getData())
+            {
+                MessageBox.Show(s);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (propiedadSeleccionada != null)
+            {
+                Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
+                MostrarPropiedad(unaPropiedad);
+
+            }
         }
     }
 }
