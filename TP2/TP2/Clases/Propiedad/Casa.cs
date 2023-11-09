@@ -24,9 +24,9 @@ namespace TP2
         public void ModificarDatos(string nombre, string ubicacion, int plazas,string propietario)
         {
             Nombre = nombre;
-            Propietario = propietario;
-            Plazas = plazas;
             Ciudad = ubicacion;
+            Plazas = plazas;
+            Propietario = propietario;
         }
         public override double Costo(int dias)
         {

@@ -24,9 +24,16 @@ namespace TP2
             habs = new List<Tipo>();
             Estrella = estrella;
         }
-        public void ModificarDatos(string nombre, string ubicacion, int plazas)
+        public void ModificarDatos(string nombre, string ubicacion, int estrella, int simples, int dobles, int triples)
         {
-
+            Nombre = nombre;
+            Ciudad = ubicacion;
+            Estrella = estrella;
+            Plazas = simples + dobles + triples;
+            habs.Clear();
+            CargarHabitaciones(simples,Tipo.Simple);
+            CargarHabitaciones(dobles,Tipo.Doble);
+            CargarHabitaciones(triples,Tipo.Triple);
         }
         public override void EstablecerCosto(double costo)
         {

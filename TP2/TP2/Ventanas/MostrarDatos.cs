@@ -168,17 +168,18 @@ namespace TP2
                             string propietario = ventanaPropiedad.tbPropietario.Text;
                             if (ventanaPropiedad.cbCasaFinde.Checked)
                             {
-                                CasaFinSemana unaCasa = new CasaFinSemana(nombre, ubicacion, plazas, servicios, propietario);
-                                unaPropiedad = unaCasa;
-
+                                //CasaFinSemana unaCasa = new CasaFinSemana(nombre, ubicacion, plazas, servicios, propietario);
+                                //unaPropiedad = unaCasa;
                                 //elSistema.AgregarPropiedad(unaCasa);
+                                //CasaFinSemana unaCasa = unaPropiedad as CasaFinSemana;
                             }
                             else
                             {
-                                Casa unaCasa = new Casa(nombre, ubicacion, plazas, servicios, propietario);
+                                //Casa unaCasa = new Casa(nombre, ubicacion, plazas, servicios, propietario);
                                 //unaPropiedad = unaCasa;
-                                elSistema.ModificarPropiedad(unaPropiedad,unaCasa);
                                 //elSistema.AgregarPropiedad(unaCasa);
+                                Casa unaCasa = unaPropiedad as Casa;
+                                unaCasa.ModificarDatos(nombre,ubicacion,plazas,propietario);
                             }
                         }
                         else
@@ -190,12 +191,14 @@ namespace TP2
                             {
                                 estrellas = 2;
                             }
-                            Hotel unHotel = new Hotel(nombre, ubicacion, plazas, servicios, estrellas);
-                            unHotel.CargarHabitaciones(simples, Hotel.Tipo.Simple);
-                            unHotel.CargarHabitaciones(dobles, Hotel.Tipo.Doble);
-                            unHotel.CargarHabitaciones(triples, Hotel.Tipo.Triple);
-                            unaPropiedad = unHotel;
+                            //Hotel unHotel = new Hotel(nombre, ubicacion, plazas, servicios, estrellas);
+                            //unHotel.CargarHabitaciones(simples, Hotel.Tipo.Simple);
+                            //unHotel.CargarHabitaciones(dobles, Hotel.Tipo.Doble);
+                            //unHotel.CargarHabitaciones(triples, Hotel.Tipo.Triple);
+                            //unaPropiedad = unHotel;
                             //elSistema.AgregarPropiedad(unHotel);
+                            Hotel unHotel = unaPropiedad as Hotel;
+                            unHotel.ModificarDatos(nombre,ubicacion,estrellas,simples,dobles,triples);
                         }
                     }
                     else
