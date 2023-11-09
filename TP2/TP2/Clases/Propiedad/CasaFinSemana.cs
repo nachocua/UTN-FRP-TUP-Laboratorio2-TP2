@@ -9,8 +9,8 @@ namespace TP2
     [Serializable]
     internal class CasaFinSemana : Casa
     {
-        public CasaFinSemana(string nombre, string ubicacion, int plazas, List<string> servicios,
-            string propietario) : base(nombre, ubicacion, plazas, servicios, propietario)
+        public CasaFinSemana(int id, string nombre, string ubicacion, int plazas, List<string> servicios,
+            string propietario) : base(id, nombre, ubicacion, plazas, servicios, propietario)
         {
 
         }

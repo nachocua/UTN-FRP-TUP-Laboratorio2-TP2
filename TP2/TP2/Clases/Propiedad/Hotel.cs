@@ -18,7 +18,7 @@ namespace TP2
         private int[] TipoHab = null;
         public int Estrella { get; protected set; }
         private List<Tipo> habs;
-        public Hotel(string nombre, string ubicacion, int plazas, List<string> servicios, int estrella) : base(nombre, ubicacion, plazas, servicios)
+        public Hotel(int id, string nombre, string ubicacion, int plazas, List<string> servicios, int estrella) : base(id, nombre, ubicacion, plazas, servicios)
         {
             TipoHab = new int[3];
             habs = new List<Tipo>();

@@ -16,8 +16,8 @@ namespace TP2
     public class Casa : Propiedad
     {
         public string Propietario { get; protected set; }
-        public Casa(string nombre, string ubicacion, int plazas, List<string> servicios,
-            string propietario) : base(nombre, ubicacion, plazas, servicios)
+        public Casa(int id, string nombre, string ubicacion, int plazas, List<string> servicios,
+            string propietario) : base(id, nombre, ubicacion, plazas, servicios)
         {
             Propietario = propietario;
         }

@@ -9,7 +9,6 @@ namespace TP2
 {
     public class Reserva
     {
-        private static int reservasEfectuadas = 0;
         private string[] posiblesEstados = { "Reservado", "Ocupado", "Concretado", "Cancelada" };
         public int NroReserva { get; private set; }
         public int NroPropiedad { get; private set; }
@@ -18,7 +17,7 @@ namespace TP2
         public DateTime FechaInicio { get; private set; }
         public int CantDias { get; private set; }
         public double Costo { get; private set; }
-        public Reserva(int idCliente, int idPropiedad, DateTime fechaDesde, int cantDias, double costo)
+        public Reserva(int reservasEfectuadas, int idCliente, int idPropiedad, DateTime fechaDesde, int cantDias, double costo)
         {
             NroReserva = reservasEfectuadas;
             reservasEfectuadas++;

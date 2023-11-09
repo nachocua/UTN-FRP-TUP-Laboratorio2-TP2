@@ -11,7 +11,6 @@ namespace TP2
     [Serializable]
     public abstract class Propiedad : IComparable
     {
-        protected int propiedadesTotales = 0;
         public int idPropiedad { get; protected set; }
         public string Ciudad { get; protected set; }
         public string Nombre { get; protected set; }
@@ -20,10 +19,9 @@ namespace TP2
         protected List<string> imagenes;
         protected List<int> IdReservas { get; }
         public double Precio { get; protected set; }
-        public Propiedad(string nombre, string ubicacion, int plazas, List<string> servicios)
+        public Propiedad(int id, string nombre, string ubicacion, int plazas, List<string> servicios)
         {
-            idPropiedad = propiedadesTotales;
-            propiedadesTotales++;
+            idPropiedad = id;
             if (IsValidInput(nombre) && IsValidInput(ubicacion))
             {
                 Nombre = nombre ?? throw new ArgumentNullException("Campo vacio.");

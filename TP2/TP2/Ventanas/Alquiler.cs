@@ -44,10 +44,10 @@ namespace TP2
                 foreach (string[] unDato in datosPropiedades)
                 {
                     Propiedad unaPropiedad = null;
-                    List<string> servicios = null;
+                    //List<string> servicios = null;
                     if (unDato[1] == "casa")
                     {
-                        unaPropiedad = new Casa("a", "a", 1, servicios, "a");
+                        //unaPropiedad = new Casa("a", "a", 1, servicios, "a");
                     }
                     else
                     {
@@ -57,7 +57,7 @@ namespace TP2
                         }
                         else
                         {
-                            unaPropiedad = new CasaFinSemana("a", "a", 1, servicios, "a");
+                            //unaPropiedad = new CasaFinSemana("a", "a", 1, servicios, "a");
                         }
                     }
                     propiedades.Add(unaPropiedad);

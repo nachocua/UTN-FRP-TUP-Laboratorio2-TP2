@@ -13,14 +13,14 @@ namespace TP2
 {
     public partial class NuevaPropiedad : Form
     {
-        private List<Propiedad> propiedades = null;
+        //private List<Propiedad> propiedades = null;
         public NuevaPropiedad()
         {
             InitializeComponent();
         }
         private void NuevaPropiedad_Load(object sender, EventArgs e)
         {
-            List<string[]> datosPropiedad = null;
+            /*List<string[]> datosPropiedad = null;
             try
             {
                 datosPropiedad = Funciones_Adicionales.LeerSeparandoArchivo("..//..//Data//propiedades.csv", ";");
@@ -48,7 +48,7 @@ namespace TP2
                     }
                     if (datoPropiedad[0] == "Casa")
                     {
-                        unaPropiedad = new Casa(datoPropiedad[2], datoPropiedad[3], Convert.ToInt32(datoPropiedad[4]),Servicios, datoPropiedad[6]);
+                        unaPropiedad = new Casa(id, datoPropiedad[2], datoPropiedad[3], Convert.ToInt32(datoPropiedad[4]),Servicios, datoPropiedad[6]);
                     }
                     else
                     {
@@ -59,7 +59,7 @@ namespace TP2
                     }
                     propiedades.Add(unaPropiedad);
                 }
-            }
+            }*/
         }
         private void btnImagen_Click(object sender, EventArgs e)
         {
