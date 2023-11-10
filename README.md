@@ -20,19 +20,25 @@
     <h2>Pendientes</h2>
     <ul>
         <li>
-            Calculo de Costos
+            Calculo de Costos (Casa / Casa Finde / Hotel)
         </li>
         <li>
-            Serialización
+            Implementar Ventana de Reservas
         </li>
         <li>
-            Modificar Hotel
+            Exportar Reservas (CSV)
         </li>
         <li>
-            Dejar solo comprobaciones en las Ventanas de Díalogo
+            Importar Reservas (CSV)
         </li>
         <li>
-            Utilizar Sist. Principal
+            Refactor de Propiedades
+        </li>
+        <li>
+            Gráficos de Barra
+        </li>
+        <li>
+            Impresion
         </li>
     </ul>
 </footer>
