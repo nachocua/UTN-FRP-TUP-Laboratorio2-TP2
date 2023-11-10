@@ -17,7 +17,7 @@ namespace TP2
         public int Plazas { get; protected set; }
         public List<string> Servicios { get; protected set; }
         protected List<string> imagenes;
-        protected List<int> IdReservas { get; }
+        protected Stack<int> IdReservas { get; }
         public double Precio { get; protected set; }
         public Propiedad(int id, string nombre, string ubicacion, int plazas, List<string> servicios)
         {
@@ -27,7 +27,7 @@ namespace TP2
             Plazas = plazas;
             Servicios = servicios;
             imagenes = new List<string>();
-            IdReservas = new List<int>();
+            IdReservas = new Stack<int>();
         }
         public void ModificarServicios(string[] servicios)
         {
@@ -35,7 +35,7 @@ namespace TP2
         }
         public void AgregarReserva(int idReserva)
         {
-            IdReservas.Add(idReserva);
+            IdReservas.Push(idReserva);
         }
         public abstract double Costo(int dias);
         public abstract string[] getData();

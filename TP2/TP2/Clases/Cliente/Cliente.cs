@@ -12,7 +12,7 @@ namespace TP2
     [Serializable]
     public class Cliente : IComparable
     {
-        public List<int> IdReservas { get; }
+        public Stack<int> IdReservas { get; }
         public int Dni { get; private set; }
         public int Telefono { get; private set; }
         public string Nombres { get; private set; }
@@ -23,22 +23,23 @@ namespace TP2
             Nombres = nombres;
             Apellidos = apellidos;
             Telefono = nroTelefono;
-            IdReservas = new List<int>();
+            IdReservas = new Stack<int>();
         }
         public void AgregarReserva(int idReserva)
         {
-            IdReservas.Add(idReserva);
+            IdReservas.Push(idReserva);
         }
         public override string ToString()
         {
+            int[] arr = IdReservas.ToArray();
             string datosCliente = Dni.ToString() + ";" + Telefono.ToString() + ";" +
                 Nombres + ";" + Apellidos + ";";
-            if(IdReservas.Count > 0) 
+            if (arr.Length > 0)
             {
-                datosCliente += IdReservas[0];
-                if (IdReservas.Count > 1)
+                datosCliente += arr[0];
+                if (arr.Length > 1)
                 {
-                    foreach (int id in IdReservas)
+                    foreach (int id in arr)
                     {
                         datosCliente += "*" + id;
                     }
