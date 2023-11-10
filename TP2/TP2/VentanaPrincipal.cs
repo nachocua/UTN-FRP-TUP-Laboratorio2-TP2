@@ -53,7 +53,7 @@ namespace TP2
                 {
                     repetido = false;
                 }
-            }while (repetido);
+            } while (repetido);
             ventanaCliente.Dispose();
         }
         private void btnAlquiler_Click(object sender, EventArgs e)
