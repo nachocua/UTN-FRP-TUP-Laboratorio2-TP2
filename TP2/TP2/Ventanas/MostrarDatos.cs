@@ -112,7 +112,7 @@ namespace TP2
                 propiedades.Sort();
                 Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
                 //MessageBox.Show(string.Join(", ",propiedadSeleccionada));
-                NuevaPropiedad ventanaPropiedad = new NuevaPropiedad();
+                NuevaPropiedad ventanaPropiedad = new NuevaPropiedad(elSistema.CantidadPropiedades);
                 #region CargandoDatos
                 if (unaPropiedad != null)
                 {

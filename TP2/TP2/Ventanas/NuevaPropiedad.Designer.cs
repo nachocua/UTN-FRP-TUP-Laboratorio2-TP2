@@ -121,7 +121,6 @@
             // 
             // btnNuevaPropiedad
             // 
-            this.btnNuevaPropiedad.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnNuevaPropiedad.Location = new System.Drawing.Point(83, 234);
             this.btnNuevaPropiedad.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevaPropiedad.Name = "btnNuevaPropiedad";
@@ -129,6 +128,7 @@
             this.btnNuevaPropiedad.TabIndex = 11;
             this.btnNuevaPropiedad.Text = "Nueva propiedad";
             this.btnNuevaPropiedad.UseVisualStyleBackColor = true;
+            this.btnNuevaPropiedad.Click += new System.EventHandler(this.btnNuevaPropiedad_Click);
             // 
             // btnImagen
             // 

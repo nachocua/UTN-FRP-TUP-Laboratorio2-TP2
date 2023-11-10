@@ -3,9 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,12 +17,17 @@ namespace TP2
     public partial class NuevaPropiedad : Form
     {
         //private List<Propiedad> propiedades = null;
-        public NuevaPropiedad()
+        public Propiedad unaPropiedad = null;
+        int cantidadPropiedades;
+        public NuevaPropiedad(int cantidadPropiedades)
         {
             InitializeComponent();
+            this.cantidadPropiedades = cantidadPropiedades;
         }
+        //public int CantidadPropiedades { get; set; }
         private void NuevaPropiedad_Load(object sender, EventArgs e)
         {
+            #region CargaDeArchivosCSV_Propiedad
             /*List<string[]> datosPropiedad = null;
             try
             {
@@ -60,6 +68,7 @@ namespace TP2
                     propiedades.Add(unaPropiedad);
                 }
             }*/
+            #endregion
         }
         private void btnImagen_Click(object sender, EventArgs e)
         {
@@ -93,6 +102,99 @@ namespace TP2
                 }
             }
             return list;
+        }
+
+        private void btnNuevaPropiedad_Click(object sender, EventArgs e)
+        {
+            bool state = true;
+            int tipo = 1;
+            string nombre = "", ubicacion = "", propietario = "";
+            int plazas = 0, simples = 0, dobles = 0, triples = 0, estrellas = 0;
+            List<string> servicios = new List<string>();
+            try
+            {
+                if (string.IsNullOrEmpty(tbNombre.Text) || string.IsNullOrEmpty(tbUbicacion.Text))
+                {
+                    throw new ArgumentException("Campo vacio.");
+                }
+                if (IsValidInput(tbNombre.Text) && IsValidInput(tbUbicacion.Text))
+                {
+                    nombre = tbNombre.Text;
+                    ubicacion = tbUbicacion.Text;
+                    servicios = ObtenerServicios();
+                    if (rbCasa.Checked)
+                    {
+                        plazas = Convert.ToInt32(numUpDown_Plazas.Value);
+                        if (string.IsNullOrEmpty(tbPropietario.Text))
+                        {
+                            throw new ArgumentException("Campo vacio.");
+                        }
+                        else
+                        {
+                            if (IsValidInput(tbPropietario.Text))
+                            {
+                                propietario = tbPropietario.Text;
+                            }
+                            else
+                            {
+                                throw new ArgumentException("El campo Propietario solo debe contener caracteres.");
+                            }
+                        }
+                        if (cbCasaFinde.Checked)
+                        {
+                            tipo = 3;
+
+                        }
+                    }
+                    else
+                    {
+                        tipo = 2;
+                        simples = Convert.ToInt32(numUDSimple.Value);
+                        dobles = Convert.ToInt32(numUDDoble.Value);
+                        triples = Convert.ToInt32(numUDTriple.Value);
+                        plazas = simples + dobles + triples;
+                        estrellas = 3;
+                        if (rb2Estrellas.Checked)
+                        {
+                            estrellas = 2;
+                        }
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("Los campos Nombre y Ubicación solo deben contener caracteres.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                state = false;
+            }
+            if (state)
+            {
+                switch (tipo)
+                {
+                    case 1:
+                        unaPropiedad = new Casa(cantidadPropiedades, nombre, ubicacion, plazas, servicios, propietario);
+                        break;
+                    case 2:
+                        unaPropiedad = new Hotel(cantidadPropiedades, nombre, ubicacion, plazas, servicios, estrellas);
+                        ((Hotel)unaPropiedad).CargarHabitaciones(simples, Hotel.Tipo.Simple);
+                        ((Hotel)unaPropiedad).CargarHabitaciones(dobles, Hotel.Tipo.Doble);
+                        ((Hotel)unaPropiedad).CargarHabitaciones(triples, Hotel.Tipo.Triple);
+                        break;
+                    case 3:
+                        unaPropiedad = new CasaFinSemana(cantidadPropiedades, nombre, ubicacion, plazas, servicios, propietario);
+                        break;
+                }
+                this.DialogResult = DialogResult.OK;
+            }
+        }
+        private bool IsValidInput(string input)
+        {
+            // [a-zA-Z ]+ permite letras mayúsculas, minúsculas y espacios.
+            string pattern = "^[a-zA-Z ]+$";
+            return Regex.IsMatch(input, pattern);
         }
     }
 }

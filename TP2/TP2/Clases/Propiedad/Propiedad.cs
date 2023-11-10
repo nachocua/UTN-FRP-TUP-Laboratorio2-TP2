@@ -22,33 +22,20 @@ namespace TP2
         public Propiedad(int id, string nombre, string ubicacion, int plazas, List<string> servicios)
         {
             idPropiedad = id;
-            if (IsValidInput(nombre) && IsValidInput(ubicacion))
-            {
-                Nombre = nombre ?? throw new ArgumentNullException("Campo vacio.");
-                Ciudad = ubicacion ?? throw new ArgumentNullException("Campo vacio.");
-                Plazas = plazas;
-                Servicios = servicios;
-                imagenes = new List<string>();
-                IdReservas = new List<int>();
-            }
-            else
-            {
-                throw new ArgumentException("Los campos Nombre y Ubicación solo deben contener caracteres.");
-            }
-        }
-        public Propiedad(string nombrePropiedad) // Constructor para Busqueda
-        {
-            Nombre = nombrePropiedad;
-        }
-        private bool IsValidInput(string input)
-        {
-            // [a-zA-Z ]+ permite letras mayúsculas, minúsculas y espacios.
-            string pattern = "^[a-zA-Z ]+$";
-            return Regex.IsMatch(input, pattern);
+            Nombre = nombre;
+            Ciudad = ubicacion;
+            Plazas = plazas;
+            Servicios = servicios;
+            imagenes = new List<string>();
+            IdReservas = new List<int>();
         }
         public void ModificarServicios(string[] servicios)
         {
             Servicios = servicios.ToList();
+        }
+        public void AgregarReserva(int idReserva)
+        {
+            IdReservas.Add(idReserva);
         }
         public abstract double Costo(int dias);
         public abstract string[] getData();
