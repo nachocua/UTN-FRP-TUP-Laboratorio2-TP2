@@ -140,7 +140,6 @@ namespace TP2
                     if (unaPropiedad is Hotel)
                     {
                         ventanaPropiedad.rbHotel.Checked = true;
-
                     }
                     else
                     {
@@ -153,59 +152,38 @@ namespace TP2
                         }
                     }
                     DialogResult res = ventanaPropiedad.ShowDialog();
-                    ventanaPropiedad.Dispose();
+
                     #endregion
                     #region CambiandoPropiedad
                     if (res == DialogResult.OK)
                     {
-                        // Nombre de la propiedad, Ubicacion, Plazas, Servicios
-                        string nombre = ventanaPropiedad.tbNombre.Text, ubicacion = ventanaPropiedad.tbUbicacion.Text;
-                        int plazas;
-                        List<string> servicios = ventanaPropiedad.ObtenerServicios();
-                        if (ventanaPropiedad.rbCasa.Checked)
+                        try
                         {
-                            plazas = Convert.ToInt32(ventanaPropiedad.numUpDown_Plazas.Value);
-                            string propietario = ventanaPropiedad.tbPropietario.Text;
-                            if (ventanaPropiedad.cbCasaFinde.Checked)
+                            Propiedad nuevaPropiedad = ventanaPropiedad.unaPropiedad;
+                            if (unaPropiedad is Hotel)
                             {
-                                //CasaFinSemana unaCasa = new CasaFinSemana(nombre, ubicacion, plazas, servicios, propietario);
-                                //unaPropiedad = unaCasa;
-                                //elSistema.AgregarPropiedad(unaCasa);
-                                //CasaFinSemana unaCasa = unaPropiedad as CasaFinSemana;
+                                Hotel unHotel = unaPropiedad as Hotel;
+                                Hotel otroHotel = nuevaPropiedad as Hotel;
+                                int simples = Convert.ToInt32(ventanaPropiedad.numUDSimple.Value),
+                                    dobles = Convert.ToInt32(ventanaPropiedad.numUDDoble.Value),
+                                    triples = Convert.ToInt32(ventanaPropiedad.numUDTriple.Value);
+                                unHotel.ModificarDatos(otroHotel.Nombre, otroHotel.Ciudad, otroHotel.Estrella, simples, dobles, triples);
+                                unHotel.ModificarServicios(nuevaPropiedad.Servicios.ToArray());
                             }
                             else
                             {
-                                //Casa unaCasa = new Casa(nombre, ubicacion, plazas, servicios, propietario);
-                                //unaPropiedad = unaCasa;
-                                //elSistema.AgregarPropiedad(unaCasa);
                                 Casa unaCasa = unaPropiedad as Casa;
-                                unaCasa.ModificarDatos(nombre,ubicacion,plazas,propietario);
+                                Casa otraCasa = nuevaPropiedad as Casa;
+                                unaCasa.ModificarDatos(otraCasa.Nombre,otraCasa.Ciudad,otraCasa.Plazas,otraCasa.Propietario);
+                                unaCasa.ModificarServicios(nuevaPropiedad.Servicios.ToArray());
                             }
                         }
-                        else
+                        catch
                         {
-                            int simples = Convert.ToInt32(ventanaPropiedad.numUDSimple.Value), dobles = Convert.ToInt32(ventanaPropiedad.numUDDoble.Value), triples = Convert.ToInt32(ventanaPropiedad.numUDTriple.Value);
-                            plazas = simples + dobles + triples;
-                            int estrellas = 3;
-                            if (ventanaPropiedad.rb2Estrellas.Checked)
-                            {
-                                estrellas = 2;
-                            }
-                            //Hotel unHotel = new Hotel(nombre, ubicacion, plazas, servicios, estrellas);
-                            //unHotel.CargarHabitaciones(simples, Hotel.Tipo.Simple);
-                            //unHotel.CargarHabitaciones(dobles, Hotel.Tipo.Doble);
-                            //unHotel.CargarHabitaciones(triples, Hotel.Tipo.Triple);
-                            //unaPropiedad = unHotel;
-                            //elSistema.AgregarPropiedad(unHotel);
-                            Hotel unHotel = unaPropiedad as Hotel;
-                            unHotel.ModificarDatos(nombre,ubicacion,estrellas,simples,dobles,triples);
+
                         }
                     }
-                    else
-                    {
-                        MessageBox.Show("Ninguna propiedad fue seleccionada");
-                    }
-
+                    ventanaPropiedad.Dispose();
                 }
                 #endregion
             }
