@@ -232,20 +232,11 @@ namespace TP2
             }
             return propiedades;
         }
-        private void MostrarPropiedad(Propiedad unaPropiedad)
-        {
-            foreach (string s in unaPropiedad.getData())
-            {
-                MessageBox.Show(s);
-            }
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (propiedadSeleccionada != null)
             {
                 Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
-                //MostrarPropiedad(unaPropiedad);
                 FormImg ventanaImagen = new FormImg(unaPropiedad);
                 ventanaImagen.ShowDialog();
                 ventanaImagen.Dispose();

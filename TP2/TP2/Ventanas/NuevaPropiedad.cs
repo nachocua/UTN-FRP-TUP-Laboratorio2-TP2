@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.Odbc;
 using System.Data.SqlTypes;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -77,10 +78,8 @@ namespace TP2
         private void btnImagen_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            if(ofd.ShowDialog() == DialogResult.OK)
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
-                //fileName = ofd.FileName;
-                MessageBox.Show(ofd.FileName);
                 imagenes.Add(ofd.FileName);
             }
             ofd.Dispose();
@@ -200,6 +199,17 @@ namespace TP2
                     case 3:
                         unaPropiedad = new CasaFinSemana(cantidadPropiedades, nombre, ubicacion, plazas, servicios, propietario);
                         break;
+                }
+                string defaultPath = "..//..//Img//" + unaPropiedad.idPropiedad;
+                Directory.CreateDirectory(defaultPath);
+                string[] nombres = Directory.GetFiles(defaultPath);
+                for (int i = 0; i < nombres.Length; i++)
+                {
+                    File.Move(defaultPath + "//" + nombres[i], defaultPath + defaultPath + "//img" + i);
+                }
+                for (int i = 0; i < imagenes.Count; i++)
+                {
+                    File.Move(imagenes[i], defaultPath + defaultPath + "//img" + (i+nombres.Length));
                 }
                 this.DialogResult = DialogResult.OK;
             }
