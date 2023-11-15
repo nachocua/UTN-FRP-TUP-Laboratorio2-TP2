@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Odbc;
 using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
@@ -18,7 +19,10 @@ namespace TP2
     {
         //private List<Propiedad> propiedades = null;
         public Propiedad unaPropiedad = null;
+        //public string fileName;
+        List<string> imagenes = new List<string>();
         int cantidadPropiedades;
+        //Image img;
         public NuevaPropiedad(int cantidadPropiedades)
         {
             InitializeComponent();
@@ -72,7 +76,14 @@ namespace TP2
         }
         private void btnImagen_Click(object sender, EventArgs e)
         {
-
+            OpenFileDialog ofd = new OpenFileDialog();
+            if(ofd.ShowDialog() == DialogResult.OK)
+            {
+                //fileName = ofd.FileName;
+                MessageBox.Show(ofd.FileName);
+                imagenes.Add(ofd.FileName);
+            }
+            ofd.Dispose();
         }
         private void CambiarGroupBox(object sender, EventArgs e)
         {
@@ -103,7 +114,10 @@ namespace TP2
             }
             return list;
         }
-
+        public string[] ObtenerImagenes()
+        {
+            return imagenes.ToArray();
+        }
         private void btnNuevaPropiedad_Click(object sender, EventArgs e)
         {
             bool state = true;

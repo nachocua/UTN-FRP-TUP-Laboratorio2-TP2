@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ventanas\FormImg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FormImg.Designer.cs">
+      <DependentUpon>FormImg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\MostrarDatos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Ventanas\FormImg.resx">
+      <DependentUpon>FormImg.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\MostrarDatos.resx">
       <DependentUpon>MostrarDatos.cs</DependentUpon>
     </EmbeddedResource>

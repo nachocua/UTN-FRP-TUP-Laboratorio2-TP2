@@ -31,7 +31,13 @@ namespace TP2
         }
         public void ModificarServicios(string[] servicios)
         {
+            Servicios.Clear();
             Servicios = servicios.ToList();
+        }
+        public void ModificarImagenes(string[] imagenes)
+        {
+            this.imagenes.Clear();
+            this.imagenes = imagenes.ToList();
         }
         public void AgregarReserva(int idReserva)
         {
@@ -44,5 +50,17 @@ namespace TP2
             return idPropiedad.CompareTo(((Propiedad)obj).idPropiedad);
         }
         public abstract void EstablecerCosto(double costo);
+        public void AgregarImagen(string direccionImg)
+        {
+            imagenes.Add(direccionImg);
+        }
+        public string ObtenerImagen(int i)
+        {
+            return imagenes[i];
+        }
+        public int CantidadImagenes
+        {
+            get { return imagenes.Count; }
+        }
     }
 }

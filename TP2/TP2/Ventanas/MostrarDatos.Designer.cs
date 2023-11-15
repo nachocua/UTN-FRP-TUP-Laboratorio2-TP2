@@ -68,7 +68,7 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
-            this.dgView.Location = new System.Drawing.Point(155, 12);
+            this.dgView.Location = new System.Drawing.Point(156, 12);
             this.dgView.Name = "dgView";
             this.dgView.ReadOnly = true;
             this.dgView.Size = new System.Drawing.Size(695, 327);
@@ -273,7 +273,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(851, 376);
+            this.ClientSize = new System.Drawing.Size(863, 376);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnBuscar);

@@ -169,6 +169,7 @@ namespace TP2
                                     triples = Convert.ToInt32(ventanaPropiedad.numUDTriple.Value);
                                 unHotel.ModificarDatos(otroHotel.Nombre, otroHotel.Ciudad, otroHotel.Estrella, simples, dobles, triples);
                                 unHotel.ModificarServicios(nuevaPropiedad.Servicios.ToArray());
+                                unHotel.ModificarImagenes(ventanaPropiedad.ObtenerImagenes());
                             }
                             else
                             {
@@ -176,11 +177,12 @@ namespace TP2
                                 Casa otraCasa = nuevaPropiedad as Casa;
                                 unaCasa.ModificarDatos(otraCasa.Nombre,otraCasa.Ciudad,otraCasa.Plazas,otraCasa.Propietario);
                                 unaCasa.ModificarServicios(nuevaPropiedad.Servicios.ToArray());
+                                unaCasa.ModificarImagenes(ventanaPropiedad.ObtenerImagenes());
                             }
                         }
                         catch
                         {
-
+                            MessageBox.Show("Algo fallo.");
                         }
                     }
                     ventanaPropiedad.Dispose();
@@ -243,8 +245,10 @@ namespace TP2
             if (propiedadSeleccionada != null)
             {
                 Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
-                MostrarPropiedad(unaPropiedad);
-
+                //MostrarPropiedad(unaPropiedad);
+                FormImg ventanaImagen = new FormImg(unaPropiedad);
+                ventanaImagen.ShowDialog();
+                ventanaImagen.Dispose();
             }
         }
     }
