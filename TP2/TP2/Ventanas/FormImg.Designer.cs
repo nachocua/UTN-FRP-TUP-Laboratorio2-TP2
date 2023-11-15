@@ -32,6 +32,7 @@
             this.btnDerecha = new System.Windows.Forms.Button();
             this.btnIzquierda = new System.Windows.Forms.Button();
             this.labCantImagenes = new System.Windows.Forms.Label();
+            this.labIndice = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,11 +75,21 @@
             this.labCantImagenes.TabIndex = 3;
             this.labCantImagenes.Text = "-";
             // 
+            // labIndice
+            // 
+            this.labIndice.AutoSize = true;
+            this.labIndice.Location = new System.Drawing.Point(75, 374);
+            this.labIndice.Name = "labIndice";
+            this.labIndice.Size = new System.Drawing.Size(10, 13);
+            this.labIndice.TabIndex = 4;
+            this.labIndice.Text = "-";
+            // 
             // FormImg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(871, 391);
+            this.Controls.Add(this.labIndice);
             this.Controls.Add(this.labCantImagenes);
             this.Controls.Add(this.btnIzquierda);
             this.Controls.Add(this.btnDerecha);
@@ -97,5 +108,6 @@
         private System.Windows.Forms.Button btnDerecha;
         private System.Windows.Forms.Button btnIzquierda;
         private System.Windows.Forms.Label labCantImagenes;
+        private System.Windows.Forms.Label labIndice;
     }
 }

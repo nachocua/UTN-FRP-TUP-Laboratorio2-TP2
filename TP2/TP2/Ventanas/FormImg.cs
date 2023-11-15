@@ -20,28 +20,16 @@ namespace TP2
             this.unaPropiedad = unaPropiedad;
             btnIzquierda.Enabled = false;
             labCantImagenes.Text = "Cantidad imagenes: " + this.unaPropiedad.CantidadImagenes;
-            if (this.unaPropiedad.CantidadImagenes > 0)
-            {
-                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                pictureBox.Image = Image.FromFile(this.unaPropiedad.ObtenerImagen(i++));
-                MessageBox.Show(this.unaPropiedad.ObtenerImagen(i++));
-                if (this.unaPropiedad.CantidadImagenes == 1) // Si es solo una img
-                {
-                    btnDerecha.Enabled = false;
-                }
-            }
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            MostrarImagen(i);
         }
 
         private void btnIzquierda_Click(object sender, EventArgs e)
         {
             try
             {
-                pictureBox.Image = Image.FromFile(unaPropiedad.ObtenerImagen(--i));
-                if (i == 0)
-                {
-                    btnIzquierda.Enabled = false;
-                    btnDerecha.Enabled = true;
-                }
+                i = (i - 1 + unaPropiedad.CantidadImagenes) % unaPropiedad.CantidadImagenes;
+                MostrarImagen(i);
             }
             catch (Exception ex)
             {
@@ -53,21 +41,24 @@ namespace TP2
         {
             try
             {
-                if (unaPropiedad.CantidadImagenes == i) // Si llego al final
-                {
-                    btnDerecha.Enabled = false;
-                }
-                else
-                {
-                    pictureBox.Image = Image.FromFile(unaPropiedad.ObtenerImagen(i++));
-                    btnIzquierda.Enabled = true;
-                }
+                i = (i + 1) % unaPropiedad.CantidadImagenes;
+                MostrarImagen(i);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
 
+        }
+        private void MostrarImagen(int idx)
+        {
+            if (idx < unaPropiedad.CantidadImagenes && idx >= 0)
+            {
+                pictureBox.Image = Image.FromFile(this.unaPropiedad.ObtenerImagen(i));
+                labIndice.Text = "Imagen Nro: " + idx;
+            }
+            btnDerecha.Enabled = idx < unaPropiedad.CantidadImagenes - 1;
+            btnIzquierda.Enabled = idx > 0;
         }
     }
 }
