@@ -58,7 +58,7 @@
             this.tbDni = new System.Windows.Forms.TextBox();
             this.DNI = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lbDatosCliente = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -82,6 +82,7 @@
             this.btnBuscar.TabIndex = 30;
             this.btnBuscar.Text = "Buscar disponibles";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click_1);
             // 
             // gbTipoPropiedad
             // 
@@ -329,6 +330,7 @@
             this.btnBuscarDni.TabIndex = 31;
             this.btnBuscarDni.Text = "Buscar";
             this.btnBuscarDni.UseVisualStyleBackColor = true;
+            this.btnBuscarDni.Click += new System.EventHandler(this.btnBuscarDni_Click);
             // 
             // tbDni
             // 
@@ -349,7 +351,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Controls.Add(this.listBox1);
+            this.groupBox1.Controls.Add(this.lbDatosCliente);
             this.groupBox1.Location = new System.Drawing.Point(6, 138);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(217, 110);
@@ -357,18 +359,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Cliente";
             // 
-            // listBox1
+            // lbDatosCliente
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Items.AddRange(new object[] {
+            this.lbDatosCliente.Enabled = false;
+            this.lbDatosCliente.FormattingEnabled = true;
+            this.lbDatosCliente.Items.AddRange(new object[] {
             "Dni: ",
             "Nombre: ",
             "Apellido: ",
             "Teléfono: "});
-            this.listBox1.Location = new System.Drawing.Point(6, 24);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(205, 69);
-            this.listBox1.TabIndex = 2;
+            this.lbDatosCliente.Location = new System.Drawing.Point(6, 24);
+            this.lbDatosCliente.Name = "lbDatosCliente";
+            this.lbDatosCliente.Size = new System.Drawing.Size(205, 69);
+            this.lbDatosCliente.TabIndex = 2;
             // 
             // groupBox2
             // 
@@ -404,6 +407,7 @@
             this.button1.TabIndex = 31;
             this.button1.Text = "Ver Imagenes";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnReservar
             // 
@@ -473,7 +477,7 @@
         private System.Windows.Forms.TextBox tbDni;
         private System.Windows.Forms.Label DNI;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lbDatosCliente;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button1;

@@ -32,8 +32,10 @@ namespace TP2
         public override string ToString()
         {
             int[] arr = IdReservas.ToArray();
-            string datosCliente = Dni.ToString() + ";" + Telefono.ToString() + ";" +
-                Nombres + ";" + Apellidos + ";";
+            string datosCliente = Dni.ToString() + ";" +
+                Telefono.ToString() + ";" +
+                Nombres + ";" +
+                Apellidos + ";";
             if (arr.Length > 0)
             {
                 datosCliente += arr[0];

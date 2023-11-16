@@ -221,20 +221,11 @@ namespace TP2
             for (int i = 0; i < unSistema.CantidadPropiedades; i++)
             {
                 propiedades.Add(unSistema.GetPropiedad(i));
-
             }
             return propiedades;
         }
         private void button1_Click(object sender, EventArgs e)
-        {/*
-            if (propiedadSeleccionada != null)
-            {
-                Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
-                FormImg ventanaImagen = new FormImg(unaPropiedad);
-                ventanaImagen.ShowDialog();
-                ventanaImagen.Dispose();
-            }
-            */
+        {
             if (propiedadSeleccionada != null)
             {
                 FormImg ventanaImagen = new FormImg(Convert.ToInt32(propiedadSeleccionada[0]));

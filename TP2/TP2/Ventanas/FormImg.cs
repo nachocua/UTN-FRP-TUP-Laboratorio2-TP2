@@ -26,12 +26,15 @@ namespace TP2
                 if (nombres.Length > 0)
                 {
                     cantidadImagenes = nombres.Length;
+                    if(nombres.Length > 1) 
+                    {
+                        btnDerecha.Enabled = true;
+                    }
+                    labCantImagenes.Text = "Cantidad imagenes: " + cantidadImagenes;
+                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    MostrarImagen(i);
                 }
             }
-            btnIzquierda.Enabled = false;
-            labCantImagenes.Text = "Cantidad imagenes: " + cantidadImagenes;
-            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            MostrarImagen(i);
         }
         private void MostrarImagen(int idx)
         {

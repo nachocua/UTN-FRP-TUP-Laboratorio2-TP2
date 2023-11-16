@@ -58,11 +58,8 @@ namespace TP2
         }
         private void btnAlquiler_Click(object sender, EventArgs e)
         {
-            Alquiler ventanaAlquiler = new Alquiler();
-            if (ventanaAlquiler.ShowDialog() == DialogResult.OK)
-            {
-
-            }
+            Alquiler ventanaAlquiler = new Alquiler(elSistema);
+            ventanaAlquiler.ShowDialog();
             ventanaAlquiler.Dispose();
         }
         private void btnPropiedad_Click(object sender, EventArgs e)

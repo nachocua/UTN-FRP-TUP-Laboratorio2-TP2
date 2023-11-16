@@ -125,11 +125,6 @@ namespace TP2
         }
         public Propiedad GetPropiedad(int i)
         {
-            StringBuilder datosAExportar = new StringBuilder();
-            foreach (Propiedad unaPropiedad in propiedades)
-            {
-
-            }
             return propiedades[i];
         }
         public int BuscarCliente(Cliente unCliente)
@@ -165,6 +160,10 @@ namespace TP2
         public List<Propiedad> GetPropiedades() // Posible funcion a borrar
         {
             return propiedades;
+        }
+        public string[] InfoCliente(int indx)
+        {
+            return clientes[indx].ToString().Split(';');
         }
     }
 }
