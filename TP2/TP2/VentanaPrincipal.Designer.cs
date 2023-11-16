@@ -90,7 +90,7 @@
             this.ayudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(588, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(588, 28);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -100,21 +100,21 @@
             this.ayudaToolStripMenuItem1,
             this.acercaDeToolStripMenuItem});
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(65, 26);
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
             // 
             // ayudaToolStripMenuItem1
             // 
             this.ayudaToolStripMenuItem1.Name = "ayudaToolStripMenuItem1";
             this.ayudaToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.ayudaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.ayudaToolStripMenuItem1.Size = new System.Drawing.Size(190, 26);
             this.ayudaToolStripMenuItem1.Text = "Ayuda";
             // 
             // acercaDeToolStripMenuItem
             // 
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
             this.acercaDeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F12;
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
             this.acercaDeToolStripMenuItem.Text = "Acerca de";
             // 
             // VentanaPrincipal

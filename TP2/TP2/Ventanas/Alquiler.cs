@@ -20,6 +20,10 @@ namespace TP2
         {
             InitializeComponent(); elSistema = unSistema;
             propiedades = ExportarPropiedades(elSistema);
+            dtFechaInicio.MinDate = DateTime.Now;
+            dtFechaInicio.MaxDate = DateTime.Now.AddMonths(3);
+            dtFechaHasta.MinDate = DateTime.Now;
+            dtFechaHasta.MaxDate = DateTime.Now.AddMonths(3);
         }
         private List<string> CargarServicios()
         {
@@ -94,75 +98,97 @@ namespace TP2
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             dgView.Rows.Clear();
-            Propiedad unaPropiedad;
-            List<string> serviciosSeleccionados = CargarServicios();
-            List<string> tiposSeleccionados = CargarTipoSeleccionado();
-            List<string[]> propsPostFiltro = new List<string[]>();
-            Stack<int> reservas;
-            string[] datosReservas;
-            int indx;
-            DateTime fechaDesde;
-            int cantidadDias;
-            foreach (Propiedad propiedad in propiedades)
+            if (dtFechaHasta.Value.CompareTo(dtFechaInicio.Value)>=0)
             {
-                bool propiedadTieneServicios = true;
-                foreach (string servicioSeleccionado in serviciosSeleccionados)
+                Propiedad unaPropiedad;
+                List<string> serviciosSeleccionados = CargarServicios();
+                List<string> tiposSeleccionados = CargarTipoSeleccionado();
+                List<string[]> propsPostFiltro = new List<string[]>();
+                Stack<int> reservas;
+                string[] datosReservas;
+                int indx;
+                DateTime fechaDesde;
+                DateTime fechaHasta;
+                bool state;
+                foreach (Propiedad propiedad in propiedades)
                 {
-                    if (!propiedad.Servicios.Contains(servicioSeleccionado))
+                    bool propiedadTieneServicios = true;
+                    foreach (string servicioSeleccionado in serviciosSeleccionados)
                     {
-                        propiedadTieneServicios = false;
-                        break;
-                    }
-                }
-                if (propiedadTieneServicios)
-                {
-                    if (tiposSeleccionados.Count > 0)
-                    {
-                        if (tiposSeleccionados.Contains("Hotel"))
+                        if (!propiedad.Servicios.Contains(servicioSeleccionado))
                         {
-                            if (propiedad is Hotel)
-                            {
-                                propsPostFiltro.Add(propiedad.getData());
-                            }
+                            propiedadTieneServicios = false;
+                            break;
                         }
-                        else
+                    }
+                    if (propiedadTieneServicios)
+                    {
+                        if (tiposSeleccionados.Count > 0)
                         {
-                            if (tiposSeleccionados.Contains("Casa Fin de Semana"))
+                            if (tiposSeleccionados.Contains("Hotel"))
                             {
-                                if (propiedad is CasaFinSemana)
+                                if (propiedad is Hotel)
                                 {
                                     propsPostFiltro.Add(propiedad.getData());
                                 }
                             }
                             else
                             {
-                                propsPostFiltro.Add(propiedad.getData());
+                                if (tiposSeleccionados.Contains("Casa Fin de Semana"))
+                                {
+                                    if (propiedad is CasaFinSemana)
+                                    {
+                                        propsPostFiltro.Add(propiedad.getData());
+                                    }
+                                }
+                                else
+                                {
+                                    propsPostFiltro.Add(propiedad.getData());
+                                }
+                            }
+                        }
+                        else
+                        {
+                            propsPostFiltro.Add(propiedad.getData());
+                        }
+                    }
+                }
+                foreach (string[] datos in propsPostFiltro)
+                {
+                    state = true;
+                    unaPropiedad = elSistema.GetPropiedad(Convert.ToInt32(datos[0]));
+                    reservas = unaPropiedad.getReservas();
+                    if (reservas != null)
+                    {
+                        foreach (int unaReserva in reservas)
+                        {
+                            if (state)
+                            {
+                                Reserva reservaABuscar = new Reserva(unaReserva, 0, 0, DateTime.Now, 0, 0);
+                                indx = elSistema.BuscarReserva(reservaABuscar);
+                                if (indx != -1)
+                                {
+                                    datosReservas = elSistema.InfoReserva(indx);
+                                    string[] fecha = datosReservas[4].Split('/');
+                                    fechaDesde = new DateTime(Convert.ToInt32(fecha[0]), Convert.ToInt32(fecha[1]), Convert.ToInt32(fecha[2]));
+                                    fechaHasta = fechaDesde + TimeSpan.FromDays(Convert.ToInt32(datosReservas[5]));
+                                    if ((dtFechaHasta.Value > fechaDesde) && (dtFechaInicio.Value < fechaHasta))
+                                    {
+                                        state = false;
+                                    }
+                                }
                             }
                         }
                     }
-                    else
+                    if (state)
                     {
-                        propsPostFiltro.Add(propiedad.getData());
+                        dgView.Rows.Add(unaPropiedad.getData());
                     }
                 }
             }
-            foreach (string[] datos in propsPostFiltro)
+            else
             {
-                unaPropiedad = elSistema.GetPropiedad(Convert.ToInt32(datos[0]));
-                reservas = unaPropiedad.getReservas();
-                foreach (int unaReserva in reservas)
-                {
-                    Reserva reservaABuscar = new Reserva(unaReserva, 0, 0, DateTime.Now, 0, 0);
-                    indx = elSistema.BuscarReserva(reservaABuscar);
-                    if (indx != -1)
-                    {
-                        datosReservas = elSistema.InfoReserva(indx);
-                        string[] fecha = datosReservas[4].Split('/');
-                        fechaDesde = new DateTime(Convert.ToInt32(fecha[0]), Convert.ToInt32(fecha[1]), Convert.ToInt32(fecha[2]));
-                        cantidadDias = Convert.ToInt32(datosReservas[5]);
-                    }
-                }
-                dgView.Rows.Add(datos);
+                MessageBox.Show("La fecha de ingreso debe ser anterior a la fecha de partida");
             }
         }
         private void btnVerImagenes_Click(object sender, EventArgs e)
@@ -198,6 +224,10 @@ namespace TP2
                 data.Add(row.Cells[i].Value.ToString());
             }
             return data.ToArray();
+        }
+        private void btnReservar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
