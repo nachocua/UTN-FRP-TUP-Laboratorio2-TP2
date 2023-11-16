@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnReservar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.gbTipoPropiedad = new System.Windows.Forms.GroupBox();
             this.cbCasaFinde = new System.Windows.Forms.CheckBox();
@@ -50,36 +49,45 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtFechaInicio = new System.Windows.Forms.DateTimePicker();
+            this.gbFechaReservA = new System.Windows.Forms.GroupBox();
+            this.lbFechaDesde = new System.Windows.Forms.Label();
+            this.lbFechaHasta = new System.Windows.Forms.Label();
+            this.dtFechaHasta = new System.Windows.Forms.DateTimePicker();
+            this.gbCliente = new System.Windows.Forms.GroupBox();
+            this.DNI = new System.Windows.Forms.Label();
+            this.tbDni = new System.Windows.Forms.TextBox();
+            this.btnBuscarDni = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.gbTipoPropiedad.SuspendLayout();
             this.gbServicios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).BeginInit();
+            this.gbFechaReservA.SuspendLayout();
+            this.gbCliente.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btnReservar
             // 
-            this.button1.Location = new System.Drawing.Point(13, 345);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 23);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "Ver Imagenes";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.Location = new System.Drawing.Point(12, 309);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(137, 30);
-            this.btnModificar.TabIndex = 29;
-            this.btnModificar.Text = "Modificar Propiedad";
-            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnReservar.Location = new System.Drawing.Point(37, 330);
+            this.btnReservar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReservar.Name = "btnReservar";
+            this.btnReservar.Size = new System.Drawing.Size(139, 30);
+            this.btnReservar.TabIndex = 29;
+            this.btnReservar.Text = "Modificar Propiedad";
+            this.btnReservar.UseVisualStyleBackColor = true;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(12, 275);
+            this.btnBuscar.Location = new System.Drawing.Point(37, 291);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(137, 30);
+            this.btnBuscar.Size = new System.Drawing.Size(139, 30);
             this.btnBuscar.TabIndex = 30;
             this.btnBuscar.Text = "Buscar disponibles";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -89,9 +97,9 @@
             this.gbTipoPropiedad.Controls.Add(this.cbCasaFinde);
             this.gbTipoPropiedad.Controls.Add(this.cbHotel);
             this.gbTipoPropiedad.Controls.Add(this.cbCasa);
-            this.gbTipoPropiedad.Location = new System.Drawing.Point(12, 12);
+            this.gbTipoPropiedad.Location = new System.Drawing.Point(6, 19);
             this.gbTipoPropiedad.Name = "gbTipoPropiedad";
-            this.gbTipoPropiedad.Size = new System.Drawing.Size(137, 94);
+            this.gbTipoPropiedad.Size = new System.Drawing.Size(214, 94);
             this.gbTipoPropiedad.TabIndex = 28;
             this.gbTipoPropiedad.TabStop = false;
             this.gbTipoPropiedad.Text = "Tipo de propiedad";
@@ -134,9 +142,9 @@
             this.gbServicios.Controls.Add(this.checkBox10);
             this.gbServicios.Controls.Add(this.checkBox11);
             this.gbServicios.Controls.Add(this.checkBox12);
-            this.gbServicios.Location = new System.Drawing.Point(10, 112);
+            this.gbServicios.Location = new System.Drawing.Point(4, 119);
             this.gbServicios.Name = "gbServicios";
-            this.gbServicios.Size = new System.Drawing.Size(139, 158);
+            this.gbServicios.Size = new System.Drawing.Size(216, 158);
             this.gbServicios.TabIndex = 27;
             this.gbServicios.TabStop = false;
             this.gbServicios.Text = "Servicios";
@@ -214,10 +222,10 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
-            this.dgView.Location = new System.Drawing.Point(156, 12);
+            this.dgView.Location = new System.Drawing.Point(490, 12);
             this.dgView.Name = "dgView";
             this.dgView.ReadOnly = true;
-            this.dgView.Size = new System.Drawing.Size(695, 356);
+            this.dgView.Size = new System.Drawing.Size(691, 380);
             this.dgView.TabIndex = 26;
             // 
             // IDPropiedad
@@ -263,16 +271,148 @@
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
+            // dtFechaInicio
+            // 
+            this.dtFechaInicio.Location = new System.Drawing.Point(8, 36);
+            this.dtFechaInicio.Name = "dtFechaInicio";
+            this.dtFechaInicio.Size = new System.Drawing.Size(200, 20);
+            this.dtFechaInicio.TabIndex = 32;
+            // 
+            // gbFechaReservA
+            // 
+            this.gbFechaReservA.Controls.Add(this.lbFechaHasta);
+            this.gbFechaReservA.Controls.Add(this.lbFechaDesde);
+            this.gbFechaReservA.Controls.Add(this.dtFechaHasta);
+            this.gbFechaReservA.Controls.Add(this.dtFechaInicio);
+            this.gbFechaReservA.Location = new System.Drawing.Point(12, 277);
+            this.gbFechaReservA.Name = "gbFechaReservA";
+            this.gbFechaReservA.Size = new System.Drawing.Size(216, 115);
+            this.gbFechaReservA.TabIndex = 33;
+            this.gbFechaReservA.TabStop = false;
+            this.gbFechaReservA.Text = "Tipo de propiedad";
+            // 
+            // lbFechaDesde
+            // 
+            this.lbFechaDesde.AutoSize = true;
+            this.lbFechaDesde.Location = new System.Drawing.Point(8, 20);
+            this.lbFechaDesde.Name = "lbFechaDesde";
+            this.lbFechaDesde.Size = new System.Drawing.Size(69, 13);
+            this.lbFechaDesde.TabIndex = 0;
+            this.lbFechaDesde.Text = "Fecha desde";
+            // 
+            // lbFechaHasta
+            // 
+            this.lbFechaHasta.AutoSize = true;
+            this.lbFechaHasta.Location = new System.Drawing.Point(8, 65);
+            this.lbFechaHasta.Name = "lbFechaHasta";
+            this.lbFechaHasta.Size = new System.Drawing.Size(66, 13);
+            this.lbFechaHasta.TabIndex = 34;
+            this.lbFechaHasta.Text = "Fecha hasta";
+            // 
+            // dtFechaHasta
+            // 
+            this.dtFechaHasta.Location = new System.Drawing.Point(8, 81);
+            this.dtFechaHasta.Name = "dtFechaHasta";
+            this.dtFechaHasta.Size = new System.Drawing.Size(200, 20);
+            this.dtFechaHasta.TabIndex = 35;
+            // 
+            // gbCliente
+            // 
+            this.gbCliente.BackColor = System.Drawing.SystemColors.Control;
+            this.gbCliente.Controls.Add(this.btnBuscarDni);
+            this.gbCliente.Controls.Add(this.tbDni);
+            this.gbCliente.Controls.Add(this.DNI);
+            this.gbCliente.Location = new System.Drawing.Point(6, 19);
+            this.gbCliente.Name = "gbCliente";
+            this.gbCliente.Size = new System.Drawing.Size(217, 113);
+            this.gbCliente.TabIndex = 34;
+            this.gbCliente.TabStop = false;
+            this.gbCliente.Text = "Buscar Cliente";
+            // 
+            // DNI
+            // 
+            this.DNI.AutoSize = true;
+            this.DNI.Location = new System.Drawing.Point(16, 32);
+            this.DNI.Name = "DNI";
+            this.DNI.Size = new System.Drawing.Size(57, 13);
+            this.DNI.TabIndex = 1;
+            this.DNI.Text = "Dni cliente";
+            // 
+            // tbDni
+            // 
+            this.tbDni.Location = new System.Drawing.Point(79, 29);
+            this.tbDni.Name = "tbDni";
+            this.tbDni.Size = new System.Drawing.Size(100, 20);
+            this.tbDni.TabIndex = 2;
+            // 
+            // btnBuscarDni
+            // 
+            this.btnBuscarDni.Location = new System.Drawing.Point(30, 64);
+            this.btnBuscarDni.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBuscarDni.Name = "btnBuscarDni";
+            this.btnBuscarDni.Size = new System.Drawing.Size(139, 30);
+            this.btnBuscarDni.TabIndex = 31;
+            this.btnBuscarDni.Text = "Buscar";
+            this.btnBuscarDni.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.Controls.Add(this.listBox1);
+            this.groupBox1.Location = new System.Drawing.Point(6, 138);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(217, 110);
+            this.groupBox1.TabIndex = 35;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Datos Cliente";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Items.AddRange(new object[] {
+            "Dni: ",
+            "Nombre: ",
+            "Apellido: ",
+            "Teléfono: "});
+            this.listBox1.Location = new System.Drawing.Point(6, 24);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(205, 69);
+            this.listBox1.TabIndex = 2;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.Controls.Add(this.groupBox1);
+            this.groupBox2.Controls.Add(this.gbCliente);
+            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(233, 259);
+            this.groupBox2.TabIndex = 36;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Cliente";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox3.Controls.Add(this.gbTipoPropiedad);
+            this.groupBox3.Controls.Add(this.gbServicios);
+            this.groupBox3.Controls.Add(this.btnBuscar);
+            this.groupBox3.Controls.Add(this.btnReservar);
+            this.groupBox3.Location = new System.Drawing.Point(251, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(233, 380);
+            this.groupBox3.TabIndex = 37;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Cliente";
+            // 
             // Alquiler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1129, 637);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnModificar);
-            this.Controls.Add(this.btnBuscar);
-            this.Controls.Add(this.gbTipoPropiedad);
-            this.Controls.Add(this.gbServicios);
+            this.ClientSize = new System.Drawing.Size(1193, 409);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.gbFechaReservA);
             this.Controls.Add(this.dgView);
             this.Name = "Alquiler";
             this.Text = "Alquiler";
@@ -281,14 +421,19 @@
             this.gbServicios.ResumeLayout(false);
             this.gbServicios.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).EndInit();
+            this.gbFechaReservA.ResumeLayout(false);
+            this.gbFechaReservA.PerformLayout();
+            this.gbCliente.ResumeLayout(false);
+            this.gbCliente.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnReservar;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.GroupBox gbTipoPropiedad;
         private System.Windows.Forms.CheckBox cbCasaFinde;
@@ -309,5 +454,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DateTimePicker dtFechaInicio;
+        private System.Windows.Forms.GroupBox gbFechaReservA;
+        private System.Windows.Forms.Label lbFechaHasta;
+        private System.Windows.Forms.Label lbFechaDesde;
+        private System.Windows.Forms.DateTimePicker dtFechaHasta;
+        private System.Windows.Forms.GroupBox gbCliente;
+        private System.Windows.Forms.Button btnBuscarDni;
+        private System.Windows.Forms.TextBox tbDni;
+        private System.Windows.Forms.Label DNI;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }
