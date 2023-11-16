@@ -28,18 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
-            this.dgView = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gbDías = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.nudCantidadDias = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.gbTipoPropiedad = new System.Windows.Forms.GroupBox();
+            this.cbCasaFinde = new System.Windows.Forms.CheckBox();
+            this.cbHotel = new System.Windows.Forms.CheckBox();
+            this.cbCasa = new System.Windows.Forms.CheckBox();
             this.gbServicios = new System.Windows.Forms.GroupBox();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
@@ -47,137 +42,89 @@
             this.checkBox10 = new System.Windows.Forms.CheckBox();
             this.checkBox11 = new System.Windows.Forms.CheckBox();
             this.checkBox12 = new System.Windows.Forms.CheckBox();
-            this.gbTipoPropiedad = new System.Windows.Forms.GroupBox();
-            this.rbCasaFinde = new System.Windows.Forms.RadioButton();
-            this.rbCasa = new System.Windows.Forms.RadioButton();
-            this.rbHotel = new System.Windows.Forms.RadioButton();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnInfo = new System.Windows.Forms.Button();
-            this.btnReservar = new System.Windows.Forms.Button();
-            this.tbUbicación = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgView)).BeginInit();
-            this.gbDías.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCantidadDias)).BeginInit();
-            this.gbServicios.SuspendLayout();
+            this.dgView = new System.Windows.Forms.DataGridView();
+            this.IDPropiedad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbTipoPropiedad.SuspendLayout();
+            this.gbServicios.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgView)).BeginInit();
             this.SuspendLayout();
             // 
-            // dtpFechaDesde
+            // button1
             // 
-            this.dtpFechaDesde.Location = new System.Drawing.Point(83, 17);
-            this.dtpFechaDesde.Name = "dtpFechaDesde";
-            this.dtpFechaDesde.Size = new System.Drawing.Size(214, 20);
-            this.dtpFechaDesde.TabIndex = 0;
+            this.button1.Location = new System.Drawing.Point(13, 345);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(136, 23);
+            this.button1.TabIndex = 31;
+            this.button1.Text = "Ver Imagenes";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // dgView
+            // btnModificar
             // 
-            this.dgView.AllowUserToAddRows = false;
-            this.dgView.AllowUserToDeleteRows = false;
-            this.dgView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column6,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5});
-            this.dgView.Location = new System.Drawing.Point(12, 187);
-            this.dgView.Name = "dgView";
-            this.dgView.ReadOnly = true;
-            this.dgView.Size = new System.Drawing.Size(646, 162);
-            this.dgView.TabIndex = 4;
+            this.btnModificar.Location = new System.Drawing.Point(12, 309);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(137, 30);
+            this.btnModificar.TabIndex = 29;
+            this.btnModificar.Text = "Modificar Propiedad";
+            this.btnModificar.UseVisualStyleBackColor = true;
             // 
-            // Column1
+            // btnBuscar
             // 
-            this.Column1.HeaderText = "Nombre";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.btnBuscar.Location = new System.Drawing.Point(12, 275);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(137, 30);
+            this.btnBuscar.TabIndex = 30;
+            this.btnBuscar.Text = "Buscar disponibles";
+            this.btnBuscar.UseVisualStyleBackColor = true;
             // 
-            // Column6
+            // gbTipoPropiedad
             // 
-            this.Column6.HeaderText = "Tipo";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
+            this.gbTipoPropiedad.Controls.Add(this.cbCasaFinde);
+            this.gbTipoPropiedad.Controls.Add(this.cbHotel);
+            this.gbTipoPropiedad.Controls.Add(this.cbCasa);
+            this.gbTipoPropiedad.Location = new System.Drawing.Point(12, 12);
+            this.gbTipoPropiedad.Name = "gbTipoPropiedad";
+            this.gbTipoPropiedad.Size = new System.Drawing.Size(137, 94);
+            this.gbTipoPropiedad.TabIndex = 28;
+            this.gbTipoPropiedad.TabStop = false;
+            this.gbTipoPropiedad.Text = "Tipo de propiedad";
             // 
-            // Column2
+            // cbCasaFinde
             // 
-            this.Column2.HeaderText = "Ubicacion";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
+            this.cbCasaFinde.AutoSize = true;
+            this.cbCasaFinde.Location = new System.Drawing.Point(6, 65);
+            this.cbCasaFinde.Name = "cbCasaFinde";
+            this.cbCasaFinde.Size = new System.Drawing.Size(124, 17);
+            this.cbCasaFinde.TabIndex = 2;
+            this.cbCasaFinde.Text = "Casa Fin de Semana";
+            this.cbCasaFinde.UseVisualStyleBackColor = true;
             // 
-            // Column3
+            // cbHotel
             // 
-            this.Column3.HeaderText = "Propietario";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
+            this.cbHotel.AutoSize = true;
+            this.cbHotel.Location = new System.Drawing.Point(6, 19);
+            this.cbHotel.Name = "cbHotel";
+            this.cbHotel.Size = new System.Drawing.Size(51, 17);
+            this.cbHotel.TabIndex = 0;
+            this.cbHotel.Text = "Hotel";
+            this.cbHotel.UseVisualStyleBackColor = true;
             // 
-            // Column4
+            // cbCasa
             // 
-            this.Column4.HeaderText = "Servicios";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Capacidad";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // gbDías
-            // 
-            this.gbDías.Controls.Add(this.label1);
-            this.gbDías.Controls.Add(this.tbUbicación);
-            this.gbDías.Controls.Add(this.label8);
-            this.gbDías.Controls.Add(this.nudCantidadDias);
-            this.gbDías.Controls.Add(this.label9);
-            this.gbDías.Controls.Add(this.dtpFechaDesde);
-            this.gbDías.Location = new System.Drawing.Point(12, 12);
-            this.gbDías.Name = "gbDías";
-            this.gbDías.Size = new System.Drawing.Size(303, 89);
-            this.gbDías.TabIndex = 19;
-            this.gbDías.TabStop = false;
-            this.gbDías.Text = "Cuando y Donde";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 22);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 13);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "Fecha desde";
-            // 
-            // nudCantidadDias
-            // 
-            this.nudCantidadDias.Location = new System.Drawing.Point(85, 50);
-            this.nudCantidadDias.Maximum = new decimal(new int[] {
-            300,
-            0,
-            0,
-            0});
-            this.nudCantidadDias.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudCantidadDias.Name = "nudCantidadDias";
-            this.nudCantidadDias.Size = new System.Drawing.Size(41, 20);
-            this.nudCantidadDias.TabIndex = 19;
-            this.nudCantidadDias.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 52);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(73, 13);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Cantidad días";
+            this.cbCasa.AutoSize = true;
+            this.cbCasa.Location = new System.Drawing.Point(6, 42);
+            this.cbCasa.Name = "cbCasa";
+            this.cbCasa.Size = new System.Drawing.Size(50, 17);
+            this.cbCasa.TabIndex = 1;
+            this.cbCasa.Text = "Casa";
+            this.cbCasa.UseVisualStyleBackColor = true;
             // 
             // gbServicios
             // 
@@ -187,10 +134,10 @@
             this.gbServicios.Controls.Add(this.checkBox10);
             this.gbServicios.Controls.Add(this.checkBox11);
             this.gbServicios.Controls.Add(this.checkBox12);
-            this.gbServicios.Location = new System.Drawing.Point(355, 12);
+            this.gbServicios.Location = new System.Drawing.Point(10, 112);
             this.gbServicios.Name = "gbServicios";
             this.gbServicios.Size = new System.Drawing.Size(139, 158);
-            this.gbServicios.TabIndex = 20;
+            this.gbServicios.TabIndex = 27;
             this.gbServicios.TabStop = false;
             this.gbServicios.Text = "Servicios";
             // 
@@ -254,139 +201,99 @@
             this.checkBox12.Text = "Servicio de Limpieza";
             this.checkBox12.UseVisualStyleBackColor = true;
             // 
-            // gbTipoPropiedad
+            // dgView
             // 
-            this.gbTipoPropiedad.Controls.Add(this.rbCasaFinde);
-            this.gbTipoPropiedad.Controls.Add(this.rbCasa);
-            this.gbTipoPropiedad.Controls.Add(this.rbHotel);
-            this.gbTipoPropiedad.Location = new System.Drawing.Point(12, 107);
-            this.gbTipoPropiedad.Name = "gbTipoPropiedad";
-            this.gbTipoPropiedad.Size = new System.Drawing.Size(303, 63);
-            this.gbTipoPropiedad.TabIndex = 21;
-            this.gbTipoPropiedad.TabStop = false;
-            this.gbTipoPropiedad.Text = "Tipo de propiedad";
+            this.dgView.AllowUserToAddRows = false;
+            this.dgView.AllowUserToDeleteRows = false;
+            this.dgView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDPropiedad,
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
+            this.dgView.Location = new System.Drawing.Point(156, 12);
+            this.dgView.Name = "dgView";
+            this.dgView.ReadOnly = true;
+            this.dgView.Size = new System.Drawing.Size(695, 356);
+            this.dgView.TabIndex = 26;
             // 
-            // rbCasaFinde
+            // IDPropiedad
             // 
-            this.rbCasaFinde.AutoSize = true;
-            this.rbCasaFinde.Checked = true;
-            this.rbCasaFinde.Location = new System.Drawing.Point(146, 30);
-            this.rbCasaFinde.Name = "rbCasaFinde";
-            this.rbCasaFinde.Size = new System.Drawing.Size(118, 17);
-            this.rbCasaFinde.TabIndex = 23;
-            this.rbCasaFinde.TabStop = true;
-            this.rbCasaFinde.Text = "Casa fin de semana";
-            this.rbCasaFinde.UseVisualStyleBackColor = true;
+            this.IDPropiedad.HeaderText = "ID";
+            this.IDPropiedad.Name = "IDPropiedad";
+            this.IDPropiedad.ReadOnly = true;
+            this.IDPropiedad.Width = 50;
             // 
-            // rbCasa
+            // dataGridViewTextBoxColumn1
             // 
-            this.rbCasa.AutoSize = true;
-            this.rbCasa.Location = new System.Drawing.Point(77, 30);
-            this.rbCasa.Name = "rbCasa";
-            this.rbCasa.Size = new System.Drawing.Size(49, 17);
-            this.rbCasa.TabIndex = 22;
-            this.rbCasa.Text = "Casa";
-            this.rbCasa.UseVisualStyleBackColor = true;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // rbHotel
+            // dataGridViewTextBoxColumn2
             // 
-            this.rbHotel.AutoSize = true;
-            this.rbHotel.Location = new System.Drawing.Point(9, 30);
-            this.rbHotel.Name = "rbHotel";
-            this.rbHotel.Size = new System.Drawing.Size(50, 17);
-            this.rbHotel.TabIndex = 23;
-            this.rbHotel.Text = "Hotel";
-            this.rbHotel.UseVisualStyleBackColor = true;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Tipo";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
-            // btnBuscar
+            // dataGridViewTextBoxColumn3
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(528, 19);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(113, 30);
-            this.btnBuscar.TabIndex = 22;
-            this.btnBuscar.Text = "Buscar disponibles";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.dataGridViewTextBoxColumn3.HeaderText = "Ubicacion";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
-            // btnInfo
+            // dataGridViewTextBoxColumn4
             // 
-            this.btnInfo.Location = new System.Drawing.Point(528, 70);
-            this.btnInfo.Margin = new System.Windows.Forms.Padding(2);
-            this.btnInfo.Name = "btnInfo";
-            this.btnInfo.Size = new System.Drawing.Size(113, 30);
-            this.btnInfo.TabIndex = 23;
-            this.btnInfo.Text = "Ver Información";
-            this.btnInfo.UseVisualStyleBackColor = true;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Propietario";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // btnReservar
+            // dataGridViewTextBoxColumn5
             // 
-            this.btnReservar.Location = new System.Drawing.Point(528, 124);
-            this.btnReservar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnReservar.Name = "btnReservar";
-            this.btnReservar.Size = new System.Drawing.Size(113, 30);
-            this.btnReservar.TabIndex = 24;
-            this.btnReservar.Text = "Reservar";
-            this.btnReservar.UseVisualStyleBackColor = true;
-            this.btnReservar.Click += new System.EventHandler(this.btnReservar_Click);
+            this.dataGridViewTextBoxColumn5.HeaderText = "Servicios";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
-            // tbUbicación
+            // dataGridViewTextBoxColumn6
             // 
-            this.tbUbicación.Location = new System.Drawing.Point(197, 49);
-            this.tbUbicación.Name = "tbUbicación";
-            this.tbUbicación.Size = new System.Drawing.Size(100, 20);
-            this.tbUbicación.TabIndex = 20;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(136, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Ubicación";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Capacidad";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // Alquiler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(670, 364);
-            this.Controls.Add(this.btnReservar);
-            this.Controls.Add(this.btnInfo);
+            this.ClientSize = new System.Drawing.Size(1129, 637);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.gbTipoPropiedad);
             this.Controls.Add(this.gbServicios);
-            this.Controls.Add(this.gbDías);
             this.Controls.Add(this.dgView);
             this.Name = "Alquiler";
             this.Text = "Alquiler";
-            this.Load += new System.EventHandler(this.Alquiler_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgView)).EndInit();
-            this.gbDías.ResumeLayout(false);
-            this.gbDías.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCantidadDias)).EndInit();
-            this.gbServicios.ResumeLayout(false);
-            this.gbServicios.PerformLayout();
             this.gbTipoPropiedad.ResumeLayout(false);
             this.gbTipoPropiedad.PerformLayout();
+            this.gbServicios.ResumeLayout(false);
+            this.gbServicios.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DateTimePicker dtpFechaDesde;
-        public System.Windows.Forms.DataGridView dgView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.GroupBox gbDías;
-        private System.Windows.Forms.Label label8;
-        public System.Windows.Forms.NumericUpDown nudCantidadDias;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.GroupBox gbTipoPropiedad;
+        private System.Windows.Forms.CheckBox cbCasaFinde;
+        private System.Windows.Forms.CheckBox cbHotel;
+        private System.Windows.Forms.CheckBox cbCasa;
         private System.Windows.Forms.GroupBox gbServicios;
         private System.Windows.Forms.CheckBox checkBox7;
         private System.Windows.Forms.CheckBox checkBox8;
@@ -394,14 +301,13 @@
         private System.Windows.Forms.CheckBox checkBox10;
         private System.Windows.Forms.CheckBox checkBox11;
         private System.Windows.Forms.CheckBox checkBox12;
-        private System.Windows.Forms.GroupBox gbTipoPropiedad;
-        public System.Windows.Forms.RadioButton rbCasaFinde;
-        public System.Windows.Forms.RadioButton rbCasa;
-        public System.Windows.Forms.RadioButton rbHotel;
-        private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.Button btnInfo;
-        private System.Windows.Forms.Button btnReservar;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tbUbicación;
+        public System.Windows.Forms.DataGridView dgView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDPropiedad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
     }
 }
