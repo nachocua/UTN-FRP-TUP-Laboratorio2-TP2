@@ -51,7 +51,6 @@ namespace TP2
             i = (i - 1 + nombres.Length) % nombres.Length;
             MostrarImagen(i);
         }
-
         private void btnDerecha_Click(object sender, EventArgs e)
         {
             i = (i + 1) % nombres.Length;
