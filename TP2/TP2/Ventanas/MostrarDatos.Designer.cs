@@ -71,7 +71,7 @@
             this.dgView.Location = new System.Drawing.Point(156, 12);
             this.dgView.Name = "dgView";
             this.dgView.ReadOnly = true;
-            this.dgView.Size = new System.Drawing.Size(695, 356);
+            this.dgView.Size = new System.Drawing.Size(695, 362);
             this.dgView.TabIndex = 5;
             this.dgView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgView_CellClick);
             this.dgView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgView_CellContentClick);
@@ -260,9 +260,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(13, 345);
+            this.button1.Location = new System.Drawing.Point(13, 344);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 23);
+            this.button1.Size = new System.Drawing.Size(136, 30);
             this.button1.TabIndex = 25;
             this.button1.Text = "Ver Imagenes";
             this.button1.UseVisualStyleBackColor = true;
@@ -273,7 +273,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(864, 375);
+            this.ClientSize = new System.Drawing.Size(864, 382);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnBuscar);
