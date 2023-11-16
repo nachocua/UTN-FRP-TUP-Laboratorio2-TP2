@@ -49,7 +49,7 @@
             this.checkBox12 = new System.Windows.Forms.CheckBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnVerImagenes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).BeginInit();
             this.gbTipoPropiedad.SuspendLayout();
             this.gbServicios.SuspendLayout();
@@ -258,15 +258,15 @@
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
-            // button1
+            // btnVerImagenes
             // 
-            this.button1.Location = new System.Drawing.Point(13, 344);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 30);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "Ver Imagenes";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnVerImagenes.Location = new System.Drawing.Point(13, 344);
+            this.btnVerImagenes.Name = "btnVerImagenes";
+            this.btnVerImagenes.Size = new System.Drawing.Size(136, 30);
+            this.btnVerImagenes.TabIndex = 25;
+            this.btnVerImagenes.Text = "Ver Imagenes";
+            this.btnVerImagenes.UseVisualStyleBackColor = true;
+            this.btnVerImagenes.Click += new System.EventHandler(this.btnVerImagenes_Click);
             // 
             // MostrarDatos
             // 
@@ -274,7 +274,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(864, 382);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnVerImagenes);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.gbTipoPropiedad);
@@ -315,6 +315,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnVerImagenes;
     }
 }

@@ -21,67 +21,6 @@ namespace TP2
             InitializeComponent(); elSistema = unSistema;
             propiedades = ExportarPropiedades(elSistema);
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (propiedadSeleccionada != null)
-            {
-                FormImg ventanaImagen = new FormImg(Convert.ToInt32(propiedadSeleccionada[0]));
-                ventanaImagen.ShowDialog();
-                ventanaImagen.Dispose();
-            }
-        }
-        private void btnBuscar_Click_1(object sender, EventArgs e)
-        {
-            dgView.Rows.Clear();
-            List<string> serviciosSeleccionados = CargarServicios();
-            List<string> tiposSeleccionados = CargarTipoSeleccionado();
-            foreach (Propiedad propiedad in propiedades)
-            {
-                bool propiedadTieneServicios = true;
-                foreach (string servicioSeleccionado in serviciosSeleccionados)
-                {
-                    if (!propiedad.Servicios.Contains(servicioSeleccionado))
-                    {
-                        propiedadTieneServicios = false;
-                        break;
-                    }
-                }
-                if (propiedadTieneServicios)
-                {
-                    if (tiposSeleccionados.Count > 0)
-                    {
-                        if (tiposSeleccionados.Contains("Casa"))
-                        {
-                            if (propiedad is Casa)
-                            {
-                                if (!(propiedad is CasaFinSemana))
-                                {
-                                    dgView.Rows.Add(propiedad.getData());
-                                }
-                            }
-                        }
-                        if (tiposSeleccionados.Contains("Hotel"))
-                        {
-                            if (propiedad is Hotel)
-                            {
-                                dgView.Rows.Add(propiedad.getData());
-                            }
-                        }
-                        if (tiposSeleccionados.Contains("Casa Fin de Semana"))
-                        {
-                            if (propiedad is CasaFinSemana)
-                            {
-                                dgView.Rows.Add(propiedad.getData());
-                            }
-                        }
-                    }
-                    else
-                    {
-                        dgView.Rows.Add(propiedad.getData());
-                    }
-                }
-            }
-        }
         private List<string> CargarServicios()
         {
             // Filtro las propiedades segun los servicios seleccionados desde los CheckBox
@@ -150,6 +89,67 @@ namespace TP2
             else
             {
                 MessageBox.Show("Debe ingresar un dni valido");
+            }
+        }
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            dgView.Rows.Clear();
+            List<string> serviciosSeleccionados = CargarServicios();
+            List<string> tiposSeleccionados = CargarTipoSeleccionado();
+            foreach (Propiedad propiedad in propiedades)
+            {
+                bool propiedadTieneServicios = true;
+                foreach (string servicioSeleccionado in serviciosSeleccionados)
+                {
+                    if (!propiedad.Servicios.Contains(servicioSeleccionado))
+                    {
+                        propiedadTieneServicios = false;
+                        break;
+                    }
+                }
+                if (propiedadTieneServicios)
+                {
+                    if (tiposSeleccionados.Count > 0)
+                    {
+                        if (tiposSeleccionados.Contains("Casa"))
+                        {
+                            if (propiedad is Casa)
+                            {
+                                if (!(propiedad is CasaFinSemana))
+                                {
+                                    dgView.Rows.Add(propiedad.getData());
+                                }
+                            }
+                        }
+                        if (tiposSeleccionados.Contains("Hotel"))
+                        {
+                            if (propiedad is Hotel)
+                            {
+                                dgView.Rows.Add(propiedad.getData());
+                            }
+                        }
+                        if (tiposSeleccionados.Contains("Casa Fin de Semana"))
+                        {
+                            if (propiedad is CasaFinSemana)
+                            {
+                                dgView.Rows.Add(propiedad.getData());
+                            }
+                        }
+                    }
+                    else
+                    {
+                        dgView.Rows.Add(propiedad.getData());
+                    }
+                }
+            }
+        }
+        private void btnVerImagenes_Click(object sender, EventArgs e)
+        {
+            if (propiedadSeleccionada != null)
+            {
+                FormImg ventanaImagen = new FormImg(Convert.ToInt32(propiedadSeleccionada[0]));
+                ventanaImagen.ShowDialog();
+                ventanaImagen.Dispose();
             }
         }
     }

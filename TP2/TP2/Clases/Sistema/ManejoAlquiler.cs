@@ -91,34 +91,6 @@ namespace TP2
                 return propiedades.Count;
             }
         }
-        public List<string> GetStringPropiedades()
-        {
-            List<string> datosPropiedades = new List<string>();
-            foreach (Propiedad unaPropiedad in propiedades)
-            {
-                datosPropiedades.Add(unaPropiedad.ToString());
-            }
-            return datosPropiedades;
-        }
-        public List<string> GetStringClientes()
-        {
-            List<string> datosClientes = new List<string>();
-            foreach (Cliente unCliente in clientes)
-            {
-                datosClientes.Add(unCliente.ToString());
-            }
-            return datosClientes;
-        }
-        public List<string> GetStringReservas()
-        {
-            List<string> datosReservas = new List<string>();
-            foreach (Reserva unaReserva in reservas)
-            {
-                datosReservas.Add(unaReserva.ToString());
-            }
-            return datosReservas;
-        }
-        
         public void AgregarPropiedad(Propiedad propiedad)
         {
             propiedades.Add(propiedad);
@@ -164,6 +136,15 @@ namespace TP2
         public string[] InfoCliente(int indx)
         {
             return clientes[indx].ToString().Split(';');
+        }
+        public List<string> GetStringReservas()
+        {
+            List<string> datosReservas = new List<string>();
+            foreach (Reserva unaReserva in reservas)
+            {
+                datosReservas.Add(unaReserva.ToString());
+            }
+            return datosReservas;
         }
     }
 }

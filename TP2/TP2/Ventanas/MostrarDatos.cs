@@ -224,7 +224,7 @@ namespace TP2
             }
             return propiedades;
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void btnVerImagenes_Click(object sender, EventArgs e)
         {
             if (propiedadSeleccionada != null)
             {

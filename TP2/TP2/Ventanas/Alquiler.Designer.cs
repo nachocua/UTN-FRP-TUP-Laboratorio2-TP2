@@ -61,7 +61,7 @@
             this.lbDatosCliente = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnVerImagenes = new System.Windows.Forms.Button();
             this.btnReservar = new System.Windows.Forms.Button();
             this.gbTipoPropiedad.SuspendLayout();
             this.gbServicios.SuspendLayout();
@@ -82,7 +82,7 @@
             this.btnBuscar.TabIndex = 30;
             this.btnBuscar.Text = "Buscar disponibles";
             this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click_1);
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // gbTipoPropiedad
             // 
@@ -388,7 +388,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.btnVerImagenes);
             this.groupBox3.Controls.Add(this.gbTipoPropiedad);
             this.groupBox3.Controls.Add(this.gbServicios);
             this.groupBox3.Controls.Add(this.btnBuscar);
@@ -399,15 +399,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Cliente";
             // 
-            // button1
+            // btnVerImagenes
             // 
-            this.button1.Location = new System.Drawing.Point(37, 330);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 30);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "Ver Imagenes";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnVerImagenes.Location = new System.Drawing.Point(37, 330);
+            this.btnVerImagenes.Name = "btnVerImagenes";
+            this.btnVerImagenes.Size = new System.Drawing.Size(139, 30);
+            this.btnVerImagenes.TabIndex = 31;
+            this.btnVerImagenes.Text = "Ver Imagenes";
+            this.btnVerImagenes.UseVisualStyleBackColor = true;
+            this.btnVerImagenes.Click += new System.EventHandler(this.btnVerImagenes_Click);
             // 
             // btnReservar
             // 
@@ -480,7 +480,7 @@
         private System.Windows.Forms.ListBox lbDatosCliente;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnVerImagenes;
         private System.Windows.Forms.Button btnReservar;
     }
 }
