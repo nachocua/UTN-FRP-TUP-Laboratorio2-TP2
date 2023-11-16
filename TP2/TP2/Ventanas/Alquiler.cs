@@ -16,6 +16,7 @@ namespace TP2
         ManejoAlquiler elSistema;
         List<Propiedad> propiedades;
         string[] propiedadSeleccionada = null;
+        bool clienteValido = false;
         public Alquiler(ManejoAlquiler unSistema)
         {
             InitializeComponent(); elSistema = unSistema;
@@ -89,22 +90,25 @@ namespace TP2
                     lbDatosCliente.Items.Add("Teléfono: ");
                     MessageBox.Show("No hay cliente con ese dni");
                 }
+                clienteValido = true;
             }
             else
             {
                 MessageBox.Show("Debe ingresar un dni valido");
+                clienteValido = false;
             }
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             dgView.Rows.Clear();
-            if (dtFechaHasta.Value.CompareTo(dtFechaInicio.Value)>=0)
+            propiedadSeleccionada = null;
+            if (dtFechaHasta.Value.CompareTo(dtFechaInicio.Value) >= 0)
             {
                 Propiedad unaPropiedad;
                 List<string> serviciosSeleccionados = CargarServicios();
                 List<string> tiposSeleccionados = CargarTipoSeleccionado();
                 List<string[]> propsPostFiltro = new List<string[]>();
-                Stack<int> reservas;
+                List<int> reservas;
                 string[] datosReservas;
                 int indx;
                 DateTime fechaDesde;
@@ -125,25 +129,34 @@ namespace TP2
                     {
                         if (tiposSeleccionados.Count > 0)
                         {
-                            if (tiposSeleccionados.Contains("Hotel"))
+                            if (tiposSeleccionados.Contains("Casa"))
                             {
-                                if (propiedad is Hotel)
+                                if (propiedad is Casa)
                                 {
-                                    propsPostFiltro.Add(propiedad.getData());
+                                    if (!(propiedad is CasaFinSemana))
+                                    {
+                                        propsPostFiltro.Add(propiedad.getData());
+                                    }
                                 }
                             }
                             else
                             {
-                                if (tiposSeleccionados.Contains("Casa Fin de Semana"))
+                                if (tiposSeleccionados.Contains("Hotel"))
                                 {
-                                    if (propiedad is CasaFinSemana)
+                                    if (propiedad is Hotel)
                                     {
                                         propsPostFiltro.Add(propiedad.getData());
                                     }
                                 }
                                 else
                                 {
-                                    propsPostFiltro.Add(propiedad.getData());
+                                    if (tiposSeleccionados.Contains("Casa Fin de Semana"))
+                                    {
+                                        if (propiedad is CasaFinSemana)
+                                        {
+                                            propsPostFiltro.Add(propiedad.getData());
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -164,7 +177,7 @@ namespace TP2
                         {
                             if (state)
                             {
-                                Reserva reservaABuscar = new Reserva(unaReserva, 0, 0, DateTime.Now, 0, 0);
+                                Reserva reservaABuscar = new Reserva(unaReserva, 0, 0, DateTime.Now, DateTime.Now, 0);
                                 indx = elSistema.BuscarReserva(reservaABuscar);
                                 if (indx != -1)
                                 {
@@ -215,6 +228,10 @@ namespace TP2
             {
                 propiedadSeleccionada = GetRow(dgView.Rows[e.RowIndex]);
             }
+            else
+            {
+                propiedadSeleccionada = null;
+            }
         }
         private string[] GetRow(DataGridViewRow row)
         {
@@ -227,7 +244,32 @@ namespace TP2
         }
         private void btnReservar_Click(object sender, EventArgs e)
         {
-
+            bool state = false;
+            if (propiedadSeleccionada != null)
+            {
+                if (clienteValido)
+                {
+                    state = true;
+                }
+                else
+                {
+                    MessageBox.Show("Debes buscar un cliente");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debes seleccionar una propiedad");
+            }
+            if (state)
+            {
+                int idReserva = elSistema.cantidadReservas();
+                int dni = Convert.ToInt32(lbDatosCliente.Items[0].ToString().Split(' ')[1]);
+                int idPropiedad = Convert.ToInt32(propiedadSeleccionada[0]);
+                int cantDias = (dtFechaHasta.Value - dtFechaInicio.Value).Days;
+                double costo = elSistema.BuscarPropiedad(idPropiedad).Costo(cantDias);
+                Reserva unaReserva = new Reserva(idReserva, dni, idPropiedad, dtFechaInicio.Value, dtFechaHasta.Value, costo);
+                elSistema.NuevaReserva(unaReserva);
+            }
         }
     }
 }

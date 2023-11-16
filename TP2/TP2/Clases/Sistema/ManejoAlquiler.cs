@@ -82,7 +82,12 @@ namespace TP2
             }
             fs.Close();
             //Exportar Reservas
-            //....
+            StreamWriter sw = new StreamWriter(FileReservas);
+            foreach (Reserva unaReserva in reservas) 
+            {
+                sw.WriteLine(unaReserva.ToString());
+            }
+            sw.Close();
         }
         public int CantidadPropiedades
         {
@@ -153,6 +158,35 @@ namespace TP2
                 i++;
             }
             return indx;
+        }
+        public int cantidadReservas()
+        {
+            return reservas.Count;
+        }
+        public void NuevaReserva(Reserva unaReserva)
+        {
+            reservas.Add(unaReserva);
+            int i = 0;
+            bool noEncontrado = true;
+            while (i < clientes.Count && noEncontrado)
+            {
+                if (clientes[i].Dni == unaReserva.NroCliente)
+                {
+                    clientes[i].AgregarReserva(unaReserva.NroReserva);
+                    noEncontrado = false;
+                }
+                i++;
+            }
+            noEncontrado = true;
+            while (i < propiedades.Count && noEncontrado)
+            {
+                if (propiedades[i].idPropiedad == unaReserva.NroPropiedad)
+                {
+                    propiedades[i].AgregarReserva(unaReserva.NroReserva);
+                    noEncontrado = false;
+                }
+                i++;
+            }
         }
     }
 }

@@ -377,6 +377,7 @@
             this.tbDni.Name = "tbDni";
             this.tbDni.Size = new System.Drawing.Size(132, 22);
             this.tbDni.TabIndex = 2;
+            this.tbDni.Text = "11111111";
             // 
             // DNI
             // 

@@ -16,16 +16,16 @@ namespace TP2
         public int NroCliente { get; private set; }
         public string Estado { get; private set; }
         public DateTime FechaInicio { get; private set; }
-        public int CantDias { get; private set; }
+        public DateTime FechaHasta { get; private set; }
         public double Costo { get; private set; }
-        public Reserva(int reservasEfectuadas, int idCliente, int idPropiedad, DateTime fechaDesde, int cantDias, double costo)
+        public Reserva(int reservasEfectuadas, int idCliente, int idPropiedad, DateTime fechaDesde, DateTime fechaHasta, double costo)
         {
             NroReserva = reservasEfectuadas;
             NroCliente = idCliente;
             NroPropiedad = idPropiedad;
             Estado = posiblesEstados[0];
             FechaInicio = fechaDesde;
-            CantDias = cantDias;
+            FechaHasta = fechaHasta;
             Costo = costo;
         }
         public void CheckIn()
@@ -44,7 +44,7 @@ namespace TP2
         {
             string datosReserva = NroReserva.ToString() + ";" + NroPropiedad.ToString() + ";" +
                 NroCliente.ToString() + ";" + Estado + ";" + FechaInicio.ToString() + ";" +
-                CantDias.ToString();
+                FechaHasta.ToString() + ";" + Costo.ToString();
             return datosReserva;
         }
         public int CompareTo(Object obj)

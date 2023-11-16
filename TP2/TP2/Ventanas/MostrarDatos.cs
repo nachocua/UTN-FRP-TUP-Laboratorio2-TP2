@@ -73,25 +73,34 @@ namespace TP2
                 {
                     if (tiposSeleccionados.Count > 0)
                     {
-                        if (tiposSeleccionados.Contains("Hotel"))
+                        if (tiposSeleccionados.Contains("Casa"))
                         {
-                            if (propiedad is Hotel)
+                            if (propiedad is Casa)
                             {
-                                dgView.Rows.Add(propiedad.getData());
+                                if (!(propiedad is CasaFinSemana))
+                                {
+                                    dgView.Rows.Add(propiedad.getData());
+                                }
                             }
                         }
                         else
                         {
-                            if (tiposSeleccionados.Contains("Casa Fin de Semana"))
+                            if (tiposSeleccionados.Contains("Hotel"))
                             {
-                                if (propiedad is CasaFinSemana)
+                                if (propiedad is Hotel)
                                 {
                                     dgView.Rows.Add(propiedad.getData());
                                 }
                             }
                             else
                             {
-                                dgView.Rows.Add(propiedad.getData());
+                                if (tiposSeleccionados.Contains("Casa Fin de Semana"))
+                                {
+                                    if (propiedad is CasaFinSemana)
+                                    {
+                                        dgView.Rows.Add(propiedad.getData());
+                                    }
+                                }
                             }
                         }
                     }
@@ -200,6 +209,10 @@ namespace TP2
             if (e.RowIndex >= 0)
             {
                 propiedadSeleccionada = GetRow(dgView.Rows[e.RowIndex]);
+            }
+            else
+            {
+                propiedadSeleccionada = null;
             }
         }
         private string[] GetRow(DataGridViewRow row)
