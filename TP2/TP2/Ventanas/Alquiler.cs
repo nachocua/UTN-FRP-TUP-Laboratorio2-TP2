@@ -152,5 +152,30 @@ namespace TP2
                 ventanaImagen.Dispose();
             }
         }
+        private void dgView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int f = e.RowIndex, c = e.ColumnIndex;
+            if (c == 5)
+            {
+                string text = dgView[c, f].Value.ToString();
+                MessageBox.Show(text, "Servicios Disponibles");
+            }
+        }
+        private void dgView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                propiedadSeleccionada = GetRow(dgView.Rows[e.RowIndex]);
+            }
+        }
+        private string[] GetRow(DataGridViewRow row)
+        {
+            List<string> data = new List<string>();
+            for (int i = 0; i < row.Cells.Count; i++)
+            {
+                data.Add(row.Cells[i].Value.ToString());
+            }
+            return data.ToArray();
+        }
     }
 }

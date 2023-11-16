@@ -198,7 +198,6 @@ namespace TP2
                 MessageBox.Show(text, "Servicios Disponibles");
             }
         }
-
         private void dgView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)

@@ -219,6 +219,8 @@
             this.dgView.ReadOnly = true;
             this.dgView.Size = new System.Drawing.Size(691, 423);
             this.dgView.TabIndex = 26;
+            this.dgView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgView_CellClick);
+            this.dgView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgView_CellContentClick);
             // 
             // IDPropiedad
             // 
