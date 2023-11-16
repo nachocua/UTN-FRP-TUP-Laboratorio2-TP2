@@ -94,9 +94,15 @@ namespace TP2
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             dgView.Rows.Clear();
+            Propiedad unaPropiedad;
             List<string> serviciosSeleccionados = CargarServicios();
             List<string> tiposSeleccionados = CargarTipoSeleccionado();
-            //List<string[]> propsPostFiltro = new List<string[]>();
+            List<string[]> propsPostFiltro = new List<string[]>();
+            Stack<int> reservas;
+            string[] datosReservas;
+            int indx;
+            DateTime fechaDesde;
+            int cantidadDias;
             foreach (Propiedad propiedad in propiedades)
             {
                 bool propiedadTieneServicios = true;
@@ -116,7 +122,7 @@ namespace TP2
                         {
                             if (propiedad is Hotel)
                             {
-                                dgView.Rows.Add(propiedad.getData());
+                                propsPostFiltro.Add(propiedad.getData());
                             }
                         }
                         else
@@ -125,20 +131,38 @@ namespace TP2
                             {
                                 if (propiedad is CasaFinSemana)
                                 {
-                                    dgView.Rows.Add(propiedad.getData());
+                                    propsPostFiltro.Add(propiedad.getData());
                                 }
                             }
                             else
                             {
-                                dgView.Rows.Add(propiedad.getData());
+                                propsPostFiltro.Add(propiedad.getData());
                             }
                         }
                     }
                     else
                     {
-                        dgView.Rows.Add(propiedad.getData());
+                        propsPostFiltro.Add(propiedad.getData());
                     }
                 }
+            }
+            foreach (string[] datos in propsPostFiltro)
+            {
+                unaPropiedad = elSistema.GetPropiedad(Convert.ToInt32(datos[0]));
+                reservas = unaPropiedad.getReservas();
+                foreach (int unaReserva in reservas)
+                {
+                    Reserva reservaABuscar = new Reserva(unaReserva, 0, 0, DateTime.Now, 0, 0);
+                    indx = elSistema.BuscarReserva(reservaABuscar);
+                    if (indx != -1)
+                    {
+                        datosReservas = elSistema.InfoReserva(indx);
+                        string[] fecha = datosReservas[4].Split('/');
+                        fechaDesde = new DateTime(Convert.ToInt32(fecha[0]), Convert.ToInt32(fecha[1]), Convert.ToInt32(fecha[2]));
+                        cantidadDias = Convert.ToInt32(datosReservas[5]);
+                    }
+                }
+                dgView.Rows.Add(datos);
             }
         }
         private void btnVerImagenes_Click(object sender, EventArgs e)

@@ -62,5 +62,9 @@ namespace TP2
         {
             get { return imagenes.Count; }
         }
+        public Stack<int> getReservas()
+        {
+            return IdReservas;
+        }
     }
 }

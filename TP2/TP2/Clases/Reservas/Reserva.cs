@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TP2
 {
-    public class Reserva
+    public class Reserva : IComparable
     {
         private string[] posiblesEstados = { "Reservado", "Ocupado", "Concretado", "Cancelada" };
         public int NroReserva { get; private set; }
@@ -20,7 +21,6 @@ namespace TP2
         public Reserva(int reservasEfectuadas, int idCliente, int idPropiedad, DateTime fechaDesde, int cantDias, double costo)
         {
             NroReserva = reservasEfectuadas;
-            reservasEfectuadas++;
             NroCliente = idCliente;
             NroPropiedad = idPropiedad;
             Estado = posiblesEstados[0];
@@ -46,6 +46,10 @@ namespace TP2
                 NroCliente.ToString() + ";" + Estado + ";" + FechaInicio.ToString() + ";" +
                 CantDias.ToString();
             return datosReserva;
+        }
+        public int CompareTo(Object obj)
+        {
+            return NroReserva.CompareTo(((Reserva)obj).NroReserva);
         }
     }
 }

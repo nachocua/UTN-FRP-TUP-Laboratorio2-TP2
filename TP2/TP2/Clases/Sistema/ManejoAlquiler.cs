@@ -137,14 +137,22 @@ namespace TP2
         {
             return clientes[indx].ToString().Split(';');
         }
-        public List<string> GetStringReservas()
+        public string[] InfoReserva(int indx)
         {
-            List<string> datosReservas = new List<string>();
-            foreach (Reserva unaReserva in reservas)
+            return reservas[indx].ToString().Split(';');
+        }
+        public int BuscarReserva(Reserva unaReserva)
+        {
+            int indx = -1, i = 0;
+            while (indx == -1 && i < reservas.Count)
             {
-                datosReservas.Add(unaReserva.ToString());
+                if (reservas[i].NroReserva == unaReserva.NroReserva)
+                {
+                    indx = i;
+                }
+                i++;
             }
-            return datosReservas;
+            return indx;
         }
     }
 }
