@@ -205,11 +205,11 @@ namespace TP2
                 string[] nombres = Directory.GetFiles(defaultPath);
                 for (int i = 0; i < nombres.Length; i++)
                 {
-                    File.Move(defaultPath + "//" + nombres[i], defaultPath + defaultPath + "//img" + i);
+                    File.Move(defaultPath + "//" + nombres[i], defaultPath + "//img" + i);
                 }
                 for (int i = 0; i < imagenes.Count; i++)
                 {
-                    File.Move(imagenes[i], defaultPath + defaultPath + "//img" + (i+nombres.Length));
+                    File.Move(imagenes[i], defaultPath + "//img" + (i+nombres.Length)+ ".jpg");
                 }
                 this.DialogResult = DialogResult.OK;
             }
