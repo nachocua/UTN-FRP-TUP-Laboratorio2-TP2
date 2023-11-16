@@ -96,6 +96,7 @@ namespace TP2
             dgView.Rows.Clear();
             List<string> serviciosSeleccionados = CargarServicios();
             List<string> tiposSeleccionados = CargarTipoSeleccionado();
+            //List<string[]> propsPostFiltro = new List<string[]>();
             foreach (Propiedad propiedad in propiedades)
             {
                 bool propiedadTieneServicios = true;
@@ -111,16 +112,6 @@ namespace TP2
                 {
                     if (tiposSeleccionados.Count > 0)
                     {
-                        if (tiposSeleccionados.Contains("Casa"))
-                        {
-                            if (propiedad is Casa)
-                            {
-                                if (!(propiedad is CasaFinSemana))
-                                {
-                                    dgView.Rows.Add(propiedad.getData());
-                                }
-                            }
-                        }
                         if (tiposSeleccionados.Contains("Hotel"))
                         {
                             if (propiedad is Hotel)
@@ -128,9 +119,16 @@ namespace TP2
                                 dgView.Rows.Add(propiedad.getData());
                             }
                         }
-                        if (tiposSeleccionados.Contains("Casa Fin de Semana"))
+                        else
                         {
-                            if (propiedad is CasaFinSemana)
+                            if (tiposSeleccionados.Contains("Casa Fin de Semana"))
+                            {
+                                if (propiedad is CasaFinSemana)
+                                {
+                                    dgView.Rows.Add(propiedad.getData());
+                                }
+                            }
+                            else
                             {
                                 dgView.Rows.Add(propiedad.getData());
                             }
