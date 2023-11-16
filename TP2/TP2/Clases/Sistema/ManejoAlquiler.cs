@@ -34,11 +34,6 @@ namespace TP2
             try
             {
                 propiedades = (List<Propiedad>)bf.Deserialize(fs);
-                //int i = 0; // Temporal | BORRAR !
-                //foreach (Propiedad p in propiedades)
-                //{
-                //    p.idPropiedad = i++;
-                //}
             }
             catch
             {

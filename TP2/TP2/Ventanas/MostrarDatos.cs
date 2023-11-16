@@ -111,11 +111,11 @@ namespace TP2
             {
                 propiedades.Sort();
                 Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
-                //MessageBox.Show(string.Join(", ",propiedadSeleccionada));
-                NuevaPropiedad ventanaPropiedad = new NuevaPropiedad(elSistema.CantidadPropiedades);
+                NuevaPropiedad ventanaPropiedad = new NuevaPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
                 #region CargandoDatos
                 if (unaPropiedad != null)
                 {
+                    ventanaPropiedad.btnNuevaPropiedad.Text = "Actualizar";
                     ventanaPropiedad.tbNombre.Text = unaPropiedad.Nombre;
                     ventanaPropiedad.tbUbicacion.Text = unaPropiedad.Ciudad;
                     string[] vServicios = string.Join(", ", unaPropiedad.Servicios.ToArray()).Split(',');
@@ -152,7 +152,6 @@ namespace TP2
                         }
                     }
                     DialogResult res = ventanaPropiedad.ShowDialog();
-
                     #endregion
                     #region CambiandoPropiedad
                     if (res == DialogResult.OK)
@@ -175,7 +174,7 @@ namespace TP2
                             {
                                 Casa unaCasa = unaPropiedad as Casa;
                                 Casa otraCasa = nuevaPropiedad as Casa;
-                                unaCasa.ModificarDatos(otraCasa.Nombre,otraCasa.Ciudad,otraCasa.Plazas,otraCasa.Propietario);
+                                unaCasa.ModificarDatos(otraCasa.Nombre, otraCasa.Ciudad, otraCasa.Plazas, otraCasa.Propietario);
                                 unaCasa.ModificarServicios(nuevaPropiedad.Servicios.ToArray());
                                 unaCasa.ModificarImagenes(ventanaPropiedad.ObtenerImagenes());
                             }
@@ -193,7 +192,7 @@ namespace TP2
         private void dgView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int f = e.RowIndex, c = e.ColumnIndex;
-            if (c == 5) // Servicios
+            if (c == 5)
             {
                 string text = dgView[c, f].Value.ToString();
                 MessageBox.Show(text, "Servicios Disponibles");
@@ -205,12 +204,6 @@ namespace TP2
             if (e.RowIndex >= 0)
             {
                 propiedadSeleccionada = GetRow(dgView.Rows[e.RowIndex]);
-                //string[] servicios = propiedadSeleccionada[5].Split(',');
-                //for(int i = 0; i < servicios.Length; i++)
-                //{
-                //    servicios[i] = servicios[i].Trim();
-                //}
-                //MessageBox.Show(string.Join("-",servicios));
             }
         }
         private string[] GetRow(DataGridViewRow row)
@@ -233,11 +226,18 @@ namespace TP2
             return propiedades;
         }
         private void button1_Click(object sender, EventArgs e)
-        {
+        {/*
             if (propiedadSeleccionada != null)
             {
                 Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
                 FormImg ventanaImagen = new FormImg(unaPropiedad);
+                ventanaImagen.ShowDialog();
+                ventanaImagen.Dispose();
+            }
+            */
+            if (propiedadSeleccionada != null)
+            {
+                FormImg ventanaImagen = new FormImg(Convert.ToInt32(propiedadSeleccionada[0]));
                 ventanaImagen.ShowDialog();
                 ventanaImagen.Dispose();
             }

@@ -18,62 +18,13 @@ namespace TP2
 {
     public partial class NuevaPropiedad : Form
     {
-        //private List<Propiedad> propiedades = null;
         public Propiedad unaPropiedad = null;
-        //public string fileName;
         List<string> imagenes = new List<string>();
-        int cantidadPropiedades;
-        //Image img;
-        public NuevaPropiedad(int cantidadPropiedades)
+        int idPropiedad;
+        public NuevaPropiedad(int idPropiedad)
         {
             InitializeComponent();
-            this.cantidadPropiedades = cantidadPropiedades;
-        }
-        //public int CantidadPropiedades { get; set; }
-        private void NuevaPropiedad_Load(object sender, EventArgs e)
-        {
-            #region CargaDeArchivosCSV_Propiedad
-            /*List<string[]> datosPropiedad = null;
-            try
-            {
-                datosPropiedad = Funciones_Adicionales.LeerSeparandoArchivo("..//..//Data//propiedades.csv", ";");
-            }
-            catch
-            {
-                MessageBox.Show("No se encontró el archivo de clientes");
-            }
-            if (datosPropiedad != null)
-            {
-                propiedades = new List<Propiedad>();
-                Propiedad unaPropiedad = null;
-                List<string> Servicios;
-                string[] aux;
-                foreach (string[] datoPropiedad in datosPropiedad)
-                {
-                    Servicios = new List<string>();
-                    aux = datoPropiedad[4].Split('-');
-                    if (Servicios.Count != 0)
-                    {
-                        foreach (string unServicio in aux)
-                        {
-                            Servicios.Add(unServicio);
-                        }
-                    }
-                    if (datoPropiedad[0] == "Casa")
-                    {
-                        unaPropiedad = new Casa(id, datoPropiedad[2], datoPropiedad[3], Convert.ToInt32(datoPropiedad[4]),Servicios, datoPropiedad[6]);
-                    }
-                    else
-                    {
-                        if (datoPropiedad[0] == "Hotel")
-                        {
-                            unaPropiedad = new CasaFinSemana(datoPropiedad[2], datoPropiedad[3], Convert.ToInt32(datoPropiedad[4]), Servicios, datoPropiedad[6]);
-                        }
-                    }
-                    propiedades.Add(unaPropiedad);
-                }
-            }*/
-            #endregion
+            this.idPropiedad = idPropiedad;
         }
         private void btnImagen_Click(object sender, EventArgs e)
         {
@@ -188,29 +139,38 @@ namespace TP2
                 switch (tipo)
                 {
                     case 1:
-                        unaPropiedad = new Casa(cantidadPropiedades, nombre, ubicacion, plazas, servicios, propietario);
+                        unaPropiedad = new Casa(idPropiedad, nombre, ubicacion, plazas, servicios, propietario);
                         break;
                     case 2:
-                        unaPropiedad = new Hotel(cantidadPropiedades, nombre, ubicacion, plazas, servicios, estrellas);
+                        unaPropiedad = new Hotel(idPropiedad, nombre, ubicacion, plazas, servicios, estrellas);
                         ((Hotel)unaPropiedad).CargarHabitaciones(simples, Hotel.Tipo.Simple);
                         ((Hotel)unaPropiedad).CargarHabitaciones(dobles, Hotel.Tipo.Doble);
                         ((Hotel)unaPropiedad).CargarHabitaciones(triples, Hotel.Tipo.Triple);
                         break;
                     case 3:
-                        unaPropiedad = new CasaFinSemana(cantidadPropiedades, nombre, ubicacion, plazas, servicios, propietario);
+                        unaPropiedad = new CasaFinSemana(idPropiedad, nombre, ubicacion, plazas, servicios, propietario);
                         break;
                 }
-                string defaultPath = "..//..//Img//" + unaPropiedad.idPropiedad;
+                string defaultPath = "..//..//Img//" + unaPropiedad.idPropiedad + "//";
                 Directory.CreateDirectory(defaultPath);
                 string[] nombres = Directory.GetFiles(defaultPath);
-                for (int i = 0; i < nombres.Length; i++)
+                if (nombres.Length > 0)
                 {
-                    File.Move(defaultPath + "//" + nombres[i], defaultPath + "//img" + i);
+                    for (int i = 0; i < nombres.Length; i++)
+                    {
+                        File.Move(defaultPath + nombres[i], defaultPath + (10000+i));
+                    }
+                    for(int i = 10000; i < 10000+nombres.Length; i++)
+                    {
+                        File.Move(defaultPath + i, defaultPath + "img" + (i-10000) + ".jpg");
+                    }
                 }
                 for (int i = 0; i < imagenes.Count; i++)
                 {
-                    File.Move(imagenes[i], defaultPath + "//img" + (i+nombres.Length)+ ".jpg");
+                    File.Move(imagenes[i], defaultPath + "img" + (i + nombres.Length) + ".jpg");
                 }
+                imagenes.Clear();
+                imagenes.AddRange(nombres);
                 this.DialogResult = DialogResult.OK;
             }
         }

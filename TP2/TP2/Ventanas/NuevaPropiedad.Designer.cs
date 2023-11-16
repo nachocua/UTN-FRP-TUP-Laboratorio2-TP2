@@ -453,7 +453,6 @@
             this.Controls.Add(this.gbHotel);
             this.Name = "NuevaPropiedad";
             this.Text = "NuevaPropiedad";
-            this.Load += new System.EventHandler(this.NuevaPropiedad_Load);
             this.gbCasa.ResumeLayout(false);
             this.gbCasa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_Plazas)).EndInit();
@@ -475,7 +474,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnNuevaPropiedad;
         private System.Windows.Forms.Button btnImagen;
         public System.Windows.Forms.TextBox tbNombre;
         public System.Windows.Forms.TextBox tbUbicacion;
@@ -504,5 +502,6 @@
         public System.Windows.Forms.NumericUpDown numUDSimple;
         public System.Windows.Forms.CheckBox cbCasaFinde;
         public System.Windows.Forms.GroupBox gbServicios;
+        public System.Windows.Forms.Button btnNuevaPropiedad;
     }
 }
