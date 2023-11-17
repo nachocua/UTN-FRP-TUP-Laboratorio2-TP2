@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteca;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -50,8 +51,33 @@ namespace TP2
             {
             }
             fs.Close();
-            //Importar Reservas
-            //....
+            List<string[]> datosReservas = Funciones_Adicionales.LeerSeparandoArchivo(FileReservas, ";");
+            foreach (string[] unDato in datosReservas)
+            {
+                int idReserva = Convert.ToInt32(unDato[0]);
+                int idPropiedad = Convert.ToInt32(unDato[1]);
+                int dni = Convert.ToInt32(unDato[2]); 
+                string[] fecha = unDato[4].Split(' ')[0].Split('/');
+                string[] fecha2 = unDato[5].Split(' ')[0].Split('/');
+                DateTime fechaDesde = new DateTime(Convert.ToInt32(fecha[2]), Convert.ToInt32(fecha[1]), Convert.ToInt32(fecha[0]));
+                DateTime fechaHasta = new DateTime(Convert.ToInt32(fecha2[2]), Convert.ToInt32(fecha2[1]), Convert.ToInt32(fecha2[0]));
+                int cantDias = (fechaHasta - fechaDesde).Days;
+                double costo = Convert.ToInt32(unDato[6]);
+                Reserva unaReserva = new Reserva(idReserva, dni, idPropiedad, fechaDesde, fechaHasta, costo);
+                switch (unDato[3])
+                {
+                    case "Ocupado":
+                        unaReserva.CheckIn();
+                        break;
+                    case "Concretado":
+                        unaReserva.Checkout();
+                        break;
+                    case "Cancelada":
+                        unaReserva.Cancelar();
+                        break;
+                }
+                NuevaReserva(unaReserva, false);
+            }
             //foreach (Cliente unCliente in clientes)
             //{
             //    unCliente.IdReservas = new Stack<int>();
@@ -90,7 +116,7 @@ namespace TP2
             }
             fs.Close();
             //Exportar Reservas
-            StreamWriter sw = new StreamWriter(FileReservas);
+            StreamWriter sw = new StreamWriter(FileReservas, true);
             foreach (Reserva unaReserva in reservas)
             {
                 sw.WriteLine(unaReserva.ToString());
@@ -171,29 +197,32 @@ namespace TP2
         {
             return reservas.Count;
         }
-        public void NuevaReserva(Reserva unaReserva)
+        public void NuevaReserva(Reserva unaReserva, bool noImport = true)
         {
             reservas.Add(unaReserva);
-            int i = 0;
-            bool noEncontrado = true;
-            while (i < clientes.Count && noEncontrado)
+            if (noImport)
             {
-                if (clientes[i].Dni == unaReserva.NroCliente)
+                int i = 0;
+                bool noEncontrado = true;
+                while (i < clientes.Count && noEncontrado)
                 {
-                    clientes[i].AgregarReserva(unaReserva.NroReserva);
-                    noEncontrado = false;
+                    if (clientes[i].Dni == unaReserva.NroCliente)
+                    {
+                        clientes[i].AgregarReserva(unaReserva.NroReserva);
+                        noEncontrado = false;
+                    }
+                    i++;
                 }
-                i++;
-            }
-            noEncontrado = true;
-            while (i < propiedades.Count && noEncontrado)
-            {
-                if (propiedades[i].idPropiedad == unaReserva.NroPropiedad)
+                noEncontrado = true;
+                while (i < propiedades.Count && noEncontrado)
                 {
-                    propiedades[i].AgregarReserva(unaReserva.NroReserva);
-                    noEncontrado = false;
+                    if (propiedades[i].idPropiedad == unaReserva.NroPropiedad)
+                    {
+                        propiedades[i].AgregarReserva(unaReserva.NroReserva);
+                        noEncontrado = false;
+                    }
+                    i++;
                 }
-                i++;
             }
         }
     }
