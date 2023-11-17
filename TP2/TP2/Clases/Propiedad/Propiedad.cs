@@ -66,5 +66,9 @@ namespace TP2
         {
             return idReservas;
         }
+        //public void Init()
+        //{
+        //    idReservas = new List<int>();
+        //}
     }
 }

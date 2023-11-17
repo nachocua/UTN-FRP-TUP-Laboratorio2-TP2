@@ -52,6 +52,14 @@ namespace TP2
             fs.Close();
             //Importar Reservas
             //....
+            //foreach (Cliente unCliente in clientes)
+            //{
+            //    unCliente.IdReservas = new Stack<int>();
+            //}
+            //foreach (Propiedad unaPropiedad in propiedades)
+            //{
+            //    unaPropiedad.Init();
+            //}
         }
         public void Export()
         {
@@ -83,7 +91,7 @@ namespace TP2
             fs.Close();
             //Exportar Reservas
             StreamWriter sw = new StreamWriter(FileReservas);
-            foreach (Reserva unaReserva in reservas) 
+            foreach (Reserva unaReserva in reservas)
             {
                 sw.WriteLine(unaReserva.ToString());
             }

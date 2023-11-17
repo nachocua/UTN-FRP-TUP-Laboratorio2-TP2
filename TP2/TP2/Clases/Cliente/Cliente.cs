@@ -12,7 +12,7 @@ namespace TP2
     [Serializable]
     public class Cliente : IComparable
     {
-        public Stack<int> IdReservas { get; }
+        public Stack<int> IdReservas { get;}
         public int Dni { get; private set; }
         public int Telefono { get; private set; }
         public string Nombres { get; private set; }

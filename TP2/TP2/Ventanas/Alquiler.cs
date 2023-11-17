@@ -182,9 +182,10 @@ namespace TP2
                                 if (indx != -1)
                                 {
                                     datosReservas = elSistema.InfoReserva(indx);
-                                    string[] fecha = datosReservas[4].Split('/');
-                                    fechaDesde = new DateTime(Convert.ToInt32(fecha[0]), Convert.ToInt32(fecha[1]), Convert.ToInt32(fecha[2]));
-                                    fechaHasta = fechaDesde + TimeSpan.FromDays(Convert.ToInt32(datosReservas[5]));
+                                    string[] fecha = datosReservas[4].Split(' ')[0].Split('/');
+                                    string[] fecha2 = datosReservas[5].Split(' ')[0].Split('/');
+                                    fechaDesde = new DateTime(Convert.ToInt32(fecha[2]), Convert.ToInt32(fecha[1]), Convert.ToInt32(fecha[0]));
+                                    fechaHasta = new DateTime(Convert.ToInt32(fecha2[2]), Convert.ToInt32(fecha2[1]), Convert.ToInt32(fecha2[0]));
                                     if ((dtFechaHasta.Value > fechaDesde) && (dtFechaInicio.Value < fechaHasta))
                                     {
                                         state = false;
@@ -269,6 +270,9 @@ namespace TP2
                 double costo = elSistema.BuscarPropiedad(idPropiedad).Costo(cantDias);
                 Reserva unaReserva = new Reserva(idReserva, dni, idPropiedad, dtFechaInicio.Value, dtFechaHasta.Value, costo);
                 elSistema.NuevaReserva(unaReserva);
+                MessageBox.Show("Se ha reservado con éxito");
+                dgView.Rows.Clear();
+                propiedadSeleccionada = null;
             }
         }
     }
