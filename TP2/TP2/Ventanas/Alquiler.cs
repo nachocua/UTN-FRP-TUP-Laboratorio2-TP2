@@ -117,13 +117,16 @@ namespace TP2
                 foreach (Propiedad propiedad in propiedades)
                 {
                     bool propiedadTieneServicios = true;
-                    foreach (string servicioSeleccionado in serviciosSeleccionados)
+                    bool noEncontrado = true;
+                    int i = 0;
+                    while(noEncontrado && (i < serviciosSeleccionados.Count))
                     {
-                        if (!propiedad.Servicios.Contains(servicioSeleccionado))
+                        if (!propiedad.Servicios.Contains(serviciosSeleccionados[i]))
                         {
                             propiedadTieneServicios = false;
-                            break;
+                            noEncontrado = false;
                         }
+                        i++;
                     }
                     if (propiedadTieneServicios)
                     {
