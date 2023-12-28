@@ -13,6 +13,9 @@
         <li>
             Misere
         </li>
+        <li>
+            Luna
+        </li>
     </ul>
 </main>
 
