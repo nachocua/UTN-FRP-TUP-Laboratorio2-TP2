@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ventanas\VentanaLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\VentanaLogin.Designer.cs">
+      <DependentUpon>VentanaLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\FormImg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\NuevaPropiedad.resx">
       <DependentUpon>NuevaPropiedad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\VentanaLogin.resx">
+      <DependentUpon>VentanaLogin.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Data\clientes.dat" />
     <None Include="Data\propiedades.dat" />
