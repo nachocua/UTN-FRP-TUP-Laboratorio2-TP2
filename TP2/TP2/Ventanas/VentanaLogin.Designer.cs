@@ -48,7 +48,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 69);
+            this.label2.Location = new System.Drawing.Point(16, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 1;
@@ -56,12 +56,13 @@
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(19, 134);
+            this.btnIngresar.Location = new System.Drawing.Point(19, 98);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(90, 23);
             this.btnIngresar.TabIndex = 2;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = true;
+            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
             // 
             // tbUsuario
             // 
@@ -72,14 +73,14 @@
             // 
             // tbPass
             // 
-            this.tbPass.Location = new System.Drawing.Point(100, 66);
+            this.tbPass.Location = new System.Drawing.Point(100, 55);
             this.tbPass.Name = "tbPass";
             this.tbPass.Size = new System.Drawing.Size(100, 20);
             this.tbPass.TabIndex = 4;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(125, 134);
+            this.button1.Location = new System.Drawing.Point(130, 98);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 23);
             this.button1.TabIndex = 5;
@@ -90,7 +91,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(245, 187);
+            this.ClientSize = new System.Drawing.Size(228, 136);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tbPass);
             this.Controls.Add(this.tbUsuario);
