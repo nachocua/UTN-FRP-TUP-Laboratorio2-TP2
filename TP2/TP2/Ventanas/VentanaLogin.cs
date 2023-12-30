@@ -61,5 +61,6 @@ namespace TP2
             }
             return indx;
         }
+        private Import()
     }
 }
