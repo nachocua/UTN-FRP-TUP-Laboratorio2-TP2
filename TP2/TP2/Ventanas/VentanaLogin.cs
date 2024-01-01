@@ -24,7 +24,7 @@ namespace TP2
         {
             bool valido = false;
             unLogin = new Login(tbUsuario.Text, tbPass.Text, 0);
-            if (BuscarUser(unLogin) > 0)
+            /*if (BuscarUser(unLogin) > 0)
             {
                 if (BuscarPassword(unLogin) > 0)
                 {
@@ -38,7 +38,7 @@ namespace TP2
             else
             {
                 DialogResult = DialogResult.OK;
-            }
+            }*/
         }
     }
 }

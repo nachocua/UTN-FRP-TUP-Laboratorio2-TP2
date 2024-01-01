@@ -38,26 +38,29 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 20);
+            this.label1.Location = new System.Drawing.Point(21, 25);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.Size = new System.Drawing.Size(54, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Usuario";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 58);
+            this.label2.Location = new System.Drawing.Point(21, 71);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.Size = new System.Drawing.Size(76, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Contraseña";
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(60, 101);
+            this.btnIngresar.Location = new System.Drawing.Point(92, 115);
+            this.btnIngresar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(90, 23);
+            this.btnIngresar.Size = new System.Drawing.Size(120, 28);
             this.btnIngresar.TabIndex = 2;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = true;
@@ -65,28 +68,31 @@
             // 
             // tbUsuario
             // 
-            this.tbUsuario.Location = new System.Drawing.Point(100, 17);
+            this.tbUsuario.Location = new System.Drawing.Point(133, 21);
+            this.tbUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbUsuario.Name = "tbUsuario";
-            this.tbUsuario.Size = new System.Drawing.Size(100, 20);
+            this.tbUsuario.Size = new System.Drawing.Size(132, 22);
             this.tbUsuario.TabIndex = 3;
             // 
             // tbPass
             // 
-            this.tbPass.Location = new System.Drawing.Point(100, 55);
+            this.tbPass.Location = new System.Drawing.Point(133, 68);
+            this.tbPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbPass.Name = "tbPass";
-            this.tbPass.Size = new System.Drawing.Size(100, 20);
+            this.tbPass.Size = new System.Drawing.Size(132, 22);
             this.tbPass.TabIndex = 4;
             // 
             // VentanaLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(228, 136);
+            this.ClientSize = new System.Drawing.Size(304, 167);
             this.Controls.Add(this.tbPass);
             this.Controls.Add(this.tbUsuario);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "VentanaLogin";
             this.Text = "VentanaLogin";
             this.ResumeLayout(false);

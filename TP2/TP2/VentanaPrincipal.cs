@@ -12,12 +12,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using TP2.Clases;
+using TP2.Clases.Login;
 
 namespace TP2
 {
     public partial class VentanaPrincipal : Form
     {
-        ManejoAlquiler elSistema;
+        private ManejoAlquiler elSistema;
+        private SistemaLogin loginSistema;
         public VentanaPrincipal()
         {
             InitializeComponent();
@@ -27,10 +29,12 @@ namespace TP2
             elSistema = new ManejoAlquiler("..//..//Data//propiedades.dat",
                                            "..//..//Data//clientes.dat",
                                            "..//..//Data//reservas.csv");
+            loginSistema = new SistemaLogin("..//..//Data//UsPa.dat");
         }
         private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
             elSistema.Export();
+            loginSistema.Export();
         }
         private void BtnNuevoCliente_Click(object sender, EventArgs e)
         {
