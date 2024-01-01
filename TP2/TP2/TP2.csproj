@@ -46,7 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clases\Login.cs" />
+    <Compile Include="Clases\Login\Login.cs" />
+    <Compile Include="Clases\Login\SistemaLogin.cs" />
     <Compile Include="Ventanas\VentanaLogin.cs">
       <SubType>Form</SubType>
     </Compile>

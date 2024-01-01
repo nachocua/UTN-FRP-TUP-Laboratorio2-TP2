@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using TP2.Clases;
 
 namespace TP2
 {
@@ -76,6 +77,30 @@ namespace TP2
             MostrarDatos vMostrar = new MostrarDatos(elSistema);
             vMostrar.ShowDialog();
             vMostrar.Dispose();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            bool valido = false;
+            VentanaLogin ventanaLogin= new VentanaLogin();
+            DialogResult dResult;
+            do
+            {
+                dResult = ventanaLogin.ShowDialog();
+                if (dResult == DialogResult.OK)
+                {
+                    MessageBox.Show("Bienvenido");
+                    valido = true;
+                }
+                else
+                {
+                    if(dResult == DialogResult.Cancel)
+                    {
+                        valido = true;
+                    }
+                }
+            } while (!valido);
+            ventanaLogin.Dispose();
         }
     }
 }

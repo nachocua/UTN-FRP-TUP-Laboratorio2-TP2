@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TP2.Clases
+namespace TP2.Clases.Login
 {
     public class Login
     {

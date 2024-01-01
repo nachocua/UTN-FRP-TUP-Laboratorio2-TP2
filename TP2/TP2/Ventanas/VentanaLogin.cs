@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TP2.Clases;
+using TP2.Clases.Login;
 
 namespace TP2
 {
     public partial class VentanaLogin : Form
     {
         private List<Login> listaUsuarios = new List<Login>();
+        public Login unLogin = null;
         public VentanaLogin()
         {
             InitializeComponent();
@@ -22,7 +23,7 @@ namespace TP2
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             bool valido = false;
-            Login unLogin = new Login(tbUsuario.Text, tbPass.Text, 0);
+            unLogin = new Login(tbUsuario.Text, tbPass.Text, 0);
             if (BuscarUser(unLogin) > 0)
             {
                 if (BuscarPassword(unLogin) > 0)
@@ -34,33 +35,10 @@ namespace TP2
             {
                 MessageBox.Show("Credenciales invalidas");
             }
-        }
-        public int BuscarUser(Login unLogin)
-        {
-            int indx = -1, i = 0;
-            while (indx == -1 && i < listaUsuarios.Count)
+            else
             {
-                if (listaUsuarios[i].Usuario == unLogin.Usuario)
-                {
-                    indx = i;
-                }
-                i++;
+                DialogResult = DialogResult.OK;
             }
-            return indx;
         }
-        public int BuscarPassword(Login unLogin)
-        {
-            int indx = -1, i = 0;
-            while (indx == -1 && i < listaUsuarios.Count)
-            {
-                if (listaUsuarios[i].Password == unLogin.Password)
-                {
-                    indx = i;
-                }
-                i++;
-            }
-            return indx;
-        }
-        private Import()
     }
 }
