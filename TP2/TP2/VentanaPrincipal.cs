@@ -20,6 +20,7 @@ namespace TP2
     {
         private ManejoAlquiler elSistema;
         private SistemaLogin loginSistema;
+        private Login UsuarioActivo;
         public VentanaPrincipal()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace TP2
                                            "..//..//Data//clientes.dat",
                                            "..//..//Data//reservas.csv");
             loginSistema = new SistemaLogin("..//..//Data//UsPa.dat");
+            UsuarioActivo = null;
         }
         private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -82,7 +84,6 @@ namespace TP2
             vMostrar.ShowDialog();
             vMostrar.Dispose();
         }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             bool valido = false;
@@ -94,6 +95,7 @@ namespace TP2
                 if (dResult == DialogResult.OK)
                 {
                     MessageBox.Show("Bienvenido");
+                    UsuarioActivo = ventanaLogin.unLogin;
                     valido = true;
                 }
                 else
@@ -104,7 +106,28 @@ namespace TP2
                     }
                 }
             } while (!valido);
+            if(UsuarioActivo != null)
+            {
+                btnLogin.Enabled = false;
+                btnLogout.Enabled = true;
+                btnNuevoCliente.Enabled = true;
+                btnAlquiler.Enabled = true;
+                btnConsultar.Enabled = true;
+                if(UsuarioActivo.RolId == 2)
+                {
+                    btnPropiedad.Enabled = true;
+                }
+            }
             ventanaLogin.Dispose();
+        }
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            btnLogin.Enabled = true;
+            btnLogout.Enabled = false;
+            btnNuevoCliente.Enabled = false;
+            btnAlquiler.Enabled = false;
+            btnConsultar.Enabled = false;
+            btnPropiedad.Enabled = false;
         }
     }
 }
