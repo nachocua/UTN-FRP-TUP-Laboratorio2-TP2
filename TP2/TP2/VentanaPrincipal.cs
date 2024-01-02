@@ -61,9 +61,7 @@ namespace TP2
             ToolStripMenuItem configuracionMenuItem = new ToolStripMenuItem("Configuracion");
             ToolStripMenuItem cambiarcontrasenaMenuItem = new ToolStripMenuItem("Cambiar Contraseña");
             ToolStripMenuItem salirMenuItem = new ToolStripMenuItem("Salir");
-            configuracionMenuItem.DropDownItems.Add(cambiarcontrasenaMenuItem);
-            
-
+            configuracionMenuItem.DropDownItems.Add(cambiarcontrasenaMenuItem);         
             salirMenuItem.Click += SalirMenuItem_Click;
             //cambiarcontrasenaMenuItem.Click += CambiarContrasenaMenuItem_Click;
            
@@ -88,8 +86,8 @@ namespace TP2
 
             configuracionMenuItem.DropDownItems.Add(salirMenuItem);
             menuStrip1.Items.Add(configuracionMenuItem);
-            ToolStripMenuItem rolMenuItem = new ToolStripMenuItem("Usuario: Admin");
-            menuStrip1.Items.Add(rolMenuItem);
+            //ToolStripMenuItem rolMenuItem = new ToolStripMenuItem("Usuario: Admin");
+            //menuStrip1.Items.Add(rolMenuItem);
 
             // Asignar el control MenuStrip al formulario
             this.MainMenuStrip = menuStrip1;
