@@ -45,8 +45,8 @@
             // btnNuevoCliente
             // 
             this.btnNuevoCliente.Enabled = false;
-            this.btnNuevoCliente.Location = new System.Drawing.Point(200, 134);
-            this.btnNuevoCliente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNuevoCliente.Location = new System.Drawing.Point(195, 134);
+            this.btnNuevoCliente.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevoCliente.Name = "btnNuevoCliente";
             this.btnNuevoCliente.Size = new System.Drawing.Size(157, 63);
             this.btnNuevoCliente.TabIndex = 0;
@@ -57,8 +57,8 @@
             // btnPropiedad
             // 
             this.btnPropiedad.Enabled = false;
-            this.btnPropiedad.Location = new System.Drawing.Point(200, 223);
-            this.btnPropiedad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPropiedad.Location = new System.Drawing.Point(379, 135);
+            this.btnPropiedad.Margin = new System.Windows.Forms.Padding(2);
             this.btnPropiedad.Name = "btnPropiedad";
             this.btnPropiedad.Size = new System.Drawing.Size(157, 62);
             this.btnPropiedad.TabIndex = 1;
@@ -69,7 +69,7 @@
             // btnConsultar
             // 
             this.btnConsultar.Enabled = false;
-            this.btnConsultar.Location = new System.Drawing.Point(9, 223);
+            this.btnConsultar.Location = new System.Drawing.Point(11, 223);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(157, 62);
             this.btnConsultar.TabIndex = 3;
@@ -115,8 +115,8 @@
             // btnAlquiler
             // 
             this.btnAlquiler.Enabled = false;
-            this.btnAlquiler.Location = new System.Drawing.Point(391, 223);
-            this.btnAlquiler.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAlquiler.Location = new System.Drawing.Point(379, 223);
+            this.btnAlquiler.Margin = new System.Windows.Forms.Padding(2);
             this.btnAlquiler.Name = "btnAlquiler";
             this.btnAlquiler.Size = new System.Drawing.Size(157, 63);
             this.btnAlquiler.TabIndex = 1;
@@ -126,8 +126,8 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(11, 46);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogin.Location = new System.Drawing.Point(195, 46);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(157, 63);
             this.btnLogin.TabIndex = 5;
@@ -137,8 +137,8 @@
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(393, 46);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogout.Location = new System.Drawing.Point(195, 46);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(157, 63);
             this.btnLogout.TabIndex = 6;
@@ -149,7 +149,8 @@
             // 
             // btnUsuario
             // 
-            this.btnUsuario.Location = new System.Drawing.Point(200, 46);
+            this.btnUsuario.Enabled = false;
+            this.btnUsuario.Location = new System.Drawing.Point(11, 134);
             this.btnUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.btnUsuario.Name = "btnUsuario";
             this.btnUsuario.Size = new System.Drawing.Size(157, 63);
@@ -172,7 +173,7 @@
             this.Controls.Add(this.btnNuevoCliente);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "VentanaPrincipal";
             this.Text = "Rentify";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VentanaPrincipal_FormClosing);
