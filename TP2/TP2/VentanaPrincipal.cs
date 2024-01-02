@@ -64,7 +64,8 @@ namespace TP2
             configuracionMenuItem.DropDownItems.Add(cambiarcontrasenaMenuItem);         
             salirMenuItem.Click += SalirMenuItem_Click;
             //cambiarcontrasenaMenuItem.Click += CambiarContrasenaMenuItem_Click;
-           
+
+            
 
             if (UsuarioActivo.RolId == 2)
             {
@@ -88,6 +89,16 @@ namespace TP2
             menuStrip1.Items.Add(configuracionMenuItem);
             //ToolStripMenuItem rolMenuItem = new ToolStripMenuItem("Usuario: Admin");
             //menuStrip1.Items.Add(rolMenuItem);
+
+            //  ******  Ayuda
+            ToolStripMenuItem ayudaMenuItem = new ToolStripMenuItem("Ayuda");
+            ToolStripMenuItem ayudaWebMenuItem = new ToolStripMenuItem("Ver Ayuda");
+            ayudaWebMenuItem.ShortcutKeys = Keys.F1;
+            ToolStripMenuItem acercaDeMenuItem = new ToolStripMenuItem("Acerca de");
+            acercaDeMenuItem.ShortcutKeys = Keys.F12;
+            ayudaMenuItem.DropDownItems.Add(ayudaWebMenuItem);
+            ayudaMenuItem.DropDownItems.Add(acercaDeMenuItem);
+            menuStrip1.Items.Add(ayudaMenuItem);
 
             // Asignar el control MenuStrip al formulario
             this.MainMenuStrip = menuStrip1;
