@@ -24,6 +24,7 @@ namespace TP2
         public VentanaPrincipal()
         {
             InitializeComponent();
+            
         }
         private void VentanaPrincipal_Load(object sender, EventArgs e)
         {
@@ -38,6 +39,66 @@ namespace TP2
             elSistema.Export();
             loginSistema.Export();
         }
+
+        // ************ MENU ************
+        private void ConfigurarBarraMenu()
+        {
+            //  ******  Reservas
+            ToolStripMenuItem reservasMenuItem = new ToolStripMenuItem("Reservas");            
+            ToolStripMenuItem verReservasMenuItem = new ToolStripMenuItem("Ver Reservas");
+            verReservasMenuItem.ShortcutKeys = Keys.F3;
+            ToolStripMenuItem altasMenuItem = new ToolStripMenuItem("Altas");                 
+            reservasMenuItem.DropDownItems.Add(verReservasMenuItem);
+            reservasMenuItem.DropDownItems.Add(altasMenuItem);
+
+            //verReservasMenuItem.Click += MenuItem_Click;
+            //altasMenuItem.Click += btnAltaReservas_Click_1;             
+            menuStrip1.Items.Add(reservasMenuItem);
+
+            // ******  "Configuracion"
+            ToolStripMenuItem configuracionMenuItem = new ToolStripMenuItem("Configuracion");
+            ToolStripMenuItem cambiarcontrasenaMenuItem = new ToolStripMenuItem("Cambiar Contraseña");
+            ToolStripMenuItem salirMenuItem = new ToolStripMenuItem("Salir");
+            configuracionMenuItem.DropDownItems.Add(cambiarcontrasenaMenuItem);
+            configuracionMenuItem.DropDownItems.Add(salirMenuItem);
+
+            salirMenuItem.Click += SalirMenuItem_Click;
+            //cambiarcontrasenaMenuItem.Click += CambiarContrasenaMenuItem_Click;
+            menuStrip1.Items.Add(configuracionMenuItem);
+
+            if (UsuarioActivo.RolId == 1)
+            {
+                
+            }
+
+            // Asignar el control MenuStrip al formulario
+            this.MainMenuStrip = menuStrip1;
+
+            // Asociar el evento MouseHover a cada elemento de menú
+            foreach (ToolStripMenuItem item in menuStrip1.Items)
+            {
+                item.MouseHover += MenuItem_MouseHover;
+            }
+           
+        }
+
+        // ************ Metodos de MENU ************
+        private void MenuItem_MouseHover(object sender, EventArgs e)
+        {
+            // Mostrar el menú desplegable al pasar el mouse sobre el elemento de menú
+            ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
+            menuItem.ShowDropDown();
+        }
+
+        private void SalirMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        // ************ FIN MENU ************
+
+
+
         private void BtnNuevoCliente_Click(object sender, EventArgs e)
         {
             bool repetido = true;
@@ -115,6 +176,7 @@ namespace TP2
             if (UsuarioActivo != null)
             {
                 HabilitarInterfaz();
+                ConfigurarBarraMenu();
             }
             ventanaLogin.Dispose();
         }
