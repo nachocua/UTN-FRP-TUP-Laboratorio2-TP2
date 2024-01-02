@@ -114,15 +114,7 @@ namespace TP2
             } while (!valido);
             if (UsuarioActivo != null)
             {
-                btnLogin.Visible = false;
-                btnLogout.Visible = true;
-                btnNuevoCliente.Enabled = true;
-                btnAlquiler.Enabled = true;
-                btnConsultar.Enabled = true;
-                if (UsuarioActivo.RolId == 2)
-                {
-                    btnPropiedad.Enabled = true;
-                }
+                HabilitarInterfaz();
             }
             ventanaLogin.Dispose();
         }
@@ -140,6 +132,18 @@ namespace TP2
         {
             Login unLogin = new Login("admin", "admin");
             loginSistema.AgregarUsuario(unLogin);
+        }
+        public void HabilitarInterfaz()
+        {
+            btnLogin.Visible = false;
+            btnLogout.Visible = true;
+            btnNuevoCliente.Enabled = true;
+            btnAlquiler.Enabled = true;
+            btnConsultar.Enabled = true;
+            if (UsuarioActivo.RolId == 2)
+            {
+                btnPropiedad.Enabled = true;
+            }
         }
     }
 }
