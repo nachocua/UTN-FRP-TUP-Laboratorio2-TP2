@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP2.Clases.Login
 {
+    [Serializable]
     public class Login
     {
         public string Usuario { get; private set; }

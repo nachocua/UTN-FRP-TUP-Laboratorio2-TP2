@@ -9,10 +9,9 @@ using System.Threading.Tasks;
 
 namespace TP2.Clases.Login
 {
-    [Serializable]
     public class SistemaLogin
     {
-        private List<Login> datosLogins;
+        private List<Login> datosLogins = null;
         private string FileUsPass;
         public SistemaLogin(string FileNameUsPass) 
         {
