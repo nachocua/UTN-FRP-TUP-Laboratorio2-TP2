@@ -33,6 +33,7 @@ namespace TP2
                                            "..//..//Data//reservas.csv");
             loginSistema = new SistemaLogin("..//..//Data//UsPa.dat");
             UsuarioActivo = null;
+
         }
         private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -43,6 +44,7 @@ namespace TP2
         // ************ MENU ************
         private void ConfigurarBarraMenu()
         {
+           
             //  ******  Reservas
             ToolStripMenuItem reservasMenuItem = new ToolStripMenuItem("Reservas");            
             ToolStripMenuItem verReservasMenuItem = new ToolStripMenuItem("Ver Reservas");
@@ -60,19 +62,38 @@ namespace TP2
             ToolStripMenuItem cambiarcontrasenaMenuItem = new ToolStripMenuItem("Cambiar Contraseña");
             ToolStripMenuItem salirMenuItem = new ToolStripMenuItem("Salir");
             configuracionMenuItem.DropDownItems.Add(cambiarcontrasenaMenuItem);
-            configuracionMenuItem.DropDownItems.Add(salirMenuItem);
+            
 
             salirMenuItem.Click += SalirMenuItem_Click;
             //cambiarcontrasenaMenuItem.Click += CambiarContrasenaMenuItem_Click;
-            menuStrip1.Items.Add(configuracionMenuItem);
+           
 
-            if (UsuarioActivo.RolId == 1)
+            if (UsuarioActivo.RolId == 2)
             {
-                
+                //  elementos del menú Configuracion          
+                ToolStripMenuItem crearUsuarioMenuItem = new ToolStripMenuItem("Crear Usuario");
+                configuracionMenuItem.DropDownItems.Add(crearUsuarioMenuItem);
+
+                // Cientes 
+                ToolStripMenuItem clientesMenuItem = new ToolStripMenuItem("Clientes");
+                ToolStripMenuItem verClientesMenuItem = new ToolStripMenuItem("Ver Clientes");
+                ToolStripMenuItem exportarClientesMenuItem = new ToolStripMenuItem("Exportar Clientes");
+                clientesMenuItem.DropDownItems.Add(verClientesMenuItem);
+                clientesMenuItem.DropDownItems.Add(exportarClientesMenuItem);
+
+                //verClientesMenuItem.Click += MenuItem_Click;
+                //exportarClientesMenuItem.Click += exportarClientesMenuItem_Click;
+                menuStrip1.Items.Add(clientesMenuItem);
             }
+
+            configuracionMenuItem.DropDownItems.Add(salirMenuItem);
+            menuStrip1.Items.Add(configuracionMenuItem);
+            ToolStripMenuItem rolMenuItem = new ToolStripMenuItem("Usuario: Admin");
+            menuStrip1.Items.Add(rolMenuItem);
 
             // Asignar el control MenuStrip al formulario
             this.MainMenuStrip = menuStrip1;
+            menuStrip1.Visible = true;
 
             // Asociar el evento MouseHover a cada elemento de menú
             foreach (ToolStripMenuItem item in menuStrip1.Items)
@@ -189,6 +210,8 @@ namespace TP2
             btnAlquiler.Enabled = false;
             btnConsultar.Enabled = false;
             btnPropiedad.Enabled = false;
+            menuStrip1.Visible = false;
+            menuStrip1.SuspendLayout();
         }
         private void btnUsuario_Click(object sender, EventArgs e)
         {
