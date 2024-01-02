@@ -72,7 +72,7 @@ namespace TP2
         private void btnPropiedad_Click(object sender, EventArgs e)
         {
             NuevaPropiedad ventanaPropiedad = new NuevaPropiedad(elSistema.CantidadPropiedades);
-            if(ventanaPropiedad.ShowDialog() == DialogResult.OK)
+            if (ventanaPropiedad.ShowDialog() == DialogResult.OK)
             {
                 elSistema.AgregarPropiedad(ventanaPropiedad.unaPropiedad);
             }
@@ -87,33 +87,39 @@ namespace TP2
         private void btnLogin_Click(object sender, EventArgs e)
         {
             bool valido = false;
-            VentanaLogin ventanaLogin= new VentanaLogin();
+            VentanaLogin ventanaLogin = new VentanaLogin();
             DialogResult dResult;
             do
             {
                 dResult = ventanaLogin.ShowDialog();
                 if (dResult == DialogResult.OK)
                 {
-                    MessageBox.Show("Bienvenido");
-                    UsuarioActivo = ventanaLogin.unLogin;
-                    valido = true;
+                    if (loginSistema.ValidarUsuario(ventanaLogin.unLogin) != -1)
+                    {
+                        UsuarioActivo = ventanaLogin.unLogin;
+                        valido = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Credenciales no validas");
+                    }
                 }
                 else
                 {
-                    if(dResult == DialogResult.Cancel)
+                    if (dResult == DialogResult.Cancel)
                     {
                         valido = true;
                     }
                 }
             } while (!valido);
-            if(UsuarioActivo != null)
+            if (UsuarioActivo != null)
             {
-                btnLogin.Enabled = false;
-                btnLogout.Enabled = true;
+                btnLogin.Visible = false;
+                btnLogout.Visible = true;
                 btnNuevoCliente.Enabled = true;
                 btnAlquiler.Enabled = true;
                 btnConsultar.Enabled = true;
-                if(UsuarioActivo.RolId == 2)
+                if (UsuarioActivo.RolId == 2)
                 {
                     btnPropiedad.Enabled = true;
                 }
@@ -122,12 +128,18 @@ namespace TP2
         }
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            btnLogin.Enabled = true;
-            btnLogout.Enabled = false;
+            UsuarioActivo = null;
+            btnLogin.Visible = true;
+            btnLogout.Visible = false;
             btnNuevoCliente.Enabled = false;
             btnAlquiler.Enabled = false;
             btnConsultar.Enabled = false;
             btnPropiedad.Enabled = false;
+        }
+        private void btnUsuario_Click(object sender, EventArgs e)
+        {
+            Login unLogin = new Login("admin", "admin");
+            loginSistema.AgregarUsuario(unLogin);
         }
     }
 }

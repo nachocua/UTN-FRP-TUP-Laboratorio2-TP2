@@ -20,10 +20,6 @@ namespace TP2.Clases.Login
             FileUsPass = FileNameUsPass;
             Import();
         }
-        public void AgregarUsuario(Login unUsuario)
-        {
-            datosLogins.Add(unUsuario);
-        }
         public void Import()
         {
             BinaryFormatter bf = new BinaryFormatter();
@@ -54,21 +50,34 @@ namespace TP2.Clases.Login
             }
             fs.Close();
         }
-        public int ValidarUsuario (Login unUsuario)
+        public void AgregarUsuario(Login unUsuario)
         {
-            int idRol = 0; 
-            int indx = -1, i = 0;
+            datosLogins.Add(unUsuario);
+        }
+        public int ValidarUsuario(Login unUsuario)
+        {
+            int i = 0;
+            int indx = -1;
             while (indx == -1 && i < datosLogins.Count)
             {
                 if (datosLogins[i].Usuario == unUsuario.Usuario)
                 {
-                    indx = i;
-                    if (datosLogins[indx].Password == unUsuario.Password)
+                    if (datosLogins[i].Password == unUsuario.Password)
                     {
-                        idRol = datosLogins[indx].RolId;
+                        indx = i;
                     }
                 }
                 i++;
+            }
+            return indx;
+        }
+        public int GetRolId(Login unUsuario)
+        {
+            int idRol = 0;
+            int indx = ValidarUsuario(unUsuario);
+            if (indx != -1)
+            {
+                idRol = datosLogins[indx].RolId;
             }
             return idRol;
         }

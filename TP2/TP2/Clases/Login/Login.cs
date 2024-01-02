@@ -10,12 +10,12 @@ namespace TP2.Clases.Login
     {
         public string Usuario { get; private set; }
         public string Password { get; private set; }
-        public int RolId { get; private set; }
-        public Login(string usuario, string password, int rolId)
+        public int RolId { get; private set ; }
+        public Login(string usuario, string password)
         {
             Usuario = usuario;
             Password = password;
-            RolId = rolId;
+            RolId = 2;
         }
     }
 }

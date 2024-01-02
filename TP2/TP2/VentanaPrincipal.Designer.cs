@@ -38,16 +38,17 @@
             this.btnAlquiler = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnUsuario = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnNuevoCliente
             // 
             this.btnNuevoCliente.Enabled = false;
-            this.btnNuevoCliente.Location = new System.Drawing.Point(364, 140);
-            this.btnNuevoCliente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNuevoCliente.Location = new System.Drawing.Point(200, 134);
+            this.btnNuevoCliente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnNuevoCliente.Name = "btnNuevoCliente";
-            this.btnNuevoCliente.Size = new System.Drawing.Size(209, 78);
+            this.btnNuevoCliente.Size = new System.Drawing.Size(157, 63);
             this.btnNuevoCliente.TabIndex = 0;
             this.btnNuevoCliente.Text = "Nuevo Cliente";
             this.btnNuevoCliente.UseVisualStyleBackColor = true;
@@ -56,10 +57,10 @@
             // btnPropiedad
             // 
             this.btnPropiedad.Enabled = false;
-            this.btnPropiedad.Location = new System.Drawing.Point(15, 245);
-            this.btnPropiedad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPropiedad.Location = new System.Drawing.Point(200, 223);
+            this.btnPropiedad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPropiedad.Name = "btnPropiedad";
-            this.btnPropiedad.Size = new System.Drawing.Size(209, 76);
+            this.btnPropiedad.Size = new System.Drawing.Size(157, 62);
             this.btnPropiedad.TabIndex = 1;
             this.btnPropiedad.Text = "Nueva propiedad";
             this.btnPropiedad.UseVisualStyleBackColor = true;
@@ -68,10 +69,9 @@
             // btnConsultar
             // 
             this.btnConsultar.Enabled = false;
-            this.btnConsultar.Location = new System.Drawing.Point(364, 245);
-            this.btnConsultar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnConsultar.Location = new System.Drawing.Point(9, 223);
             this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(209, 76);
+            this.btnConsultar.Size = new System.Drawing.Size(157, 62);
             this.btnConsultar.TabIndex = 3;
             this.btnConsultar.Text = "Consultar propiedades";
             this.btnConsultar.UseVisualStyleBackColor = true;
@@ -84,8 +84,8 @@
             this.ayudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(592, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(576, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -95,30 +95,30 @@
             this.ayudaToolStripMenuItem1,
             this.acercaDeToolStripMenuItem});
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
             // 
             // ayudaToolStripMenuItem1
             // 
             this.ayudaToolStripMenuItem1.Name = "ayudaToolStripMenuItem1";
             this.ayudaToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.ayudaToolStripMenuItem1.Size = new System.Drawing.Size(190, 26);
+            this.ayudaToolStripMenuItem1.Size = new System.Drawing.Size(151, 22);
             this.ayudaToolStripMenuItem1.Text = "Ayuda";
             // 
             // acercaDeToolStripMenuItem
             // 
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
             this.acercaDeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F12;
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.acercaDeToolStripMenuItem.Text = "Acerca de";
             // 
             // btnAlquiler
             // 
             this.btnAlquiler.Enabled = false;
-            this.btnAlquiler.Location = new System.Drawing.Point(15, 140);
-            this.btnAlquiler.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAlquiler.Location = new System.Drawing.Point(391, 223);
+            this.btnAlquiler.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAlquiler.Name = "btnAlquiler";
-            this.btnAlquiler.Size = new System.Drawing.Size(209, 78);
+            this.btnAlquiler.Size = new System.Drawing.Size(157, 63);
             this.btnAlquiler.TabIndex = 1;
             this.btnAlquiler.Text = "Alquilar";
             this.btnAlquiler.UseVisualStyleBackColor = true;
@@ -126,10 +126,10 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(15, 32);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLogin.Location = new System.Drawing.Point(11, 46);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(209, 78);
+            this.btnLogin.Size = new System.Drawing.Size(157, 63);
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -137,21 +137,33 @@
             // 
             // btnLogout
             // 
-            this.btnLogout.Enabled = false;
-            this.btnLogout.Location = new System.Drawing.Point(364, 32);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLogout.Location = new System.Drawing.Point(393, 46);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(209, 78);
+            this.btnLogout.Size = new System.Drawing.Size(157, 63);
             this.btnLogout.TabIndex = 6;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Visible = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnUsuario
+            // 
+            this.btnUsuario.Location = new System.Drawing.Point(200, 46);
+            this.btnUsuario.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUsuario.Name = "btnUsuario";
+            this.btnUsuario.Size = new System.Drawing.Size(157, 63);
+            this.btnUsuario.TabIndex = 7;
+            this.btnUsuario.Text = "Nuevo Usuario";
+            this.btnUsuario.UseVisualStyleBackColor = true;
+            this.btnUsuario.Click += new System.EventHandler(this.btnUsuario_Click);
             // 
             // VentanaPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 361);
+            this.ClientSize = new System.Drawing.Size(576, 337);
+            this.Controls.Add(this.btnUsuario);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.btnConsultar);
@@ -160,7 +172,7 @@
             this.Controls.Add(this.btnNuevoCliente);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "VentanaPrincipal";
             this.Text = "Rentify";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VentanaPrincipal_FormClosing);
@@ -184,6 +196,7 @@
         private System.Windows.Forms.Button btnAlquiler;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnUsuario;
     }
 }
 
