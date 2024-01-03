@@ -28,51 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnNuevoCliente = new System.Windows.Forms.Button();
-            this.btnPropiedad = new System.Windows.Forms.Button();
-            this.btnConsultar = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.btnAlquiler = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnUsuario = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // btnNuevoCliente
-            // 
-            this.btnNuevoCliente.Enabled = false;
-            this.btnNuevoCliente.Location = new System.Drawing.Point(260, 165);
-            this.btnNuevoCliente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnNuevoCliente.Name = "btnNuevoCliente";
-            this.btnNuevoCliente.Size = new System.Drawing.Size(209, 78);
-            this.btnNuevoCliente.TabIndex = 0;
-            this.btnNuevoCliente.Text = "Nuevo Cliente";
-            this.btnNuevoCliente.UseVisualStyleBackColor = true;
-            this.btnNuevoCliente.Click += new System.EventHandler(this.BtnNuevoCliente_Click);
-            // 
-            // btnPropiedad
-            // 
-            this.btnPropiedad.Enabled = false;
-            this.btnPropiedad.Location = new System.Drawing.Point(505, 166);
-            this.btnPropiedad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnPropiedad.Name = "btnPropiedad";
-            this.btnPropiedad.Size = new System.Drawing.Size(209, 76);
-            this.btnPropiedad.TabIndex = 1;
-            this.btnPropiedad.Text = "Nueva propiedad";
-            this.btnPropiedad.UseVisualStyleBackColor = true;
-            this.btnPropiedad.Click += new System.EventHandler(this.btnPropiedad_Click);
-            // 
-            // btnConsultar
-            // 
-            this.btnConsultar.Enabled = false;
-            this.btnConsultar.Location = new System.Drawing.Point(15, 274);
-            this.btnConsultar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(209, 76);
-            this.btnConsultar.TabIndex = 3;
-            this.btnConsultar.Text = "Consultar propiedades";
-            this.btnConsultar.UseVisualStyleBackColor = true;
-            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // menuStrip1
             // 
@@ -80,21 +40,9 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(768, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(768, 30);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // btnAlquiler
-            // 
-            this.btnAlquiler.Enabled = false;
-            this.btnAlquiler.Location = new System.Drawing.Point(505, 274);
-            this.btnAlquiler.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAlquiler.Name = "btnAlquiler";
-            this.btnAlquiler.Size = new System.Drawing.Size(209, 78);
-            this.btnAlquiler.TabIndex = 1;
-            this.btnAlquiler.Text = "Alquilar";
-            this.btnAlquiler.UseVisualStyleBackColor = true;
-            this.btnAlquiler.Click += new System.EventHandler(this.btnAlquiler_Click);
             // 
             // btnLogin
             // 
@@ -139,10 +87,6 @@
             this.Controls.Add(this.btnUsuario);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.btnConsultar);
-            this.Controls.Add(this.btnPropiedad);
-            this.Controls.Add(this.btnAlquiler);
-            this.Controls.Add(this.btnNuevoCliente);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -156,12 +100,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnNuevoCliente;
-        private System.Windows.Forms.Button btnPropiedad;
-        private System.Windows.Forms.Button btnConsultar;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.Button btnAlquiler;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button btnUsuario;

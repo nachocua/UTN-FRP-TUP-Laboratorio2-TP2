@@ -24,7 +24,8 @@ namespace TP2
         public VentanaPrincipal()
         {
             InitializeComponent();
-            
+            btnUsuario.Visible = false; // borras mas adelante
+
         }
         private void VentanaPrincipal_Load(object sender, EventArgs e)
         {
@@ -60,8 +61,13 @@ namespace TP2
             // ******  "Configuracion"
             ToolStripMenuItem configuracionMenuItem = new ToolStripMenuItem("Configuracion");
             ToolStripMenuItem cambiarcontrasenaMenuItem = new ToolStripMenuItem("Cambiar Contraseña");
+            ToolStripMenuItem logOutMenuItem = new ToolStripMenuItem("Logout");
             ToolStripMenuItem salirMenuItem = new ToolStripMenuItem("Salir");
-            configuracionMenuItem.DropDownItems.Add(cambiarcontrasenaMenuItem);         
+            configuracionMenuItem.DropDownItems.Add(cambiarcontrasenaMenuItem);
+
+            configuracionMenuItem.DropDownItems.Add(logOutMenuItem);
+            logOutMenuItem.Click += logOutMenuItem_Click;
+
             salirMenuItem.Click += SalirMenuItem_Click;
             //cambiarcontrasenaMenuItem.Click += CambiarContrasenaMenuItem_Click;
 
@@ -70,19 +76,39 @@ namespace TP2
             if (UsuarioActivo.RolId == 2)
             {
                 //  elementos del menú Configuracion          
-                ToolStripMenuItem crearUsuarioMenuItem = new ToolStripMenuItem("Crear Usuario");
-                configuracionMenuItem.DropDownItems.Add(crearUsuarioMenuItem);
+                ToolStripMenuItem nuevoUsuarioMenuItem = new ToolStripMenuItem("Nuevo Usuario");
+                configuracionMenuItem.DropDownItems.Add(nuevoUsuarioMenuItem);
 
                 // Cientes 
                 ToolStripMenuItem clientesMenuItem = new ToolStripMenuItem("Clientes");
                 ToolStripMenuItem verClientesMenuItem = new ToolStripMenuItem("Ver Clientes");
+                ToolStripMenuItem nuevoClientesMenuItem = new ToolStripMenuItem("Nuevo Cliente");
                 ToolStripMenuItem exportarClientesMenuItem = new ToolStripMenuItem("Exportar Clientes");
+
                 clientesMenuItem.DropDownItems.Add(verClientesMenuItem);
+                clientesMenuItem.DropDownItems.Add(nuevoClientesMenuItem);
                 clientesMenuItem.DropDownItems.Add(exportarClientesMenuItem);
 
                 //verClientesMenuItem.Click += MenuItem_Click;
+                nuevoClientesMenuItem.Click += nuevoClientesMenuItem_Click;
                 //exportarClientesMenuItem.Click += exportarClientesMenuItem_Click;
                 menuStrip1.Items.Add(clientesMenuItem);
+
+                // Propiedades
+                ToolStripMenuItem propiedadesMenuItem = new ToolStripMenuItem("Propiedades");
+                ToolStripMenuItem consultarPropiedadesMenuItem = new ToolStripMenuItem("Consultar Propiedades");
+                ToolStripMenuItem nuevaPropiedadItem = new ToolStripMenuItem("Nueva Propiedad");
+                ToolStripMenuItem alquilarPropiedadItem = new ToolStripMenuItem("Alquilar Propiedad");
+                 propiedadesMenuItem.DropDownItems.Add(consultarPropiedadesMenuItem);
+                propiedadesMenuItem.DropDownItems.Add(nuevaPropiedadItem);
+                propiedadesMenuItem.DropDownItems.Add(alquilarPropiedadItem);
+
+                consultarPropiedadesMenuItem.Click += consultarPropiedadesMenuItem_Click;
+                nuevaPropiedadItem.Click += nuevaPropiedadItem_Click;
+                alquilarPropiedadItem.Click += alquilarPropiedadItem_Click;
+
+                menuStrip1.Items.Add(propiedadesMenuItem);
+
             }
 
             configuracionMenuItem.DropDownItems.Add(salirMenuItem);
@@ -123,6 +149,68 @@ namespace TP2
         private void SalirMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        // Configuracion
+        private void logOutMenuItem_Click(object sender, EventArgs e)
+        {
+            UsuarioActivo = null;
+            btnLogin.Visible = true;
+            btnLogout.Visible = false;
+            menuStrip1.Visible = false;
+            menuStrip1.SuspendLayout();
+        }
+
+        // Propiedades
+        private void consultarPropiedadesMenuItem_Click (object sender, EventArgs e)
+        {
+            MostrarDatos vMostrar = new MostrarDatos(elSistema);
+            vMostrar.ShowDialog();
+            vMostrar.Dispose();
+        }
+
+        private void nuevaPropiedadItem_Click(object sender, EventArgs e)
+        {
+            NuevaPropiedad ventanaPropiedad = new NuevaPropiedad(elSistema.CantidadPropiedades);
+            if (ventanaPropiedad.ShowDialog() == DialogResult.OK)
+            {
+                elSistema.AgregarPropiedad(ventanaPropiedad.unaPropiedad);
+            }
+            ventanaPropiedad.Dispose();
+        }
+
+        private void alquilarPropiedadItem_Click(object sender, EventArgs e)
+        {
+            Alquiler ventanaAlquiler = new Alquiler(elSistema);
+            ventanaAlquiler.ShowDialog();
+            ventanaAlquiler.Dispose();
+        }
+
+        // Clientes
+        private void nuevoClientesMenuItem_Click(object sender, EventArgs e)
+        {
+            bool repetido = true;
+            Alta_Cliente ventanaCliente = new Alta_Cliente();
+            do
+            {
+                if (ventanaCliente.ShowDialog() == DialogResult.OK)
+                {
+                    if (elSistema.BuscarCliente(ventanaCliente.unCliente) < 0)
+                    {
+                        elSistema.AgregarCliente(ventanaCliente.unCliente);
+                        repetido = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ya existe un cliente con este DNI.\n Verifique el DNI o busquelo en el sistema");
+                    }
+                }
+                else
+                {
+                    repetido = false;
+                }
+            } while (repetido);
+            ventanaCliente.Dispose();
         }
 
         // ************ FIN MENU ************
@@ -205,20 +293,16 @@ namespace TP2
             } while (!valido);
             if (UsuarioActivo != null)
             {
-                HabilitarInterfaz();
+              HabilitarInterfaz();
                 ConfigurarBarraMenu();
             }
             ventanaLogin.Dispose();
         }
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void btnLogout_Click(object sender, EventArgs e) // borrar mas adelante
         {
             UsuarioActivo = null;
             btnLogin.Visible = true;
             btnLogout.Visible = false;
-            btnNuevoCliente.Enabled = false;
-            btnAlquiler.Enabled = false;
-            btnConsultar.Enabled = false;
-            btnPropiedad.Enabled = false;
             menuStrip1.Visible = false;
             menuStrip1.SuspendLayout();
         }
@@ -231,13 +315,8 @@ namespace TP2
         {
             btnLogin.Visible = false;
             btnLogout.Visible = true;
-            btnNuevoCliente.Enabled = true;
-            btnAlquiler.Enabled = true;
-            btnConsultar.Enabled = true;
-            if (UsuarioActivo.RolId == 2)
-            {
-                btnPropiedad.Enabled = true;
-            }
+            btnUsuario.Visible = false; // borrar mas adelante
+
         }
     }
 }
