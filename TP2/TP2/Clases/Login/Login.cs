@@ -16,7 +16,7 @@ namespace TP2.Clases.Login
         {
             Usuario = usuario;
             Password = password;
-            RolId = 1;
+            RolId = 2;
         }
     }
 }

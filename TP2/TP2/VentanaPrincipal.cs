@@ -77,6 +77,7 @@ namespace TP2
             {
                 //  elementos del menú Configuracion          
                 ToolStripMenuItem nuevoUsuarioMenuItem = new ToolStripMenuItem("Nuevo Usuario");
+                nuevoUsuarioMenuItem.Click += nuevoUsuarioMenuItem_Click;
                 configuracionMenuItem.DropDownItems.Add(nuevoUsuarioMenuItem);
 
                 // Cientes 
@@ -146,12 +147,20 @@ namespace TP2
             menuItem.ShowDropDown();
         }
 
+        
+
+        // ************ MTD Configuracion
+
+        private void nuevoUsuarioMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Crear Nuevo usuario");
+            // Aca crear ventana para Agregar Nuevo Usuario
+        }
+
         private void SalirMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        // Configuracion
         private void logOutMenuItem_Click(object sender, EventArgs e)
         {
             UsuarioActivo = null;
@@ -161,7 +170,8 @@ namespace TP2
             menuStrip1.SuspendLayout();
         }
 
-        // Propiedades
+
+        // ************ MTD Propiedades
         private void consultarPropiedadesMenuItem_Click (object sender, EventArgs e)
         {
             MostrarDatos vMostrar = new MostrarDatos(elSistema);
@@ -186,7 +196,8 @@ namespace TP2
             ventanaAlquiler.Dispose();
         }
 
-        // Clientes
+
+        //  ************ MTD Clientes
         private void nuevoClientesMenuItem_Click(object sender, EventArgs e)
         {
             bool repetido = true;
@@ -212,6 +223,9 @@ namespace TP2
             } while (repetido);
             ventanaCliente.Dispose();
         }
+
+
+        //  ************ MTD Ayuda
 
         // ************ FIN MENU ************
 
