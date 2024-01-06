@@ -11,10 +11,10 @@ using TP2.Clases.Login;
 
 namespace TP2
 {
-    public partial class VentanaLogin : Form
+    public partial class Ventana_Crear_Usuario : Form
     {
         public Login unLogin = null;
-        public VentanaLogin()
+        public Ventana_Crear_Usuario()
         {
             InitializeComponent();
         }

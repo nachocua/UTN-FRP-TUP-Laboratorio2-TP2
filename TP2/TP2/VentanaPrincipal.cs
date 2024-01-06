@@ -24,8 +24,6 @@ namespace TP2
         public VentanaPrincipal()
         {
             InitializeComponent();
-            btnUsuario.Visible = false; // borras mas adelante
-
         }
         private void VentanaPrincipal_Load(object sender, EventArgs e)
         {
@@ -34,7 +32,6 @@ namespace TP2
                                            "..//..//Data//reservas.csv");
             loginSistema = new SistemaLogin("..//..//Data//UsPa.dat");
             UsuarioActivo = null;
-
         }
         private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -45,12 +42,12 @@ namespace TP2
         // ************ MENU ************
         private void ConfigurarBarraMenu()
         {
-           
+
             //  ******  Reservas
-            ToolStripMenuItem reservasMenuItem = new ToolStripMenuItem("Reservas");            
+            ToolStripMenuItem reservasMenuItem = new ToolStripMenuItem("Reservas");
             ToolStripMenuItem verReservasMenuItem = new ToolStripMenuItem("Ver Reservas");
             verReservasMenuItem.ShortcutKeys = Keys.F3;
-            ToolStripMenuItem altasMenuItem = new ToolStripMenuItem("Altas");                 
+            ToolStripMenuItem altasMenuItem = new ToolStripMenuItem("Altas");
             reservasMenuItem.DropDownItems.Add(verReservasMenuItem);
             reservasMenuItem.DropDownItems.Add(altasMenuItem);
 
@@ -71,7 +68,6 @@ namespace TP2
             salirMenuItem.Click += SalirMenuItem_Click;
             //cambiarcontrasenaMenuItem.Click += CambiarContrasenaMenuItem_Click;
 
-            
 
             if (UsuarioActivo.RolId == 2)
             {
@@ -100,7 +96,7 @@ namespace TP2
                 ToolStripMenuItem consultarPropiedadesMenuItem = new ToolStripMenuItem("Consultar Propiedades");
                 ToolStripMenuItem nuevaPropiedadItem = new ToolStripMenuItem("Nueva Propiedad");
                 ToolStripMenuItem alquilarPropiedadItem = new ToolStripMenuItem("Alquilar Propiedad");
-                 propiedadesMenuItem.DropDownItems.Add(consultarPropiedadesMenuItem);
+                propiedadesMenuItem.DropDownItems.Add(consultarPropiedadesMenuItem);
                 propiedadesMenuItem.DropDownItems.Add(nuevaPropiedadItem);
                 propiedadesMenuItem.DropDownItems.Add(alquilarPropiedadItem);
 
@@ -109,7 +105,6 @@ namespace TP2
                 alquilarPropiedadItem.Click += alquilarPropiedadItem_Click;
 
                 menuStrip1.Items.Add(propiedadesMenuItem);
-
             }
 
             configuracionMenuItem.DropDownItems.Add(salirMenuItem);
@@ -136,7 +131,7 @@ namespace TP2
             {
                 item.MouseHover += MenuItem_MouseHover;
             }
-           
+
         }
 
         // ************ Metodos de MENU ************
@@ -147,10 +142,7 @@ namespace TP2
             menuItem.ShowDropDown();
         }
 
-        
-
         // ************ MTD Configuracion
-
         private void nuevoUsuarioMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Crear Nuevo usuario");
@@ -170,15 +162,13 @@ namespace TP2
             menuStrip1.SuspendLayout();
         }
 
-
         // ************ MTD Propiedades
-        private void consultarPropiedadesMenuItem_Click (object sender, EventArgs e)
+        private void consultarPropiedadesMenuItem_Click(object sender, EventArgs e)
         {
             MostrarDatos vMostrar = new MostrarDatos(elSistema);
             vMostrar.ShowDialog();
             vMostrar.Dispose();
         }
-
         private void nuevaPropiedadItem_Click(object sender, EventArgs e)
         {
             NuevaPropiedad ventanaPropiedad = new NuevaPropiedad(elSistema.CantidadPropiedades);
@@ -188,14 +178,12 @@ namespace TP2
             }
             ventanaPropiedad.Dispose();
         }
-
         private void alquilarPropiedadItem_Click(object sender, EventArgs e)
         {
             Alquiler ventanaAlquiler = new Alquiler(elSistema);
             ventanaAlquiler.ShowDialog();
             ventanaAlquiler.Dispose();
         }
-
 
         //  ************ MTD Clientes
         private void nuevoClientesMenuItem_Click(object sender, EventArgs e)
@@ -224,12 +212,9 @@ namespace TP2
             ventanaCliente.Dispose();
         }
 
-
         //  ************ MTD Ayuda
 
         // ************ FIN MENU ************
-
-
 
         private void BtnNuevoCliente_Click(object sender, EventArgs e)
         {
@@ -307,7 +292,7 @@ namespace TP2
             } while (!valido);
             if (UsuarioActivo != null)
             {
-              HabilitarInterfaz();
+                HabilitarInterfaz();
                 ConfigurarBarraMenu();
             }
             ventanaLogin.Dispose();
@@ -322,15 +307,38 @@ namespace TP2
         }
         private void btnUsuario_Click(object sender, EventArgs e)
         {
-            Login unLogin = new Login("admin", "admin");
-            loginSistema.AgregarUsuario(unLogin);
+            bool valido = false;
+            VentanaLogin ventanaLogin = new VentanaLogin();
+            DialogResult dResult;
+            do
+            {
+                dResult = ventanaLogin.ShowDialog();
+                if (dResult == DialogResult.OK)
+                {
+                    if (loginSistema.BuscarUsuario(ventanaLogin.unLogin) == -1)
+                    {
+                        loginSistema.AgregarUsuario(ventanaLogin.unLogin);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Existe un usuario con ese nombre");
+                    }
+                }
+                else
+                {
+                    if (dResult == DialogResult.Cancel)
+                    {
+                        valido = true;
+                    }
+                }
+            } while (!valido);
+            ventanaLogin.Dispose();
         }
         public void HabilitarInterfaz()
         {
             btnLogin.Visible = false;
             btnLogout.Visible = true;
             btnUsuario.Visible = false; // borrar mas adelante
-
         }
     }
 }

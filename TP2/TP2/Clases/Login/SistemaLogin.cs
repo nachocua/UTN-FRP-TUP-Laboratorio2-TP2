@@ -13,7 +13,7 @@ namespace TP2.Clases.Login
     {
         private List<Login> datosLogins = null;
         private string FileUsPass;
-        public SistemaLogin(string FileNameUsPass) 
+        public SistemaLogin(string FileNameUsPass)
         {
             datosLogins = new List<Login>();
             FileUsPass = FileNameUsPass;
@@ -33,7 +33,7 @@ namespace TP2.Clases.Login
             }
             fs.Close();
         }
-        public void Export() 
+        public void Export()
         {
             BinaryFormatter bf;
             FileStream fs;
@@ -55,25 +55,33 @@ namespace TP2.Clases.Login
         }
         public int ValidarUsuario(Login unUsuario)
         {
-            int i = 0;
-            int indx = -1;
+            int rolId = -1;
+            int indx = BuscarUsuario(unUsuario);
+            if (indx != -1)
+            {
+                if (datosLogins[indx].Password == unUsuario.Password)
+                {
+                    rolId = GetRolId(indx);
+                }
+            }
+            return rolId;
+        }
+        public int BuscarUsuario(Login unUsuario)
+        {
+            int indx = -1, i = 0;
             while (indx == -1 && i < datosLogins.Count)
             {
                 if (datosLogins[i].Usuario == unUsuario.Usuario)
                 {
-                    if (datosLogins[i].Password == unUsuario.Password)
-                    {
-                        indx = i;
-                    }
+                    indx = i;
                 }
                 i++;
             }
             return indx;
         }
-        public int GetRolId(Login unUsuario)
+        public int GetRolId(int indx)
         {
             int idRol = 0;
-            int indx = ValidarUsuario(unUsuario);
             if (indx != -1)
             {
                 idRol = datosLogins[indx].RolId;

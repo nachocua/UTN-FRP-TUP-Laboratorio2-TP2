@@ -19,6 +19,13 @@ namespace TP2
         private string FilePropiedades;
         private string FileClientes;
         private string FileReservas;
+        public int CantidadPropiedades
+        {
+            get
+            {
+                return propiedades.Count;
+            }
+        }
         public ManejoAlquiler(string FileNamePropiedades, string FileNameClientes, string FileNameReservas)
         {
             propiedades = new List<Propiedad>();
@@ -78,14 +85,6 @@ namespace TP2
                 }
                 NuevaReserva(unaReserva, false);
             }
-            //foreach (Cliente unCliente in clientes)
-            //{
-            //    unCliente.IdReservas = new Stack<int>();
-            //}
-            //foreach (Propiedad unaPropiedad in propiedades)
-            //{
-            //    unaPropiedad.Init();
-            //}
         }
         public void Export()
         {
@@ -122,13 +121,6 @@ namespace TP2
                 sw.WriteLine(unaReserva.ToString());
             }
             sw.Close();
-        }
-        public int CantidadPropiedades
-        {
-            get
-            {
-                return propiedades.Count;
-            }
         }
         public void AgregarPropiedad(Propiedad propiedad)
         {

@@ -48,6 +48,12 @@
   <ItemGroup>
     <Compile Include="Clases\Login\Login.cs" />
     <Compile Include="Clases\Login\SistemaLogin.cs" />
+    <Compile Include="Ventanas\Ventana Crear Usuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Ventana Crear Usuario.Designer.cs">
+      <DependentUpon>Ventana Crear Usuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\VentanaLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\NuevaPropiedad.resx">
       <DependentUpon>NuevaPropiedad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Ventana Crear Usuario.resx">
+      <DependentUpon>Ventana Crear Usuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\VentanaLogin.resx">
       <DependentUpon>VentanaLogin.cs</DependentUpon>
