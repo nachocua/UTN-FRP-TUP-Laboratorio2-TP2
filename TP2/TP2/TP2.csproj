@@ -48,28 +48,28 @@
   <ItemGroup>
     <Compile Include="Clases\Login\Login.cs" />
     <Compile Include="Clases\Login\SistemaLogin.cs" />
-    <Compile Include="Ventanas\Ventana Crear Usuario.cs">
+    <Compile Include="Ventanas\Logins\Ventana Crear Usuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ventanas\Ventana Crear Usuario.Designer.cs">
+    <Compile Include="Ventanas\Logins\Ventana Crear Usuario.Designer.cs">
       <DependentUpon>Ventana Crear Usuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ventanas\VentanaLogin.cs">
+    <Compile Include="Ventanas\Logins\VentanaLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ventanas\VentanaLogin.Designer.cs">
+    <Compile Include="Ventanas\Logins\VentanaLogin.Designer.cs">
       <DependentUpon>VentanaLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ventanas\FormImg.cs">
+    <Compile Include="Ventanas\Propiedades\FormImg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ventanas\FormImg.Designer.cs">
+    <Compile Include="Ventanas\Propiedades\FormImg.Designer.cs">
       <DependentUpon>FormImg.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ventanas\MostrarDatos.cs">
+    <Compile Include="Ventanas\Propiedades\MostrarDatos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ventanas\MostrarDatos.Designer.cs">
+    <Compile Include="Ventanas\Propiedades\MostrarDatos.Designer.cs">
       <DependentUpon>MostrarDatos.cs</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\Alquiler.cs">
@@ -91,10 +91,10 @@
     <Compile Include="Clases\Sistema\ManejoAlquiler.cs" />
     <Compile Include="Clases\Propiedad\Propiedad.cs" />
     <Compile Include="Clases\Reservas\Reserva.cs" />
-    <Compile Include="Ventanas\NuevaPropiedad.cs">
+    <Compile Include="Ventanas\Propiedades\NuevaPropiedad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ventanas\NuevaPropiedad.Designer.cs">
+    <Compile Include="Ventanas\Propiedades\NuevaPropiedad.Designer.cs">
       <DependentUpon>NuevaPropiedad.cs</DependentUpon>
     </Compile>
     <Compile Include="Clases\Tools\Funciones Adicionales.cs" />
@@ -106,10 +106,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Ventanas\FormImg.resx">
+    <EmbeddedResource Include="Ventanas\Propiedades\FormImg.resx">
       <DependentUpon>FormImg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ventanas\MostrarDatos.resx">
+    <EmbeddedResource Include="Ventanas\Propiedades\MostrarDatos.resx">
       <DependentUpon>MostrarDatos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Alquiler.resx">
@@ -130,13 +130,13 @@
     <EmbeddedResource Include="VentanaPrincipal.resx">
       <DependentUpon>VentanaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ventanas\NuevaPropiedad.resx">
+    <EmbeddedResource Include="Ventanas\Propiedades\NuevaPropiedad.resx">
       <DependentUpon>NuevaPropiedad.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ventanas\Ventana Crear Usuario.resx">
+    <EmbeddedResource Include="Ventanas\Logins\Ventana Crear Usuario.resx">
       <DependentUpon>Ventana Crear Usuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ventanas\VentanaLogin.resx">
+    <EmbeddedResource Include="Ventanas\Logins\VentanaLogin.resx">
       <DependentUpon>VentanaLogin.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Data\clientes.dat" />
