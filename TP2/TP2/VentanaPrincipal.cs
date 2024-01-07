@@ -214,6 +214,27 @@ namespace TP2
 
         //  ************ MTD Ayuda
 
+        private void AyudaItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void AcercaDeItem_Click(object sender, EventArgs e)
+        {
+            // Crear un nuevo Label
+            //Label labelRecuadro = new Label();
+
+            //Establecer propiedades del Label
+            //labelRecuadro.Text = "Texto en el recuadro";
+            //labelRecuadro.BorderStyle = BorderStyle.FixedSingle;
+            //labelRecuadro.AutoSize = true;
+            //Agrega relleno alrededor del texto
+            //labelRecuadro.Padding = new Padding(10); 
+
+            // Agregar el Label al formulario
+            //Controls.Add(labelRecuadro);
+        }
+
+
         // ************ FIN MENU ************
 
         private void BtnNuevoCliente_Click(object sender, EventArgs e)
