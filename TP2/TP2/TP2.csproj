@@ -171,6 +171,7 @@
     <None Include="Data\clientes.dat" />
     <None Include="Data\propiedades.dat" />
     <None Include="Data\reservas.csv" />
+    <None Include="Data\UsPa.dat" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

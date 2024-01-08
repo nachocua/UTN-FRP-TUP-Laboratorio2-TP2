@@ -22,7 +22,7 @@ namespace TP2
         {
             if(tbUsuario.Text != "" && tbPass.Text != "")
             {
-                unLogin = new Login(tbUsuario.Text, tbPass.Text);
+                unLogin = new Login(tbUsuario.Text, tbPass.Text, cbAdmin.Checked);
                 this.DialogResult = DialogResult.OK;
             }
             else

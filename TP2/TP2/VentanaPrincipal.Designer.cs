@@ -47,7 +47,7 @@
             // btnLogin
             // 
             this.btnLogin.Location = new System.Drawing.Point(195, 46);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(157, 63);
             this.btnLogin.TabIndex = 5;
@@ -58,7 +58,7 @@
             // btnLogout
             // 
             this.btnLogout.Location = new System.Drawing.Point(195, 46);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(157, 63);
             this.btnLogout.TabIndex = 6;
@@ -69,8 +69,9 @@
             // 
             // btnUsuario
             // 
+            this.btnUsuario.Enabled = false;
             this.btnUsuario.Location = new System.Drawing.Point(11, 134);
-            this.btnUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.btnUsuario.Name = "btnUsuario";
             this.btnUsuario.Size = new System.Drawing.Size(157, 63);
             this.btnUsuario.TabIndex = 7;
@@ -88,7 +89,7 @@
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "VentanaPrincipal";
             this.Text = "Rentify";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VentanaPrincipal_FormClosing);

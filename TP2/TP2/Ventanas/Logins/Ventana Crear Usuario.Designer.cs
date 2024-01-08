@@ -33,6 +33,7 @@
             this.btnIngresar = new System.Windows.Forms.Button();
             this.tbUsuario = new System.Windows.Forms.TextBox();
             this.tbPass = new System.Windows.Forms.TextBox();
+            this.cbAdmin = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -55,7 +56,7 @@
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(69, 93);
+            this.btnIngresar.Location = new System.Drawing.Point(62, 129);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(90, 23);
             this.btnIngresar.TabIndex = 2;
@@ -77,11 +78,22 @@
             this.tbPass.Size = new System.Drawing.Size(100, 20);
             this.tbPass.TabIndex = 4;
             // 
+            // cbAdmin
+            // 
+            this.cbAdmin.AutoSize = true;
+            this.cbAdmin.Location = new System.Drawing.Point(83, 97);
+            this.cbAdmin.Name = "cbAdmin";
+            this.cbAdmin.Size = new System.Drawing.Size(55, 17);
+            this.cbAdmin.TabIndex = 6;
+            this.cbAdmin.Text = "Admin";
+            this.cbAdmin.UseVisualStyleBackColor = true;
+            // 
             // Ventana_Crear_Usuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(228, 136);
+            this.ClientSize = new System.Drawing.Size(218, 172);
+            this.Controls.Add(this.cbAdmin);
             this.Controls.Add(this.tbPass);
             this.Controls.Add(this.tbUsuario);
             this.Controls.Add(this.btnIngresar);
@@ -101,5 +113,6 @@
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.TextBox tbUsuario;
         private System.Windows.Forms.TextBox tbPass;
+        private System.Windows.Forms.CheckBox cbAdmin;
     }
 }

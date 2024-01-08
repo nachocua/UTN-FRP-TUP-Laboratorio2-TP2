@@ -287,20 +287,30 @@ namespace TP2
         {
             bool valido = false;
             VentanaLogin ventanaLogin = new VentanaLogin();
+            Login unLogin = null;
             DialogResult dResult;
             do
             {
                 dResult = ventanaLogin.ShowDialog();
                 if (dResult == DialogResult.OK)
                 {
-                    if (loginSistema.ValidarUsuario(ventanaLogin.unLogin) != -1)
+                    int rolID = loginSistema.ValidarUsuario(ventanaLogin.unLogin);
+                    if(rolID == -1)
                     {
-                        UsuarioActivo = ventanaLogin.unLogin;
-                        valido = true;
+                        MessageBox.Show("Credenciales no validas");
                     }
                     else
                     {
-                        MessageBox.Show("Credenciales no validas");
+                        if(rolID == 2)
+                        {
+                            unLogin = new Login(ventanaLogin.unLogin.Usuario, ventanaLogin.unLogin.Password, true);
+                        }
+                        else
+                        {
+                            unLogin = new Login(ventanaLogin.unLogin.Usuario, ventanaLogin.unLogin.Password);
+                        }
+                        UsuarioActivo = unLogin;
+                        valido = true;
                     }
                 }
                 else
@@ -313,6 +323,10 @@ namespace TP2
             } while (!valido);
             if (UsuarioActivo != null)
             {
+                if (UsuarioActivo.RolId == 2)
+                {
+                    btnUsuario.Enabled = true;
+                }
                 HabilitarInterfaz();
                 ConfigurarBarraMenu();
             }
@@ -329,16 +343,17 @@ namespace TP2
         private void btnUsuario_Click(object sender, EventArgs e)
         {
             bool valido = false;
-            VentanaLogin ventanaLogin = new VentanaLogin();
+            Ventana_Crear_Usuario unaVentanaCrearUsuario = new Ventana_Crear_Usuario();
             DialogResult dResult;
             do
             {
-                dResult = ventanaLogin.ShowDialog();
+                dResult = unaVentanaCrearUsuario.ShowDialog();
                 if (dResult == DialogResult.OK)
                 {
-                    if (loginSistema.BuscarUsuario(ventanaLogin.unLogin) == -1)
+                    if (loginSistema.BuscarUsuario(unaVentanaCrearUsuario.unLogin) == -1)
                     {
-                        loginSistema.AgregarUsuario(ventanaLogin.unLogin);
+                        loginSistema.AgregarUsuario(unaVentanaCrearUsuario.unLogin);
+                        valido = true;
                     }
                     else
                     {
@@ -353,13 +368,12 @@ namespace TP2
                     }
                 }
             } while (!valido);
-            ventanaLogin.Dispose();
+            unaVentanaCrearUsuario.Dispose();
         }
         public void HabilitarInterfaz()
         {
             btnLogin.Visible = false;
             btnLogout.Visible = true;
-            btnUsuario.Visible = false; // borrar mas adelante
         }
     }
 }
