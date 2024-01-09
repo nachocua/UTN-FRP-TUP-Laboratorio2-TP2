@@ -32,6 +32,8 @@ namespace TP2
                                            "..//..//Data//reservas.csv");
             loginSistema = new SistemaLogin("..//..//Data//UsPa.dat");
             UsuarioActivo = null;
+            BarraMenuSinLoguear();
+          
         }
         private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -40,36 +42,76 @@ namespace TP2
         }
 
         // ************ MENU ************
-        private void ConfigurarBarraMenu()
+        private void BarraMenuSinLoguear()
         {
+            ToolStripMenuItem ayudaMenuItem = new ToolStripMenuItem("Ayuda");
+            ToolStripMenuItem loginMenuItem = new ToolStripMenuItem("Login");
+            ayudaMenuItem.DropDownItems.Add(loginMenuItem);
+            loginMenuItem.Click += loginMenuItem_Click;
+            
+            ToolStripMenuItem ayudaWebMenuItem = new ToolStripMenuItem("Ver Ayuda");
+            ayudaWebMenuItem.ShortcutKeys = Keys.F1;
+            ayudaWebMenuItem.Click += AyudaItem_Click; 
+            
+            ToolStripMenuItem acercaDeMenuItem = new ToolStripMenuItem("Acerca de");
+            acercaDeMenuItem.ShortcutKeys = Keys.F12;
+            acercaDeMenuItem.Click += AcercaDeItem_Click;
+            
+            ayudaMenuItem.DropDownItems.Add(ayudaWebMenuItem);
+            ayudaMenuItem.DropDownItems.Add(acercaDeMenuItem);
+            menuStrip1.Items.Add(ayudaMenuItem);
+            
+            this.MainMenuStrip = menuStrip1;
+            foreach (ToolStripMenuItem item in menuStrip1.Items)
+            {
+                item.MouseHover += MenuItem_MouseHover;
+            }
+        }
+        private void BarraMenuLogueado()
+        {
+            menuStrip1.Items.Clear();
+           
+            //  ******  Ayuda
+            ToolStripMenuItem ayudaMenuItem = new ToolStripMenuItem("Ayuda");
+            ToolStripMenuItem ayudaWebMenuItem = new ToolStripMenuItem("Ver Ayuda");
+            ayudaWebMenuItem.ShortcutKeys = Keys.F1;
+            ayudaWebMenuItem.Click += AyudaItem_Click;
+
+            ToolStripMenuItem acercaDeMenuItem = new ToolStripMenuItem("Acerca de");
+            acercaDeMenuItem.ShortcutKeys = Keys.F12;
+            acercaDeMenuItem.Click += AcercaDeItem_Click;
+            ayudaMenuItem.DropDownItems.Add(ayudaWebMenuItem);
+            ayudaMenuItem.DropDownItems.Add(acercaDeMenuItem);
+            menuStrip1.Items.Add(ayudaMenuItem);
 
             //  ******  Reservas
             ToolStripMenuItem reservasMenuItem = new ToolStripMenuItem("Reservas");
             ToolStripMenuItem verReservasMenuItem = new ToolStripMenuItem("Ver Reservas");
             verReservasMenuItem.ShortcutKeys = Keys.F3;
-            ToolStripMenuItem altasMenuItem = new ToolStripMenuItem("Altas");
             reservasMenuItem.DropDownItems.Add(verReservasMenuItem);
-            reservasMenuItem.DropDownItems.Add(altasMenuItem);
-
             //verReservasMenuItem.Click += MenuItem_Click;
-            //altasMenuItem.Click += btnAltaReservas_Click_1;             
+
+            ToolStripMenuItem altaReservaMenuItem = new ToolStripMenuItem("Alta Reserva");
+            reservasMenuItem.DropDownItems.Add(altaReservaMenuItem);
+            altaReservaMenuItem.Click += altaReservaMenuItem_Click;            
+                  
             menuStrip1.Items.Add(reservasMenuItem);
 
             // ******  "Configuracion"
             ToolStripMenuItem configuracionMenuItem = new ToolStripMenuItem("Configuracion");
             ToolStripMenuItem cambiarcontrasenaMenuItem = new ToolStripMenuItem("Cambiar Contraseña");
-            ToolStripMenuItem logOutMenuItem = new ToolStripMenuItem("Logout");
-            ToolStripMenuItem salirMenuItem = new ToolStripMenuItem("Salir");
             configuracionMenuItem.DropDownItems.Add(cambiarcontrasenaMenuItem);
-
-            configuracionMenuItem.DropDownItems.Add(logOutMenuItem);
-            logOutMenuItem.Click += logOutMenuItem_Click;
-
-            salirMenuItem.Click += SalirMenuItem_Click;
             //cambiarcontrasenaMenuItem.Click += CambiarContrasenaMenuItem_Click;
 
+            ToolStripMenuItem salirMenuItem = new ToolStripMenuItem("Salir");
+            configuracionMenuItem.DropDownItems.Add(salirMenuItem);
+            salirMenuItem.Click += SalirMenuItem_Click;
 
-            if (UsuarioActivo.RolId == 2)
+            ToolStripMenuItem logOutMenuItem = new ToolStripMenuItem("Logout");
+            configuracionMenuItem.DropDownItems.Add(logOutMenuItem);
+            logOutMenuItem.Click += logOutMenuItem_Click;
+            
+            if (UsuarioActivo.RolId == 2 )
             {
                 //  elementos del menú Configuracion          
                 ToolStripMenuItem nuevoUsuarioMenuItem = new ToolStripMenuItem("Nuevo Usuario");
@@ -79,53 +121,38 @@ namespace TP2
                 // Cientes 
                 ToolStripMenuItem clientesMenuItem = new ToolStripMenuItem("Clientes");
                 ToolStripMenuItem verClientesMenuItem = new ToolStripMenuItem("Ver Clientes");
-                ToolStripMenuItem nuevoClientesMenuItem = new ToolStripMenuItem("Nuevo Cliente");
-                ToolStripMenuItem exportarClientesMenuItem = new ToolStripMenuItem("Exportar Clientes");
-
                 clientesMenuItem.DropDownItems.Add(verClientesMenuItem);
-                clientesMenuItem.DropDownItems.Add(nuevoClientesMenuItem);
-                clientesMenuItem.DropDownItems.Add(exportarClientesMenuItem);
-
                 //verClientesMenuItem.Click += MenuItem_Click;
+
+                ToolStripMenuItem nuevoClientesMenuItem = new ToolStripMenuItem("Nuevo Cliente");
+                clientesMenuItem.DropDownItems.Add(nuevoClientesMenuItem);
                 nuevoClientesMenuItem.Click += nuevoClientesMenuItem_Click;
+
+                ToolStripMenuItem exportarClientesMenuItem = new ToolStripMenuItem("Exportar Clientes");
+                clientesMenuItem.DropDownItems.Add(exportarClientesMenuItem);
                 //exportarClientesMenuItem.Click += exportarClientesMenuItem_Click;
+
                 menuStrip1.Items.Add(clientesMenuItem);
 
                 // Propiedades
                 ToolStripMenuItem propiedadesMenuItem = new ToolStripMenuItem("Propiedades");
                 ToolStripMenuItem consultarPropiedadesMenuItem = new ToolStripMenuItem("Consultar Propiedades");
-                ToolStripMenuItem nuevaPropiedadItem = new ToolStripMenuItem("Nueva Propiedad");
-                ToolStripMenuItem alquilarPropiedadItem = new ToolStripMenuItem("Alquilar Propiedad");
                 propiedadesMenuItem.DropDownItems.Add(consultarPropiedadesMenuItem);
-                propiedadesMenuItem.DropDownItems.Add(nuevaPropiedadItem);
-                propiedadesMenuItem.DropDownItems.Add(alquilarPropiedadItem);
-
                 consultarPropiedadesMenuItem.Click += consultarPropiedadesMenuItem_Click;
+
+                ToolStripMenuItem nuevaPropiedadItem = new ToolStripMenuItem("Nueva Propiedad");
+                propiedadesMenuItem.DropDownItems.Add(nuevaPropiedadItem);             
                 nuevaPropiedadItem.Click += nuevaPropiedadItem_Click;
-                alquilarPropiedadItem.Click += alquilarPropiedadItem_Click;
 
                 menuStrip1.Items.Add(propiedadesMenuItem);
             }
 
             configuracionMenuItem.DropDownItems.Add(salirMenuItem);
             menuStrip1.Items.Add(configuracionMenuItem);
-            //ToolStripMenuItem rolMenuItem = new ToolStripMenuItem("Usuario: Admin");
-            //menuStrip1.Items.Add(rolMenuItem);
-
-            //  ******  Ayuda
-            ToolStripMenuItem ayudaMenuItem = new ToolStripMenuItem("Ayuda");
-            ToolStripMenuItem ayudaWebMenuItem = new ToolStripMenuItem("Ver Ayuda");
-            ayudaWebMenuItem.ShortcutKeys = Keys.F1;
-            ToolStripMenuItem acercaDeMenuItem = new ToolStripMenuItem("Acerca de");
-            acercaDeMenuItem.ShortcutKeys = Keys.F12;
-            ayudaMenuItem.DropDownItems.Add(ayudaWebMenuItem);
-            ayudaMenuItem.DropDownItems.Add(acercaDeMenuItem);
-            menuStrip1.Items.Add(ayudaMenuItem);
-
+           
             // Asignar el control MenuStrip al formulario
             this.MainMenuStrip = menuStrip1;
-            menuStrip1.Visible = true;
-
+            
             // Asociar el evento MouseHover a cada elemento de menú
             foreach (ToolStripMenuItem item in menuStrip1.Items)
             {
@@ -133,6 +160,8 @@ namespace TP2
             }
 
         }
+        // ************ FIN MENU ************
+
 
         // ************ Metodos de MENU ************
         private void MenuItem_MouseHover(object sender, EventArgs e)
@@ -142,148 +171,8 @@ namespace TP2
             menuItem.ShowDropDown();
         }
 
-        // ************ MTD Configuracion
-        private void nuevoUsuarioMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Crear Nuevo usuario");
-            // Aca crear ventana para Agregar Nuevo Usuario
-        }
-
-        private void SalirMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-        private void logOutMenuItem_Click(object sender, EventArgs e)
-        {
-            UsuarioActivo = null;
-            btnLogin.Visible = true;
-            btnLogout.Visible = false;
-            menuStrip1.Visible = false;
-            menuStrip1.SuspendLayout();
-        }
-
-        // ************ MTD Propiedades
-        private void consultarPropiedadesMenuItem_Click(object sender, EventArgs e)
-        {
-            MostrarDatos vMostrar = new MostrarDatos(elSistema);
-            vMostrar.ShowDialog();
-            vMostrar.Dispose();
-        }
-        private void nuevaPropiedadItem_Click(object sender, EventArgs e)
-        {
-            NuevaPropiedad ventanaPropiedad = new NuevaPropiedad(elSistema.CantidadPropiedades);
-            if (ventanaPropiedad.ShowDialog() == DialogResult.OK)
-            {
-                elSistema.AgregarPropiedad(ventanaPropiedad.unaPropiedad);
-            }
-            ventanaPropiedad.Dispose();
-        }
-        private void alquilarPropiedadItem_Click(object sender, EventArgs e)
-        {
-            Alquiler ventanaAlquiler = new Alquiler(elSistema);
-            ventanaAlquiler.ShowDialog();
-            ventanaAlquiler.Dispose();
-        }
-
-        //  ************ MTD Clientes
-        private void nuevoClientesMenuItem_Click(object sender, EventArgs e)
-        {
-            bool repetido = true;
-            Alta_Cliente ventanaCliente = new Alta_Cliente();
-            do
-            {
-                if (ventanaCliente.ShowDialog() == DialogResult.OK)
-                {
-                    if (elSistema.BuscarCliente(ventanaCliente.unCliente) < 0)
-                    {
-                        elSistema.AgregarCliente(ventanaCliente.unCliente);
-                        repetido = false;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ya existe un cliente con este DNI.\n Verifique el DNI o busquelo en el sistema");
-                    }
-                }
-                else
-                {
-                    repetido = false;
-                }
-            } while (repetido);
-            ventanaCliente.Dispose();
-        }
-
         //  ************ MTD Ayuda
-
-        private void AyudaItem_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void AcercaDeItem_Click(object sender, EventArgs e)
-        {
-            // Crear un nuevo Label
-            //Label labelRecuadro = new Label();
-
-            //Establecer propiedades del Label
-            //labelRecuadro.Text = "Texto en el recuadro";
-            //labelRecuadro.BorderStyle = BorderStyle.FixedSingle;
-            //labelRecuadro.AutoSize = true;
-            //Agrega relleno alrededor del texto
-            //labelRecuadro.Padding = new Padding(10); 
-
-            // Agregar el Label al formulario
-            //Controls.Add(labelRecuadro);
-        }
-
-
-        // ************ FIN MENU ************
-
-        private void BtnNuevoCliente_Click(object sender, EventArgs e)
-        {
-            bool repetido = true;
-            Alta_Cliente ventanaCliente = new Alta_Cliente();
-            do
-            {
-                if (ventanaCliente.ShowDialog() == DialogResult.OK)
-                {
-                    if (elSistema.BuscarCliente(ventanaCliente.unCliente) < 0)
-                    {
-                        elSistema.AgregarCliente(ventanaCliente.unCliente);
-                        repetido = false;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ya existe un cliente con este DNI.\n Verifique el DNI o busquelo en el sistema");
-                    }
-                }
-                else
-                {
-                    repetido = false;
-                }
-            } while (repetido);
-            ventanaCliente.Dispose();
-        }
-        private void btnAlquiler_Click(object sender, EventArgs e)
-        {
-            Alquiler ventanaAlquiler = new Alquiler(elSistema);
-            ventanaAlquiler.ShowDialog();
-            ventanaAlquiler.Dispose();
-        }
-        private void btnPropiedad_Click(object sender, EventArgs e)
-        {
-            NuevaPropiedad ventanaPropiedad = new NuevaPropiedad(elSistema.CantidadPropiedades);
-            if (ventanaPropiedad.ShowDialog() == DialogResult.OK)
-            {
-                elSistema.AgregarPropiedad(ventanaPropiedad.unaPropiedad);
-            }
-            ventanaPropiedad.Dispose();
-        }
-        private void btnConsultar_Click(object sender, EventArgs e)
-        {
-            MostrarDatos vMostrar = new MostrarDatos(elSistema);
-            vMostrar.ShowDialog();
-            vMostrar.Dispose();
-        }
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void loginMenuItem_Click(object sender, EventArgs e)
         {
             bool valido = false;
             VentanaLogin ventanaLogin = new VentanaLogin();
@@ -295,13 +184,13 @@ namespace TP2
                 if (dResult == DialogResult.OK)
                 {
                     int rolID = loginSistema.ValidarUsuario(ventanaLogin.unLogin);
-                    if(rolID == -1)
+                    if (rolID == -1)
                     {
                         MessageBox.Show("Credenciales no validas");
                     }
                     else
                     {
-                        if(rolID == 2)
+                        if (rolID == 2)
                         {
                             unLogin = new Login(ventanaLogin.unLogin.Usuario, ventanaLogin.unLogin.Password, true);
                         }
@@ -323,25 +212,52 @@ namespace TP2
             } while (!valido);
             if (UsuarioActivo != null)
             {
-                if (UsuarioActivo.RolId == 2)
-                {
-                    btnUsuario.Enabled = true;
-                }
-                HabilitarInterfaz();
-                ConfigurarBarraMenu();
+              BarraMenuLogueado();
             }
             ventanaLogin.Dispose();
         }
-        private void btnLogout_Click(object sender, EventArgs e) // borrar mas adelante
+        private void AyudaItem_Click(object sender, EventArgs e)
         {
-            UsuarioActivo = null;
-            btnLogin.Visible = true;
-            btnLogout.Visible = false;
-            menuStrip1.Visible = false;
-            menuStrip1.SuspendLayout();
+            Ayuda ventanaAyuda = new Ayuda();
+            ventanaAyuda.Height = 650;
+            ventanaAyuda.Width = 790;
+
+            ventanaAyuda.Show();
+
         }
-        private void btnUsuario_Click(object sender, EventArgs e)
+
+        private void AcercaDeItem_Click(object sender, EventArgs e)
         {
+            AcercaDe ventanaAcercaDe = new AcercaDe();
+
+            // Crear un nuevo Label
+            Label labelRecuadro = new Label();
+
+            // Configura la posición del Label en el centro del formulario
+            labelRecuadro.Location = new System.Drawing.Point(
+                (ventanaAcercaDe.ClientSize.Width - labelRecuadro.Width) / 2 - 30,
+                (ventanaAcercaDe.ClientSize.Height - labelRecuadro.Height) / 2 - 30);
+
+            //Establecer propiedades del Label
+            labelRecuadro.BackColor = Color.Green;
+            labelRecuadro.Text = "Texto en el recuadro, todo esto \n no lo se \n no lo se \n no lo se \n no lo se";
+            labelRecuadro.BorderStyle = BorderStyle.FixedSingle;
+
+            labelRecuadro.AutoSize = true;
+            //Agrega relleno alrededor del texto
+            labelRecuadro.Padding = new Padding(10);
+
+            // Agregar el Label al formulario
+            ventanaAcercaDe.Controls.Add(labelRecuadro);
+            ventanaAcercaDe.Show();
+        }
+
+        
+        // ************ MTD Configuracion
+        private void nuevoUsuarioMenuItem_Click(object sender, EventArgs e)
+        {
+           // MessageBox.Show("Crear Nuevo usuario");
+            // Aca crear ventana para Agregar Nuevo Usuario
             bool valido = false;
             Ventana_Crear_Usuario unaVentanaCrearUsuario = new Ventana_Crear_Usuario();
             DialogResult dResult;
@@ -370,10 +286,74 @@ namespace TP2
             } while (!valido);
             unaVentanaCrearUsuario.Dispose();
         }
-        public void HabilitarInterfaz()
+
+        private void SalirMenuItem_Click(object sender, EventArgs e)
         {
-            btnLogin.Visible = false;
-            btnLogout.Visible = true;
+            this.Close();
         }
+        private void logOutMenuItem_Click(object sender, EventArgs e)
+        {
+            UsuarioActivo = null;            
+            menuStrip1.Items.Clear();
+            BarraMenuSinLoguear();           
+        }
+
+
+        // ************ MTD Reservas
+        private void altaReservaMenuItem_Click(object sender, EventArgs e)
+        {
+            Alquiler ventanaAlquiler = new Alquiler(elSistema);
+            ventanaAlquiler.ShowDialog();
+            ventanaAlquiler.Dispose();
+        }
+
+        // ************ MTD Propiedades
+        private void consultarPropiedadesMenuItem_Click(object sender, EventArgs e)
+        {
+            MostrarDatos vMostrar = new MostrarDatos(elSistema);
+            vMostrar.ShowDialog();
+            vMostrar.Dispose();
+        }
+        private void nuevaPropiedadItem_Click(object sender, EventArgs e)
+        {
+            NuevaPropiedad ventanaPropiedad = new NuevaPropiedad(elSistema.CantidadPropiedades);
+            if (ventanaPropiedad.ShowDialog() == DialogResult.OK)
+            {
+                elSistema.AgregarPropiedad(ventanaPropiedad.unaPropiedad);
+            }
+            ventanaPropiedad.Dispose();
+        }
+       
+
+        //  ************ MTD Clientes
+        private void nuevoClientesMenuItem_Click(object sender, EventArgs e)
+        {
+            bool repetido = true;
+            Alta_Cliente ventanaCliente = new Alta_Cliente();
+            do
+            {
+                if (ventanaCliente.ShowDialog() == DialogResult.OK)
+                {
+                    if (elSistema.BuscarCliente(ventanaCliente.unCliente) < 0)
+                    {
+                        elSistema.AgregarCliente(ventanaCliente.unCliente);
+                        repetido = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ya existe un cliente con este DNI.\n Verifique el DNI o busquelo en el sistema");
+                    }
+                }
+                else
+                {
+                    repetido = false;
+                }
+            } while (repetido);
+            ventanaCliente.Dispose();
+        }
+
+
+        // ************ FIN Metodos de MENU ************
+
     }
 }

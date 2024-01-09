@@ -16,5 +16,10 @@ namespace TP2
         {
             InitializeComponent();
         }
+
+        private void btnOkAcercaDe_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
