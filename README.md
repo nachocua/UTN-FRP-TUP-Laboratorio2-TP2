@@ -26,13 +26,16 @@
             Calculo de Costos (Casa / Casa Finde / Hotel)
         </li>
         <li>
-            Implementar Ventana de Reservas
+            Implementar Ventana de Reservas (Hoteles)
         </li>
         <li>
-            Exportar Reservas (CSV)
+            JULI - Implementar Filtro de Lugar y cantidad de personas
         </li>
         <li>
-            Importar Reservas (CSV)
+            NACHO - Exportar/Importar Calendario Reservas
+        </li>
+        <li>
+            NACHO - Anular Reservas
         </li>
         <li>
             Refactor de Propiedades
@@ -41,7 +44,31 @@
             Gráficos de Barra
         </li>
         <li>
-            Impresion
+            JULI - Impresion
+        </li>
+        <li>
+            TRISTAN - Página de Ayuda
+        </li>
+        <li>
+            TRISTAN - Que la barra sea visible siempre
+        </li>
+        <li>
+            Exportar lista de clientes
+        </li>
+        <li>
+            Exportar listas de reservas
+        </li>
+        <li>
+            NACHO - Barra de estado con (usuario/rol + cantidad de datos importados)
+        </li>
+        <li>
+            NACHO - Controlar que hace cada rol
+        </li>
+        <li>
+            Generar una interfaz principal amigable
+        </li>
+        <li>
+            Logo
         </li>
     </ul>
 </footer>
