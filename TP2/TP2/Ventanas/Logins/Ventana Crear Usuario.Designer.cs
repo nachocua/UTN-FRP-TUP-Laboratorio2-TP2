@@ -56,7 +56,7 @@
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(62, 129);
+            this.btnIngresar.Location = new System.Drawing.Point(64, 120);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(90, 23);
             this.btnIngresar.TabIndex = 2;
@@ -92,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(218, 172);
+            this.ClientSize = new System.Drawing.Size(218, 157);
             this.Controls.Add(this.cbAdmin);
             this.Controls.Add(this.tbPass);
             this.Controls.Add(this.tbUsuario);
@@ -110,9 +110,9 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.TextBox tbUsuario;
         private System.Windows.Forms.TextBox tbPass;
-        private System.Windows.Forms.CheckBox cbAdmin;
+        public System.Windows.Forms.CheckBox cbAdmin;
+        public System.Windows.Forms.Button btnIngresar;
     }
 }

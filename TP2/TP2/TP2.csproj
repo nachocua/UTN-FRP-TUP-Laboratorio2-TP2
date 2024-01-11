@@ -77,12 +77,6 @@
     <Compile Include="Ventanas\Logins\Ventana Crear Usuario.Designer.cs">
       <DependentUpon>Ventana Crear Usuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ventanas\Logins\VentanaLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Ventanas\Logins\VentanaLogin.Designer.cs">
-      <DependentUpon>VentanaLogin.cs</DependentUpon>
-    </Compile>
     <Compile Include="Ventanas\Propiedades\FormImg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,9 +159,6 @@
     <EmbeddedResource Include="Ventanas\Logins\Ventana Crear Usuario.resx">
       <DependentUpon>Ventana Crear Usuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ventanas\Logins\VentanaLogin.resx">
-      <DependentUpon>VentanaLogin.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Data\clientes.dat" />
     <None Include="Data\propiedades.dat" />
     <None Include="Data\reservas.csv" />
@@ -185,6 +176,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\Intro.png" />
+    <Content Include="assets\Logo.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Web.WebView2.1.0.2210.55\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.2210.55\build\Microsoft.Web.WebView2.targets')" />
