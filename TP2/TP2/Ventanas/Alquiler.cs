@@ -119,7 +119,7 @@ namespace TP2
                     bool propiedadTieneServicios = true;
                     bool noEncontrado = true;
                     int i = 0;
-                    while(noEncontrado && (i < serviciosSeleccionados.Count))
+                    while (noEncontrado && (i < serviciosSeleccionados.Count))
                     {
                         if (!propiedad.Servicios.Contains(serviciosSeleccionados[i]))
                         {
@@ -266,16 +266,20 @@ namespace TP2
             }
             if (state)
             {
-                int idReserva = elSistema.cantidadReservas();
-                int dni = Convert.ToInt32(lbDatosCliente.Items[0].ToString().Split(' ')[1]);
-                int idPropiedad = Convert.ToInt32(propiedadSeleccionada[0]);
-                int cantDias = (dtFechaHasta.Value - dtFechaInicio.Value).Days;
-                double costo = elSistema.BuscarPropiedad(idPropiedad).Costo(cantDias);
-                Reserva unaReserva = new Reserva(idReserva, dni, idPropiedad, dtFechaInicio.Value, dtFechaHasta.Value, costo);
-                elSistema.NuevaReserva(unaReserva);
-                MessageBox.Show("Se ha reservado con éxito");
-                dgView.Rows.Clear();
-                propiedadSeleccionada = null;
+                Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
+                if (unaPropiedad != null)
+                {
+                    int idReserva = elSistema.cantidadReservas();
+                    int dni = Convert.ToInt32(lbDatosCliente.Items[0].ToString().Split(' ')[1]);
+                    int idPropiedad = unaPropiedad.idPropiedad;
+                    int cantDias = (dtFechaHasta.Value - dtFechaInicio.Value).Days;
+                    double costo = unaPropiedad.Costo(cantDias);
+                    Reserva unaReserva = new Reserva(idReserva, dni, idPropiedad, dtFechaInicio.Value, dtFechaHasta.Value, costo);
+                    elSistema.NuevaReserva(unaReserva);
+                    MessageBox.Show("Se ha reservado con éxito");
+                    dgView.Rows.Clear();
+                    propiedadSeleccionada = null;
+                }
             }
         }
     }

@@ -29,13 +29,6 @@
         private void InitializeComponent()
         {
             this.dgView = new System.Windows.Forms.DataGridView();
-            this.IDPropiedad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbTipoPropiedad = new System.Windows.Forms.GroupBox();
             this.cbCasaFinde = new System.Windows.Forms.CheckBox();
             this.cbHotel = new System.Windows.Forms.CheckBox();
@@ -50,9 +43,24 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnVerImagenes = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.gbUbicacion = new System.Windows.Forms.GroupBox();
+            this.numCapacidad = new System.Windows.Forms.NumericUpDown();
+            this.gbCapacidad = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).BeginInit();
             this.gbTipoPropiedad.SuspendLayout();
             this.gbServicios.SuspendLayout();
+            this.gbUbicacion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCapacidad)).BeginInit();
+            this.gbCapacidad.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgView
@@ -61,72 +69,29 @@
             this.dgView.AllowUserToDeleteRows = false;
             this.dgView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDPropiedad,
+            this.ID,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
-            this.dgView.Location = new System.Drawing.Point(156, 12);
+            this.dgView.Location = new System.Drawing.Point(166, 12);
             this.dgView.Name = "dgView";
             this.dgView.ReadOnly = true;
-            this.dgView.Size = new System.Drawing.Size(695, 362);
+            this.dgView.Size = new System.Drawing.Size(643, 490);
             this.dgView.TabIndex = 5;
             this.dgView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgView_CellClick);
             this.dgView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgView_CellContentClick);
-            // 
-            // IDPropiedad
-            // 
-            this.IDPropiedad.HeaderText = "ID";
-            this.IDPropiedad.Name = "IDPropiedad";
-            this.IDPropiedad.ReadOnly = true;
-            this.IDPropiedad.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Nombre";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Tipo";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Ubicacion";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Propietario";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Servicios";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Capacidad";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // gbTipoPropiedad
             // 
             this.gbTipoPropiedad.Controls.Add(this.cbCasaFinde);
             this.gbTipoPropiedad.Controls.Add(this.cbHotel);
             this.gbTipoPropiedad.Controls.Add(this.cbCasa);
-            this.gbTipoPropiedad.Location = new System.Drawing.Point(12, 12);
+            this.gbTipoPropiedad.Location = new System.Drawing.Point(10, 12);
             this.gbTipoPropiedad.Name = "gbTipoPropiedad";
-            this.gbTipoPropiedad.Size = new System.Drawing.Size(137, 94);
+            this.gbTipoPropiedad.Size = new System.Drawing.Size(150, 94);
             this.gbTipoPropiedad.TabIndex = 23;
             this.gbTipoPropiedad.TabStop = false;
             this.gbTipoPropiedad.Text = "Tipo de propiedad";
@@ -136,9 +101,9 @@
             this.cbCasaFinde.AutoSize = true;
             this.cbCasaFinde.Location = new System.Drawing.Point(6, 65);
             this.cbCasaFinde.Name = "cbCasaFinde";
-            this.cbCasaFinde.Size = new System.Drawing.Size(124, 17);
+            this.cbCasaFinde.Size = new System.Drawing.Size(103, 17);
             this.cbCasaFinde.TabIndex = 2;
-            this.cbCasaFinde.Text = "Casa Fin de Semana";
+            this.cbCasaFinde.Text = "CasaFinSemana";
             this.cbCasaFinde.UseVisualStyleBackColor = true;
             // 
             // cbHotel
@@ -171,7 +136,7 @@
             this.gbServicios.Controls.Add(this.checkBox12);
             this.gbServicios.Location = new System.Drawing.Point(10, 112);
             this.gbServicios.Name = "gbServicios";
-            this.gbServicios.Size = new System.Drawing.Size(139, 158);
+            this.gbServicios.Size = new System.Drawing.Size(150, 158);
             this.gbServicios.TabIndex = 22;
             this.gbServicios.TabStop = false;
             this.gbServicios.Text = "Servicios";
@@ -238,7 +203,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(12, 275);
+            this.btnBuscar.Location = new System.Drawing.Point(9, 403);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(137, 30);
@@ -249,7 +214,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(12, 309);
+            this.btnModificar.Location = new System.Drawing.Point(9, 437);
             this.btnModificar.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(137, 30);
@@ -260,7 +225,7 @@
             // 
             // btnVerImagenes
             // 
-            this.btnVerImagenes.Location = new System.Drawing.Point(13, 344);
+            this.btnVerImagenes.Location = new System.Drawing.Point(10, 472);
             this.btnVerImagenes.Name = "btnVerImagenes";
             this.btnVerImagenes.Size = new System.Drawing.Size(136, 30);
             this.btnVerImagenes.TabIndex = 25;
@@ -268,12 +233,118 @@
             this.btnVerImagenes.UseVisualStyleBackColor = true;
             this.btnVerImagenes.Click += new System.EventHandler(this.btnVerImagenes_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(7, 17);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(137, 21);
+            this.comboBox1.TabIndex = 26;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // gbUbicacion
+            // 
+            this.gbUbicacion.Controls.Add(this.comboBox1);
+            this.gbUbicacion.Location = new System.Drawing.Point(10, 276);
+            this.gbUbicacion.Name = "gbUbicacion";
+            this.gbUbicacion.Size = new System.Drawing.Size(150, 54);
+            this.gbUbicacion.TabIndex = 27;
+            this.gbUbicacion.TabStop = false;
+            this.gbUbicacion.Text = "Ubicacion";
+            // 
+            // numCapacidad
+            // 
+            this.numCapacidad.Location = new System.Drawing.Point(107, 19);
+            this.numCapacidad.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numCapacidad.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numCapacidad.Name = "numCapacidad";
+            this.numCapacidad.Size = new System.Drawing.Size(37, 20);
+            this.numCapacidad.TabIndex = 28;
+            this.numCapacidad.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // gbCapacidad
+            // 
+            this.gbCapacidad.Controls.Add(this.label1);
+            this.gbCapacidad.Controls.Add(this.numCapacidad);
+            this.gbCapacidad.Location = new System.Drawing.Point(10, 336);
+            this.gbCapacidad.Name = "gbCapacidad";
+            this.gbCapacidad.Size = new System.Drawing.Size(150, 54);
+            this.gbCapacidad.TabIndex = 29;
+            this.gbCapacidad.TabStop = false;
+            this.gbCapacidad.Text = "Capacidad";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 13);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "Cantidad personas:";
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Tipo";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Ubicacion";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Propietario";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Servicios";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Capacidad";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
             // MostrarDatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(864, 382);
+            this.ClientSize = new System.Drawing.Size(816, 514);
+            this.Controls.Add(this.gbCapacidad);
+            this.Controls.Add(this.gbUbicacion);
             this.Controls.Add(this.btnVerImagenes);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnBuscar);
@@ -288,6 +359,10 @@
             this.gbTipoPropiedad.PerformLayout();
             this.gbServicios.ResumeLayout(false);
             this.gbServicios.PerformLayout();
+            this.gbUbicacion.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numCapacidad)).EndInit();
+            this.gbCapacidad.ResumeLayout(false);
+            this.gbCapacidad.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -308,13 +383,18 @@
         private System.Windows.Forms.CheckBox cbCasa;
         private System.Windows.Forms.CheckBox cbHotel;
         private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDPropiedad;
+        private System.Windows.Forms.Button btnVerImagenes;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.GroupBox gbUbicacion;
+        private System.Windows.Forms.NumericUpDown numCapacidad;
+        private System.Windows.Forms.GroupBox gbCapacidad;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.Button btnVerImagenes;
     }
 }

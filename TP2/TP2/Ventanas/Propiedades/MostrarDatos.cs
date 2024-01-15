@@ -17,11 +17,14 @@ namespace TP2
         ManejoAlquiler elSistema;
         List<Propiedad> propiedades;
         string[] propiedadSeleccionada = null;
+        string ubicacionSeleccionada = "Todas";
         public MostrarDatos(ManejoAlquiler unSistema)
         {
             InitializeComponent();
             elSistema = unSistema;
             propiedades = ExportarPropiedades(elSistema);
+            comboBox1.Text = "Ubicaciones";
+            CargarUbicaciones();
         }
         private List<string> CargarServicios()
         {
@@ -58,66 +61,74 @@ namespace TP2
             dgView.Rows.Clear();
             List<string> serviciosSeleccionados = CargarServicios();
             List<string> tiposSeleccionados = CargarTipoSeleccionado();
-            foreach (Propiedad propiedad in propiedades)
+            int capacidad = Convert.ToInt32(numCapacidad.Value);
+            List<Propiedad> propiedadesFiltradas = FiltrarPropiedades(tiposSeleccionados, serviciosSeleccionados, ubicacionSeleccionada, capacidad);
+            foreach (Propiedad propiedad in propiedadesFiltradas)
             {
-                bool propiedadTieneServicios = true;
-                foreach (string servicioSeleccionado in serviciosSeleccionados)
-                {
-                    if (!propiedad.Servicios.Contains(servicioSeleccionado))
-                    {
-                        propiedadTieneServicios = false;
-                        break;
-                    }
-                }
-                if (propiedadTieneServicios)
-                {
-                    if (tiposSeleccionados.Count > 0)
-                    {
-                        if (tiposSeleccionados.Contains("Casa"))
-                        {
-                            if (propiedad is Casa)
-                            {
-                                if (!(propiedad is CasaFinSemana))
-                                {
-                                    dgView.Rows.Add(propiedad.getData());
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if (tiposSeleccionados.Contains("Hotel"))
-                            {
-                                if (propiedad is Hotel)
-                                {
-                                    dgView.Rows.Add(propiedad.getData());
-                                }
-                            }
-                            else
-                            {
-                                if (tiposSeleccionados.Contains("Casa Fin de Semana"))
-                                {
-                                    if (propiedad is CasaFinSemana)
-                                    {
-                                        dgView.Rows.Add(propiedad.getData());
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        dgView.Rows.Add(propiedad.getData());
-                    }
-                }
+                dgView.Rows.Add(propiedad.getData());
             }
+            #region FiltroPropiedades
+            //foreach (Propiedad propiedad in propiedades)
+            //{
+            //    bool propiedadTieneServicios = true;
+            //    bool todasLasCiudades = true;
+            //    foreach (string servicioSeleccionado in serviciosSeleccionados)
+            //    {
+            //        if (!propiedad.Servicios.Contains(servicioSeleccionado))
+            //        {
+            //            propiedadTieneServicios = false;
+            //            break;
+            //        }
+            //    }
+            //    if (ubicacionSeleccionada != "Todas")
+            //    {
+            //        todasLasCiudades = false;
+            //    }
+
+            //    if (propiedadTieneServicios && todasLasCiudades)
+            //    {
+            //        if (tiposSeleccionados.Count > 0)
+            //        {
+            //            if (tiposSeleccionados.Contains("Casa"))
+            //            {
+            //                if (propiedad is Casa)
+            //                {
+            //                    if (!(propiedad is CasaFinSemana))
+            //                    {
+            //                        dgView.Rows.Add(propiedad.getData());
+            //                    }
+            //                }
+            //            }
+            //            if (tiposSeleccionados.Contains("Hotel"))
+            //            {
+            //                if (propiedad is Hotel)
+            //                {
+            //                    dgView.Rows.Add(propiedad.getData());
+            //                }
+            //            }
+            //            if (tiposSeleccionados.Contains("Casa Fin de Semana"))
+            //            {
+            //                if (propiedad is CasaFinSemana)
+            //                {
+            //                    dgView.Rows.Add(propiedad.getData());
+            //                }
+            //            }
+            //        }
+            //        else
+            //        {
+            //            dgView.Rows.Add(propiedad.getData());
+            //        }
+            //    }
+            //}
+            #endregion
         }
         private void btnModificar_Click(object sender, EventArgs e)
         {
             if (propiedadSeleccionada != null)
             {
-                propiedades.Sort();
+                //propiedades.Sort();
                 Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
-                NuevaPropiedad ventanaPropiedad = new NuevaPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
+                NuevaPropiedad ventanaPropiedad = new NuevaPropiedad(unaPropiedad.idPropiedad);
                 #region CargandoDatos
                 if (unaPropiedad != null)
                 {
@@ -237,10 +248,114 @@ namespace TP2
         {
             if (propiedadSeleccionada != null)
             {
-                FormImg ventanaImagen = new FormImg(Convert.ToInt32(propiedadSeleccionada[0]));
+                FormImg ventanaImagen = new FormImg((Convert.ToInt32(propiedadSeleccionada[0])));
                 ventanaImagen.ShowDialog();
                 ventanaImagen.Dispose();
             }
         }
+        private void CargarUbicaciones()
+        {
+            List<string> ubicaciones = new List<string>();
+            foreach (Propiedad unaPropiedad in propiedades)
+            {
+                ubicaciones.Add(unaPropiedad.Ciudad);
+            }
+            HashSet<string> hashSet = new HashSet<string>(ubicaciones);
+            comboBox1.Items.Add("Todas");
+            foreach (string key in hashSet)
+            {
+                comboBox1.Items.Add(key);
+            }
+        }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ubicacionSeleccionada = comboBox1.SelectedItem.ToString();
+        }
+        private List<Propiedad> FiltrarPropiedades(List<string> tipos, List<string> servicios, string ubicacion, int capacidad)
+        {
+            bool capacidadExacta = ContieneCapacidadExacta(propiedades, capacidad);
+            List<Propiedad> propiedadesFiltradas = new List<Propiedad>();
+            foreach (Propiedad propiedad in propiedades)
+            {
+                if (ContieneTipoSeleccionado(propiedad, tipos) && ContieneServiciosSeleccionados(propiedad, servicios) && (propiedad.Ciudad == ubicacion || ubicacion == "Todas"))
+                {
+                    if (capacidadExacta)
+                    {
+                        if (propiedad.Plazas == capacidad)
+                        {
+                            propiedadesFiltradas.Add(propiedad);
+                        }
+                    }
+                    else if (propiedad.Plazas > capacidad)
+                    {
+                        propiedadesFiltradas.Add(propiedad);
+                    }
+                }
+            }
+            return propiedadesFiltradas;
+        }
+        private bool ContieneServiciosSeleccionados(Propiedad unaPropiedad, List<string> serviciosSeleccionados)
+        {
+            //bool ret = true;
+            foreach (string servicioSeleccionado in serviciosSeleccionados)
+            {
+                if (!unaPropiedad.Servicios.Contains(servicioSeleccionado))
+                {
+                    return false;
+                    //ret = false;
+                    //break; 
+                }
+            }
+            return true;
+        }
+        private bool ContieneTipoSeleccionado(Propiedad unaPropiedad, List<string> tiposSeleccionados)
+        {
+            bool ret = true;
+            foreach (string tipoSeleccionado in tiposSeleccionados)
+            {
+                if (unaPropiedad.GetType().Name != tipoSeleccionado)
+                {
+                    ret = false;
+                }
+            }
+            return ret;
+        }
+        private bool ContieneCapacidadExacta(List<Propiedad> propiedades, int capacidad)
+        {
+            bool contieneCapacidadExacta = false;
+            foreach (Propiedad p in propiedades)
+            {
+                if (p.Plazas == capacidad)
+                {
+                    contieneCapacidadExacta = true;
+                }
+            }
+            return contieneCapacidadExacta;
+        }
+        //private List<string> EliminarDuplicados(List<string> lista)
+        //{
+        //    List<string> sinDuplicados = new List<string>();
+
+        //    foreach (string ubicacion in lista)
+        //    {
+        //        bool estaRepetido = false;
+
+        //        foreach (string item in sinDuplicados)
+        //        {
+        //            if (ubicacion == item)
+        //            {
+        //                estaRepetido = true;
+        //                break;
+        //            }
+        //        }
+
+        //        if (!estaRepetido)
+        //        {
+        //            sinDuplicados.Add(ubicacion);
+        //        }
+        //    }
+
+        //    return sinDuplicados;
+        //}
     }
 }
