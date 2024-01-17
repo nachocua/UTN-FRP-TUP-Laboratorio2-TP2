@@ -318,6 +318,7 @@ namespace TP2
                         loginSistema.AgregarUsuario(unaVentanaCrearUsuario.unLogin);
                         valido = true;
                         MessageBox.Show("Usuario creado correctamente");
+                        sbClientes.Text = "Clientes: " + elSistema.CantidadClientes().ToString();
                     }
                     else
                     {
@@ -354,6 +355,7 @@ namespace TP2
             Alquiler ventanaAlquiler = new Alquiler(elSistema);
             ventanaAlquiler.ShowDialog();
             ventanaAlquiler.Dispose();
+            sbReservas.Text = "Reservas: " + elSistema.cantidadReservas().ToString();
         }
 
         // ************ MTD Propiedades
@@ -370,6 +372,7 @@ namespace TP2
             if (ventanaPropiedad.ShowDialog() == DialogResult.OK)
             {
                 elSistema.AgregarPropiedad(ventanaPropiedad.unaPropiedad);
+                sbPropiedades.Text = "Propiedades: " + elSistema.CantidadPropiedades.ToString();
             }
             ventanaPropiedad.Dispose();
         }
