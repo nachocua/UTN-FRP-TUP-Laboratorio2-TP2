@@ -35,6 +35,9 @@ namespace TP2
             loginSistema = new SistemaLogin("..//..//Data//UsPa.dat");
             UsuarioActivo = null;
             BarraMenuSinLoguear();
+            sbPropiedades.Text += elSistema.CantidadPropiedades.ToString();
+            sbClientes.Text += elSistema.CantidadClientes().ToString();
+            sbReservas.Text += elSistema.cantidadReservas().ToString();
         }
 
         private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -257,6 +260,7 @@ namespace TP2
             if (UsuarioActivo != null)
             {
                 BarraMenuLogueado();
+                sbUsuario.Text = UsuarioActivo.Usuario+"("+UsuarioActivo.RolId+")";
             }
             ventanaLogin.Dispose();
         }
@@ -341,6 +345,7 @@ namespace TP2
             UsuarioActivo = null;
             menuStrip1.Items.Clear();
             BarraMenuSinLoguear();
+            sbUsuario.Text = "Sin logear";
         }
 
         // ************ MTD Reservas

@@ -217,5 +217,9 @@ namespace TP2
                 }
             }
         }
+        public int CantidadClientes()
+        {
+            return clientes.Count;
+        }
     }
 }
