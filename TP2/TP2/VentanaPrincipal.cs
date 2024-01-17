@@ -34,6 +34,18 @@ namespace TP2
                                            "..//..//Data//reservas.csv");
             loginSistema = new SistemaLogin("..//..//Data//UsPa.dat");
             UsuarioActivo = null;
+            if (File.Exists("..//..//Data//ActiveData.csv"))
+            {
+                StreamReader fileUserActivo = new StreamReader("..//..//Data//ActiveData.csv");
+                int indx = Convert.ToInt32(fileUserActivo.ReadLine());
+                if(indx != -1)
+                {
+                    UsuarioActivo = loginSistema.GetUser(indx);
+                    BarraMenuLogueado();
+                    sbUsuario.Text = UsuarioActivo.Usuario + "(" + UsuarioActivo.RolId + ")";
+                }
+                fileUserActivo.Close();
+            }
             BarraMenuSinLoguear();
             sbPropiedades.Text += elSistema.CantidadPropiedades.ToString();
             sbClientes.Text += elSistema.CantidadClientes().ToString();
@@ -44,6 +56,17 @@ namespace TP2
         {
             elSistema.Export();
             loginSistema.Export();
+            //Exportar usuario activo
+            StreamWriter sw = new StreamWriter("..//..//Data//ActiveData.csv");
+            if (UsuarioActivo != null)
+            {
+                sw.WriteLine(loginSistema.BuscarUsuario(UsuarioActivo));
+            }
+            else
+            {
+                sw.WriteLine("-1");
+            }
+            sw.Close();
         }
 
         // ************ MENU ************

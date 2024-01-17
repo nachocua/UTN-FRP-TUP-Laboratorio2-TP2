@@ -58,6 +58,7 @@ namespace TP2
             {
             }
             fs.Close();
+            //Importar Reservas
             List<string[]> datosReservas = Funciones_Adicionales.LeerSeparandoArchivo(FileReservas, ";");
             foreach (string[] unDato in datosReservas)
             {

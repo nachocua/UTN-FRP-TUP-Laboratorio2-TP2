@@ -92,5 +92,9 @@ namespace TP2.Clases.Login
         {
             datosLogins[indx].CambiarPass(pass);
         }
+        public Login GetUser(int indx)
+        {
+            return datosLogins[indx];
+        }
     }
 }
