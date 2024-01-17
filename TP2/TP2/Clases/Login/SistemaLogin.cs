@@ -88,5 +88,9 @@ namespace TP2.Clases.Login
             }
             return idRol;
         }
+        public void CambiarPassword(int indx, string pass)
+        {
+            datosLogins[indx].CambiarPass(pass);
+        }
     }
 }

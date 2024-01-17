@@ -104,7 +104,7 @@ namespace TP2
             ToolStripMenuItem configuracionMenuItem = new ToolStripMenuItem("Configuracion");
             ToolStripMenuItem cambiarcontrasenaMenuItem = new ToolStripMenuItem("Cambiar Contraseña");
             configuracionMenuItem.DropDownItems.Add(cambiarcontrasenaMenuItem);
-            //cambiarcontrasenaMenuItem.Click += CambiarContrasenaMenuItem_Click;
+            cambiarcontrasenaMenuItem.Click += CambiarContrasenaMenuItem_Click;
 
             ToolStripMenuItem salirMenuItem = new ToolStripMenuItem("Salir");
             configuracionMenuItem.DropDownItems.Add(salirMenuItem);
@@ -162,6 +162,44 @@ namespace TP2
                 item.MouseHover += MenuItem_MouseHover;
             }
 
+        }
+
+        private void CambiarContrasenaMenuItem_Click(object sender, EventArgs e)
+        {
+            bool valido = false;
+            Ventana_Crear_Usuario ventanaLogin = new Ventana_Crear_Usuario();
+            ventanaLogin.cbAdmin.Visible = false;
+            ventanaLogin.btnIngresar.Location = new Point(64, 90);
+            ventanaLogin.Size = new Size(ventanaLogin.Size.Width, 160);
+            ventanaLogin.lbUsuario.Text = "Contraseña";
+            ventanaLogin.lbPass.Text = "Confirmar Contraseña";
+            ventanaLogin.btnIngresar.Text = "Cambiar contraseña";
+            DialogResult dResult;
+            do
+            {
+                dResult = ventanaLogin.ShowDialog();
+                if (dResult == DialogResult.OK)
+                {
+                    if (ventanaLogin.unLogin.Usuario != ventanaLogin.unLogin.Password)
+                    {
+                        MessageBox.Show("Las contraseñas deben coincidir");
+                    }
+                    else
+                    {
+                        loginSistema.CambiarPassword(loginSistema.BuscarUsuario(UsuarioActivo), ventanaLogin.unLogin.Usuario);
+                        valido = true;
+                        MessageBox.Show("Se ha realizado el cambio");
+                    }
+                }
+                else
+                {
+                    if (dResult == DialogResult.Cancel)
+                    {
+                        valido = true;
+                    }
+                }
+            } while (!valido);
+            ventanaLogin.Dispose();
         }
 
         // ************ FIN MENU ************

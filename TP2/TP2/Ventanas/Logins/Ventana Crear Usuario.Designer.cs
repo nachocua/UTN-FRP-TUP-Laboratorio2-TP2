@@ -28,31 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbUsuario = new System.Windows.Forms.Label();
+            this.lbPass = new System.Windows.Forms.Label();
             this.btnIngresar = new System.Windows.Forms.Button();
             this.tbUsuario = new System.Windows.Forms.TextBox();
             this.tbPass = new System.Windows.Forms.TextBox();
             this.cbAdmin = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // label1
+            // lbUsuario
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Usuario";
+            this.lbUsuario.AutoSize = true;
+            this.lbUsuario.Location = new System.Drawing.Point(16, 20);
+            this.lbUsuario.Name = "lbUsuario";
+            this.lbUsuario.Size = new System.Drawing.Size(43, 13);
+            this.lbUsuario.TabIndex = 0;
+            this.lbUsuario.Text = "Usuario";
             // 
-            // label2
+            // lbPass
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 58);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Contraseña";
+            this.lbPass.AutoSize = true;
+            this.lbPass.Location = new System.Drawing.Point(16, 58);
+            this.lbPass.Name = "lbPass";
+            this.lbPass.Size = new System.Drawing.Size(61, 13);
+            this.lbPass.TabIndex = 1;
+            this.lbPass.Text = "Contraseña";
             // 
             // btnIngresar
             // 
@@ -97,8 +97,8 @@
             this.Controls.Add(this.tbPass);
             this.Controls.Add(this.tbUsuario);
             this.Controls.Add(this.btnIngresar);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbPass);
+            this.Controls.Add(this.lbUsuario);
             this.Name = "Ventana_Crear_Usuario";
             this.Text = "VentanaLogin";
             this.ResumeLayout(false);
@@ -107,12 +107,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbUsuario;
         private System.Windows.Forms.TextBox tbPass;
         public System.Windows.Forms.CheckBox cbAdmin;
         public System.Windows.Forms.Button btnIngresar;
+        public System.Windows.Forms.Label lbUsuario;
+        public System.Windows.Forms.Label lbPass;
     }
 }

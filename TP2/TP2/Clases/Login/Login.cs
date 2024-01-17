@@ -25,5 +25,9 @@ namespace TP2.Clases.Login
                 RolId = 1;
             }
         }
+        public void CambiarPass(string pass) 
+        {
+            Password = pass;
+        }
     }
 }
