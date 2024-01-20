@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.IO;
 using TP2.Clases;
 using TP2.Clases.Login;
+using Biblioteca;
 
 namespace TP2
 {
@@ -38,7 +39,7 @@ namespace TP2
             {
                 StreamReader fileUserActivo = new StreamReader("..//..//Data//ActiveData.csv");
                 int indx = Convert.ToInt32(fileUserActivo.ReadLine());
-                if(indx != -1)
+                if (indx != -1)
                 {
                     UsuarioActivo = loginSistema.GetUser(indx);
                     BarraMenuLogueado();
@@ -283,7 +284,7 @@ namespace TP2
             if (UsuarioActivo != null)
             {
                 BarraMenuLogueado();
-                sbUsuario.Text = UsuarioActivo.Usuario+"("+UsuarioActivo.RolId+")";
+                sbUsuario.Text = UsuarioActivo.Usuario + "(" + UsuarioActivo.RolId + ")";
             }
             ventanaLogin.Dispose();
         }
@@ -428,5 +429,55 @@ namespace TP2
         }
 
         // ************ FIN Metodos de MENU ************
+        private void ExportarCalendarioPropiedad(Propiedad unaPropiedad)
+        {
+            if (unaPropiedad == null)
+            {
+                MessageBox.Show("No hay una propiedad seleccionada para ser exportada");
+            }
+            else
+            {
+                if (unaPropiedad.getReservas().Count == 0)
+                {
+                    MessageBox.Show("No hay datos para exportar");
+                }
+                else
+                {
+                    SaveFileDialog unSaveFileDialog = new SaveFileDialog();
+                    unSaveFileDialog.Filter = "Archivo separado por comas|*.csv";
+                    unSaveFileDialog.Title = "Exportar datos de propiedad";
+                    unSaveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    if (unSaveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        StreamWriter sw = new StreamWriter(unSaveFileDialog.FileName);
+                        foreach (int unId in unaPropiedad.getReservas())
+                        {
+                            Reserva unaReserva = new Reserva(unId, 0, 0, DateTime.Now, DateTime.Now, 0);
+                            string[] datosReserva = elSistema.InfoReserva(elSistema.BuscarReserva(unaReserva));
+                            sw.WriteLine(unId + ";" + datosReserva[5] + ";" + datosReserva[6]);
+                        }
+                        sw.Close();
+                    }
+                }
+            }
+        }
+        private void ImportarCalendarioPropiedad(Propiedad unaPropiedad)
+        {
+            if (unaPropiedad == null)
+            {
+                MessageBox.Show("No hay una propiedad seleccionada para ser exportada");
+            }
+            else
+            {
+                OpenFileDialog unOpenfileDialog = new OpenFileDialog();
+                unOpenfileDialog.Filter = "Archivo separado por comas|*.csv";
+                unOpenfileDialog.Title = "Exportar datos de propiedad";
+                unOpenfileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                if (unOpenfileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    List<string[]> datosImportados = Funciones_Adicionales.LeerSeparandoArchivo(unOpenfileDialog.FileName, ";");
+                }
+            }
+        }
     }
 }
