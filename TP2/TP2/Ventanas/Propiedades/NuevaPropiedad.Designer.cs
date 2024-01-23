@@ -60,6 +60,8 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbCasa = new System.Windows.Forms.RadioButton();
             this.rbHotel = new System.Windows.Forms.RadioButton();
+            this.tbCosto = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.gbCasa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_Plazas)).BeginInit();
             this.gbServicios.SuspendLayout();
@@ -147,7 +149,7 @@
             this.gbCasa.Controls.Add(this.tbPropietario);
             this.gbCasa.Controls.Add(this.numUpDown_Plazas);
             this.gbCasa.Controls.Add(this.label4);
-            this.gbCasa.Location = new System.Drawing.Point(289, 21);
+            this.gbCasa.Location = new System.Drawing.Point(289, 12);
             this.gbCasa.Name = "gbCasa";
             this.gbCasa.Size = new System.Drawing.Size(200, 98);
             this.gbCasa.TabIndex = 13;
@@ -281,9 +283,9 @@
             this.gbHotel.Controls.Add(this.numUDDoble);
             this.gbHotel.Controls.Add(this.numUDSimple);
             this.gbHotel.Enabled = false;
-            this.gbHotel.Location = new System.Drawing.Point(289, 126);
+            this.gbHotel.Location = new System.Drawing.Point(289, 116);
             this.gbHotel.Name = "gbHotel";
-            this.gbHotel.Size = new System.Drawing.Size(200, 158);
+            this.gbHotel.Size = new System.Drawing.Size(200, 168);
             this.gbHotel.TabIndex = 14;
             this.gbHotel.TabStop = false;
             this.gbHotel.Text = "Hotel";
@@ -393,7 +395,9 @@
             // 
             // gbPropiedad
             // 
+            this.gbPropiedad.Controls.Add(this.label8);
             this.gbPropiedad.Controls.Add(this.gbServicios);
+            this.gbPropiedad.Controls.Add(this.tbCosto);
             this.gbPropiedad.Controls.Add(this.tbNombre);
             this.gbPropiedad.Controls.Add(this.btnImagen);
             this.gbPropiedad.Controls.Add(this.btnNuevaPropiedad);
@@ -443,11 +447,27 @@
             this.rbHotel.UseVisualStyleBackColor = true;
             this.rbHotel.CheckedChanged += new System.EventHandler(this.CambiarGroupBox);
             // 
+            // tbCosto
+            // 
+            this.tbCosto.Location = new System.Drawing.Point(148, 176);
+            this.tbCosto.Name = "tbCosto";
+            this.tbCosto.Size = new System.Drawing.Size(100, 20);
+            this.tbCosto.TabIndex = 19;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(151, 160);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(63, 13);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Costo base:";
+            // 
             // NuevaPropiedad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 291);
+            this.ClientSize = new System.Drawing.Size(500, 293);
             this.Controls.Add(this.gbCasa);
             this.Controls.Add(this.gbPropiedad);
             this.Controls.Add(this.gbHotel);
@@ -503,5 +523,7 @@
         public System.Windows.Forms.CheckBox cbCasaFinde;
         public System.Windows.Forms.GroupBox gbServicios;
         public System.Windows.Forms.Button btnNuevaPropiedad;
+        private System.Windows.Forms.Label label8;
+        public System.Windows.Forms.TextBox tbCosto;
     }
 }

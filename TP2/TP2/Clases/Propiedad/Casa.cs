@@ -21,7 +21,7 @@ namespace TP2
         {
             Propietario = propietario;
         }
-        public void ModificarDatos(string nombre, string ubicacion, int plazas,string propietario)
+        public void ModificarDatos(string nombre, string ubicacion, int plazas, string propietario)
         {
             Nombre = nombre;
             Ciudad = ubicacion;
@@ -30,7 +30,9 @@ namespace TP2
         }
         public override double Costo(int dias)
         {
-            return ( (Precio * dias ) * 0.10 * Servicios.Count * Plazas);
+            double costo = (Precio * Servicios.Count * Plazas);
+            costo = dias > 1 ? costo : costo * 0.10 * dias;
+            return costo;
         }
         public override void EstablecerCosto(double costo)
         {
@@ -38,7 +40,7 @@ namespace TP2
         }
         public override string[] getData()
         {
-            string[] arr  = new string[]
+            string[] arr = new string[]
             {
                 idPropiedad.ToString(),
                 Nombre,
