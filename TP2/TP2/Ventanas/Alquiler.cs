@@ -11,13 +11,14 @@ using System.Windows.Forms;
 
 namespace TP2
 {
-    public partial class Alquiler : Form
+    public partial class labPrecio : Form
     {
         ManejoAlquiler elSistema;
         List<Propiedad> propiedades;
         string[] propiedadSeleccionada = null;
         bool clienteValido = false;
-        public Alquiler(ManejoAlquiler unSistema)
+        int dias = 1;
+        public labPrecio(ManejoAlquiler unSistema)
         {
             InitializeComponent(); elSistema = unSistema;
             propiedades = ExportarPropiedades(elSistema);
@@ -100,7 +101,7 @@ namespace TP2
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            dgView.Rows.Clear();
+            gbPrecio.Rows.Clear();
             propiedadSeleccionada = null;
             if (dtFechaHasta.Value.CompareTo(dtFechaInicio.Value) >= 0)
             {
@@ -199,7 +200,7 @@ namespace TP2
                     }
                     if (state)
                     {
-                        dgView.Rows.Add(unaPropiedad.getData());
+                        gbPrecio.Rows.Add(unaPropiedad.getData());
                     }
                 }
             }
@@ -222,19 +223,8 @@ namespace TP2
             int f = e.RowIndex, c = e.ColumnIndex;
             if (c == 5)
             {
-                string text = dgView[c, f].Value.ToString();
+                string text = gbPrecio[c, f].Value.ToString();
                 MessageBox.Show(text, "Servicios Disponibles");
-            }
-        }
-        private void dgView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                propiedadSeleccionada = GetRow(dgView.Rows[e.RowIndex]);
-            }
-            else
-            {
-                propiedadSeleccionada = null;
             }
         }
         private string[] GetRow(DataGridViewRow row)
@@ -277,8 +267,50 @@ namespace TP2
                     Reserva unaReserva = new Reserva(idReserva, dni, idPropiedad, dtFechaInicio.Value, dtFechaHasta.Value, costo);
                     elSistema.NuevaReserva(unaReserva);
                     MessageBox.Show("Se ha reservado con éxito");
-                    dgView.Rows.Clear();
+                    gbPrecio.Rows.Clear();
                     propiedadSeleccionada = null;
+                }
+            }
+        }
+        private void dgView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                propiedadSeleccionada = GetRow(gbPrecio.Rows[e.RowIndex]);
+                Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
+                if (unaPropiedad != null)
+                {
+                    labelPrecio.Text += unaPropiedad.Costo(dias);
+                }
+            }
+            else
+            {
+                propiedadSeleccionada = null;
+            }
+        }
+
+        private void dtFechaInicio_ValueChanged(object sender, EventArgs e)
+        {
+            dias = (dtFechaHasta.Value - dtFechaInicio.Value).Days;
+            if (propiedadSeleccionada != null)
+            {
+                Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
+                if (unaPropiedad != null)
+                {
+                    labelPrecio.Text = "Costo total: $ " + unaPropiedad.Costo(dias);
+                }
+            }
+        }
+
+        private void dtFechaHasta_ValueChanged(object sender, EventArgs e)
+        {
+            dias = (dtFechaHasta.Value - dtFechaInicio.Value).Days;
+            if (propiedadSeleccionada != null)
+            {
+                Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
+                if (unaPropiedad != null)
+                {
+                    labelPrecio.Text += unaPropiedad.Costo(dias);
                 }
             }
         }

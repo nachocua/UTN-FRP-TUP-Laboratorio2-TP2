@@ -75,6 +75,7 @@ namespace TP2
             string nombre = "", ubicacion = "", propietario = "";
             int plazas = 0, simples = 0, dobles = 0, triples = 0, estrellas = 0;
             List<string> servicios = new List<string>();
+            double costo = 0;
             try
             {
                 if (string.IsNullOrEmpty(tbNombre.Text) || string.IsNullOrEmpty(tbUbicacion.Text))
@@ -86,6 +87,7 @@ namespace TP2
                     nombre = tbNombre.Text;
                     ubicacion = tbUbicacion.Text;
                     servicios = ObtenerServicios();
+                    costo = Convert.ToDouble(tbCosto.Text);
                     if (rbCasa.Checked)
                     {
                         plazas = Convert.ToInt32(numUpDown_Plazas.Value);
@@ -140,6 +142,7 @@ namespace TP2
                 {
                     case 1:
                         unaPropiedad = new Casa(idPropiedad, nombre, ubicacion, plazas, servicios, propietario);
+                        unaPropiedad.EstablecerCosto(costo);
                         break;
                     case 2:
                         unaPropiedad = new Hotel(idPropiedad, nombre, ubicacion, plazas, servicios, estrellas);
