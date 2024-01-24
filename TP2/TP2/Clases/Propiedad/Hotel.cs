@@ -15,14 +15,13 @@ namespace TP2
     [Serializable]
     public class Hotel : Propiedad
     {
-        public enum Tipo { Simple, Doble, Triple }
-        private int[] TipoHab = null;
-        public int Estrella { get; protected set; }
-        private List<Tipo> habs;
+        public int Estrella { get; private set; }
+        public int Simple { get; private set; }
+        public int Doble { get; private set; }
+        public int Triple { get; private set; }
+        
         public Hotel(int id, string nombre, string ubicacion, int plazas, List<string> servicios, int estrella) : base(id, nombre, ubicacion, plazas, servicios)
         {
-            TipoHab = new int[3];
-            habs = new List<Tipo>();
             Estrella = estrella;
         }
         public void ModificarDatos(string nombre, string ubicacion, int estrella, int simples, int dobles, int triples)
@@ -31,10 +30,13 @@ namespace TP2
             Ciudad = ubicacion;
             Estrella = estrella;
             Plazas = simples + dobles + triples;
-            habs.Clear();
-            CargarHabitaciones(simples,Tipo.Simple);
-            CargarHabitaciones(dobles,Tipo.Doble);
-            CargarHabitaciones(triples,Tipo.Triple);
+            CargarHabitaciones(simples, dobles, triples);
+        }
+        public void CargarHabitaciones(int simple, int doble, int triple)
+        {
+            Simple = simple;
+            Doble = doble;
+            Triple = triple;
         }
         public override void EstablecerCosto(double costo)
         {
@@ -43,21 +45,6 @@ namespace TP2
         public override double Costo(int dias)
         {
             return Precio * (dias * 1.03); // 3% adicional por cada dia | Implementar el resto
-        }
-        public void CargarHabitaciones(int cant, Tipo tipo)
-        {
-            for (int i = 0; i < cant; i++)
-            {
-                habs.Add(tipo);
-            }
-        }
-        public void AgregarHabitacion(Tipo unaHabitacion)
-        {
-            habs.Add(unaHabitacion);
-        }
-        public Tipo GetTipoHabitacion(int idx)
-        {
-            return habs[idx];
         }
         public override string[] getData()
         {

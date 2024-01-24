@@ -101,7 +101,7 @@ namespace TP2
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            gbPrecio.Rows.Clear();
+            gbHabitacionesDisponibles.Rows.Clear();
             propiedadSeleccionada = null;
             if (dtFechaHasta.Value.CompareTo(dtFechaInicio.Value) >= 0)
             {
@@ -200,7 +200,7 @@ namespace TP2
                     }
                     if (state)
                     {
-                        gbPrecio.Rows.Add(unaPropiedad.getData());
+                        gbHabitacionesDisponibles.Rows.Add(unaPropiedad.getData());
                     }
                 }
             }
@@ -223,7 +223,7 @@ namespace TP2
             int f = e.RowIndex, c = e.ColumnIndex;
             if (c == 5)
             {
-                string text = gbPrecio[c, f].Value.ToString();
+                string text = gbHabitacionesDisponibles[c, f].Value.ToString();
                 MessageBox.Show(text, "Servicios Disponibles");
             }
         }
@@ -267,7 +267,7 @@ namespace TP2
                     Reserva unaReserva = new Reserva(idReserva, dni, idPropiedad, dtFechaInicio.Value, dtFechaHasta.Value, costo);
                     elSistema.NuevaReserva(unaReserva);
                     MessageBox.Show("Se ha reservado con éxito");
-                    gbPrecio.Rows.Clear();
+                    gbHabitacionesDisponibles.Rows.Clear();
                     propiedadSeleccionada = null;
                 }
             }
@@ -276,11 +276,24 @@ namespace TP2
         {
             if (e.RowIndex >= 0)
             {
-                propiedadSeleccionada = GetRow(gbPrecio.Rows[e.RowIndex]);
+                propiedadSeleccionada = GetRow(gbHabitacionesDisponibles.Rows[e.RowIndex]);
                 Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
                 if (unaPropiedad != null)
                 {
                     labelPrecio.Text += unaPropiedad.Costo(dias);
+                    if (unaPropiedad is Hotel)
+                    {
+                        gbTipoHabitacion.Enabled = true;
+                        labSimple.Text = "Simples: " + ((Hotel)unaPropiedad).Simple;
+                        labDoble.Text = "Dobles: " + ((Hotel)unaPropiedad).Doble;
+                        labTriple.Text = "Triples: " + ((Hotel)unaPropiedad).Triple;
+                    }
+                    else
+                    {
+                        labSimple.Text = "Simples: -";
+                        labDoble.Text = "Dobles: -";
+                        labTriple.Text = "Triples: -";
+                    }
                 }
             }
             else

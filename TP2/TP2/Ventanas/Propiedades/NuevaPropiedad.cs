@@ -146,9 +146,7 @@ namespace TP2
                         break;
                     case 2:
                         unaPropiedad = new Hotel(idPropiedad, nombre, ubicacion, plazas, servicios, estrellas);
-                        ((Hotel)unaPropiedad).CargarHabitaciones(simples, Hotel.Tipo.Simple);
-                        ((Hotel)unaPropiedad).CargarHabitaciones(dobles, Hotel.Tipo.Doble);
-                        ((Hotel)unaPropiedad).CargarHabitaciones(triples, Hotel.Tipo.Triple);
+                        ((Hotel)unaPropiedad).CargarHabitaciones(simples,dobles,triples);
                         break;
                     case 3:
                         unaPropiedad = new CasaFinSemana(idPropiedad, nombre, ubicacion, plazas, servicios, propietario);
