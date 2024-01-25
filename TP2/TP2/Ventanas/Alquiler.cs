@@ -280,7 +280,7 @@ namespace TP2
                 Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
                 if (unaPropiedad != null)
                 {
-                    labelPrecio.Text += unaPropiedad.Costo(dias);
+                    labelPrecio.Text = "Costo Total: $ " + unaPropiedad.Costo(dias);
                     if (unaPropiedad is Hotel)
                     {
                         gbTipoHabitacion.Enabled = true;
@@ -293,6 +293,7 @@ namespace TP2
                         labSimple.Text = "Simples: -";
                         labDoble.Text = "Dobles: -";
                         labTriple.Text = "Triples: -";
+                        gbTipoHabitacion.Enabled= false;
                     }
                 }
             }

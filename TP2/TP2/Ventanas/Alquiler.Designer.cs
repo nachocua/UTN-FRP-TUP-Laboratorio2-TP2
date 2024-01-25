@@ -488,6 +488,7 @@
             this.gbTipoHabitacion.Controls.Add(this.rbTriple);
             this.gbTipoHabitacion.Controls.Add(this.rbDoble);
             this.gbTipoHabitacion.Controls.Add(this.rbSimple);
+            this.gbTipoHabitacion.Enabled = false;
             this.gbTipoHabitacion.Location = new System.Drawing.Point(8, 405);
             this.gbTipoHabitacion.Name = "gbTipoHabitacion";
             this.gbTipoHabitacion.Size = new System.Drawing.Size(157, 91);
