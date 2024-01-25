@@ -42,7 +42,7 @@ namespace TP2
         {
             Precio = costo;
         }
-        public override double Costo(int dias)
+        public override double Costo(int dias, int observación = 0)
         {
             return Precio * (dias * 1.03); // 3% adicional por cada dia | Implementar el resto
         }

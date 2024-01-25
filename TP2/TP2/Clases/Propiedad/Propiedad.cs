@@ -43,14 +43,15 @@ namespace TP2
         {
             idReservas.Add(idReserva);
         }
-        public abstract double Costo(int dias);
+        public abstract double Costo(int dias, int observación=0);
         public abstract string[] getData();
         public int CompareTo(object obj)
         {
             return idPropiedad.CompareTo(((Propiedad)obj).idPropiedad);
         }
         public abstract void EstablecerCosto(double costo);
-        public void AgregarImagen(string direccionImg)
+        /*
+         * public void AgregarImagen(string direccionImg)
         {
             imagenes.Add(direccionImg);
         }
@@ -62,6 +63,7 @@ namespace TP2
         {
             get { return imagenes.Count; }
         }
+        */
         public List<int> getReservas()
         {
             return idReservas;

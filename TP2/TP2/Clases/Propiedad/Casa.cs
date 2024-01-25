@@ -28,7 +28,7 @@ namespace TP2
             Plazas = plazas;
             Propietario = propietario;
         }
-        public override double Costo(int dias)
+        public override double Costo(int dias, int observación = 0)
         {
             double costo = (Precio * Servicios.Count * Plazas);
             costo = dias > 1 ? costo : costo * 0.10 * dias;

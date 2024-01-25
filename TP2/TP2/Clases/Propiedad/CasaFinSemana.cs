@@ -14,7 +14,7 @@ namespace TP2
         {
 
         }
-        public override double Costo(int dias)
+        public override double Costo(int dias, int observación = 0)
         {
             //Implementar
             return 0;
