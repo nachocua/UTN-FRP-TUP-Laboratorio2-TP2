@@ -147,9 +147,11 @@ namespace TP2
                     case 2:
                         unaPropiedad = new Hotel(idPropiedad, nombre, ubicacion, plazas, servicios, estrellas);
                         ((Hotel)unaPropiedad).CargarHabitaciones(simples,dobles,triples);
+                        unaPropiedad.EstablecerCosto(costo);
                         break;
                     case 3:
                         unaPropiedad = new CasaFinSemana(idPropiedad, nombre, ubicacion, plazas, servicios, propietario);
+                        unaPropiedad.EstablecerCosto(costo);
                         break;
                 }
                 string defaultPath = "..//..//Img//" + unaPropiedad.idPropiedad + "//";

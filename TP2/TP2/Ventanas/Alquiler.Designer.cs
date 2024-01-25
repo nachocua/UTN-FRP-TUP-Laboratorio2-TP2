@@ -505,6 +505,7 @@
             this.rbTriple.TabIndex = 2;
             this.rbTriple.Text = "Triple";
             this.rbTriple.UseVisualStyleBackColor = true;
+            this.rbTriple.CheckedChanged += new System.EventHandler(this.CambiarGroupBox);
             // 
             // rbDoble
             // 
@@ -515,6 +516,7 @@
             this.rbDoble.TabIndex = 1;
             this.rbDoble.Text = "Doble";
             this.rbDoble.UseVisualStyleBackColor = true;
+            this.rbDoble.CheckedChanged += new System.EventHandler(this.CambiarGroupBox);
             // 
             // rbSimple
             // 
@@ -527,6 +529,7 @@
             this.rbSimple.TabStop = true;
             this.rbSimple.Text = "Simple";
             this.rbSimple.UseVisualStyleBackColor = true;
+            this.rbSimple.CheckedChanged += new System.EventHandler(this.CambiarGroupBox);
             // 
             // gbUbicacion
             // 

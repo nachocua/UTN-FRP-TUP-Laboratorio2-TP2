@@ -14,11 +14,11 @@ namespace TP2
         {
 
         }
-        public override double Costo(int dias, int observación = 0)
-        {
-            //Implementar
-            return 0;
-        }
+        //public override double Costo(int dias, int observación = 0)
+        //{
+        //    //Implementar
+        //    return 0;
+        //}
         //public override void EstablecerCosto(double costo)
         //{
 

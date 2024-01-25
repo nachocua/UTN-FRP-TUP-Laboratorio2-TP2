@@ -136,6 +136,7 @@ namespace TP2
                     ventanaPropiedad.tbNombre.Text = unaPropiedad.Nombre;
                     ventanaPropiedad.tbUbicacion.Text = unaPropiedad.Ciudad;
                     string[] vServicios = string.Join(", ", unaPropiedad.Servicios.ToArray()).Split(',');
+                    ventanaPropiedad.tbCosto.Text = unaPropiedad.Precio.ToString();
                     for (int i = 0; i < vServicios.Length; i++)
                     {
                         vServicios[i] = vServicios[i].Trim();
@@ -186,6 +187,7 @@ namespace TP2
                                 unHotel.ModificarDatos(otroHotel.Nombre, otroHotel.Ciudad, otroHotel.Estrella, simples, dobles, triples);
                                 unHotel.ModificarServicios(nuevaPropiedad.Servicios.ToArray());
                                 unHotel.ModificarImagenes(ventanaPropiedad.ObtenerImagenes());
+                                unHotel.EstablecerCosto(Convert.ToDouble(ventanaPropiedad.tbCosto.Text));
                             }
                             else
                             {
@@ -194,6 +196,7 @@ namespace TP2
                                 unaCasa.ModificarDatos(otraCasa.Nombre, otraCasa.Ciudad, otraCasa.Plazas, otraCasa.Propietario);
                                 unaCasa.ModificarServicios(nuevaPropiedad.Servicios.ToArray());
                                 unaCasa.ModificarImagenes(ventanaPropiedad.ObtenerImagenes());
+                                unaCasa.EstablecerCosto(Convert.ToDouble(ventanaPropiedad.tbCosto.Text));
                             }
                         }
                         catch

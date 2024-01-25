@@ -18,6 +18,7 @@ namespace TP2
         string[] propiedadSeleccionada = null;
         bool clienteValido = false;
         int dias = 1;
+        int observacion = 0;
         public labPrecio(ManejoAlquiler unSistema)
         {
             InitializeComponent(); elSistema = unSistema;
@@ -272,6 +273,29 @@ namespace TP2
                 }
             }
         }
+        private void CambiarGroupBox(object sender, EventArgs e)
+        {
+            switch (((RadioButton)sender).Text)
+            {
+                case "Simple":
+                    observacion = 1;
+                    break;
+                case "Doble":
+                    observacion = 2;
+                    break;
+                case "Triple":
+                    observacion = 3;
+                    break;
+            }
+            if (propiedadSeleccionada != null)
+            {
+                Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
+                if (unaPropiedad != null)
+                {
+                    labelPrecio.Text = "Costo total: $ " + unaPropiedad.Costo(dias,observacion);
+                }
+            }
+        }
         private void dgView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -280,20 +304,22 @@ namespace TP2
                 Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
                 if (unaPropiedad != null)
                 {
-                    labelPrecio.Text = "Costo Total: $ " + unaPropiedad.Costo(dias);
+                    
                     if (unaPropiedad is Hotel)
                     {
                         gbTipoHabitacion.Enabled = true;
                         labSimple.Text = "Simples: " + ((Hotel)unaPropiedad).Simple;
                         labDoble.Text = "Dobles: " + ((Hotel)unaPropiedad).Doble;
                         labTriple.Text = "Triples: " + ((Hotel)unaPropiedad).Triple;
+                        labelPrecio.Text = "Costo Total: $ " + unaPropiedad.Costo(dias, observacion);
                     }
                     else
                     {
                         labSimple.Text = "Simples: -";
                         labDoble.Text = "Dobles: -";
                         labTriple.Text = "Triples: -";
-                        gbTipoHabitacion.Enabled= false;
+                        gbTipoHabitacion.Enabled = false;
+                        labelPrecio.Text = "Costo Total: $ " + unaPropiedad.Costo(dias);
                     }
                 }
             }
@@ -324,7 +350,7 @@ namespace TP2
                 Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
                 if (unaPropiedad != null)
                 {
-                    labelPrecio.Text += unaPropiedad.Costo(dias);
+                    labelPrecio.Text = "Costo total: $ " + unaPropiedad.Costo(dias);
                 }
             }
         }

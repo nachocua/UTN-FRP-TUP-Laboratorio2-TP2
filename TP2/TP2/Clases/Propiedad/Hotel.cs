@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using TP2;
 
 //Ej-> Hotel;2; Palms Springs; Parana; 100; Wifi* Cochera*Desayuno*Pet-Friendly; 2; 
@@ -19,7 +20,7 @@ namespace TP2
         public int Simple { get; private set; }
         public int Doble { get; private set; }
         public int Triple { get; private set; }
-        
+
         public Hotel(int id, string nombre, string ubicacion, int plazas, List<string> servicios, int estrella) : base(id, nombre, ubicacion, plazas, servicios)
         {
             Estrella = estrella;
@@ -44,8 +45,24 @@ namespace TP2
         }
         public override double Costo(int dias, int observación = 0)
         {
-
-            return Precio * (dias * 1.03); // 3% adicional por cada dia | Implementar el resto
+            double precio = Precio;
+            if (Estrella == 3)
+            {
+                precio *= 1.40;
+            }
+            switch (observación)
+            {
+                case 2:
+                    precio *= 1.80;
+                    break;
+                case 3:
+                    precio *= 2.5; // 150 %
+                    break;
+                default:
+                    break;
+            }
+            precio *= (dias * 1.03);
+            return precio; // 3% adicional por cada dia | Implementar el resto
         }
         public override string[] getData()
         {
@@ -59,6 +76,14 @@ namespace TP2
                 string.Join(", ",Servicios),
                 Plazas.ToString()
             };
+            if(Estrella == 3)
+            {
+                arr[2] = "Hotel ✮ ✮ ✮";
+            }
+            else
+            {
+                arr[2] = "Hotel ✮ ✮";
+            }
             return arr.ToArray();
         }
         public override string ToString()
