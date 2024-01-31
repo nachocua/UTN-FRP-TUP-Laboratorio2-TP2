@@ -19,6 +19,9 @@ namespace TP2
         private string FilePropiedades;
         private string FileClientes;
         private string FileReservas;
+        public int CantidadCasas { get; private set; }
+        public int CantidadHoteles { get; private set; }
+        public int CantidadCasasFinde { get; private set; }
         public int CantidadPropiedades
         {
             get
@@ -31,6 +34,9 @@ namespace TP2
             propiedades = new List<Propiedad>();
             clientes = new List<Cliente>();
             reservas = new List<Reserva>();
+            CantidadCasas = 0;
+            CantidadCasasFinde = 0;
+            CantidadHoteles = 0;
             BinaryFormatter bf;
             FileStream fs;
             FilePropiedades = FileNamePropiedades;
@@ -64,7 +70,7 @@ namespace TP2
             {
                 int idReserva = Convert.ToInt32(unDato[0]);
                 int idPropiedad = Convert.ToInt32(unDato[1]);
-                int dni = Convert.ToInt32(unDato[2]); 
+                int dni = Convert.ToInt32(unDato[2]);
                 string[] fecha = unDato[4].Split(' ')[0].Split('/');
                 string[] fecha2 = unDato[5].Split(' ')[0].Split('/');
                 DateTime fechaDesde = new DateTime(Convert.ToInt32(fecha[2]), Convert.ToInt32(fecha[1]), Convert.ToInt32(fecha[0]));
@@ -86,6 +92,8 @@ namespace TP2
                 }
                 NuevaReserva(unaReserva, false);
             }
+            //Conteo de propiedades
+            ContarPropiedades();
         }
         public void Export()
         {
@@ -126,6 +134,43 @@ namespace TP2
         public void AgregarPropiedad(Propiedad propiedad)
         {
             propiedades.Add(propiedad);
+            switch (propiedad.GetType().Name)
+            {
+                case "Casa":
+                    CantidadCasas++;
+                    break;
+                case "Hotel":
+                    CantidadHoteles++;
+                    break;
+                case "CasaFinSemana":
+                    CantidadCasasFinde++;
+                    break;
+                default:
+                    break;
+            }
+        }
+        public void ContarPropiedades() // PARCHE PARA CONTAR LAS PROPIEDADES YA CARGADAS
+        {
+            CantidadCasas = 0;
+            CantidadCasasFinde = 0;
+            CantidadHoteles = 0;
+            foreach (Propiedad unaPropiedad in propiedades)
+            {
+                switch (unaPropiedad.GetType().Name)
+                {
+                    case "Casa":
+                        CantidadCasas++;
+                        break;
+                    case "Hotel":
+                        CantidadHoteles++;
+                        break;
+                    case "CasaFinSemana":
+                        CantidadCasasFinde++;
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
         public Propiedad GetPropiedad(int i)
         {

@@ -58,6 +58,7 @@ namespace TP2
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            //MessageBox.Show(string.Format("Casa:{0}|Hoteles:{1}|CasaFinde:{2}", elSistema.CantidadCasas, elSistema.CantidadHoteles, elSistema.CantidadCasasFinde));
             dgView.Rows.Clear();
             List<string> serviciosSeleccionados = CargarServicios();
             List<string> tiposSeleccionados = CargarTipoSeleccionado();
