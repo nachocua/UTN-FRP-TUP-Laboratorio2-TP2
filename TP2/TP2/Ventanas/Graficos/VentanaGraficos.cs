@@ -13,7 +13,16 @@ namespace TP2
     public partial class VentanaGraficos : Form
     {
         //private Panel panelBarras;
+        //CantidadCasas 
+        //CantidadHoteles 
+        // CantidadCasasFinde 
+        //  CantidadPropiedades
+       // private string[] propiedades2 = { "Casa por dia", "Casa fin de semana", "Hotel" };
+        //private string[] propiedades2 = {elsistema.CantidadCasas , "Casa fin de semana", "Hotel" };
+
+
         private int[] barras = { 100, 50, 25 };
+        
         private float[] Sectores = { 120, 120, 120 };
         private string[] propiedades = { "Casa por dia", "Casa fin de semana", "Hotel" };
 
@@ -109,11 +118,11 @@ namespace TP2
             esc50.BringToFront();
             g.DrawLine(penHorizontal, startX, yPenHorizontal, endX, yPenHorizontal);
 
-            // Label Escala 10
-            int yPenHorizontal2 = altoPanel * 90 / 100;  // Posición vertical de la línea
+            // Label Escala 20
+            int yPenHorizontal2 = altoPanel * 80 / 100;  // Posición vertical de la línea
             g.DrawLine(penHorizontal, startX, yPenHorizontal2, endX, yPenHorizontal2);
             Label esc10 = new Label();
-            esc10.Text = "10";
+            esc10.Text = "20";
             esc10.Size = new Size(28, 18);
             esc10.Font = new Font("Arial", 10, FontStyle.Bold);
 
@@ -258,7 +267,7 @@ namespace TP2
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose();
         }
     }
 }

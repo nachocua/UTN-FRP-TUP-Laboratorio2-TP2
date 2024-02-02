@@ -19,7 +19,11 @@ namespace TP2
 {
     public partial class VentanaPrincipal : Form
     {
+       
         private ManejoAlquiler elSistema;
+        // Mod
+        //protected ManejoAlquiler elSistema;
+
         private SistemaLogin loginSistema;
         private Login UsuarioActivo;
 
