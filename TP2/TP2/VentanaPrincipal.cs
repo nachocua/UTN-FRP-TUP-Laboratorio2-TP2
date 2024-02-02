@@ -116,7 +116,7 @@ namespace TP2
 
             //  ******  Reservas
             ToolStripMenuItem reservasMenuItem = new ToolStripMenuItem("Reservas");
-            ToolStripMenuItem verReservasMenuItem = new ToolStripMenuItem("Ver Reservas");
+            ToolStripMenuItem verReservasMenuItem = new ToolStripMenuItem("Ver Reservas");            
             verReservasMenuItem.ShortcutKeys = Keys.F3;
             reservasMenuItem.DropDownItems.Add(verReservasMenuItem);
             //verReservasMenuItem.Click += MenuItem_Click;
@@ -124,6 +124,10 @@ namespace TP2
             ToolStripMenuItem altaReservaMenuItem = new ToolStripMenuItem("Alta Reserva");
             reservasMenuItem.DropDownItems.Add(altaReservaMenuItem);
             altaReservaMenuItem.Click += altaReservaMenuItem_Click;
+
+            ToolStripMenuItem verGraficosMenuItem = new ToolStripMenuItem("Ver Graficos");
+            reservasMenuItem.DropDownItems.Add(verGraficosMenuItem);
+            verGraficosMenuItem.Click += verGraficosMenuItem_Click;
 
             menuStrip1.Items.Add(reservasMenuItem);
 
@@ -380,6 +384,13 @@ namespace TP2
             ventanaAlquiler.ShowDialog();
             ventanaAlquiler.Dispose();
             sbReservas.Text = "Reservas: " + elSistema.cantidadReservas().ToString();
+        }
+
+        private void verGraficosMenuItem_Click(object sender, EventArgs e)
+        {
+            VentanaGraficos ventanaGraficos = new VentanaGraficos();
+            ventanaGraficos.Show();
+
         }
 
         // ************ MTD Propiedades
