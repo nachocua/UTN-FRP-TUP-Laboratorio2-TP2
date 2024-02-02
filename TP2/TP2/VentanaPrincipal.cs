@@ -20,12 +20,10 @@ namespace TP2
     public partial class VentanaPrincipal : Form
     {
        
-        private ManejoAlquiler elSistema;
-        // Mod
-        //protected ManejoAlquiler elSistema;
-
+        private ManejoAlquiler elSistema;        
         private SistemaLogin loginSistema;
         private Login UsuarioActivo;
+        protected int[] propiedades = new int[3]; // Datos para los graficos
 
         public VentanaPrincipal()
         {
@@ -55,12 +53,22 @@ namespace TP2
             sbPropiedades.Text += elSistema.CantidadPropiedades.ToString();
             sbClientes.Text += elSistema.CantidadClientes().ToString();
             sbReservas.Text += elSistema.cantidadReservas().ToString();
+
+            // Datos para los graficos
+            propiedades[0] = elSistema.CantidadCasas;
+            propiedades[1] = elSistema.CantidadCasasFinde;
+            propiedades[2] = elSistema.CantidadHoteles;
+
+
+
         }
 
-        private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+    private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
             elSistema.Export();
             loginSistema.Export();
+
+            
             //Exportar usuario activo
             StreamWriter sw = new StreamWriter("..//..//Data//ActiveData.csv");
             if (UsuarioActivo != null)
@@ -392,7 +400,8 @@ namespace TP2
 
         private void verGraficosMenuItem_Click(object sender, EventArgs e)
         {
-            VentanaGraficos ventanaGraficos = new VentanaGraficos();
+            
+            VentanaGraficos ventanaGraficos = new VentanaGraficos(propiedades);
             ventanaGraficos.Show();
 
         }

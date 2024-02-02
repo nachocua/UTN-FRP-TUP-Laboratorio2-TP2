@@ -13,18 +13,23 @@ namespace TP2
     public partial class VentanaGraficos : Form
     {
         //private Panel panelBarras;
-        //CantidadCasas 
+        //CantidadCasas (Manejo alquiler)
         //CantidadHoteles 
         // CantidadCasasFinde 
         //  CantidadPropiedades
-       // private string[] propiedades2 = { "Casa por dia", "Casa fin de semana", "Hotel" };
+        // private string[] propiedades2 = { "Casa por dia", "Casa fin de semana", "Hotel" };
         //private string[] propiedades2 = {elsistema.CantidadCasas , "Casa fin de semana", "Hotel" };
 
 
-        private int[] barras = { 100, 50, 25 };
-        
+
+        //private int[] barras = { 100, 50, 25 };
+        private int[] barras;
+
+
+
         private float[] Sectores = { 120, 120, 120 };
         private string[] propiedades = { "Casa por dia", "Casa fin de semana", "Hotel" };
+        
 
         private int anchoPanel = 500;
         private int altoPanel = 400;
@@ -50,10 +55,11 @@ namespace TP2
        };
         //public Color[] Colores  = { Color.Blue, Color.Black, Color.Yellow };
 
-        public VentanaGraficos()
+        public VentanaGraficos(int[] propiedades )
         {
             InitializeComponent();
             InitializeUI();
+            barras = propiedades;
         }
 
         private void InitializeUI()
@@ -155,8 +161,7 @@ namespace TP2
 
             foreach (var item in barras)
             {
-                // Dibujar un rectángulo rojo en el panel
-                //Rectangle rect = new Rectangle(x, y, 60, 300);
+               
 
                 int yEscala = yGrafico - (item * constanteAltura);
                 if (yEscala < 15)
@@ -246,7 +251,7 @@ namespace TP2
                 Panel cuadradoPanel = new Panel();
                 cuadradoPanel.Size = new System.Drawing.Size(16, 16); // Establecer el tamaño para hacer un cuadrado
                 cuadradoPanel.Location = new System.Drawing.Point(xNum - 20, 434); // Establecer la posición en el formulario
-                cuadradoPanel.BackColor = coloresFavoritos[n]; // Puedes establecer el color según tus preferencias
+                cuadradoPanel.BackColor = coloresFavoritos[n]; // Establecer el color 
                 Controls.Add(cuadradoPanel);
                 cuadradoPanel.BringToFront();
 
