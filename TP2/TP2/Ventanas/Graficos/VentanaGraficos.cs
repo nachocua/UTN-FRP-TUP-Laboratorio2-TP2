@@ -12,22 +12,12 @@ namespace TP2
 {
     public partial class VentanaGraficos : Form
     {
-        //private Panel panelBarras;
-        //CantidadCasas (Manejo alquiler)
-        //CantidadHoteles 
-        // CantidadCasasFinde 
-        //  CantidadPropiedades
-        // private string[] propiedades2 = { "Casa por dia", "Casa fin de semana", "Hotel" };
-        //private string[] propiedades2 = {elsistema.CantidadCasas , "Casa fin de semana", "Hotel" };
-
-
-
+       
         //private int[] barras = { 100, 50, 25 };
         private int[] barras;
 
-
-
-        private float[] Sectores = { 120, 120, 120 };
+        private int[] personasPorHabitacion = { 88, 3, 4, 15, 20 };
+        private string[] personalsLabel = { "2P", "3P", "4P", "5P", "6+P" };
         private string[] propiedades = { "Casa por dia", "Casa fin de semana", "Hotel" };
         
 
@@ -41,6 +31,7 @@ namespace TP2
         private int yPanel = 30;
         private int yLabel;
 
+        int YlabelAclaracion = 480;
 
         int fontSm = 10;
         int fontextraSm = 8;
@@ -91,9 +82,9 @@ namespace TP2
 
             // Obtener el objeto Graphics para el panel
             Graphics g = e.Graphics;
-            int xGrafico = 110;
+            int xGrafico = 100;
             int yGrafico = 400;
-            int anchoGrafico = 100;
+            int anchoGrafico = 50;
 
             int x = 80;
             int y = 410;
@@ -152,17 +143,26 @@ namespace TP2
             Controls.Add(esc90);
             esc90.BringToFront();
 
-
+           
             // ********** Grafico de Barras  **********
 
             int fontSize = 10;
             int n = 0;
-            int xlabelGraficos = 165;
+            int xlabelGraficos = xGrafico + 65;
 
-            foreach (var item in barras)
-            {
-               
+            
+           
+             // Label Aclaracion
+            Label aclaracionP = new Label();
+            aclaracionP.Text = "P = Personas por habitacion de Hotel";
+            aclaracionP.Size = new Size(280, 18);
+            aclaracionP.Font = new Font("Arial", 9, FontStyle.Bold);
+            aclaracionP.Location = new Point(150, YlabelAclaracion);
+            Controls.Add(aclaracionP);
+            aclaracionP.BringToFront();
 
+            foreach (var item in personasPorHabitacion)
+            {             
                 int yEscala = yGrafico - (item * constanteAltura);
                 if (yEscala < 15)
                 {
@@ -173,31 +173,30 @@ namespace TP2
                 g.FillRectangle(Brushes.MediumSlateBlue, rect);
                 // g.DrawRectangle(Pens.Black, rect);
 
-                // Label Propiedades
+                // Label Personas
                 Label propiedad = new Label();
-                propiedad.Text = propiedades[n];
-                propiedad.Size = new Size(100, 60);
-                propiedad.Size = new Size(100, 60);
+                propiedad.Text = personalsLabel[n];
+                propiedad.Size = new Size(40, 60);
                 propiedad.Font = new Font("Arial", fontSm, FontStyle.Bold);
-                // Establecer la posición del Label
+                //Establecer la posición del Label
                 propiedad.Location = new Point(xlabelGraficos, yLabel);
-                // Agregar el Label al formulario
+                //Agregar el Label al formulario
                 Controls.Add(propiedad);
 
                 // Label Numero para cada Barra
                 Label numerosBarra = new Label();
-                numerosBarra.Size = new Size(32, 13);
+                numerosBarra.Size = new Size(26, 13);
                 numerosBarra.Font = new Font("Arial", fontSize, FontStyle.Bold);
                 numerosBarra.BackColor = Color.White;
-                numerosBarra.Text = item.ToString();
+                numerosBarra.Text = item.ToString("00");
 
-                numerosBarra.Location = new Point(xGrafico + 90, yEscala + 14);
+                numerosBarra.Location = new Point(xGrafico + 65, yEscala + 14);
                 Controls.Add(numerosBarra);
                 numerosBarra.BringToFront();
 
                 xGrafico += anchoGrafico + 30;
                 n++;
-                xlabelGraficos = xlabelGraficos + 135;
+                xlabelGraficos = xlabelGraficos + 80;
             }
         }
 
@@ -237,6 +236,15 @@ namespace TP2
             int n = 0;
             int xNum = 650;
             int xincremento = 260;
+
+            // Label Aclaracion
+            Label aclaracionP = new Label();
+            aclaracionP.Text = "Porcentaje en total de Reservas";
+            aclaracionP.Size = new Size(280, 18);
+            aclaracionP.Font = new Font("Arial", 9, FontStyle.Bold);
+            aclaracionP.Location = new Point(700, YlabelAclaracion);
+            Controls.Add(aclaracionP);
+            aclaracionP.BringToFront();
 
             foreach (float valor in barras)
             {
