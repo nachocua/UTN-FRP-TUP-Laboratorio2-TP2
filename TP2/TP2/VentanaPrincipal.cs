@@ -139,11 +139,7 @@ namespace TP2
             reservasMenuItem.DropDownItems.Add(altaReservaMenuItem);
             altaReservaMenuItem.Click += altaReservaMenuItem_Click;
 
-            ToolStripMenuItem verGraficosMenuItem = new ToolStripMenuItem("Ver Graficos");
-            reservasMenuItem.DropDownItems.Add(verGraficosMenuItem);
-            verGraficosMenuItem.Click += verGraficosMenuItem_Click;
-
-            menuStrip1.Items.Add(reservasMenuItem);
+            
 
             // ******  "Configuracion"
             ToolStripMenuItem configuracionMenuItem = new ToolStripMenuItem("Configuracion");
@@ -193,7 +189,16 @@ namespace TP2
                 nuevaPropiedadItem.Click += nuevaPropiedadItem_Click;
 
                 menuStrip1.Items.Add(propiedadesMenuItem);
+
+                //  ******  Reservas
+                ToolStripMenuItem verGraficosMenuItem = new ToolStripMenuItem("Ver Graficos");
+                reservasMenuItem.DropDownItems.Add(verGraficosMenuItem);
+                verGraficosMenuItem.Click += verGraficosMenuItem_Click;
+
+               
             }
+
+            menuStrip1.Items.Add(reservasMenuItem);
 
             configuracionMenuItem.DropDownItems.Add(salirMenuItem);
             menuStrip1.Items.Add(configuracionMenuItem);
