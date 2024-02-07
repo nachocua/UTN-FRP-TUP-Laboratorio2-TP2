@@ -71,4 +71,9 @@
             NACHO - Revisar ventana de login
         </li>
     </ul>
+
+    <p>
+            Usuario base de prueba - tito - 1234
+    </>
+    
 </footer>
