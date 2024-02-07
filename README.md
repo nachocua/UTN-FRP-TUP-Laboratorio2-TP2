@@ -23,52 +23,57 @@
     <h2>Pendientes</h2>
     <ul>
         <li>
-            Calculo de Costos (Casa / Casa Finde / Hotel)
-        </li>
-        <li>
-            Implementar Ventana de Reservas (Hoteles)
-        </li>
-        <li>
-            JULI - Implementar Filtro de Lugar y cantidad de personas
+            JULI - Impresion
         </li>
         <li>
             NACHO - Exportar/Importar Calendario Reservas
         </li>
         <li>
-            NACHO - Anular Reservas
+            TRISTAN - Editar Gráfico de Torta (Hotel + Casa)
         </li>
         <li>
-            Refactor de Propiedades
-        </li>
-        <li>
-            Gráficos de Barra
-        </li>
-        <li>
-            JULI - Impresion
+            TRISTAN - Gráficos de Barra (Implementar cant. huéspedes)
         </li>
         <li>
             TRISTAN - Página de Ayuda
         </li>
         <li>
-            TRISTAN - Que la barra sea visible siempre
+            NACHO - Ventana Acerca de...
         </li>
         <li>
-            Exportar lista de clientes
+            NACHO - Exportar lista de clientes
         </li>
         <li>
-            Exportar listas de reservas
+            NACHO - Exportar listas de reservas
         </li>
         <li>
-            NACHO - Barra de estado con (usuario/rol + cantidad de datos importados)
+            TRISTAN - Agregar botón - Anular Reserva (admin)
         </li>
         <li>
-            NACHO - Controlar que hace cada rol
+            JULI - Baja propiedades - agregar estado (admin)
         </li>
         <li>
-            Generar una interfaz principal amigable
+            JULI - Filtro - ignorar propiedades en baja (admin)
         </li>
         <li>
-            Logo
+            TRISTAN - Ver ayuda está duplicada (en admin)
+        </li>
+        <li>
+            TRISTAN - Quitar ver gráficos (en usuario base)
+        </li>
+        <li>
+            NACHO - respaldar CSV (en usuario base)
+        </li>
+        <li>
+            Agregar casos de uso
+        </li>
+        <li>
+            NACHO - Revisar ventana de login
         </li>
     </ul>
+
+   
+            Usuario base de prueba - tito - 1234
+   
+    
 </footer>
