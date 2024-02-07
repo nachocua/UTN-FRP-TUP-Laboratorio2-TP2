@@ -16,7 +16,7 @@ namespace TP2
         //private int[] barras = { 100, 50, 25 };
         private int[] barras;
 
-        private int[] personasPorHabitacion = { 88, 3, 4, 15, 20 };
+        private int[] personasPorHabitacion = { 58, 3, 49, 15, 20 };
         private string[] personalsLabel = { "2P", "3P", "4P", "5P", "6+P" };
         private string[] propiedades = { "Casa por dia", "Casa fin de semana", "Hotel" };
         

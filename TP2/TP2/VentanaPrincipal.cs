@@ -54,7 +54,7 @@ namespace TP2
             sbClientes.Text += elSistema.CantidadClientes().ToString();
             sbReservas.Text += elSistema.cantidadReservas().ToString();
 
-            // Datos para los graficos
+            // Datos para grafico de sectores
             propiedades[0] = elSistema.CantidadCasas;
             propiedades[1] = elSistema.CantidadCasasFinde;
             propiedades[2] = elSistema.CantidadHoteles;
@@ -85,6 +85,8 @@ namespace TP2
         // ************ MENU ************
         private void BarraMenuSinLoguear()
         {
+            menuStrip1.Items.Clear();
+
             ToolStripMenuItem ayudaMenuItem = new ToolStripMenuItem("Ayuda");
             ToolStripMenuItem loginMenuItem = new ToolStripMenuItem("Login");
             ayudaMenuItem.DropDownItems.Add(loginMenuItem);
