@@ -72,8 +72,8 @@
         </li>
     </ul>
 
-    <p>
+   
             Usuario base de prueba - tito - 1234
-    </p>
+   
     
 </footer>
