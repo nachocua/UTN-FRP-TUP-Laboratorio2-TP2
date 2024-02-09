@@ -293,7 +293,7 @@ namespace TP2
                 Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
                 if (unaPropiedad != null)
                 {
-                    labelPrecio.Text = "Costo total: $ " + unaPropiedad.Costo(dias,observacion);
+                    labelPrecio.Text = "Costo total: $ " + unaPropiedad.Costo(dias, observacion);
                 }
             }
         }
@@ -305,7 +305,7 @@ namespace TP2
                 Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
                 if (unaPropiedad != null)
                 {
-                    
+
                     if (unaPropiedad is Hotel)
                     {
                         gbTipoHabitacion.Enabled = true;
@@ -357,9 +357,14 @@ namespace TP2
         }
         private void Imprimir()
         {
+            printDocument1.DefaultPageSettings.PrinterSettings.PrintFileName = "Reserva_0" + elSistema.cantidadReservas();
             printPreviewDialog1.Document = printDocument1;
             printDocument1.PrinterSettings = printDialog1.PrinterSettings;
-            printDocument1.Print();
+            printDialog1.PrinterSettings.Copies = 2;
+            if (printDialog1.ShowDialog() == DialogResult.OK)
+            {
+                printDocument1.Print();
+            }
             //printPreviewDialog1.ShowDialog();
         }
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
