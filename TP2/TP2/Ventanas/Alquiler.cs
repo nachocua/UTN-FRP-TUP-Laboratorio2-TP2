@@ -4,10 +4,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace TP2
 {
@@ -265,12 +268,15 @@ namespace TP2
                     int idPropiedad = unaPropiedad.idPropiedad;
                     int cantDias = (dtFechaHasta.Value - dtFechaInicio.Value).Days;
                     double costo = unaPropiedad.Costo(cantDias);
-                    Reserva unaReserva = new Reserva(idReserva, dni, idPropiedad, dtFechaInicio.Value, dtFechaHasta.Value, costo);
-                    elSistema.NuevaReserva(unaReserva);
-                    MessageBox.Show("Se ha reservado con éxito");
-                    Imprimir();
-                    dgView.Rows.Clear();
-                    propiedadSeleccionada = null;
+                    bool estado = Imprimir();
+                    if (estado)
+                    {
+                        Reserva unaReserva = new Reserva(idReserva, dni, idPropiedad, dtFechaInicio.Value, dtFechaHasta.Value, costo);
+                        elSistema.NuevaReserva(unaReserva);
+                        dgView.Rows.Clear();
+                        propiedadSeleccionada = null;
+                        MessageBox.Show("Se ha reservado con éxito");
+                    }
                 }
             }
         }
@@ -355,17 +361,20 @@ namespace TP2
                 }
             }
         }
-        private void Imprimir()
+        private bool Imprimir()
         {
-            printDocument1.DefaultPageSettings.PrinterSettings.PrintFileName = "Reserva_0" + elSistema.cantidadReservas();
+            bool state = false;
             printPreviewDialog1.Document = printDocument1;
             printDocument1.PrinterSettings = printDialog1.PrinterSettings;
             printDialog1.PrinterSettings.Copies = 2;
+            printDocument1.DefaultPageSettings.PrinterSettings.PrintFileName = "Reserva_0" + elSistema.cantidadReservas();
             if (printDialog1.ShowDialog() == DialogResult.OK)
             {
                 printDocument1.Print();
+                state = true;
             }
             //printPreviewDialog1.ShowDialog();
+            return state;
         }
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
@@ -373,66 +382,82 @@ namespace TP2
             Pen pen = new Pen(Color.Black);
             Font font = new Font("Verdana", 14);
             Brush brush = new SolidBrush(Color.Black);
-            Image logo = Bitmap.FromFile("C:\\Users\\Julian\\Downloads\\logo.jpg"); // CORREGIR 
-            Image imgpropiedad = Bitmap.FromFile("C:\\Users\\Julian\\Downloads\\GoletaDelMar.jpg"); // CORREGIR
-            //Image logo = Bitmap.FromFile("");
-            //Image imgpropiedad = Bitmap.FromFile("");
-            float x, y;
-            int margen = 50, columnaX = 180;
-            int ancho = e.PageBounds.Width - margen, alto = e.PageBounds.Height - margen;
-            int h1 = 200, h2 = 300, h3 = 400;
-            int hLinea = (int)font.GetHeight(e.Graphics);
-            x = y = margen;
+            Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
+            Cliente clienteABuscar = new Cliente(Convert.ToInt32(tbDni.Text), "", "", 0);
+            int indx = elSistema.BuscarCliente(clienteABuscar);
+            if (unaPropiedad != null && indx > -1)
+            {
+                Cliente unCliente = elSistema.GetCliente(indx);
+                string rutaImg = "..//..//Img//" + unaPropiedad.idPropiedad + "//img0.jpg";
+                Image logo = Bitmap.FromFile(Application.StartupPath + "//logo.jpg");
+                Image imgpropiedad = null;
+                if (File.Exists(rutaImg))
+                {
+                    imgpropiedad = Bitmap.FromFile(rutaImg);
+                }
+                float x, y;
+                int margen = 50, columnaX = 180;
+                int ancho = e.PageBounds.Width - margen, alto = e.PageBounds.Height - margen;
+                int h1 = 200, h2 = 300, h3 = 400;
+                int hLinea = (int)font.GetHeight(e.Graphics);
+                x = y = margen;
 
-            // Encabezado
-            int medidaAux = e.PageBounds.Width / 3;
-            g.DrawImage(logo, x, y, medidaAux, h1);
-            ancho -= margen;
-            g.DrawRectangle(pen, x, y, ancho, h1);
-            g.DrawRectangle(pen, x, y, medidaAux, h1);
-            g.DrawString("Rentify S.A. - UTN FRP", font, brush, x + 20, h1 + y / 2);
-            g.DrawString("FACTURA/RESERVA\nNro Factura: 9032839012\nNombre_Cliente\nCUIL: xx-xxxxxxxx-x\nFECHA DE EMISION: " + DateTime.Now.ToShortDateString(), font, brush, margen + medidaAux + 20, y + 20);
-
-            // LISTADO DE PERSONAS
-            y += h1;
-            g.DrawRectangle(pen, x, y, ancho, (int)font.GetHeight(e.Graphics)); // Columnas de huesped
-            string[][] text = { new string[] { "Nombre", "Apellido", "Documento", "Fecha Nacimiento" },
-                                new string[] {"aaaaaa","bbbbbb","22000000","01/01/01" },
+                // Encabezado
+                int medidaAux = e.PageBounds.Width / 3;
+                g.DrawImage(logo, x, y, medidaAux, h1);
+                ancho -= margen;
+                g.DrawRectangle(pen, x, y, ancho, h1);
+                g.DrawRectangle(pen, x, y, medidaAux, h1);
+                g.DrawString("Rentify S.A. - UTN FRP", font, brush, x + 20, h1 + y / 2);
+                g.DrawString(string.Format("FACTURA / RESERVA\n" +
+                    "Nro Factura: {0,10}\n" +
+                    "Nombre_Cliente: {1}\n" +
+                    "CUIL: xx - xxxxxxxx - x\n" +
+                    "FECHA DE EMISION: {2}",
+                    elSistema.cantidadReservas(),
+                    unCliente.Nombres, DateTime.Now.ToShortDateString()),
+                    font, brush, margen + medidaAux + 20, y + 20);
+                // LISTADO DE PERSONAS
+                y += h1;
+                g.DrawRectangle(pen, x, y, ancho, (int)font.GetHeight(e.Graphics)); // Columnas de huesped
+                string[][] text = { new string[] { "Nombre", "Apellido", "Documento", "Fecha Nacimiento" },
+                                new string[] {unCliente.Nombres, unCliente.Apellidos,unCliente.Dni.ToString(),"FECHANAC NOT FOUND"},
                                 new string[] {"eeeeee","fdsf","11111111","10/10/20"},
                                 new string[] {"ssssss","asdw","22222222","01/02/03"},
                                 new string[] {"dddddd","dsadas","33333333","02/03/04"},
                                 new string[] {"www","eqwe","44444444","09/12/18"}};
-            foreach (string[] s in text)
-            {
-                x = margen + 5;
-                foreach (string txt in s)
+                foreach (string[] s in text)
                 {
-                    g.DrawString(txt, font, brush, x, y);
-                    x += columnaX;
+                    x = margen + 5;
+                    foreach (string txt in s)
+                    {
+                        g.DrawString(txt, font, brush, x, y);
+                        x += columnaX;
+                    }
+                    y += hLinea;
                 }
-                y += hLinea;
+                y = margen + h1 + hLinea;
+                x = margen;
+                g.DrawRectangle(pen, x, y, ancho, h2); // Fin lista de huespedes
+
+                //DATOS DE LA PROPIEDAD RESERVADA
+                y += h2;
+                g.DrawImage(imgpropiedad, x, y, h3, h3);
+                g.DrawRectangle(pen, x, y, h3, h3);
+                g.DrawString(string.Format("Tipo_Propiedad:{0}\nNombre_Propiedad:{1}\nUbicacion_Propiedad:{2}\nCapacidad_Propiedad:{3}" +
+                    "\nServicios:", unaPropiedad.GetType().Name, unaPropiedad.Nombre, unaPropiedad.Ciudad, unaPropiedad.Plazas), font, brush, x + h3 + 10, y);
+                y += h3;
+                g.DrawLine(pen, x, y, ancho + x, y);
+                g.DrawString("Fecha de reserva: " + DateTime.Now.ToShortDateString() + " - " + DateTime.Now.AddDays(3).ToShortDateString()
+                    + "\nCantidad de dias: x dias\nCosto base: $ x", font, brush, x, y);
+                x = margen + h3;
+                y += hLinea * 2; // 2 renglones mas
+
+                g.DrawRectangle(pen, x, y, ancho - x + margen, alto - y);
+                g.DrawString("Costo total: $ " + unaPropiedad.Costo(dias), new Font("Verdana", 14, FontStyle.Bold), brush, x + 5, y + 5);
+                //MARCO
+                g.DrawRectangle(pen, margen, margen, ancho, alto - margen);
             }
-            y = margen + h1 + hLinea;
-            x = margen;
-            g.DrawRectangle(pen, x, y, ancho, h2); // Fin lista de huespedes
-
-            //DATOS DE LA PROPIEDAD RESERVADA
-            y += h2;
-            g.DrawImage(imgpropiedad, x, y, h3, h3);
-            g.DrawRectangle(pen, x, y, h3, h3);
-            g.DrawString("Tipo_Propiedad\nNombre_Propiedad\nUbicacion_Propiedad\nCapacidad_Propiedad" +
-                "\nServicios:\n->\n->\n->", font, brush, x + h3 + 10, y);
-            y += h3;
-            g.DrawLine(pen, x, y, ancho + x, y);
-            g.DrawString("Fecha de reserva: " + DateTime.Now.ToShortDateString() + " - " + DateTime.Now.AddDays(3).ToShortDateString()
-                + "\nCantidad de dias: x dias\nCosto base: $ x", font, brush, x, y);
-            x = margen + h3;
-            y += hLinea * 2; // 2 renglones mas
-
-            g.DrawRectangle(pen, x, y, ancho - x + margen, alto - y);
-            g.DrawString("Costo total: $ x", new Font("Verdana", 14, FontStyle.Bold), brush, x + 5, y + 5);
-            //MARCO
-            g.DrawRectangle(pen, margen, margen, ancho, alto - margen);
         }
     }
 }

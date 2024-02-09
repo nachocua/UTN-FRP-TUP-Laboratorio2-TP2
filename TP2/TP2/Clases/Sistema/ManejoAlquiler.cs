@@ -210,6 +210,10 @@ namespace TP2
         {
             return propiedades;
         }
+        public Cliente GetCliente(int idx)
+        {
+            return clientes[idx];
+        }
         public string[] InfoCliente(int indx)
         {
             return clientes[indx].ToString().Split(';');
