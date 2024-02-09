@@ -399,7 +399,7 @@ namespace TP2
         // ************ MTD Reservas
         private void altaReservaMenuItem_Click(object sender, EventArgs e)
         {
-            labPrecio ventanaAlquiler = new labPrecio(elSistema);
+            Alquiler ventanaAlquiler = new Alquiler(elSistema);
             ventanaAlquiler.ShowDialog();
             ventanaAlquiler.Dispose();
             sbReservas.Text = "Reservas: " + elSistema.cantidadReservas().ToString();

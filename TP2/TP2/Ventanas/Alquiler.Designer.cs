@@ -1,6 +1,6 @@
 ﻿namespace TP2
 {
-    partial class labPrecio
+    partial class Alquiler
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Alquiler));
             this.btnBuscar = new System.Windows.Forms.Button();
             this.gbTipoPropiedad = new System.Windows.Forms.GroupBox();
             this.cbCasaFinde = new System.Windows.Forms.CheckBox();
@@ -40,7 +41,7 @@
             this.checkBox10 = new System.Windows.Forms.CheckBox();
             this.checkBox11 = new System.Windows.Forms.CheckBox();
             this.checkBox12 = new System.Windows.Forms.CheckBox();
-            this.gbHabitacionesDisponibles = new System.Windows.Forms.DataGridView();
+            this.dgView = new System.Windows.Forms.DataGridView();
             this.IDPropiedad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,9 +80,12 @@
             this.labelPrecio = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.gbTipoPropiedad.SuspendLayout();
             this.gbServicios.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gbHabitacionesDisponibles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgView)).BeginInit();
             this.gbFechaReservA.SuspendLayout();
             this.gbCliente.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -224,12 +228,12 @@
             this.checkBox12.Text = "Servicio de Limpieza";
             this.checkBox12.UseVisualStyleBackColor = true;
             // 
-            // gbHabitacionesDisponibles
+            // dgView
             // 
-            this.gbHabitacionesDisponibles.AllowUserToAddRows = false;
-            this.gbHabitacionesDisponibles.AllowUserToDeleteRows = false;
-            this.gbHabitacionesDisponibles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gbHabitacionesDisponibles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgView.AllowUserToAddRows = false;
+            this.dgView.AllowUserToDeleteRows = false;
+            this.dgView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDPropiedad,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
@@ -237,14 +241,14 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
-            this.gbHabitacionesDisponibles.Location = new System.Drawing.Point(191, 181);
-            this.gbHabitacionesDisponibles.Name = "gbHabitacionesDisponibles";
-            this.gbHabitacionesDisponibles.ReadOnly = true;
-            this.gbHabitacionesDisponibles.RowHeadersWidth = 51;
-            this.gbHabitacionesDisponibles.Size = new System.Drawing.Size(852, 436);
-            this.gbHabitacionesDisponibles.TabIndex = 26;
-            this.gbHabitacionesDisponibles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgView_CellClick);
-            this.gbHabitacionesDisponibles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgView_CellContentClick);
+            this.dgView.Location = new System.Drawing.Point(191, 181);
+            this.dgView.Name = "dgView";
+            this.dgView.ReadOnly = true;
+            this.dgView.RowHeadersWidth = 51;
+            this.dgView.Size = new System.Drawing.Size(852, 436);
+            this.dgView.TabIndex = 26;
+            this.dgView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgView_CellClick);
+            this.dgView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgView_CellContentClick);
             // 
             // IDPropiedad
             // 
@@ -642,7 +646,25 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = " ";
             // 
-            // labPrecio
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // Alquiler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -653,14 +675,14 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.gbFechaReservA);
-            this.Controls.Add(this.gbHabitacionesDisponibles);
-            this.Name = "labPrecio";
+            this.Controls.Add(this.dgView);
+            this.Name = "Alquiler";
             this.Text = "Alquiler";
             this.gbTipoPropiedad.ResumeLayout(false);
             this.gbTipoPropiedad.PerformLayout();
             this.gbServicios.ResumeLayout(false);
             this.gbServicios.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gbHabitacionesDisponibles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgView)).EndInit();
             this.gbFechaReservA.ResumeLayout(false);
             this.gbFechaReservA.PerformLayout();
             this.gbCliente.ResumeLayout(false);
@@ -696,7 +718,7 @@
         private System.Windows.Forms.CheckBox checkBox10;
         private System.Windows.Forms.CheckBox checkBox11;
         private System.Windows.Forms.CheckBox checkBox12;
-        public System.Windows.Forms.DataGridView gbHabitacionesDisponibles;
+        public System.Windows.Forms.DataGridView dgView;
         private System.Windows.Forms.DateTimePicker dtFechaInicio;
         private System.Windows.Forms.GroupBox gbFechaReservA;
         private System.Windows.Forms.Label lbFechaHasta;
@@ -735,5 +757,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.GroupBox groupBox5;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.PrintDialog printDialog1;
     }
 }
