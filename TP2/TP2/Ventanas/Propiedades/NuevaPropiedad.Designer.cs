@@ -57,11 +57,12 @@
             this.numUDDoble = new System.Windows.Forms.NumericUpDown();
             this.numUDSimple = new System.Windows.Forms.NumericUpDown();
             this.gbPropiedad = new System.Windows.Forms.GroupBox();
+            this.cbHabilitada = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tbCosto = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbCasa = new System.Windows.Forms.RadioButton();
             this.rbHotel = new System.Windows.Forms.RadioButton();
-            this.tbCosto = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.gbCasa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_Plazas)).BeginInit();
             this.gbServicios.SuspendLayout();
@@ -395,6 +396,7 @@
             // 
             // gbPropiedad
             // 
+            this.gbPropiedad.Controls.Add(this.cbHabilitada);
             this.gbPropiedad.Controls.Add(this.label8);
             this.gbPropiedad.Controls.Add(this.gbServicios);
             this.gbPropiedad.Controls.Add(this.tbCosto);
@@ -411,6 +413,33 @@
             this.gbPropiedad.TabIndex = 15;
             this.gbPropiedad.TabStop = false;
             this.gbPropiedad.Text = "Datos";
+            // 
+            // cbHabilitada
+            // 
+            this.cbHabilitada.AutoSize = true;
+            this.cbHabilitada.Location = new System.Drawing.Point(148, 202);
+            this.cbHabilitada.Name = "cbHabilitada";
+            this.cbHabilitada.Size = new System.Drawing.Size(73, 17);
+            this.cbHabilitada.TabIndex = 21;
+            this.cbHabilitada.Text = "Habilitada";
+            this.cbHabilitada.UseVisualStyleBackColor = true;
+            this.cbHabilitada.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(151, 160);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(63, 13);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Costo base:";
+            // 
+            // tbCosto
+            // 
+            this.tbCosto.Location = new System.Drawing.Point(148, 176);
+            this.tbCosto.Name = "tbCosto";
+            this.tbCosto.Size = new System.Drawing.Size(100, 20);
+            this.tbCosto.TabIndex = 19;
             // 
             // groupBox2
             // 
@@ -446,22 +475,6 @@
             this.rbHotel.Text = "Hotel";
             this.rbHotel.UseVisualStyleBackColor = true;
             this.rbHotel.CheckedChanged += new System.EventHandler(this.CambiarGroupBox);
-            // 
-            // tbCosto
-            // 
-            this.tbCosto.Location = new System.Drawing.Point(148, 176);
-            this.tbCosto.Name = "tbCosto";
-            this.tbCosto.Size = new System.Drawing.Size(100, 20);
-            this.tbCosto.TabIndex = 19;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(151, 160);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(63, 13);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "Costo base:";
             // 
             // NuevaPropiedad
             // 
@@ -525,5 +538,6 @@
         public System.Windows.Forms.Button btnNuevaPropiedad;
         private System.Windows.Forms.Label label8;
         public System.Windows.Forms.TextBox tbCosto;
+        public System.Windows.Forms.CheckBox cbHabilitada;
     }
 }

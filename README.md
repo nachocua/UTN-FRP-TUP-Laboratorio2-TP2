@@ -26,6 +26,9 @@
             JULI - Impresion
         </li>
         <li>
+            ACTUALIZAR FILTRO EN ALTA RESERVA
+        </li>
+        <li>
             NACHO - Exportar/Importar Calendario Reservas
         </li>
         <li>
@@ -48,9 +51,6 @@
         </li>
         <li>
             TRISTAN - Agregar botón - Anular Reserva (admin)
-        </li>
-        <li>
-            JULI - Baja propiedades - agregar estado (admin)
         </li>
         <li>
             JULI - Filtro - ignorar propiedades en baja (admin)

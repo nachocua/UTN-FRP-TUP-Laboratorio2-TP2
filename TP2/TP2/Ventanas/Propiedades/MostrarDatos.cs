@@ -133,6 +133,7 @@ namespace TP2
                 #region CargandoDatos
                 if (unaPropiedad != null)
                 {
+                    ventanaPropiedad.cbHabilitada.Checked = unaPropiedad.Habilitada;
                     ventanaPropiedad.btnNuevaPropiedad.Text = "Actualizar";
                     ventanaPropiedad.tbNombre.Text = unaPropiedad.Nombre;
                     ventanaPropiedad.tbUbicacion.Text = unaPropiedad.Ciudad;
@@ -170,6 +171,7 @@ namespace TP2
                             ventanaPropiedad.cbCasaFinde.Checked = true;
                         }
                     }
+                    ventanaPropiedad.cbHabilitada.Visible = true;
                     DialogResult res = ventanaPropiedad.ShowDialog();
                     #endregion
                     #region CambiandoPropiedad
@@ -189,6 +191,7 @@ namespace TP2
                                 unHotel.ModificarServicios(nuevaPropiedad.Servicios.ToArray());
                                 unHotel.ModificarImagenes(ventanaPropiedad.ObtenerImagenes());
                                 unHotel.EstablecerCosto(Convert.ToDouble(ventanaPropiedad.tbCosto.Text));
+                                unHotel.EstablecerEstado(ventanaPropiedad.cbHabilitada.Checked);
                             }
                             else
                             {
@@ -198,6 +201,7 @@ namespace TP2
                                 unaCasa.ModificarServicios(nuevaPropiedad.Servicios.ToArray());
                                 unaCasa.ModificarImagenes(ventanaPropiedad.ObtenerImagenes());
                                 unaCasa.EstablecerCosto(Convert.ToDouble(ventanaPropiedad.tbCosto.Text));
+                                unaCasa.EstablecerEstado(ventanaPropiedad.cbHabilitada.Checked);
                             }
                         }
                         catch
@@ -281,13 +285,13 @@ namespace TP2
             List<Propiedad> propiedadesFiltradas = new List<Propiedad>();
             foreach (Propiedad propiedad in propiedades)
             {
-                if (ContieneTipoSeleccionado(propiedad, tipos) && ContieneServiciosSeleccionados(propiedad, servicios) && (propiedad.Ciudad == ubicacion || ubicacion == "Todas"))
+                if (ContieneTipoSeleccionado(propiedad, tipos) && ContieneServiciosSeleccionados(propiedad, servicios) && (propiedad.Ciudad == ubicacion || ubicacion == "Todas") && propiedad.Habilitada)
                 {
                     if (capacidadExacta)
                     {
                         if (propiedad.Plazas == capacidad)
                         {
-                            propiedadesFiltradas.Add(propiedad);
+                            propiedadesFiltradas.Add(propiedad);    
                         }
                     }
                     else if (propiedad.Plazas > capacidad)

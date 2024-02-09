@@ -15,12 +15,14 @@ namespace TP2
         public string Ciudad { get; protected set; }
         public string Nombre { get; protected set; }
         public int Plazas { get; protected set; }
+        public bool Habilitada {  get; protected set; }
         public List<string> Servicios { get; protected set; }
         protected List<string> imagenes;
         protected List<int> idReservas;
         public double Precio { get; protected set; }
         public Propiedad(int id, string nombre, string ubicacion, int plazas, List<string> servicios)
         {
+            Habilitada = true;
             idPropiedad = id;
             Nombre = nombre;
             Ciudad = ubicacion;
@@ -72,5 +74,9 @@ namespace TP2
         //{
         //    idReservas = new List<int>();
         //}
+        public void EstablecerEstado(bool state)
+        {
+            Habilitada = state;
+        }
     }
 }
