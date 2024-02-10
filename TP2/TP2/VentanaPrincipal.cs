@@ -220,9 +220,14 @@ namespace TP2
         {
             bool valido = false;
             Ventana_Crear_Usuario ventanaLogin = new Ventana_Crear_Usuario();
+            ventanaLogin.Text = "Cambiar contraseña";
             ventanaLogin.cbAdmin.Visible = false;
             ventanaLogin.btnIngresar.Location = new Point(64, 90);
-            ventanaLogin.Size = new Size(ventanaLogin.Size.Width, 160);
+            ventanaLogin.Size = new Size(ventanaLogin.Size.Width+60, 160);
+            ventanaLogin.tbUsuario.Location = new Point(ventanaLogin.tbUsuario.Location.X + 25, ventanaLogin.tbUsuario.Location.Y);
+            ventanaLogin.tbPass.Location = new Point(ventanaLogin.tbPass.Location.X + 25, ventanaLogin.tbPass.Location.Y);
+            ventanaLogin.tbUsuario.Width += 40;
+            ventanaLogin.tbPass.Width += 40;
             ventanaLogin.lbUsuario.Text = "Contraseña";
             ventanaLogin.lbPass.Text = "Confirmar Contraseña";
             ventanaLogin.btnIngresar.Text = "Cambiar contraseña";

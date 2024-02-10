@@ -107,11 +107,11 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox tbUsuario;
-        private System.Windows.Forms.TextBox tbPass;
         public System.Windows.Forms.CheckBox cbAdmin;
         public System.Windows.Forms.Button btnIngresar;
         public System.Windows.Forms.Label lbUsuario;
         public System.Windows.Forms.Label lbPass;
+        public System.Windows.Forms.TextBox tbUsuario;
+        public System.Windows.Forms.TextBox tbPass;
     }
 }
