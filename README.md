@@ -29,7 +29,10 @@
             ACTUALIZAR FILTRO EN ALTA RESERVA
         </li>
         <li>
-            NACHO - Exportar/Importar Calendario Reservas
+            NACHO - Revisar -> Exportar Calendario Reservas
+        </li>
+        <li>
+            NACHO - Importar Calendario Reservas
         </li>
         <li>
             TRISTAN - Editar Gráfico de Torta (Hotel + Casa)
@@ -41,22 +44,13 @@
             TRISTAN - Página de Ayuda
         </li>
         <li>
-            NACHO - Ventana Acerca de...
-        </li>
-        <li>
             NACHO - Exportar lista de clientes
-        </li>
-        <li>
-            NACHO - Exportar listas de reservas
         </li>
         <li>
             TRISTAN - Agregar botón - Anular Reserva (admin)
         </li>
         <li>
             JULI - Filtro - ignorar propiedades en baja (admin)
-        </li>
-        <li>
-            TRISTAN - Ver ayuda está duplicada (en admin)
         </li>
         <li>
             TRISTAN - Quitar ver gráficos (en usuario base)
@@ -66,9 +60,6 @@
         </li>
         <li>
             Agregar casos de uso
-        </li>
-        <li>
-            NACHO - Revisar ventana de login
         </li>
     </ul>
 

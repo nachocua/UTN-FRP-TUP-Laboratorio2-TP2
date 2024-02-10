@@ -332,27 +332,6 @@ namespace TP2
         private void AcercaDeItem_Click(object sender, EventArgs e)
         {
             AcercaDe ventanaAcercaDe = new AcercaDe();
-
-            // Crear un nuevo Label
-            Label labelRecuadro = new Label();
-
-            // Configura la posición del Label en el centro del formulario
-            labelRecuadro.Location = new System.Drawing.Point(
-                (ventanaAcercaDe.ClientSize.Width - labelRecuadro.Width) / 2 - 30,
-                (ventanaAcercaDe.ClientSize.Height - labelRecuadro.Height) / 2 - 30);
-
-            //Establecer propiedades del Label
-            labelRecuadro.BackColor = Color.Green;
-            labelRecuadro.Text = "Texto en el recuadro, todo esto \n no lo se \n no lo se \n no lo se \n no lo se";
-            labelRecuadro.BorderStyle = BorderStyle.FixedSingle;
-
-            labelRecuadro.AutoSize = true;
-            //Agrega relleno alrededor del texto
-            labelRecuadro.Padding = new Padding(10);
-
-            // Agregar el Label al formulario
-            ventanaAcercaDe.Controls.Add(labelRecuadro);
-            ventanaAcercaDe.Show();
         }
 
         // ************ MTD Configuracion
