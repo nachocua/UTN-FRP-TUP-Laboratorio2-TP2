@@ -81,7 +81,7 @@
             // cbAdmin
             // 
             this.cbAdmin.AutoSize = true;
-            this.cbAdmin.Location = new System.Drawing.Point(83, 97);
+            this.cbAdmin.Location = new System.Drawing.Point(83, 93);
             this.cbAdmin.Name = "cbAdmin";
             this.cbAdmin.Size = new System.Drawing.Size(55, 17);
             this.cbAdmin.TabIndex = 6;

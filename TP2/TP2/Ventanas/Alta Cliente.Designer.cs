@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtFechaNacimiento = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnNuevoUsuario = new System.Windows.Forms.Button();
             this.leApellido = new System.Windows.Forms.TextBox();
             this.leNombre = new System.Windows.Forms.TextBox();
@@ -38,8 +40,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.leDni = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dtFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,9 +65,29 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Personales";
             // 
+            // dtFechaNacimiento
+            // 
+            this.dtFechaNacimiento.CustomFormat = "dd MMMM yyyy";
+            this.dtFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtFechaNacimiento.Location = new System.Drawing.Point(147, 121);
+            this.dtFechaNacimiento.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
+            this.dtFechaNacimiento.Name = "dtFechaNacimiento";
+            this.dtFechaNacimiento.Size = new System.Drawing.Size(152, 20);
+            this.dtFechaNacimiento.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(20, 127);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Fecha Nacimiento";
+            // 
             // btnNuevoUsuario
             // 
-            this.btnNuevoUsuario.Location = new System.Drawing.Point(116, 162);
+            this.btnNuevoUsuario.Location = new System.Drawing.Point(119, 158);
             this.btnNuevoUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevoUsuario.Name = "btnNuevoUsuario";
             this.btnNuevoUsuario.Size = new System.Drawing.Size(113, 30);
@@ -149,25 +169,6 @@
             this.label1.Size = new System.Drawing.Size(26, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "DNI";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 127);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 13);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Fecha Nacimiento";
-            // 
-            // dtFechaNacimiento
-            // 
-            this.dtFechaNacimiento.CustomFormat = "dd/MM/yyyy";
-            this.dtFechaNacimiento.Location = new System.Drawing.Point(125, 121);
-            this.dtFechaNacimiento.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
-            this.dtFechaNacimiento.Name = "dtFechaNacimiento";
-            this.dtFechaNacimiento.Size = new System.Drawing.Size(203, 20);
-            this.dtFechaNacimiento.TabIndex = 5;
             // 
             // Alta_Cliente
             // 
