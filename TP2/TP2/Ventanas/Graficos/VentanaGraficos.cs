@@ -38,12 +38,12 @@ namespace TP2
 
         // Colores
         private Color[] coloresFavoritos = new Color[]
-       {
+        {
             Color.FromArgb(190, 199, 180),    //  X11 Gray
             Color.FromArgb(222, 226, 217),    // Gainsboro
             Color.FromArgb(242, 203, 187),    // BabyPink
             Color.FromArgb(159, 164, 207),    // Blue Bell
-       };
+        };
         //public Color[] Colores  = { Color.Blue, Color.Black, Color.Yellow };
 
         public VentanaGraficos(int[] propiedades )

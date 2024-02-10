@@ -70,14 +70,19 @@ namespace TP2
             {
                 int idReserva = Convert.ToInt32(unDato[0]);
                 int idPropiedad = Convert.ToInt32(unDato[1]);
-                int dni = Convert.ToInt32(unDato[2]);
+                string[] dnis = unDato[2].Split('-');
+                List<int> idsClientes = new List<int>();
+                for(int i=0; i<dnis.Length; i++)
+                {
+                    idsClientes.Add(Convert.ToInt32(dnis[i]));
+                }
                 string[] fecha = unDato[4].Split(' ')[0].Split('/');
                 string[] fecha2 = unDato[5].Split(' ')[0].Split('/');
                 DateTime fechaDesde = new DateTime(Convert.ToInt32(fecha[2]), Convert.ToInt32(fecha[1]), Convert.ToInt32(fecha[0]));
                 DateTime fechaHasta = new DateTime(Convert.ToInt32(fecha2[2]), Convert.ToInt32(fecha2[1]), Convert.ToInt32(fecha2[0]));
                 int cantDias = (fechaHasta - fechaDesde).Days;
                 double costo = Convert.ToInt32(unDato[6]);
-                Reserva unaReserva = new Reserva(idReserva, dni, idPropiedad, fechaDesde, fechaHasta, costo);
+                Reserva unaReserva = new Reserva(idReserva, idsClientes, idPropiedad, fechaDesde, fechaHasta, costo);
                 switch (unDato[3])
                 {
                     case "Ocupado":
@@ -246,14 +251,18 @@ namespace TP2
             {
                 int i = 0;
                 bool noEncontrado = true;
-                while (i < clientes.Count && noEncontrado)
+                foreach (int NroCliente in unaReserva.NrosClientes)
                 {
-                    if (clientes[i].Dni == unaReserva.NroCliente)
+                    while (i < clientes.Count && noEncontrado)
                     {
-                        clientes[i].AgregarReserva(unaReserva.NroReserva);
-                        noEncontrado = false;
+
+                        if (clientes[i].Dni == NroCliente)
+                        {
+                            clientes[i].AgregarReserva(unaReserva.NroReserva);
+                            noEncontrado = false;
+                        }
+                        i++;
                     }
-                    i++;
                 }
                 noEncontrado = true;
                 while (i < propiedades.Count && noEncontrado)

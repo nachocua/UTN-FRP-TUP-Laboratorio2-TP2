@@ -185,7 +185,7 @@ namespace TP2
                         {
                             if (state)
                             {
-                                Reserva reservaABuscar = new Reserva(unaReserva, 0, 0, DateTime.Now, DateTime.Now, 0);
+                                Reserva reservaABuscar = new Reserva(unaReserva, new List<int>(), 0, DateTime.Now, DateTime.Now, 0);
                                 indx = elSistema.BuscarReserva(reservaABuscar);
                                 if (indx != -1)
                                 {
@@ -264,14 +264,19 @@ namespace TP2
                 if (unaPropiedad != null)
                 {
                     int idReserva = elSistema.cantidadReservas();
-                    int dni = Convert.ToInt32(lbDatosCliente.Items[0].ToString().Split(' ')[1]);
+                    List<int> idsClientes = new List<int>();
+                    /*string[] dnis = lbDatosCliente.Items[0].ToString().Split(' ')[1].Split('-');
+                    for (int i = 0; dnis.Length; i++)
+                    {
+
+                    }*/
                     int idPropiedad = unaPropiedad.idPropiedad;
                     int cantDias = (dtFechaHasta.Value - dtFechaInicio.Value).Days;
                     double costo = unaPropiedad.Costo(cantDias);
                     bool estado = Imprimir();
                     if (estado)
                     {
-                        Reserva unaReserva = new Reserva(idReserva, dni, idPropiedad, dtFechaInicio.Value, dtFechaHasta.Value, costo);
+                        Reserva unaReserva = new Reserva(idReserva, idsClientes, idPropiedad, dtFechaInicio.Value, dtFechaHasta.Value, costo);
                         elSistema.NuevaReserva(unaReserva);
                         dgView.Rows.Clear();
                         propiedadSeleccionada = null;
