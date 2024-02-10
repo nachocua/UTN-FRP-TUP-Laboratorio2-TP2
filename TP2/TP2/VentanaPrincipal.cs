@@ -37,6 +37,8 @@ namespace TP2
                                            "..//..//Data//reservas.csv");
             loginSistema = new SistemaLogin("..//..//Data//UsPa.dat");
             UsuarioActivo = null;
+            
+            //Si se cerró la app mientras estaba logeado, se recarga el usuario
             if (File.Exists("..//..//Data//ActiveData.csv"))
             {
                 StreamReader fileUserActivo = new StreamReader("..//..//Data//ActiveData.csv");
@@ -53,6 +55,7 @@ namespace TP2
                 }
                 fileUserActivo.Close();
             }
+            //Agrega datos a la barra
             sbPropiedades.Text += elSistema.CantidadPropiedades.ToString();
             sbClientes.Text += elSistema.CantidadClientes().ToString();
             sbReservas.Text += elSistema.cantidadReservas().ToString();
@@ -68,7 +71,6 @@ namespace TP2
             elSistema.Export();
             loginSistema.Export();
 
-            
             //Exportar usuario activo
             StreamWriter sw = new StreamWriter("..//..//Data//ActiveData.csv");
             if (UsuarioActivo != null)
@@ -483,7 +485,7 @@ namespace TP2
                         StreamWriter sw = new StreamWriter(unSaveFileDialog.FileName);
                         foreach (int unId in unaPropiedad.getReservas())
                         {
-                            Reserva unaReserva = new Reserva(unId, 0, 0, DateTime.Now, DateTime.Now, 0);
+                            Reserva unaReserva = new Reserva(unId, new List<int>(), 0, DateTime.Now, DateTime.Now, 0);
                             string[] datosReserva = elSistema.InfoReserva(elSistema.BuscarReserva(unaReserva));
                             sw.WriteLine(unId + ";" + datosReserva[5] + ";" + datosReserva[6]);
                         }

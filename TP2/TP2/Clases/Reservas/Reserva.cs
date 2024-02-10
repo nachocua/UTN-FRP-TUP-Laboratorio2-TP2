@@ -13,15 +13,15 @@ namespace TP2
         private string[] posiblesEstados = { "Reservado", "Ocupado", "Concretado", "Cancelada" };
         public int NroReserva { get; private set; }
         public int NroPropiedad { get; private set; }
-        public int NroCliente { get; private set; }
+        public List<int> NrosClientes { get; private set; }
         public string Estado { get; private set; }
         public DateTime FechaInicio { get; private set; }
         public DateTime FechaHasta { get; private set; }
         public double Costo { get; private set; }
-        public Reserva(int reservasEfectuadas, int idCliente, int idPropiedad, DateTime fechaDesde, DateTime fechaHasta, double costo)
+        public Reserva(int reservasEfectuadas, List<int> idsClientes, int idPropiedad, DateTime fechaDesde, DateTime fechaHasta, double costo)
         {
             NroReserva = reservasEfectuadas;
-            NroCliente = idCliente;
+            NrosClientes = idsClientes;
             NroPropiedad = idPropiedad;
             Estado = posiblesEstados[0];
             FechaInicio = fechaDesde;
@@ -42,9 +42,17 @@ namespace TP2
         }
         public override string ToString()
         {
-            string datosReserva = NroReserva.ToString() + ";" + NroPropiedad.ToString() + ";" +
-                NroCliente.ToString() + ";" + Estado + ";" + FechaInicio.ToString() + ";" +
-                FechaHasta.ToString() + ";" + Costo.ToString();
+            string datosReserva = NroReserva + ";" + NroPropiedad + ";";
+            for (int i=0; i<NrosClientes.Count; i++)
+            {
+                if(i > 0)
+                {
+                    datosReserva += "-";
+                }
+                datosReserva += NrosClientes[i];
+            }
+            datosReserva += ";" + Estado + ";" + FechaInicio.ToString() + ";" +
+                FechaHasta.ToString() + ";" + Costo;
             return datosReserva;
         }
         public int CompareTo(Object obj)
