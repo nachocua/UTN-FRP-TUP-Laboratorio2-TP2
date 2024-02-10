@@ -22,6 +22,7 @@ namespace TP2
         bool clienteValido = false;
         int dias = 1;
         int observacion = 0;
+        private List<int> idsClientes = null;
         public Alquiler(ManejoAlquiler unSistema)
         {
             InitializeComponent(); elSistema = unSistema;
@@ -30,6 +31,7 @@ namespace TP2
             dtFechaInicio.MaxDate = DateTime.Now.AddMonths(3);
             dtFechaHasta.MinDate = DateTime.Now;
             dtFechaHasta.MaxDate = DateTime.Now.AddMonths(3);
+            idsClientes = new List<int>();
         }
         private List<string> CargarServicios()
         {
@@ -74,28 +76,49 @@ namespace TP2
         private void btnBuscarDni_Click(object sender, EventArgs e)
         {
             int dni;
+            bool repetido = false;
+            int i = 0;
             if (Int32.TryParse(tbDni.Text, out dni))
             {
-                lbDatosCliente.Items.Clear();
-                Cliente clienteABuscar = new Cliente(dni, "", "", 0, DateTime.Now);
-                int indx = elSistema.BuscarCliente(clienteABuscar);
-                if (indx > -1)
+                while(repetido == false && i < idsClientes.Count)
                 {
-                    string[] datosCliente = elSistema.InfoCliente(indx);
-                    lbDatosCliente.Items.Add("Dni: " + datosCliente[0]);
-                    lbDatosCliente.Items.Add("Nombre: " + datosCliente[2]);
-                    lbDatosCliente.Items.Add("Apellido: " + datosCliente[3]);
-                    lbDatosCliente.Items.Add("Teléfono: " + datosCliente[1]);
+                    if (idsClientes[i] == dni)
+                    {
+                        repetido = true;
+                    }
+                }
+                if(!repetido)
+                {
+                    Cliente clienteABuscar = new Cliente(dni, "", "", 0, DateTime.Now);
+                    int indx = elSistema.BuscarCliente(clienteABuscar);
+                    if (indx > -1)
+                    {
+                        string[] datosCliente = elSistema.InfoCliente(indx);
+                        if (MessageBox.Show("¿Desea agregar a " + datosCliente[3] + " " + datosCliente[2] + "como huesped?",
+                            "¿Agregar huesped?", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                        {
+                            lbDatosCliente.Items.Add(datosCliente[3] + ", " + datosCliente[2]);
+                            idsClientes.Add(dni);
+                        }
+                        /*lbDatosCliente.Items.Add("Dni: " + datosCliente[0]);
+                        lbDatosCliente.Items.Add("Nombre: " + datosCliente[2]);
+                        lbDatosCliente.Items.Add("Apellido: " + datosCliente[3]);
+                        lbDatosCliente.Items.Add("Teléfono: " + datosCliente[1]);*/
+                    }
+                    else
+                    {
+                        /*lbDatosCliente.Items.Add("Dni: ");
+                        lbDatosCliente.Items.Add("Nombre: ");
+                        lbDatosCliente.Items.Add("Apellido: ");
+                        lbDatosCliente.Items.Add("Teléfono: ");*/
+                        MessageBox.Show("No hay cliente con ese dni");
+                    }
+                    clienteValido = true;
                 }
                 else
                 {
-                    lbDatosCliente.Items.Add("Dni: ");
-                    lbDatosCliente.Items.Add("Nombre: ");
-                    lbDatosCliente.Items.Add("Apellido: ");
-                    lbDatosCliente.Items.Add("Teléfono: ");
-                    MessageBox.Show("No hay cliente con ese dni");
+                    MessageBox.Show("Ya agregó como huesped a este cliente");
                 }
-                clienteValido = true;
             }
             else
             {
@@ -264,7 +287,6 @@ namespace TP2
                 if (unaPropiedad != null)
                 {
                     int idReserva = elSistema.cantidadReservas();
-                    List<int> idsClientes = new List<int>();
                     /*string[] dnis = lbDatosCliente.Items[0].ToString().Split(' ')[1].Split('-');
                     for (int i = 0; dnis.Length; i++)
                     {
@@ -280,6 +302,7 @@ namespace TP2
                         elSistema.NuevaReserva(unaReserva);
                         dgView.Rows.Clear();
                         propiedadSeleccionada = null;
+                        idsClientes.Clear();
                         MessageBox.Show("Se ha reservado con éxito");
                     }
                 }
@@ -462,6 +485,25 @@ namespace TP2
                 g.DrawString("Costo total: $ " + unaPropiedad.Costo(dias), new Font("Verdana", 14, FontStyle.Bold), brush, x + 5, y + 5);
                 //MARCO
                 g.DrawRectangle(pen, margen, margen, ancho, alto - margen);
+            }
+        }
+
+        private void btnQuitar_Click(object sender, EventArgs e)
+        {
+            if(lbDatosCliente.SelectedItem != null)
+            {
+                idsClientes.RemoveAt(lbDatosCliente.SelectedIndex);
+                lbDatosCliente.Items.RemoveAt(lbDatosCliente.SelectedIndex);
+                lbDatosCliente.SelectedItem = null;
+                btnQuitar.Enabled = false;
+            }
+        }
+
+        private void lbDatosCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(lbDatosCliente.SelectedItems != null)
+            {
+                btnQuitar.Enabled = true;
             }
         }
     }

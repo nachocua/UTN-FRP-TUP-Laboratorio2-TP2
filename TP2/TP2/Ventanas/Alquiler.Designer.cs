@@ -83,6 +83,7 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.btnQuitar = new System.Windows.Forms.Button();
             this.gbTipoPropiedad.SuspendLayout();
             this.gbServicios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).BeginInit();
@@ -362,14 +363,14 @@
             this.gbCliente.Controls.Add(this.DNI);
             this.gbCliente.Location = new System.Drawing.Point(7, 25);
             this.gbCliente.Name = "gbCliente";
-            this.gbCliente.Size = new System.Drawing.Size(217, 113);
+            this.gbCliente.Size = new System.Drawing.Size(217, 130);
             this.gbCliente.TabIndex = 34;
             this.gbCliente.TabStop = false;
             this.gbCliente.Text = "Buscar Cliente";
             // 
             // btnBuscarDni
             // 
-            this.btnBuscarDni.Location = new System.Drawing.Point(30, 64);
+            this.btnBuscarDni.Location = new System.Drawing.Point(31, 84);
             this.btnBuscarDni.Margin = new System.Windows.Forms.Padding(2);
             this.btnBuscarDni.Name = "btnBuscarDni";
             this.btnBuscarDni.Size = new System.Drawing.Size(139, 30);
@@ -380,7 +381,7 @@
             // 
             // tbDni
             // 
-            this.tbDni.Location = new System.Drawing.Point(79, 29);
+            this.tbDni.Location = new System.Drawing.Point(99, 44);
             this.tbDni.Name = "tbDni";
             this.tbDni.Size = new System.Drawing.Size(100, 20);
             this.tbDni.TabIndex = 2;
@@ -389,7 +390,7 @@
             // DNI
             // 
             this.DNI.AutoSize = true;
-            this.DNI.Location = new System.Drawing.Point(16, 32);
+            this.DNI.Location = new System.Drawing.Point(17, 47);
             this.DNI.Name = "DNI";
             this.DNI.Size = new System.Drawing.Size(57, 13);
             this.DNI.TabIndex = 1;
@@ -398,27 +399,23 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.Controls.Add(this.btnQuitar);
             this.groupBox1.Controls.Add(this.lbDatosCliente);
             this.groupBox1.Location = new System.Drawing.Point(230, 25);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(217, 113);
+            this.groupBox1.Size = new System.Drawing.Size(217, 130);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Cliente";
             // 
             // lbDatosCliente
             // 
-            this.lbDatosCliente.Enabled = false;
             this.lbDatosCliente.FormattingEnabled = true;
-            this.lbDatosCliente.Items.AddRange(new object[] {
-            "Dni: ",
-            "Nombre: ",
-            "Apellido: ",
-            "Teléfono: "});
             this.lbDatosCliente.Location = new System.Drawing.Point(6, 24);
             this.lbDatosCliente.Name = "lbDatosCliente";
             this.lbDatosCliente.Size = new System.Drawing.Size(205, 69);
             this.lbDatosCliente.TabIndex = 2;
+            this.lbDatosCliente.SelectedIndexChanged += new System.EventHandler(this.lbDatosCliente_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -664,6 +661,18 @@
             // 
             this.printDialog1.UseEXDialog = true;
             // 
+            // btnQuitar
+            // 
+            this.btnQuitar.Enabled = false;
+            this.btnQuitar.Location = new System.Drawing.Point(39, 94);
+            this.btnQuitar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnQuitar.Name = "btnQuitar";
+            this.btnQuitar.Size = new System.Drawing.Size(139, 30);
+            this.btnQuitar.TabIndex = 32;
+            this.btnQuitar.Text = "Quitar";
+            this.btnQuitar.UseVisualStyleBackColor = true;
+            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
+            // 
             // Alquiler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -760,5 +769,6 @@
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Windows.Forms.Button btnQuitar;
     }
 }
