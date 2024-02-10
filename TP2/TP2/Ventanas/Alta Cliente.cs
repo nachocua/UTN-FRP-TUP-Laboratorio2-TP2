@@ -49,7 +49,7 @@ namespace TP2
             }
             if(state)
             {
-                unCliente = new Cliente(dni, leNombre.Text, leApellido.Text, tel);
+                unCliente = new Cliente(dni, leNombre.Text, leApellido.Text, tel, dtFechaNacimiento.Value);
                 this.DialogResult = DialogResult.OK;
             }
         }

@@ -17,13 +17,15 @@ namespace TP2
         public int Telefono { get; private set; }
         public string Nombres { get; private set; }
         public string Apellidos { get; private set; }
-        public Cliente(int dni, string nombres, string apellidos, int nroTelefono)
+        public DateTime FechaNacimiento { get; private set; }
+        public Cliente(int dni, string nombres, string apellidos, int nroTelefono, DateTime fechaNacimiento)
         {
             Dni = dni;
             Nombres = nombres;
             Apellidos = apellidos;
             Telefono = nroTelefono;
             IdReservas = new Stack<int>();
+            FechaNacimiento = fechaNacimiento;
         }
         public void AgregarReserva(int idReserva)
         {

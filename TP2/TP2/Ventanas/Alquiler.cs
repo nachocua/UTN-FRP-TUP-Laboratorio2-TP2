@@ -77,7 +77,7 @@ namespace TP2
             if (Int32.TryParse(tbDni.Text, out dni))
             {
                 lbDatosCliente.Items.Clear();
-                Cliente clienteABuscar = new Cliente(dni, "", "", 0);
+                Cliente clienteABuscar = new Cliente(dni, "", "", 0, DateTime.Now);
                 int indx = elSistema.BuscarCliente(clienteABuscar);
                 if (indx > -1)
                 {
@@ -383,7 +383,7 @@ namespace TP2
             Font font = new Font("Verdana", 14);
             Brush brush = new SolidBrush(Color.Black);
             Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
-            Cliente clienteABuscar = new Cliente(Convert.ToInt32(tbDni.Text), "", "", 0);
+            Cliente clienteABuscar = new Cliente(Convert.ToInt32(tbDni.Text), "", "", 0, DateTime.Now);
             int indx = elSistema.BuscarCliente(clienteABuscar);
             if (unaPropiedad != null && indx > -1)
             {

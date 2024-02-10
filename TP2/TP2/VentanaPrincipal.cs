@@ -47,9 +47,12 @@ namespace TP2
                     BarraMenuLogueado();
                     sbUsuario.Text = UsuarioActivo.Usuario + "(" + UsuarioActivo.RolId + ")";
                 }
+                else
+                {
+                    BarraMenuSinLoguear();
+                }
                 fileUserActivo.Close();
             }
-            BarraMenuSinLoguear();
             sbPropiedades.Text += elSistema.CantidadPropiedades.ToString();
             sbClientes.Text += elSistema.CantidadClientes().ToString();
             sbReservas.Text += elSistema.cantidadReservas().ToString();
@@ -58,9 +61,6 @@ namespace TP2
             propiedades[0] = elSistema.CantidadCasas;
             propiedades[1] = elSistema.CantidadCasasFinde;
             propiedades[2] = elSistema.CantidadHoteles;
-
-
-
         }
 
     private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
