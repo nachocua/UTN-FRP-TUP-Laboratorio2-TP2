@@ -68,6 +68,7 @@ namespace TP2
             }
             fs.Close();
             //Importar Reservas
+            /*
             List<string[]> datosReservas = Funciones_Adicionales.LeerSeparandoArchivo(FileReservas, ";");
             foreach (string[] unDato in datosReservas)
             {
@@ -100,8 +101,8 @@ namespace TP2
                 }
                 NuevaReserva(unaReserva, false);
             }
+            */
             //Deserealizar Reservas
-            /*
             bf = new BinaryFormatter();
             fs = new FileStream(FileReservas, FileMode.OpenOrCreate);
             try
@@ -112,7 +113,6 @@ namespace TP2
             {
             }
             fs.Close();
-            */
             //Conteo de propiedades
             ContarPropiedades();
             ContarClientes();
@@ -146,14 +146,13 @@ namespace TP2
             }
             fs.Close();
             //Exportar Reservas
-            StreamWriter sw = new StreamWriter(FileReservas, true);
+            /*StreamWriter sw = new StreamWriter(FileReservas, true);
             foreach (Reserva unaReserva in reservas)
             {
                 sw.WriteLine(unaReserva.ToString());
             }
-            sw.Close();
+            sw.Close();*/
             //Serealizar Reservas
-            /*
             bf = new BinaryFormatter();
             fs = new FileStream(FileReservas, FileMode.OpenOrCreate);
             try
@@ -165,7 +164,6 @@ namespace TP2
 
             }
             fs.Close();
-            */
         }
         public void AgregarPropiedad(Propiedad propiedad)
         {
