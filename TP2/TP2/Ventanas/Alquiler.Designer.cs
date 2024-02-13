@@ -59,6 +59,7 @@
             this.tbDni = new System.Windows.Forms.TextBox();
             this.DNI = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnQuitar = new System.Windows.Forms.Button();
             this.lbDatosCliente = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -83,7 +84,6 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.btnQuitar = new System.Windows.Forms.Button();
             this.gbTipoPropiedad.SuspendLayout();
             this.gbServicios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).BeginInit();
@@ -408,6 +408,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Cliente";
             // 
+            // btnQuitar
+            // 
+            this.btnQuitar.Enabled = false;
+            this.btnQuitar.Location = new System.Drawing.Point(39, 94);
+            this.btnQuitar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnQuitar.Name = "btnQuitar";
+            this.btnQuitar.Size = new System.Drawing.Size(139, 30);
+            this.btnQuitar.TabIndex = 32;
+            this.btnQuitar.Text = "Quitar";
+            this.btnQuitar.UseVisualStyleBackColor = true;
+            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
+            // 
             // lbDatosCliente
             // 
             this.lbDatosCliente.FormattingEnabled = true;
@@ -549,6 +561,7 @@
             this.cbUbicacion.Name = "cbUbicacion";
             this.cbUbicacion.Size = new System.Drawing.Size(137, 21);
             this.cbUbicacion.TabIndex = 26;
+            this.cbUbicacion.SelectedIndexChanged += new System.EventHandler(this.cbUbicacion_SelectedIndexChanged_1);
             // 
             // gbCapacidad
             // 
@@ -660,18 +673,6 @@
             // printDialog1
             // 
             this.printDialog1.UseEXDialog = true;
-            // 
-            // btnQuitar
-            // 
-            this.btnQuitar.Enabled = false;
-            this.btnQuitar.Location = new System.Drawing.Point(39, 94);
-            this.btnQuitar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.Size = new System.Drawing.Size(139, 30);
-            this.btnQuitar.TabIndex = 32;
-            this.btnQuitar.Text = "Quitar";
-            this.btnQuitar.UseVisualStyleBackColor = true;
-            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
             // 
             // Alquiler
             // 
