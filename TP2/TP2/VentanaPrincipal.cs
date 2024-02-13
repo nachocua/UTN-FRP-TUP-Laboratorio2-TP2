@@ -332,6 +332,8 @@ namespace TP2
         private void AcercaDeItem_Click(object sender, EventArgs e)
         {
             AcercaDe ventanaAcercaDe = new AcercaDe();
+            ventanaAcercaDe.ShowDialog();
+            ventanaAcercaDe.Dispose();
         }
 
         // ************ MTD Configuracion
