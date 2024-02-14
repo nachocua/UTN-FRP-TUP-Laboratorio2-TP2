@@ -14,11 +14,11 @@ namespace TP2
     {
        
         //private int[] barras = { 100, 50, 25 };
-        private int[] barras;
+        private int[] sectores;
 
         private int[] personasPorHabitacion = { 58, 3, 49, 15, 20 };
         private string[] personalsLabel = { "2P", "3P", "4P", "5P", "6+P" };
-        private string[] propiedades = { "Casa por dia", "Casa fin de semana", "Hotel" };
+        private string[] propiedades = { "Casas",  "Hotel" };
         
 
         private int anchoPanel = 500;
@@ -40,7 +40,7 @@ namespace TP2
         private Color[] coloresFavoritos = new Color[]
         {
             Color.FromArgb(190, 199, 180),    //  X11 Gray
-            Color.FromArgb(222, 226, 217),    // Gainsboro
+            //Color.FromArgb(222, 226, 217),    // Gainsboro
             Color.FromArgb(242, 203, 187),    // BabyPink
             Color.FromArgb(159, 164, 207),    // Blue Bell
         };
@@ -50,7 +50,7 @@ namespace TP2
         {
             InitializeComponent();
             InitializeUI();
-            barras = propiedades;
+            sectores = propiedades; // cant de casas y hotel para grafico Sectores
         }
 
         private void InitializeUI()
@@ -203,7 +203,7 @@ namespace TP2
 
         private void DrawingPanel2_Paint(object sender, PaintEventArgs e)
         {   // Calcular la suma de los elementos del arreglo
-            float suma = barras.Sum();
+            float suma = sectores.Sum();
             //yLabel = yPanel + altoPanel;
 
             // ********** Grafico de Sectores  **********
@@ -234,19 +234,19 @@ namespace TP2
 
             float ang0 = 0;
             int n = 0;
-            int xNum = 650;
+            int xNum = 720; // posicion x del primer label de sectores
             int xincremento = 260;
 
             // Label Aclaracion
             Label aclaracionP = new Label();
-            aclaracionP.Text = "Porcentaje en total de Reservas";
+            aclaracionP.Text = "Porcentaje en total de Reservas" + " " + suma.ToString();
             aclaracionP.Size = new Size(280, 18);
             aclaracionP.Font = new Font("Arial", 9, FontStyle.Bold);
             aclaracionP.Location = new Point(700, YlabelAclaracion);
             Controls.Add(aclaracionP);
             aclaracionP.BringToFront();
 
-            foreach (float valor in barras)
+            foreach (float valor in sectores)
             {
                 float sector = (valor / suma) * 360;
                 Brush brush = new SolidBrush(coloresFavoritos[n]);
@@ -265,8 +265,8 @@ namespace TP2
 
                 // Labels De Sectores
                 Label num = new Label();
-                num.Text = propiedades[n];
-                num.Size = new Size(96, 60);
+                num.Text = propiedades[n] + " " +valor.ToString("00") + " - " + (valor / suma * 100).ToString() + "%";
+                num.Size = new Size(120, 60);
                 num.Font = new Font("Arial", fontSm, FontStyle.Bold);
 
                 // Posición del Label
