@@ -14,7 +14,7 @@ namespace TP2
     {
        
         //private int[] barras = { 100, 50, 25 };
-        private int[] sectores;
+        private int[] sectores; // datps para grafico sectores
 
         private int[] personasPorHabitacion = { 58, 3, 49, 15, 20 };
         private string[] personalsLabel = { "2P", "3P", "4P", "5P", "6+P" };
