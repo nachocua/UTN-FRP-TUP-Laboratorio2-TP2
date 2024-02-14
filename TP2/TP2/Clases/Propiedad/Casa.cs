@@ -31,7 +31,7 @@ namespace TP2
         public override double Costo(int dias, int observación = 0)
         {
             double costo = (Precio * Servicios.Count * Plazas);
-            costo = dias > 1 ? costo : costo * 0.10 * dias;
+            costo = dias > 1 ? costo * 0.10 * dias : costo;
             return costo;
         }
         public override void EstablecerCosto(double costo)

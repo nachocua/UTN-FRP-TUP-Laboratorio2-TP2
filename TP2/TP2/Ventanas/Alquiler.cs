@@ -136,7 +136,7 @@ namespace TP2
         {
             bool capacidadExacta = ContieneCapacidadExacta(propiedades, capacidad);
             List<Propiedad> propiedadesFiltradas = new List<Propiedad>();
-            
+
             foreach (Propiedad propiedad in propiedades)
             {
                 if (ContieneTipoSeleccionado(propiedad, tipos) && ContieneServiciosSeleccionados(propiedad, servicios) && (propiedad.Ciudad == ubicacion || ubicacion == "Todas") && (propiedad.Habilitada))
@@ -224,7 +224,7 @@ namespace TP2
                 DateTime fechaDesde;
                 DateTime fechaHasta;
                 bool state;
-                foreach(Propiedad unaPropiedad in propiedadesFiltradas)
+                foreach (Propiedad unaPropiedad in propiedadesFiltradas)
                 {
                     state = true;
                     reservas = unaPropiedad.getReservas();
@@ -319,7 +319,7 @@ namespace TP2
 
                     }*/
                     int idPropiedad = unaPropiedad.idPropiedad;
-                    int cantDias = (dtFechaHasta.Value - dtFechaInicio.Value).Days;
+                    int cantDias = (dtFechaHasta.Value - dtFechaInicio.Value).Days + 1;
                     double costo = unaPropiedad.Costo(cantDias);
                     bool estado = Imprimir();
                     if (estado)
@@ -353,7 +353,7 @@ namespace TP2
                 Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
                 if (unaPropiedad != null)
                 {
-                    labelPrecio.Text = "Costo total: $ " + unaPropiedad.Costo(dias, observacion);
+                    labelPrecio.Text = "Costo Total: $ " + unaPropiedad.Costo(dias, observacion);
                 }
             }
         }
@@ -392,7 +392,7 @@ namespace TP2
 
         private void dtFechaInicio_ValueChanged(object sender, EventArgs e)
         {
-            dias = (dtFechaHasta.Value - dtFechaInicio.Value).Days;
+            dias = (dtFechaHasta.Value - dtFechaInicio.Value).Days + 1;
             if (propiedadSeleccionada != null)
             {
                 Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
@@ -405,7 +405,7 @@ namespace TP2
 
         private void dtFechaHasta_ValueChanged(object sender, EventArgs e)
         {
-            dias = (dtFechaHasta.Value - dtFechaInicio.Value).Days;
+            dias = (dtFechaHasta.Value - dtFechaInicio.Value).Days + 1;
             if (propiedadSeleccionada != null)
             {
                 Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
@@ -419,15 +419,15 @@ namespace TP2
         {
             bool state = false;
             printPreviewDialog1.Document = printDocument1;
-            printDocument1.PrinterSettings = printDialog1.PrinterSettings;
             printDialog1.PrinterSettings.Copies = 2;
+            printDocument1.PrinterSettings = printDialog1.PrinterSettings;
             printDocument1.DefaultPageSettings.PrinterSettings.PrintFileName = "Reserva_0" + elSistema.cantidadReservas();
             if (printDialog1.ShowDialog() == DialogResult.OK)
             {
                 printDocument1.Print();
                 state = true;
             }
-            //printPreviewDialog1.ShowDialog();
+            printPreviewDialog1.ShowDialog();
             return state;
         }
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
@@ -437,14 +437,14 @@ namespace TP2
             Font font = new Font("Verdana", 14);
             Brush brush = new SolidBrush(Color.Black);
             Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
-            Cliente clienteABuscar = new Cliente(Convert.ToInt32(tbDni.Text), "", "", 0, DateTime.Now);
-            int indx = elSistema.BuscarCliente(clienteABuscar);
-            if (unaPropiedad != null && indx > -1)
+            if (unaPropiedad != null)
             {
-                Cliente unCliente = elSistema.GetCliente(indx);
                 string rutaImg = "..//..//Img//" + unaPropiedad.idPropiedad + "//img0.jpg";
                 Image logo = Bitmap.FromFile("..//..//assets//logo.jpg");
                 Image imgpropiedad = null;
+                List<Cliente> huespedes = ObtenerHuespedes();
+                Cliente unCliente = huespedes.FirstOrDefault();
+                List<string[]> text = new List<string[]>();
                 if (File.Exists(rutaImg))
                 {
                     imgpropiedad = Bitmap.FromFile(rutaImg);
@@ -464,18 +464,15 @@ namespace TP2
                 g.DrawRectangle(pen, x, y, medidaAux, h1);
                 g.DrawString("Rentify S.A. - UTN FRP", font, brush, x + 20, h1 + y / 2);
                 g.DrawString(string.Format("FACTURA / RESERVA\n" +
-                    "Nro Factura: {0,10}\n" +
-                    "Nombre_Cliente: {1}\n" +
-                    "CUIL: xx - xxxxxxxx - x\n" +
-                    "FECHA DE EMISION: {2}",
-                    elSistema.cantidadReservas(),
-                    unCliente.Nombres, DateTime.Now.ToShortDateString()),
+                    "Nro Factura: {0:D6}\n" +
+                    "Cliente: {1} {2}\n" +
+                    "FECHA DE EMISION: {3}",
+                    elSistema.cantidadReservas() + 1,
+                    unCliente.Nombres, unCliente.Apellidos, DateTime.Now.ToShortDateString()),
                     font, brush, margen + medidaAux + 20, y + 20);
                 // LISTADO DE PERSONAS
                 y += h1;
                 g.DrawRectangle(pen, x, y, ancho, (int)font.GetHeight(e.Graphics)); // Columnas de huesped
-                List<Cliente> huespedes = ObtenerHuespedes();
-                List<string[]> text = new List<string[]>();
                 text.Add(new string[] { "Nombre", "Apellido", "Documento", "Fecha Nacimiento" });
                 foreach (Cliente cliente in huespedes)
                 {
@@ -510,8 +507,8 @@ namespace TP2
                 g.DrawString(txtPropiedad, font, brush, x + h3 + 10, y);
                 y += h3;
                 g.DrawLine(pen, x, y, ancho + x, y);
-                g.DrawString("Fecha de reserva: " + DateTime.Now.ToShortDateString() + " - " + DateTime.Now.AddDays(3).ToShortDateString()
-                    + "\nCantidad de dias: x dias\nCosto base: $ x", font, brush, x, y);
+                g.DrawString("Fecha de reserva: " + dtFechaInicio.Value.ToShortDateString() + " - " + dtFechaHasta.Value.ToShortDateString()
+                    + "\nCantidad de dias: " + ((dtFechaHasta.Value - dtFechaInicio.Value).Days + 1) + " dias\nCosto base: $ " +unaPropiedad.Precio , font, brush, x, y);
                 x = margen + h3;
                 y += hLinea * 2; // 2 renglones mas
 
