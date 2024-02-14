@@ -427,7 +427,7 @@ namespace TP2
                 printDocument1.Print();
                 state = true;
             }
-            printPreviewDialog1.ShowDialog();
+            //printPreviewDialog1.ShowDialog();
             return state;
         }
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
