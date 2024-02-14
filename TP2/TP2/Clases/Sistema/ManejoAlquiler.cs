@@ -19,6 +19,7 @@ namespace TP2
         private string FilePropiedades;
         private string FileClientes;
         private string FileReservas;
+        public int[] CantidadPersonas { get; private set; }
         public int CantidadCasas { get; private set; }
         public int CantidadHoteles { get; private set; }
         public int CantidadCasasFinde { get; private set; }
@@ -34,9 +35,11 @@ namespace TP2
             propiedades = new List<Propiedad>();
             clientes = new List<Cliente>();
             reservas = new List<Reserva>();
+            /*
             CantidadCasas = 0;
             CantidadCasasFinde = 0;
             CantidadHoteles = 0;
+            */
             BinaryFormatter bf;
             FileStream fs;
             FilePropiedades = FileNamePropiedades;
@@ -65,6 +68,7 @@ namespace TP2
             }
             fs.Close();
             //Importar Reservas
+            /*
             List<string[]> datosReservas = Funciones_Adicionales.LeerSeparandoArchivo(FileReservas, ";");
             foreach (string[] unDato in datosReservas)
             {
@@ -72,7 +76,7 @@ namespace TP2
                 int idPropiedad = Convert.ToInt32(unDato[1]);
                 string[] dnis = unDato[2].Split('-');
                 List<int> idsClientes = new List<int>();
-                for(int i=0; i<dnis.Length; i++)
+                for (int i = 0; i < dnis.Length; i++)
                 {
                     idsClientes.Add(Convert.ToInt32(dnis[i]));
                 }
@@ -97,8 +101,21 @@ namespace TP2
                 }
                 NuevaReserva(unaReserva, false);
             }
+            */
+            //Deserealizar Reservas
+            bf = new BinaryFormatter();
+            fs = new FileStream(FileReservas, FileMode.OpenOrCreate);
+            try
+            {
+                reservas = (List<Reserva>)bf.Deserialize(fs);
+            }
+            catch
+            {
+            }
+            fs.Close();
             //Conteo de propiedades
             ContarPropiedades();
+            ContarClientes();
         }
         public void Export()
         {
@@ -116,7 +133,7 @@ namespace TP2
 
             }
             fs.Close();
-            //Serealizar Propiedades
+            //Serealizar Clientess
             bf = new BinaryFormatter();
             fs = new FileStream(FileClientes, FileMode.OpenOrCreate);
             try
@@ -129,12 +146,24 @@ namespace TP2
             }
             fs.Close();
             //Exportar Reservas
-            StreamWriter sw = new StreamWriter(FileReservas, true);
+            /*StreamWriter sw = new StreamWriter(FileReservas, true);
             foreach (Reserva unaReserva in reservas)
             {
                 sw.WriteLine(unaReserva.ToString());
             }
-            sw.Close();
+            sw.Close();*/
+            //Serealizar Reservas
+            bf = new BinaryFormatter();
+            fs = new FileStream(FileReservas, FileMode.OpenOrCreate);
+            try
+            {
+                bf.Serialize(fs, reservas);
+            }
+            catch
+            {
+
+            }
+            fs.Close();
         }
         public void AgregarPropiedad(Propiedad propiedad)
         {
@@ -174,6 +203,28 @@ namespace TP2
                         break;
                     default:
                         break;
+                }
+            }
+        }
+        private void ContarClientes()
+        {
+            CantidadPersonas = new int[5];
+            for (int i = 0; i < 5; i++)
+            {
+                CantidadPersonas[i] = 0;
+            }
+            foreach (Reserva unaReserva in reservas)
+            {
+                if (unaReserva.NrosClientes.Count >= 6)
+                {
+                    CantidadPersonas[4]++;
+                }
+                else
+                {
+                    if (unaReserva.NrosClientes.Count > 1)
+                    {
+                        CantidadPersonas[unaReserva.NrosClientes.Count - 2]++;
+                    }
                 }
             }
         }
@@ -273,6 +324,17 @@ namespace TP2
                         noEncontrado = false;
                     }
                     i++;
+                }
+            }
+            if (unaReserva.NrosClientes.Count >= 6)
+            {
+                CantidadPersonas[4]++;
+            }
+            else
+            {
+                if (unaReserva.NrosClientes.Count > 1)
+                {
+                    CantidadPersonas[unaReserva.NrosClientes.Count - 2]++;
                 }
             }
         }

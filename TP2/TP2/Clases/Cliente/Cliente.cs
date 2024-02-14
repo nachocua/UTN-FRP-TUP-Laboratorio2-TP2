@@ -55,5 +55,9 @@ namespace TP2
         {
             return Dni.CompareTo(((Cliente)obj).Dni);
         }
+        public string[] GetData()
+        {
+            return new string[] { Nombres, Apellidos, Dni.ToString(), FechaNacimiento.ToShortDateString() };
+        }
     }
 }

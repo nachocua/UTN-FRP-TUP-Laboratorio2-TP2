@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace TP2
 {
+    [Serializable]
     public class Reserva : IComparable
     {
         private string[] posiblesEstados = { "Reservado", "Ocupado", "Concretado", "Cancelada" };
