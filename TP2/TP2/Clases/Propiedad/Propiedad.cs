@@ -52,31 +52,17 @@ namespace TP2
             return idPropiedad.CompareTo(((Propiedad)obj).idPropiedad);
         }
         public abstract void EstablecerCosto(double costo);
-        /*
-         * public void AgregarImagen(string direccionImg)
-        {
-            imagenes.Add(direccionImg);
-        }
-        public string ObtenerImagen(int i)
-        {
-            return imagenes[i];
-        }
-        public int CantidadImagenes
-        {
-            get { return imagenes.Count; }
-        }
-        */
         public List<int> getReservas()
         {
             return idReservas;
         }
-        //public void Init()
-        //{
-        //    idReservas = new List<int>();
-        //}
         public void EstablecerEstado(bool state)
         {
             Habilitada = state;
+        }
+        internal void Clean()
+        {
+            IdReservas.Clear();
         }
     }
 }

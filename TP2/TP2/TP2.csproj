@@ -168,9 +168,10 @@
     <EmbeddedResource Include="Ventanas\Logins\Ventana Crear Usuario.resx">
       <DependentUpon>Ventana Crear Usuario.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Data\ActiveData.csv" />
     <None Include="Data\clientes.dat" />
     <None Include="Data\propiedades.dat" />
-    <None Include="Data\reservas.csv" />
+    <None Include="Data\reservas.dat" />
     <None Include="Data\UsPa.dat" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

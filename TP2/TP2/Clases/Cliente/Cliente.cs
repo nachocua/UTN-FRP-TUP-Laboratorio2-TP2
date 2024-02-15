@@ -12,12 +12,12 @@ namespace TP2
     [Serializable]
     public class Cliente : IComparable
     {
-        public Stack<int> IdReservas { get;}
+        public Stack<int> IdReservas { get; }
         public int Dni { get; private set; }
         public int Telefono { get; private set; }
         public string Nombres { get; private set; }
         public string Apellidos { get; private set; }
-        public DateTime FechaNacimiento { get; set; }
+        public DateTime FechaNacimiento { get; private set; }
         public Cliente(int dni, string nombres, string apellidos, int nroTelefono, DateTime fechaNacimiento)
         {
             Dni = dni;
@@ -58,6 +58,10 @@ namespace TP2
         public string[] GetData()
         {
             return new string[] { Nombres, Apellidos, Dni.ToString(), FechaNacimiento.ToShortDateString() };
+        }
+        internal void Clean()
+        {
+            IdReservas.Clear();
         }
     }
 }

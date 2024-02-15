@@ -35,11 +35,6 @@ namespace TP2
             propiedades = new List<Propiedad>();
             clientes = new List<Cliente>();
             reservas = new List<Reserva>();
-            /*
-            CantidadCasas = 0;
-            CantidadCasasFinde = 0;
-            CantidadHoteles = 0;
-            */
             BinaryFormatter bf;
             FileStream fs;
             FilePropiedades = FileNamePropiedades;
@@ -67,41 +62,6 @@ namespace TP2
             {
             }
             fs.Close();
-            //Importar Reservas
-            /*
-            List<string[]> datosReservas = Funciones_Adicionales.LeerSeparandoArchivo(FileReservas, ";");
-            foreach (string[] unDato in datosReservas)
-            {
-                int idReserva = Convert.ToInt32(unDato[0]);
-                int idPropiedad = Convert.ToInt32(unDato[1]);
-                string[] dnis = unDato[2].Split('-');
-                List<int> idsClientes = new List<int>();
-                for (int i = 0; i < dnis.Length; i++)
-                {
-                    idsClientes.Add(Convert.ToInt32(dnis[i]));
-                }
-                string[] fecha = unDato[4].Split(' ')[0].Split('/');
-                string[] fecha2 = unDato[5].Split(' ')[0].Split('/');
-                DateTime fechaDesde = new DateTime(Convert.ToInt32(fecha[2]), Convert.ToInt32(fecha[1]), Convert.ToInt32(fecha[0]));
-                DateTime fechaHasta = new DateTime(Convert.ToInt32(fecha2[2]), Convert.ToInt32(fecha2[1]), Convert.ToInt32(fecha2[0]));
-                int cantDias = (fechaHasta - fechaDesde).Days;
-                double costo = Convert.ToInt32(unDato[6]);
-                Reserva unaReserva = new Reserva(idReserva, idsClientes, idPropiedad, fechaDesde, fechaHasta, costo);
-                switch (unDato[3])
-                {
-                    case "Ocupado":
-                        unaReserva.CheckIn();
-                        break;
-                    case "Concretado":
-                        unaReserva.Checkout();
-                        break;
-                    case "Cancelada":
-                        unaReserva.Cancelar();
-                        break;
-                }
-                NuevaReserva(unaReserva, false);
-            }
-            */
             //Deserealizar Reservas
             bf = new BinaryFormatter();
             fs = new FileStream(FileReservas, FileMode.OpenOrCreate);
@@ -145,13 +105,6 @@ namespace TP2
 
             }
             fs.Close();
-            //Exportar Reservas
-            /*StreamWriter sw = new StreamWriter(FileReservas, true);
-            foreach (Reserva unaReserva in reservas)
-            {
-                sw.WriteLine(unaReserva.ToString());
-            }
-            sw.Close();*/
             //Serealizar Reservas
             bf = new BinaryFormatter();
             fs = new FileStream(FileReservas, FileMode.OpenOrCreate);
@@ -341,6 +294,20 @@ namespace TP2
         public int CantidadClientes()
         {
             return clientes.Count;
+        }
+        public void LimpiarClientes()
+        {
+            foreach (Cliente unCliente in clientes)
+            {
+                unCliente.Clean();
+            }
+        }
+        public void LimpiarPropiedades()
+        {
+            foreach (Propiedad unaPropiedad in propiedades)
+            {
+                unaPropiedad.Clean();
+            }
         }
     }
 }

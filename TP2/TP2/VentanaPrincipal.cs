@@ -171,14 +171,14 @@ namespace TP2
                 ToolStripMenuItem clientesMenuItem = new ToolStripMenuItem("Clientes");
                 ToolStripMenuItem verClientesMenuItem = new ToolStripMenuItem("Ver Clientes");
                 clientesMenuItem.DropDownItems.Add(verClientesMenuItem);
-                
+
                 ToolStripMenuItem nuevoClientesMenuItem = new ToolStripMenuItem("Nuevo Cliente");
                 clientesMenuItem.DropDownItems.Add(nuevoClientesMenuItem);
                 nuevoClientesMenuItem.Click += nuevoClientesMenuItem_Click;
 
                 ToolStripMenuItem exportarClientesMenuItem = new ToolStripMenuItem("Exportar Clientes");
                 clientesMenuItem.DropDownItems.Add(exportarClientesMenuItem);
-                
+
                 menuStrip1.Items.Add(clientesMenuItem);
 
                 // Propiedades
@@ -482,21 +482,8 @@ namespace TP2
         }
         private void ImportarCalendarioPropiedad(Propiedad unaPropiedad)
         {
-            if (unaPropiedad == null)
-            {
-                MessageBox.Show("No hay una propiedad seleccionada para ser exportada");
-            }
-            else
-            {
-                OpenFileDialog unOpenfileDialog = new OpenFileDialog();
-                unOpenfileDialog.Filter = "Archivo separado por comas|*.csv";
-                unOpenfileDialog.Title = "Exportar datos de propiedad";
-                unOpenfileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                if (unOpenfileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    List<string[]> datosImportados = Funciones_Adicionales.LeerSeparandoArchivo(unOpenfileDialog.FileName, ";");
-                }
-            }
+            elSistema.LimpiarClientes();
+            elSistema.LimpiarPropiedades();
         }
     }
 }
