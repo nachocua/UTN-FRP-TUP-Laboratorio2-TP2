@@ -129,10 +129,7 @@ namespace TP2
 
             //  ******  Reservas
             ToolStripMenuItem reservasMenuItem = new ToolStripMenuItem("Reservas");
-            ToolStripMenuItem verReservasMenuItem = new ToolStripMenuItem("Ver Reservas");            
-            verReservasMenuItem.ShortcutKeys = Keys.F3;
-            reservasMenuItem.DropDownItems.Add(verReservasMenuItem);
-            //verReservasMenuItem.Click += MenuItem_Click;
+           
 
             ToolStripMenuItem altaReservaMenuItem = new ToolStripMenuItem("Alta Reserva");
             reservasMenuItem.DropDownItems.Add(altaReservaMenuItem);
@@ -190,6 +187,11 @@ namespace TP2
                 menuStrip1.Items.Add(propiedadesMenuItem);
 
                 //  ******  Reservas
+                ToolStripMenuItem anularReservasMenuItem = new ToolStripMenuItem("Anular Reservas");
+                anularReservasMenuItem.ShortcutKeys = Keys.F3;
+                reservasMenuItem.DropDownItems.Add(anularReservasMenuItem);
+                anularReservasMenuItem.Click += anularReservasMenuItem_Click;
+
                 ToolStripMenuItem verGraficosMenuItem = new ToolStripMenuItem("Ver Graficos");
                 reservasMenuItem.DropDownItems.Add(verGraficosMenuItem);
                 verGraficosMenuItem.Click += verGraficosMenuItem_Click;
@@ -405,6 +407,16 @@ namespace TP2
             ventanaGraficos.Show();
 
         }
+
+        private void anularReservasMenuItem_Click(object sender, EventArgs e)
+        {
+            // 
+            MessageBox.Show("anular reservas");
+
+
+        }
+
+        
 
         // ************ MTD Propiedades
         private void consultarPropiedadesMenuItem_Click(object sender, EventArgs e)
