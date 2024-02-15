@@ -137,9 +137,9 @@ namespace TP2
             CantidadPorTipoPropiedad = new int[2];
             CantidadPorTipoPropiedad[0] = 0;
             CantidadPorTipoPropiedad[1] = 0;
-            foreach (Propiedad unaPropiedad in propiedades)
+            foreach (Reserva unaReserva in reservas)
             {
-                switch (unaPropiedad.GetType().Name)
+                switch (propiedades[unaReserva.NroPropiedad].GetType().Name)
                 {
                     case "Hotel":
                         CantidadPorTipoPropiedad[0]++;
