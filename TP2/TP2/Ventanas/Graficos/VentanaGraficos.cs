@@ -14,13 +14,13 @@ namespace TP2
     {
        
         //private int[] barras = { 100, 50, 25 };
-        private int[] sectores; // datos para grafico sectores
+        private int[] sectores = new int[2]; // datos para grafico sectores
 
         private int[] personasPorHabitacion;
         //  personasPorHabitacion = { 58, 3, 49, 15, 20 };
 
         private string[] personalsLabel = { "2P", "3P", "4P", "5P", "6+P" };
-        private string[] propiedades = { "Casas",  "Hotel" };
+        private string[] propiedades = { "Hotel", "Casas" };
         
 
         private int anchoPanel = 500;
@@ -48,12 +48,14 @@ namespace TP2
         };
         //public Color[] Colores  = { Color.Blue, Color.Black, Color.Yellow };
 
-        public VentanaGraficos(int[] propiedades, int[] barras)
+        public VentanaGraficos(int[] barras , int[] CantidadPorTipoPropiedad)
         {
             InitializeComponent();
             InitializeUI();
-            sectores = propiedades; // cant de casas y hotel para grafico Sectores
-            personasPorHabitacion = barras;
+
+            personasPorHabitacion = barras; // "2P", "3P", "4P", "5P", "6+P"
+            sectores = CantidadPorTipoPropiedad; // cant de casas y hotel para grafico Sectores
+            
         }
 
         private void InitializeUI()
@@ -92,12 +94,6 @@ namespace TP2
             int x = 80;
             int y = 410;
             yLabel = yPanel + altoPanel + 3; // Coordenada Y de todos los label de Propiedad
-
-            //// Dibujar una línea negra horizontal en el medio del formulario
-            /* Pen pen = new Pen(Color.Black, 1);*/ // Grosor de 1 (puedes ajustar según sea necesario)
-                                                    //int yLinea = y + 1;  // Posición vertical en el medio
-                                                    //g.DrawLine(pen, x, yLinea, this.ClientSize.Width, yLinea);
-                                                    //g.DrawLine(pen, x, 0, x, this.ClientSize.Height); // linea vertical
 
             // Dibujar una línea horizontal
             Pen penHorizontal = new Pen(Color.Black, 1);  // Puedes ajustar el grosor según tus necesidades
@@ -153,11 +149,9 @@ namespace TP2
             int n = 0;
             int xlabelGraficos = xGrafico + 65;
 
-            
-           
              // Label Aclaracion
             Label aclaracionP = new Label();
-            aclaracionP.Text = "P = Personas por habitacion de Hotel";
+            aclaracionP.Text = "P = Personas por habitacion ";
             aclaracionP.Size = new Size(280, 18);
             aclaracionP.Font = new Font("Arial", 9, FontStyle.Bold);
             aclaracionP.Location = new Point(150, YlabelAclaracion);
@@ -268,7 +262,7 @@ namespace TP2
 
                 // Labels De Sectores
                 Label num = new Label();
-                num.Text = propiedades[n] + " " +valor.ToString("00") + " - " + (valor / suma * 100).ToString() + "%";
+                num.Text = propiedades[n] + " " + valor.ToString("00") + " - " + (valor / suma * 100).ToString("00") + "%";
                 num.Size = new Size(120, 60);
                 num.Font = new Font("Arial", fontSm, FontStyle.Bold);
 

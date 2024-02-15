@@ -21,8 +21,7 @@ namespace TP2
     {
         private ManejoAlquiler elSistema;
         private SistemaLogin loginSistema;
-        private Login UsuarioActivo;
-        protected int[] propiedades = new int[2]; // Datos para  grafico Sectores
+        private Login UsuarioActivo;       
 
         public VentanaPrincipal()
         {
@@ -391,13 +390,16 @@ namespace TP2
         private void verGraficosMenuItem_Click(object sender, EventArgs e)
         {
             // Datos para grafico de sectores
-            propiedades[0] = elSistema.CantidadCasas + elSistema.CantidadCasasFinde;
-            propiedades[1] = elSistema.CantidadHoteles;
+            //propiedades[0] = elSistema.CantidadCasas + elSistema.CantidadCasasFinde;
+            //propiedades[1] = elSistema.CantidadHoteles;
+            //propiedades = elSistema.CantidadPersonas;
 
-            VentanaGraficos ventanaGraficos = new VentanaGraficos(propiedades, elSistema.CantidadPersonas);
+
+
+            VentanaGraficos ventanaGraficos = new VentanaGraficos(elSistema.CantidadPersonas, elSistema.CantidadPorTipoPropiedad );
             ventanaGraficos.Show();
         }
-
+         
         private void anularReservasMenuItem_Click(object sender, EventArgs e)
         {
             //
