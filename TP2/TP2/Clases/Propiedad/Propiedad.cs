@@ -62,7 +62,7 @@ namespace TP2
         }
         internal void Clean()
         {
-            IdReservas.Clear();
+            idReservas.Clear();
         }
     }
 }

@@ -134,6 +134,7 @@ namespace TP2
         }
         public void ContarPropiedades() // PARCHE PARA CONTAR LAS PROPIEDADES YA CARGADAS
         {
+            CantidadPorTipoPropiedad = new int[2];
             CantidadPorTipoPropiedad[0] = 0;
             CantidadPorTipoPropiedad[1] = 0;
             foreach (Propiedad unaPropiedad in propiedades)
