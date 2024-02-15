@@ -1,4 +1,4 @@
-# UTN-FRP-TUP-Laboratorio2-TP2
+![image](https://github.com/nachocua/UTN-FRP-TUP-Laboratorio2-TP2/assets/14798224/f1304389-c1cd-4d4f-8328-2fa7117565bc)# UTN-FRP-TUP-Laboratorio2-TP2
 
 <header>
     <h1>Rentify 🏘</h1>
@@ -23,12 +23,6 @@
     <h2>Pendientes</h2>
     <ul>
         <li>
-            JULI - Impresion
-        </li>
-        <li>
-            ACTUALIZAR FILTRO EN ALTA RESERVA
-        </li>
-        <li>
             NACHO - Revisar -> Exportar Calendario Reservas
         </li>
         <li>
@@ -36,9 +30,6 @@
         </li>
         <li>
             TRISTAN - Editar Gráfico de Torta (Hotel + Casa)
-        </li>
-        <li>
-            TRISTAN - Gráficos de Barra (Implementar cant. huéspedes)
         </li>
         <li>
             TRISTAN - Página de Ayuda
@@ -50,16 +41,16 @@
             TRISTAN - Agregar botón - Anular Reserva (admin)
         </li>
         <li>
-            JULI - Filtro - ignorar propiedades en baja (admin)
-        </li>
-        <li>
-            TRISTAN - Quitar ver gráficos (en usuario base)
+            JULI - Filtro - Revisar Numeric UpDown
         </li>
         <li>
             NACHO - respaldar CSV (en usuario base)
         </li>
         <li>
             Agregar casos de uso
+        </li>
+        <li>
+            Updatear Diagrama de clases.
         </li>
     </ul>
 
