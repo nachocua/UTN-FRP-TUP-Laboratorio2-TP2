@@ -59,7 +59,7 @@
             this.btnIngresar.Location = new System.Drawing.Point(64, 120);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(90, 23);
-            this.btnIngresar.TabIndex = 2;
+            this.btnIngresar.TabIndex = 100;
             this.btnIngresar.Text = "Crear Usuario";
             this.btnIngresar.UseVisualStyleBackColor = true;
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
@@ -69,14 +69,14 @@
             this.tbUsuario.Location = new System.Drawing.Point(100, 17);
             this.tbUsuario.Name = "tbUsuario";
             this.tbUsuario.Size = new System.Drawing.Size(100, 20);
-            this.tbUsuario.TabIndex = 3;
+            this.tbUsuario.TabIndex = 1;
             // 
             // tbPass
             // 
             this.tbPass.Location = new System.Drawing.Point(100, 55);
             this.tbPass.Name = "tbPass";
             this.tbPass.Size = new System.Drawing.Size(100, 20);
-            this.tbPass.TabIndex = 4;
+            this.tbPass.TabIndex = 2;
             // 
             // cbAdmin
             // 
@@ -84,7 +84,7 @@
             this.cbAdmin.Location = new System.Drawing.Point(83, 93);
             this.cbAdmin.Name = "cbAdmin";
             this.cbAdmin.Size = new System.Drawing.Size(55, 17);
-            this.cbAdmin.TabIndex = 6;
+            this.cbAdmin.TabIndex = 3;
             this.cbAdmin.Text = "Admin";
             this.cbAdmin.UseVisualStyleBackColor = true;
             // 
