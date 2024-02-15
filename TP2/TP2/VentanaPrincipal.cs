@@ -448,14 +448,16 @@ namespace TP2
             ventanaCliente.Dispose();
         }
 
-        private void ExportarCalendarioPropiedad(Propiedad unaPropiedad)
+        private void ExportarCalendarioPropiedad(int idPropiedad)
         {
-            if (unaPropiedad == null)
+            if (idPropiedad < 0)
             {
                 MessageBox.Show("No hay una propiedad seleccionada para ser exportada");
             }
             else
             {
+                //idReservas
+                /*
                 if (unaPropiedad.getReservas().Count == 0)
                 {
                     MessageBox.Show("No hay datos para exportar");
@@ -478,6 +480,7 @@ namespace TP2
                         sw.Close();
                     }
                 }
+                */
             }
         }
         private void ImportarCalendarioPropiedad(Propiedad unaPropiedad)

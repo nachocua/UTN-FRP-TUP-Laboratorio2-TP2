@@ -20,6 +20,7 @@ namespace TP2
         private string FileClientes;
         private string FileReservas;
         public int[] CantidadPersonas { get; private set; }
+        public int[] CantidadPorTipoPropiedad { get; private set; }
         public int CantidadCasas { get; private set; }
         public int CantidadHoteles { get; private set; }
         public int CantidadCasasFinde { get; private set; }
@@ -123,38 +124,27 @@ namespace TP2
             propiedades.Add(propiedad);
             switch (propiedad.GetType().Name)
             {
-                case "Casa":
-                    CantidadCasas++;
-                    break;
                 case "Hotel":
-                    CantidadHoteles++;
-                    break;
-                case "CasaFinSemana":
-                    CantidadCasasFinde++;
+                    CantidadPorTipoPropiedad[0]++;
                     break;
                 default:
+                    CantidadPorTipoPropiedad[1]++;
                     break;
             }
         }
         public void ContarPropiedades() // PARCHE PARA CONTAR LAS PROPIEDADES YA CARGADAS
         {
-            CantidadCasas = 0;
-            CantidadCasasFinde = 0;
-            CantidadHoteles = 0;
+            CantidadPorTipoPropiedad[0] = 0;
+            CantidadPorTipoPropiedad[1] = 0;
             foreach (Propiedad unaPropiedad in propiedades)
             {
                 switch (unaPropiedad.GetType().Name)
                 {
-                    case "Casa":
-                        CantidadCasas++;
-                        break;
                     case "Hotel":
-                        CantidadHoteles++;
-                        break;
-                    case "CasaFinSemana":
-                        CantidadCasasFinde++;
+                        CantidadPorTipoPropiedad[0]++;
                         break;
                     default:
+                        CantidadPorTipoPropiedad[1]++;
                         break;
                 }
             }
