@@ -14,9 +14,11 @@ namespace TP2
     {
        
         //private int[] barras = { 100, 50, 25 };
-        private int[] sectores; // datps para grafico sectores
+        private int[] sectores; // datos para grafico sectores
 
-        private int[] personasPorHabitacion = { 58, 3, 49, 15, 20 };
+        private int[] personasPorHabitacion;
+        //  personasPorHabitacion = { 58, 3, 49, 15, 20 };
+
         private string[] personalsLabel = { "2P", "3P", "4P", "5P", "6+P" };
         private string[] propiedades = { "Casas",  "Hotel" };
         
@@ -46,11 +48,12 @@ namespace TP2
         };
         //public Color[] Colores  = { Color.Blue, Color.Black, Color.Yellow };
 
-        public VentanaGraficos(int[] propiedades )
+        public VentanaGraficos(int[] propiedades, int[] barras)
         {
             InitializeComponent();
             InitializeUI();
             sectores = propiedades; // cant de casas y hotel para grafico Sectores
+            personasPorHabitacion = barras;
         }
 
         private void InitializeUI()

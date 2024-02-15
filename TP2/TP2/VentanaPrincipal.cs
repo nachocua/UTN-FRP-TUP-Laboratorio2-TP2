@@ -24,6 +24,7 @@ namespace TP2
         private SistemaLogin loginSistema;
         private Login UsuarioActivo;
         protected int[] propiedades = new int[2]; // Datos para  grafico Sectores
+        private int[] barras; // Datos para  grafico barras
 
         public VentanaPrincipal()
         {
@@ -391,12 +392,16 @@ namespace TP2
 
         private void verGraficosMenuItem_Click(object sender, EventArgs e)
         {
+            // datos para grafico Barras
+           //barras = new int[5];
+           // barras = elSistema.CantidadPersonas;      
+
             // Datos para grafico de sectores
             propiedades[0] = elSistema.CantidadCasas + elSistema.CantidadCasasFinde;
             propiedades[1] = elSistema.CantidadHoteles;
-            
+    
 
-            VentanaGraficos ventanaGraficos = new VentanaGraficos(propiedades);
+            VentanaGraficos ventanaGraficos = new VentanaGraficos(propiedades, elSistema.CantidadPersonas);
             ventanaGraficos.Show();
 
         }
@@ -433,6 +438,7 @@ namespace TP2
                     {
                         elSistema.AgregarCliente(ventanaCliente.unCliente);
                         repetido = false;
+                        sbClientes.Text = "Clientes: " + elSistema.CantidadClientes().ToString();
                     }
                     else
                     {

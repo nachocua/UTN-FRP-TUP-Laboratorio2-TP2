@@ -92,6 +92,7 @@ namespace TP2
                     {
                         repetido = true;
                     }
+                    i++;
                 }
                 if (!repetido)
                 {
