@@ -1,4 +1,4 @@
-![image](https://github.com/nachocua/UTN-FRP-TUP-Laboratorio2-TP2/assets/14798224/f1304389-c1cd-4d4f-8328-2fa7117565bc)# UTN-FRP-TUP-Laboratorio2-TP2
+# UTN-FRP-TUP-Laboratorio2-TP2
 
 <header>
     <h1>Rentify 🏘</h1>
