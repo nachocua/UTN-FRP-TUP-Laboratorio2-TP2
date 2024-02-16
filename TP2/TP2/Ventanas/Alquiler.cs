@@ -332,7 +332,7 @@ namespace TP2
                 {
                     int idReserva = elSistema.cantidadReservas();
                     int idPropiedad = unaPropiedad.idPropiedad;
-                    int cantDias = (dtFechaHasta.Value - dtFechaInicio.Value).Days + 1;
+                    int cantDias = (dtFechaHasta.Value - dtFechaInicio.Value).Days  ;
                     double costo = unaPropiedad.Costo(cantDias);
                     bool estado = Imprimir();
                     if (estado)
@@ -406,12 +406,12 @@ namespace TP2
 
         private void dtFechaInicio_ValueChanged(object sender, EventArgs e)
         {
-            dias = (dtFechaHasta.Value - dtFechaInicio.Value).Days + 1;
+            dias = (dtFechaHasta.Value - dtFechaInicio.Value).Days  ;
         }
 
         private void dtFechaHasta_ValueChanged(object sender, EventArgs e)
         {
-            dias = (dtFechaHasta.Value - dtFechaInicio.Value).Days + 1;
+            dias = (dtFechaHasta.Value - dtFechaInicio.Value).Days  ;
         }
         private bool Imprimir()
         {
@@ -464,7 +464,7 @@ namespace TP2
                     "Nro Factura: {0:D6}\n" +
                     "Cliente: {1} {2}\n" +
                     "FECHA DE EMISION: {3}",
-                    elSistema.cantidadReservas() + 1,
+                    elSistema.cantidadReservas()  ,
                     unCliente.Nombres, unCliente.Apellidos, DateTime.Now.ToShortDateString()),
                     font, brush, margen + medidaAux + 20, y + 20);
                 // LISTADO DE PERSONAS
@@ -505,7 +505,7 @@ namespace TP2
                 y += h3;
                 g.DrawLine(pen, x, y, ancho + x, y);
                 g.DrawString("Fecha de reserva: " + dtFechaInicio.Value.ToShortDateString() + " - " + dtFechaHasta.Value.ToShortDateString()
-                    + "\nCantidad de dias: " + ((dtFechaHasta.Value - dtFechaInicio.Value).Days + 1) + " dias\nCosto base: $ " + unaPropiedad.Precio, font, brush, x, y);
+                    + "\nCantidad de dias: " + ((dtFechaHasta.Value - dtFechaInicio.Value).Days) + " dias\nCosto base: $ " + unaPropiedad.Precio, font, brush, x, y);
                 x = margen + h3;
                 y += hLinea * 2; // 2 renglones mas
 
@@ -552,6 +552,18 @@ namespace TP2
         private void cbUbicacion_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             ubicacionSeleccionada = cbUbicacion.SelectedItem.ToString();
+        }
+
+        private void btnVerReservas_Click(object sender, EventArgs e)
+        {
+            List<Reserva> reservas = new List<Reserva>();
+            for(int i = 0; i < elSistema.cantidadReservas(); i++)
+            {
+                reservas.Add(elSistema.GetReserva(i));
+            }
+            VerReservas verReservas = new VerReservas(reservas);
+            verReservas.ShowDialog();
+            verReservas.Dispose();
         }
     }
 }

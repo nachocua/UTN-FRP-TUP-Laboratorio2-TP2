@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 
 namespace TP2
@@ -44,9 +45,9 @@ namespace TP2
         public override string ToString()
         {
             string datosReserva = NroReserva + ";" + NroPropiedad + ";";
-            for (int i=0; i<NrosClientes.Count; i++)
+            for (int i = 0; i < NrosClientes.Count; i++)
             {
-                if(i > 0)
+                if (i > 0)
                 {
                     datosReserva += "-";
                 }
@@ -59,6 +60,10 @@ namespace TP2
         public int CompareTo(Object obj)
         {
             return NroReserva.CompareTo(((Reserva)obj).NroReserva);
+        }
+        public string[] GetData()
+        {
+            return new string[] { NroReserva.ToString(), NroPropiedad.ToString(), FechaInicio.ToShortDateString(), FechaHasta.ToShortDateString(), NrosClientes.Count.ToString(), Estado };
         }
     }
 }

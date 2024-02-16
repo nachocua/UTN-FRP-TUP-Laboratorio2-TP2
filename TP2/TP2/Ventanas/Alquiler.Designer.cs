@@ -84,6 +84,7 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.btnVerReservas = new System.Windows.Forms.Button();
             this.gbTipoPropiedad.SuspendLayout();
             this.gbServicios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).BeginInit();
@@ -675,11 +676,22 @@
             // 
             this.printDialog1.UseEXDialog = true;
             // 
+            // btnVerReservas
+            // 
+            this.btnVerReservas.Location = new System.Drawing.Point(1034, 130);
+            this.btnVerReservas.Name = "btnVerReservas";
+            this.btnVerReservas.Size = new System.Drawing.Size(127, 44);
+            this.btnVerReservas.TabIndex = 42;
+            this.btnVerReservas.Text = "Ver Reservas";
+            this.btnVerReservas.UseVisualStyleBackColor = true;
+            this.btnVerReservas.Click += new System.EventHandler(this.btnVerReservas_Click);
+            // 
             // Alquiler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1053, 629);
+            this.ClientSize = new System.Drawing.Size(1166, 629);
+            this.Controls.Add(this.btnVerReservas);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.btnReservar);
@@ -772,5 +784,6 @@
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.Button btnQuitar;
+        private System.Windows.Forms.Button btnVerReservas;
     }
 }

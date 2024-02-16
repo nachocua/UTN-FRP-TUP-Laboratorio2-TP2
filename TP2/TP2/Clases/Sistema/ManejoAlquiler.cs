@@ -195,6 +195,10 @@ namespace TP2
         {
             return clientes[idx];
         }
+        public Reserva GetReserva(int idx)
+        {
+            return reservas[idx];
+        }
         public string[] InfoCliente(int indx)
         {
             return clientes[indx].ToString().Split(';');
