@@ -211,9 +211,11 @@ namespace TP2
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Fecha hasta - fecha desde = " + (dtFechaHasta.Value - dtFechaInicio.Value).Days.ToString());
             dgView.Rows.Clear();
             propiedadSeleccionada = null;
-            if (dtFechaHasta.Value.CompareTo(dtFechaInicio.Value) >= 0)
+            if (dtFechaHasta.Value.CompareTo(dtFechaInicio.Value) >= 0) // IF VIEJO, LO DEJO POR LAS DUDAS (CAMBIADO EL 16/02 A LAS 2 32 AM)
+            //if(((dtFechaHasta.Value - dtFechaInicio.Value).Days) > 0)
             {
                 List<string> serviciosSeleccionados = CargarServicios();
                 List<string> tiposSeleccionados = CargarTipoSeleccionado();
@@ -330,6 +332,7 @@ namespace TP2
                         elSistema.NuevaReserva(unaReserva);
                         dgView.Rows.Clear();
                         propiedadSeleccionada = null;
+                        lbDatosCliente.Items.Clear();
                         idsClientes.Clear();
                         MessageBox.Show("Se ha reservado con éxito");
                     }
@@ -395,27 +398,11 @@ namespace TP2
         private void dtFechaInicio_ValueChanged(object sender, EventArgs e)
         {
             dias = (dtFechaHasta.Value - dtFechaInicio.Value).Days + 1;
-            if (propiedadSeleccionada != null)
-            {
-                Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
-                if (unaPropiedad != null)
-                {
-                    labelPrecio.Text = "Costo total: $ " + unaPropiedad.Costo(dias);
-                }
-            }
         }
 
         private void dtFechaHasta_ValueChanged(object sender, EventArgs e)
         {
             dias = (dtFechaHasta.Value - dtFechaInicio.Value).Days + 1;
-            if (propiedadSeleccionada != null)
-            {
-                Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
-                if (unaPropiedad != null)
-                {
-                    labelPrecio.Text = "Costo total: $ " + unaPropiedad.Costo(dias);
-                }
-            }
         }
         private bool Imprimir()
         {
@@ -510,7 +497,7 @@ namespace TP2
                 y += h3;
                 g.DrawLine(pen, x, y, ancho + x, y);
                 g.DrawString("Fecha de reserva: " + dtFechaInicio.Value.ToShortDateString() + " - " + dtFechaHasta.Value.ToShortDateString()
-                    + "\nCantidad de dias: " + ((dtFechaHasta.Value - dtFechaInicio.Value).Days + 1) + " dias\nCosto base: $ " +unaPropiedad.Precio , font, brush, x, y);
+                    + "\nCantidad de dias: " + ((dtFechaHasta.Value - dtFechaInicio.Value).Days + 1) + " dias\nCosto base: $ " + unaPropiedad.Precio, font, brush, x, y);
                 x = margen + h3;
                 y += hLinea * 2; // 2 renglones mas
 
@@ -539,6 +526,7 @@ namespace TP2
         {
             if (lbDatosCliente.SelectedItem != null)
             {
+                MessageBox.Show(idsClientes.Count.ToString());
                 idsClientes.RemoveAt(lbDatosCliente.SelectedIndex);
                 lbDatosCliente.Items.RemoveAt(lbDatosCliente.SelectedIndex);
                 lbDatosCliente.SelectedItem = null;

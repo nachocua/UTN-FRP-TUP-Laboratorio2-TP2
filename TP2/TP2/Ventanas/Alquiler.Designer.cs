@@ -242,7 +242,7 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
-            this.dgView.Location = new System.Drawing.Point(191, 181);
+            this.dgView.Location = new System.Drawing.Point(189, 181);
             this.dgView.Name = "dgView";
             this.dgView.ReadOnly = true;
             this.dgView.RowHeadersWidth = 51;
@@ -311,6 +311,7 @@
             // dtFechaInicio
             // 
             this.dtFechaInicio.Location = new System.Drawing.Point(8, 36);
+            this.dtFechaInicio.MinDate = new System.DateTime(2024, 2, 16, 0, 0, 0, 0);
             this.dtFechaInicio.Name = "dtFechaInicio";
             this.dtFechaInicio.Size = new System.Drawing.Size(200, 20);
             this.dtFechaInicio.TabIndex = 32;
