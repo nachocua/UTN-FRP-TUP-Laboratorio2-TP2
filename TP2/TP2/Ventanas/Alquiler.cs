@@ -209,13 +209,27 @@ namespace TP2
                 cbUbicacion.Items.Add(key);
             }
         }
+        private bool VerificacionFecha()
+        {
+            bool state = false;
+            if (dtFechaInicio.Value.Month == dtFechaHasta.Value.Month)
+            {
+                state = dtFechaHasta.Value.Day - dtFechaInicio.Value.Day > 0;
+            }
+            else
+            {
+                int mes = (dtFechaHasta.Value.Month - dtFechaInicio.Value.Month) * 30;
+                int dias = dtFechaHasta.Value.Day - dtFechaInicio.Value.Day;
+                state = (mes + dias) > 0;
+            }
+            return state;
+        }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Fecha hasta - fecha desde = " + (dtFechaHasta.Value - dtFechaInicio.Value).Days.ToString());
             dgView.Rows.Clear();
             propiedadSeleccionada = null;
-            if (dtFechaHasta.Value.CompareTo(dtFechaInicio.Value) >= 0) // IF VIEJO, LO DEJO POR LAS DUDAS (CAMBIADO EL 16/02 A LAS 2 32 AM)
-            //if(((dtFechaHasta.Value - dtFechaInicio.Value).Days) > 0)
+            //if (dtFechaHasta.Value.CompareTo(dtFechaInicio.Value) >= 0) // IF VIEJO, LO DEJO POR LAS DUDAS (CAMBIADO EL 16/02 A LAS 2 32 AM)
+            if(VerificacionFecha())
             {
                 List<string> serviciosSeleccionados = CargarServicios();
                 List<string> tiposSeleccionados = CargarTipoSeleccionado();
@@ -526,7 +540,6 @@ namespace TP2
         {
             if (lbDatosCliente.SelectedItem != null)
             {
-                MessageBox.Show(idsClientes.Count.ToString());
                 idsClientes.RemoveAt(lbDatosCliente.SelectedIndex);
                 lbDatosCliente.Items.RemoveAt(lbDatosCliente.SelectedIndex);
                 lbDatosCliente.SelectedItem = null;
