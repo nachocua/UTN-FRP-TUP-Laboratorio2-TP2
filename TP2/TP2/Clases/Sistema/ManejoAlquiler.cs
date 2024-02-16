@@ -122,15 +122,6 @@ namespace TP2
         public void AgregarPropiedad(Propiedad propiedad)
         {
             propiedades.Add(propiedad);
-            switch (propiedad.GetType().Name)
-            {
-                case "Hotel":
-                    CantidadPorTipoPropiedad[0]++;
-                    break;
-                default:
-                    CantidadPorTipoPropiedad[1]++;
-                    break;
-            }
         }
         public void ContarPropiedades() // PARCHE PARA CONTAR LAS PROPIEDADES YA CARGADAS
         {
@@ -153,12 +144,6 @@ namespace TP2
         private void ContarClientes()
         {
             CantidadPersonas = new int[5];
-            /*
-            for (int i = 0; i < 5; i++)
-            {
-                CantidadPersonas[i] = 0;
-            }
-            */
             foreach (Reserva unaReserva in reservas)
             {
                 if (unaReserva.NrosClientes.Count >= 6)
@@ -207,10 +192,6 @@ namespace TP2
         public void AgregarCliente(Cliente unCliente)
         {
             clientes.Add(unCliente);
-        }
-        public List<Propiedad> GetPropiedades() // Posible funcion a borrar
-        {
-            return propiedades;
         }
         public Cliente GetCliente(int idx)
         {
@@ -282,6 +263,14 @@ namespace TP2
                 {
                     CantidadPersonas[unaReserva.NrosClientes.Count - 2]++;
                 }
+            }
+            if (propiedades[unaReserva.NroPropiedad].GetType().Name == "Hotel")
+            {
+                CantidadPorTipoPropiedad[0]++;
+            }
+            else
+            {
+                CantidadPorTipoPropiedad[1]++;
             }
         }
         public int CantidadClientes()

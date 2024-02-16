@@ -331,11 +331,6 @@ namespace TP2
                 if (unaPropiedad != null)
                 {
                     int idReserva = elSistema.cantidadReservas();
-                    /*string[] dnis = lbDatosCliente.Items[0].ToString().Split(' ')[1].Split('-');
-                    for (int i = 0; dnis.Length; i++)
-                    {
-
-                    }*/
                     int idPropiedad = unaPropiedad.idPropiedad;
                     int cantDias = (dtFechaHasta.Value - dtFechaInicio.Value).Days + 1;
                     double costo = unaPropiedad.Costo(cantDias);
@@ -430,7 +425,6 @@ namespace TP2
                 printDocument1.Print();
                 state = true;
             }
-            //printPreviewDialog1.ShowDialog();
             return state;
         }
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
