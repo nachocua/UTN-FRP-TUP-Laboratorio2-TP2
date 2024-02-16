@@ -233,6 +233,7 @@ namespace TP2
             int n = 0;
             int xNum = 720; // posicion x del primer label de sectores
             int xincremento = 260;
+            float sector;
 
             // Label Aclaracion
             Label aclaracionP = new Label();
@@ -245,7 +246,14 @@ namespace TP2
 
             foreach (float valor in sectores)
             {
-                float sector = (valor / suma) * 360;
+                if (suma == 0)
+                {
+                     sector = 0;
+                }
+                else
+                {
+                     sector = (valor / suma) * 360;
+                }
                 Brush brush = new SolidBrush(coloresFavoritos[n]);
                 g.FillPie(brush, x0 - w / 2, y0 - hc / 2, wc, hc, ang0, sector);
                 ang0 += sector;
@@ -262,7 +270,7 @@ namespace TP2
 
                 // Labels De Sectores
                 Label num = new Label();
-                num.Text = propiedades[n] + " " + valor.ToString("00") + " - " + (valor / suma * 100).ToString("00") + "%";
+                num.Text = propiedades[n] + " " + valor.ToString("00") + " - " + (sector ).ToString("00") + "%";
                 num.Size = new Size(120, 60);
                 num.Font = new Font("Arial", fontSm, FontStyle.Bold);
 
