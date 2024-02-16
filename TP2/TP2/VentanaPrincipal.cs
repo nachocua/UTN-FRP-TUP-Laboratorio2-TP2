@@ -399,11 +399,6 @@ namespace TP2
             VentanaGraficos ventanaGraficos = new VentanaGraficos(elSistema.CantidadPersonas, elSistema.CantidadPorTipoPropiedad );
             ventanaGraficos.Show();
         }
-         
-        private void anularReservasMenuItem_Click(object sender, EventArgs e)
-        {
-            //
-        }
 
         private void consultarPropiedadesMenuItem_Click(object sender, EventArgs e)
         {
@@ -489,6 +484,13 @@ namespace TP2
         {
             elSistema.LimpiarClientes();
             elSistema.LimpiarPropiedades();
+        }
+        private void anularReservasMenuItem_Click(object sender, EventArgs e)
+        {
+            elSistema.LimpiarClientes();
+            elSistema.LimpiarPropiedades();
+            elSistema.LimpiarReservas();
+            sbReservas.Text = "Reservas: " + elSistema.cantidadReservas().ToString();
         }
     }
 }

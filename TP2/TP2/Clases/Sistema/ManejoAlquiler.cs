@@ -153,10 +153,12 @@ namespace TP2
         private void ContarClientes()
         {
             CantidadPersonas = new int[5];
+            /*
             for (int i = 0; i < 5; i++)
             {
                 CantidadPersonas[i] = 0;
             }
+            */
             foreach (Reserva unaReserva in reservas)
             {
                 if (unaReserva.NrosClientes.Count >= 6)
@@ -299,6 +301,10 @@ namespace TP2
             {
                 unaPropiedad.Clean();
             }
+        }
+        internal void LimpiarReservas()
+        {
+            reservas.Clear();
         }
     }
 }
