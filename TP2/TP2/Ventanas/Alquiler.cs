@@ -295,13 +295,14 @@ namespace TP2
             bool state = false;
             if (propiedadSeleccionada != null)
             {
-                if (clienteValido)
+                List<Cliente> huespedes = ObtenerHuespedes();
+                if (huespedes.Count > 0)
                 {
                     state = true;
                 }
                 else
                 {
-                    MessageBox.Show("Debes buscar un cliente");
+                    MessageBox.Show("Debes tener un huesped para asignarle una reserva");
                 }
             }
             else
