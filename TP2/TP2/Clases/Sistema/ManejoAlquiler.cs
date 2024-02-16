@@ -126,8 +126,6 @@ namespace TP2
         public void ContarPropiedades() // PARCHE PARA CONTAR LAS PROPIEDADES YA CARGADAS
         {
             CantidadPorTipoPropiedad = new int[2];
-            CantidadPorTipoPropiedad[0] = 0;
-            CantidadPorTipoPropiedad[1] = 0;
             foreach (Reserva unaReserva in reservas)
             {
                 switch (propiedades[unaReserva.NroPropiedad].GetType().Name)
