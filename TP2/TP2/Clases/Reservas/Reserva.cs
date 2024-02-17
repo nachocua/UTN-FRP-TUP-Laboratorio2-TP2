@@ -23,7 +23,11 @@ namespace TP2
         public Reserva(int reservasEfectuadas, List<int> idsClientes, int idPropiedad, DateTime fechaDesde, DateTime fechaHasta, double costo)
         {
             NroReserva = reservasEfectuadas;
-            NrosClientes = idsClientes;
+            NrosClientes = new List<int>();
+            foreach (int id in idsClientes) 
+            {
+                NrosClientes.Add(id);
+            }
             NroPropiedad = idPropiedad;
             Estado = posiblesEstados[0];
             FechaInicio = fechaDesde;

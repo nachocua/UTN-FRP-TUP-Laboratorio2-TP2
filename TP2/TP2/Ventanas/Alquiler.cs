@@ -25,7 +25,7 @@ namespace TP2
         bool clienteValido = false;
         int dias = 1;
         int observacion = 0;
-        private List<int> idsClientes = null;
+        private List<int> idsClientes;
         string ubicacionSeleccionada = "Todas";
         public Alquiler(ManejoAlquiler unSistema)
         {
