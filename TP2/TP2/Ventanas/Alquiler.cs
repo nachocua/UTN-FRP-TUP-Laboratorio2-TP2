@@ -332,7 +332,7 @@ namespace TP2
                 {
                     int idReserva = elSistema.cantidadReservas();
                     int idPropiedad = unaPropiedad.idPropiedad;
-                    int cantDias = (dtFechaHasta.Value - dtFechaInicio.Value).Days  ;
+                    int cantDias = (dtFechaHasta.Value.Day - dtFechaInicio.Value.Day);
                     double costo = unaPropiedad.Costo(cantDias);
                     bool estado = Imprimir();
                     if (estado)
@@ -406,12 +406,12 @@ namespace TP2
 
         private void dtFechaInicio_ValueChanged(object sender, EventArgs e)
         {
-            dias = (dtFechaHasta.Value - dtFechaInicio.Value).Days  ;
+            dias = (dtFechaHasta.Value.Day - dtFechaInicio.Value.Day);
         }
 
         private void dtFechaHasta_ValueChanged(object sender, EventArgs e)
         {
-            dias = (dtFechaHasta.Value - dtFechaInicio.Value).Days  ;
+            dias = (dtFechaHasta.Value.Day - dtFechaInicio.Value.Day);
         }
         private bool Imprimir()
         {
