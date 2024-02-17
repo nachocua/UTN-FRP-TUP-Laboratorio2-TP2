@@ -446,9 +446,7 @@ namespace TP2
             }
             else
             {
-                //idReservas
-                /*
-                if (unaPropiedad.getReservas().Count == 0)
+                if (elSistema.GetPropiedad(idPropiedad).getReservas().Count() == 0)
                 {
                     MessageBox.Show("No hay datos para exportar");
                 }
@@ -461,16 +459,17 @@ namespace TP2
                     if (unSaveFileDialog.ShowDialog() == DialogResult.OK)
                     {
                         StreamWriter sw = new StreamWriter(unSaveFileDialog.FileName);
-                        foreach (int unId in unaPropiedad.getReservas())
+                        /*
+                        foreach (int unId in elSistema.GetPropiedad(idPropiedad).getReservas())
                         {
                             Reserva unaReserva = new Reserva(unId, new List<int>(), 0, DateTime.Now, DateTime.Now, 0);
                             string[] datosReserva = elSistema.InfoReserva(elSistema.BuscarReserva(unaReserva));
                             sw.WriteLine(unId + ";" + datosReserva[5] + ";" + datosReserva[6]);
                         }
+                        */
                         sw.Close();
                     }
                 }
-                */
             }
         }
         private void ImportarCalendarioPropiedad(Propiedad unaPropiedad)
