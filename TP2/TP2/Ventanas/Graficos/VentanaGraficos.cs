@@ -34,7 +34,6 @@ namespace TP2
         private int yLabel;
 
         int YlabelAclaracion = 480;
-
         int fontSm = 10;
         int fontextraSm = 8;
 
@@ -234,6 +233,7 @@ namespace TP2
             int xNum = 720; // posicion x del primer label de sectores
             int xincremento = 260;
             float sector;
+            float sectorPocentaje;
 
             // Label Aclaracion
             Label aclaracionP = new Label();
@@ -249,10 +249,12 @@ namespace TP2
                 if (suma == 0)
                 {
                      sector = 0;
+                    sectorPocentaje = 0;
                 }
                 else
                 {
                      sector = (valor / suma) * 360;
+                    sectorPocentaje = (valor / suma) * 100;
                 }
                 Brush brush = new SolidBrush(coloresFavoritos[n]);
                 g.FillPie(brush, x0 - w / 2, y0 - hc / 2, wc, hc, ang0, sector);
@@ -270,7 +272,7 @@ namespace TP2
 
                 // Labels De Sectores
                 Label num = new Label();
-                num.Text = propiedades[n] + " " + valor.ToString("00") + " - " + (sector ).ToString("00") + "%";
+                num.Text = propiedades[n] + " " + valor.ToString("00") + " - " + sectorPocentaje.ToString("00") + "%";
                 num.Size = new Size(120, 60);
                 num.Font = new Font("Arial", fontSm, FontStyle.Bold);
 
