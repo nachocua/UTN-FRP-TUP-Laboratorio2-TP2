@@ -107,17 +107,9 @@ namespace TP2
                             lbDatosCliente.Items.Add(datosCliente[3] + ", " + datosCliente[2]);
                             idsClientes.Add(dni);
                         }
-                        /*lbDatosCliente.Items.Add("Dni: " + datosCliente[0]);
-                        lbDatosCliente.Items.Add("Nombre: " + datosCliente[2]);
-                        lbDatosCliente.Items.Add("Apellido: " + datosCliente[3]);
-                        lbDatosCliente.Items.Add("Teléfono: " + datosCliente[1]);*/
                     }
                     else
                     {
-                        /*lbDatosCliente.Items.Add("Dni: ");
-                        lbDatosCliente.Items.Add("Nombre: ");
-                        lbDatosCliente.Items.Add("Apellido: ");
-                        lbDatosCliente.Items.Add("Teléfono: ");*/
                         MessageBox.Show("No hay cliente con ese dni");
                     }
                     clienteValido = true;
@@ -171,14 +163,11 @@ namespace TP2
         }
         private bool ContieneServiciosSeleccionados(Propiedad unaPropiedad, List<string> serviciosSeleccionados)
         {
-            //bool ret = true;
             foreach (string servicioSeleccionado in serviciosSeleccionados)
             {
                 if (!unaPropiedad.Servicios.Contains(servicioSeleccionado))
                 {
                     return false;
-                    //ret = false;
-                    //break; 
                 }
             }
             return true;

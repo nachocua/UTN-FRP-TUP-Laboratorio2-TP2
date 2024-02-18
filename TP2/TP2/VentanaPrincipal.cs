@@ -459,14 +459,6 @@ namespace TP2
                     if (unSaveFileDialog.ShowDialog() == DialogResult.OK)
                     {
                         StreamWriter sw = new StreamWriter(unSaveFileDialog.FileName);
-                        /*
-                        foreach (int unId in elSistema.GetPropiedad(idPropiedad).getReservas())
-                        {
-                            Reserva unaReserva = new Reserva(unId, new List<int>(), 0, DateTime.Now, DateTime.Now, 0);
-                            string[] datosReserva = elSistema.InfoReserva(elSistema.BuscarReserva(unaReserva));
-                            sw.WriteLine(unId + ";" + datosReserva[5] + ";" + datosReserva[6]);
-                        }
-                        */
                         sw.Close();
                     }
                 }
@@ -479,10 +471,11 @@ namespace TP2
         }
         private void anularReservasMenuItem_Click(object sender, EventArgs e)
         {
-            elSistema.LimpiarClientes();
+            /*elSistema.LimpiarClientes();
             elSistema.LimpiarPropiedades();
             elSistema.LimpiarReservas();
-            sbReservas.Text = "Reservas: " + elSistema.cantidadReservas().ToString();
+            sbReservas.Text = "Reservas: " + elSistema.cantidadReservas().ToString();*/
+            elSistema.Exportable();
         }
     }
 }

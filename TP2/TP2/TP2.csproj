@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\IExportable.cs" />
     <Compile Include="Ventanas\Graficos\VentanaGraficos.cs">
       <SubType>Form</SubType>
     </Compile>

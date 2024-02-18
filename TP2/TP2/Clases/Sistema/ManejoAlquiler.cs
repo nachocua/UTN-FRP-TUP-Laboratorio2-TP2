@@ -8,10 +8,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TP2.Clases;
 
 namespace TP2
 {
-    public class ManejoAlquiler
+    public class ManejoAlquiler : IExportable
     {
         private List<Propiedad> propiedades;
         private List<Cliente> clientes;
@@ -293,9 +294,31 @@ namespace TP2
                 unaPropiedad.Clean();
             }
         }
-        internal void LimpiarReservas()
+        public void LimpiarReservas()
         {
             reservas.Clear();
+        }
+        public void Exportable()
+        {
+            string[] datos = null;
+            SaveFileDialog unSaveFileDialog = new SaveFileDialog();
+            unSaveFileDialog.Filter = "Archivo separado por comas|*.csv";
+            unSaveFileDialog.Title = "Exportar datos de propiedad";
+            if (unSaveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                StreamWriter sr = new StreamWriter(unSaveFileDialog.FileName);
+                for (int i = 0; i < clientes.Count; i++)
+                {
+                    datos = InfoCliente(i);
+                    sr.WriteLine("c;" + datos[0] + ";" + datos[2] + ";" + datos[3]);
+                }
+                for (int i = 0; i < reservas.Count; i++)
+                {
+                    datos = InfoReserva(i);
+                    sr.WriteLine("r;" + datos[0] + ";" + datos[1] + ";" + datos[3] + ";" + datos[4]);
+                }
+                sr.Close();
+            }
         }
     }
 }

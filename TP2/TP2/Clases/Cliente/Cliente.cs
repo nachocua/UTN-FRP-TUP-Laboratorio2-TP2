@@ -49,6 +49,7 @@ namespace TP2
                     }
                 }
             }
+            datosCliente += FechaNacimiento.ToString();
             return datosCliente;
         }
         public int CompareTo(Object obj)
