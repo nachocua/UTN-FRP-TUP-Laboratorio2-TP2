@@ -14,6 +14,7 @@ using System.IO;
 using TP2.Clases;
 using TP2.Clases.Login;
 using Biblioteca;
+using TP2.Ventanas;
 
 namespace TP2
 {
@@ -21,7 +22,7 @@ namespace TP2
     {
         private ManejoAlquiler elSistema;
         private SistemaLogin loginSistema;
-        private Login UsuarioActivo;       
+        private Login UsuarioActivo;
 
         public VentanaPrincipal()
         {
@@ -401,7 +402,7 @@ namespace TP2
 
         private void verGraficosMenuItem_Click(object sender, EventArgs e)
         {
-            VentanaGraficos ventanaGraficos = new VentanaGraficos(elSistema.CantidadPersonas, elSistema.CantidadPorTipoPropiedad );
+            VentanaGraficos ventanaGraficos = new VentanaGraficos(elSistema.CantidadPersonas, elSistema.CantidadPorTipoPropiedad);
             ventanaGraficos.Show();
         }
 
@@ -471,6 +472,10 @@ namespace TP2
                     if (unSaveFileDialog.ShowDialog() == DialogResult.OK)
                     {
                         StreamWriter sw = new StreamWriter(unSaveFileDialog.FileName);
+                        foreach (int unIdReserva in elSistema.GetPropiedad(idPropiedad).getReservas())
+                        {
+                            sw.WriteLine(elSistema.GetReserva(unIdReserva).ToString());
+                        }
                         sw.Close();
                     }
                 }
@@ -499,7 +504,21 @@ namespace TP2
 
         private void ExportarCalendarioItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Propiedad unaPropiedad = null;
+            VentanaExportImportProps unaVentana = new VentanaExportImportProps();
+            for (int i = 0; i < elSistema.CantidadPropiedades; i++)
+            {
+                unaPropiedad = elSistema.GetPropiedad(i);
+                if(unaPropiedad.Habilitada == true)
+                {
+                    unaVentana.dgPropiedades.Rows.Add(unaPropiedad.getData()) ;
+                }
+            }
+            if(unaVentana.ShowDialog() == DialogResult.OK) 
+            {
+                ExportarCalendarioPropiedad(Convert.ToInt32(unaVentana.dgPropiedades[0,unaVentana.numeroFila].Value.ToString()));
+            }
+            unaVentana.Dispose();
         }
     }
 }
