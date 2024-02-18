@@ -58,6 +58,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\IExportable.cs" />
+    <Compile Include="Ventanas\AnularReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\AnularReserva.Designer.cs">
+      <DependentUpon>AnularReserva.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\Graficos\VentanaGraficos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
     <Compile Include="Ventanas\VerReservas.Designer.cs">
       <DependentUpon>VerReservas.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Ventanas\AnularReserva.resx">
+      <DependentUpon>AnularReserva.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Graficos\VentanaGraficos.resx">
       <DependentUpon>VentanaGraficos.cs</DependentUpon>
     </EmbeddedResource>

@@ -481,17 +481,43 @@ namespace TP2
                 }
             }
         }
-        private void ImportarCalendarioPropiedad(Propiedad unaPropiedad)
+        private void ImportarCalendarioPropiedad(int idPropiedad)
         {
+            /*
             elSistema.LimpiarClientes();
             elSistema.LimpiarPropiedades();
+            */
         }
         private void anularReservasMenuItem_Click(object sender, EventArgs e)
         {
+            /*
+            //limpiar reservas
             elSistema.LimpiarClientes();
             elSistema.LimpiarPropiedades();
             elSistema.LimpiarReservas();
             sbReservas.Text = "Reservas: " + elSistema.cantidadReservas().ToString();
+            */
+            Propiedad unaPropiedad = null;
+            AnularReserva unaVentana = new AnularReserva();
+            for (int i = 0; i < elSistema.CantidadPropiedades; i++)
+            {
+                unaPropiedad = elSistema.GetPropiedad(i);
+                if (unaPropiedad.Habilitada == true)
+                {
+                    unaVentana.dgPropiedades.Rows.Add(unaPropiedad.getData());
+                }
+            }
+            if(unaVentana.ShowDialog() == DialogResult.Yes)
+            {
+                unaVentana.dgPropiedades.Rows.Clear();
+                unaVentana.btnAnularReserva.Enabled = true;
+                unaVentana.btnBuscarReservas.Enabled = false;
+                if (unaVentana.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+            unaVentana.Dispose();
         }
         private void ExportarReservasClienteMenuItem_Click(object sender, EventArgs e)
         {
@@ -499,7 +525,22 @@ namespace TP2
         }
         private void ImportarCalendarioItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Propiedad unaPropiedad = null;
+            VentanaExportImportProps unaVentana = new VentanaExportImportProps();
+            unaVentana.btnExportar.Text = "Importar";
+            for (int i = 0; i < elSistema.CantidadPropiedades; i++)
+            {
+                unaPropiedad = elSistema.GetPropiedad(i);
+                if (unaPropiedad.Habilitada == true)
+                {
+                    unaVentana.dgPropiedades.Rows.Add(unaPropiedad.getData());
+                }
+            }
+            if (unaVentana.ShowDialog() == DialogResult.OK)
+            {
+                ImportarCalendarioPropiedad(Convert.ToInt32(unaVentana.dgPropiedades[0, unaVentana.numeroFila].Value.ToString()));
+            }
+            unaVentana.Dispose();
         }
 
         private void ExportarCalendarioItem_Click(object sender, EventArgs e)
@@ -509,14 +550,14 @@ namespace TP2
             for (int i = 0; i < elSistema.CantidadPropiedades; i++)
             {
                 unaPropiedad = elSistema.GetPropiedad(i);
-                if(unaPropiedad.Habilitada == true)
+                if (unaPropiedad.Habilitada == true)
                 {
-                    unaVentana.dgPropiedades.Rows.Add(unaPropiedad.getData()) ;
+                    unaVentana.dgPropiedades.Rows.Add(unaPropiedad.getData());
                 }
             }
-            if(unaVentana.ShowDialog() == DialogResult.OK) 
+            if (unaVentana.ShowDialog() == DialogResult.OK)
             {
-                ExportarCalendarioPropiedad(Convert.ToInt32(unaVentana.dgPropiedades[0,unaVentana.numeroFila].Value.ToString()));
+                ExportarCalendarioPropiedad(Convert.ToInt32(unaVentana.dgPropiedades[0, unaVentana.numeroFila].Value.ToString()));
             }
             unaVentana.Dispose();
         }
