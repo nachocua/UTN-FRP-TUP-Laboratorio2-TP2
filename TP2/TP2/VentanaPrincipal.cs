@@ -490,31 +490,47 @@ namespace TP2
         }
         private void anularReservasMenuItem_Click(object sender, EventArgs e)
         {
-            /*
+
             //limpiar reservas
+            /*
             elSistema.LimpiarClientes();
             elSistema.LimpiarPropiedades();
             elSistema.LimpiarReservas();
             sbReservas.Text = "Reservas: " + elSistema.cantidadReservas().ToString();
             */
             Propiedad unaPropiedad = null;
+            Reserva unaReserva = null;
             AnularReserva unaVentana = new AnularReserva();
             for (int i = 0; i < elSistema.CantidadPropiedades; i++)
             {
                 unaPropiedad = elSistema.GetPropiedad(i);
                 if (unaPropiedad.Habilitada == true)
                 {
-                    unaVentana.dgPropiedades.Rows.Add(unaPropiedad.getData());
+                    if (unaPropiedad.getReservas().Count() > 0)
+                    {
+                        unaVentana.dgPropiedades.Rows.Add(unaPropiedad.getData());
+                    }
                 }
             }
-            if(unaVentana.ShowDialog() == DialogResult.Yes)
+            if (unaVentana.ShowDialog() == DialogResult.Yes)
             {
                 unaVentana.dgPropiedades.Rows.Clear();
-                unaVentana.btnAnularReserva.Enabled = true;
                 unaVentana.btnBuscarReservas.Enabled = false;
+                unaPropiedad = elSistema.GetPropiedad(unaVentana.idPropiedad);
+                foreach (int idReserva in unaPropiedad.getReservas())
+                {
+                    unaReserva = elSistema.GetReserva(idReserva);
+                    if (unaReserva.Estado == "Reservado")
+                    {
+                        unaVentana.dgReservas.Rows.Add(unaReserva.ToString().Split(';'));
+                    }
+                }
+                unaVentana.dgPropiedades.Visible = false;
+                unaVentana.dgReservas.Visible = true;
                 if (unaVentana.ShowDialog() == DialogResult.OK)
                 {
-
+                    elSistema.GetReserva(unaVentana.idPropiedad).Cancelar();
+                    MessageBox.Show("Reserva anulada");
                 }
             }
             unaVentana.Dispose();

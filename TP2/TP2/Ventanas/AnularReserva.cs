@@ -24,10 +24,25 @@ namespace TP2.Ventanas
 
         private void dgPropiedades_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            btnBuscarReservas.Enabled = true;
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 idPropiedad = Convert.ToInt32(dgPropiedades[0, e.RowIndex].Value.ToString());
             }
+        }
+
+        private void dgReservas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnAnularReserva.Enabled = true;
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                idPropiedad = Convert.ToInt32(dgReservas[0, e.RowIndex].Value.ToString());
+            }
+        }
+
+        private void btnAnularReserva_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
         }
     }
 }
