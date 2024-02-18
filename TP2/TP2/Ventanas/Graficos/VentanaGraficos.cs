@@ -12,16 +12,15 @@ namespace TP2
 {
     public partial class VentanaGraficos : Form
     {
-       
+
         //private int[] barras = { 100, 50, 25 };
-        private int[] sectores = new int[2]; // datos para grafico sectores
-
-        private int[] personasPorHabitacion;
         //  personasPorHabitacion = { 58, 3, 49, 15, 20 };
+        private int[] sectores = new int[2]; // datos para grafico sectores
+        private int[] personasPorHabitacion;        
 
-        private string[] personalsLabel = { "2P", "3P", "4P", "5P", "6+P" };
+        private string[] personasPorHabLabel = { "2P", "3P", "4P", "5P", "6+P" };
         private string[] propiedades = { "Hotel", "Casas" };
-        
+        private string[] labelsEscala = { "80", "50", "20"};
 
         private int anchoPanel = 500;
         private int altoPanel = 400;
@@ -32,7 +31,6 @@ namespace TP2
         private int xPanel = 50;
         private int yPanel = 30;
         private int yLabel;
-
         int YlabelAclaracion = 480;
         int fontSm = 10;
         int fontextraSm = 8;
@@ -51,10 +49,8 @@ namespace TP2
         {
             InitializeComponent();
             InitializeUI();
-
             personasPorHabitacion = barras; // "2P", "3P", "4P", "5P", "6+P"
-            sectores = CantidadPorTipoPropiedad; // cant de casas y hotel para grafico Sectores
-            
+            sectores = CantidadPorTipoPropiedad; // cant de casas y hotel para grafico Sectores            
         }
 
         private void InitializeUI()
@@ -83,79 +79,39 @@ namespace TP2
 
         private void DrawingPanel1_Paint(object sender, PaintEventArgs e)
         {      // Grafico de barras
-
-            // Obtener el objeto Graphics para el panel
+            
             Graphics g = e.Graphics;
             int xGrafico = 100;
             int yGrafico = 400;
             int anchoGrafico = 50;
-
             int x = 80;
             int y = 410;
             yLabel = yPanel + altoPanel + 3; // Coordenada Y de todos los label de Propiedad
 
-            // Dibujar una línea horizontal
+            // Variables para Linea horizontal Escala
             Pen penHorizontal = new Pen(Color.Black, 1);  // Puedes ajustar el grosor según tus necesidades
             int yPenHorizontal = altoPanel / 2;  // Posición vertical de la línea
             int startX = x;  // Punto de inicio horizontal
-            int endX = 500;   // Punto de fin horizontal
-
-            // Label Escala 50
-            Label esc50 = new Label();
-            esc50.Text = "50";
-            esc50.Size = new Size(28, 18);
-            esc50.Font = new Font("Arial", 10, FontStyle.Bold);
-            // Establecer la posición del Label
-            esc50.Location = new Point(x + 10, yPenHorizontal + 20);
-
-            // Agregar el Label al formulario
-            Controls.Add(esc50);
-            esc50.BringToFront();
-            g.DrawLine(penHorizontal, startX, yPenHorizontal, endX, yPenHorizontal);
-
-            // Label Escala 20
-            int yPenHorizontal2 = altoPanel * 80 / 100;  // Posición vertical de la línea
-            g.DrawLine(penHorizontal, startX, yPenHorizontal2, endX, yPenHorizontal2);
-            Label esc10 = new Label();
-            esc10.Text = "20";
-            esc10.Size = new Size(28, 18);
-            esc10.Font = new Font("Arial", 10, FontStyle.Bold);
-
-            // Establecer la posición del Label
-            esc10.Location = new Point(x + 10, yPenHorizontal2 + 20);
-            // Agregar el Label al formulario
-            Controls.Add(esc10);
-            esc10.BringToFront();
-
-            // Label Escala 100
-            int yPenHorizontal3 = altoPanel * 20 / 100;  // Posición vertical de la línea
-            g.DrawLine(penHorizontal, startX, yPenHorizontal3, endX, yPenHorizontal3);
-            Label esc90 = new Label();
-            esc90.Text = "80";
-            esc90.Size = new Size(28, 18);
-            esc90.Font = new Font("Arial", 10, FontStyle.Bold);
-
-            // Establecer la posición del Label
-            esc90.Location = new Point(x + 10, yPenHorizontal3 + 20);
-            // Agregar el Label al formulario
-            Controls.Add(esc90);
-            esc90.BringToFront();
-
-           
+            int endX = 500;   // Punto de fin horizontal          
+                     
             // ********** Grafico de Barras  **********
 
             int fontSize = 10;
             int n = 0;
             int xlabelGraficos = xGrafico + 65;
+            int yLineaEscala = 0;
+            int xStartLinea = 50;
+            int xEndLinea = 450;
+            Font Arial = new Font("Arial", fontSize, FontStyle.Bold);
 
-             // Label Aclaracion
+            // Label Aclaracion
             Label aclaracionP = new Label();
             aclaracionP.Text = "P = Personas por habitacion ";
             aclaracionP.Size = new Size(280, 18);
-            aclaracionP.Font = new Font("Arial", 9, FontStyle.Bold);
+            aclaracionP.Font = Arial;
             aclaracionP.Location = new Point(150, YlabelAclaracion);
             Controls.Add(aclaracionP);
-            aclaracionP.BringToFront();
+            aclaracionP.BringToFront();        
 
             foreach (var item in personasPorHabitacion)
             {             
@@ -171,7 +127,7 @@ namespace TP2
 
                 // Label Personas
                 Label propiedad = new Label();
-                propiedad.Text = personalsLabel[n];
+                propiedad.Text = personasPorHabLabel[n];
                 propiedad.Size = new Size(40, 60);
                 propiedad.Font = new Font("Arial", fontSm, FontStyle.Bold);
                 //Establecer la posición del Label
@@ -185,11 +141,27 @@ namespace TP2
                 numerosBarra.Font = new Font("Arial", fontSize, FontStyle.Bold);
                 numerosBarra.BackColor = Color.White;
                 numerosBarra.Text = item.ToString("00");
-
                 numerosBarra.Location = new Point(xGrafico + 65, yEscala + 14);
                 Controls.Add(numerosBarra);
                 numerosBarra.BringToFront();
 
+                if (n < 3)
+                {
+                    // Labels Escala
+                    int yLineaHorizontal3 = altoPanel * Convert.ToInt32(labelsEscala[2-n]) / 100;  // Posición vertical de Label escala
+                    Label escala = new Label();
+                    escala.BackColor = Color.White;
+                    escala.Text = labelsEscala[n];
+                    escala.Size = new Size(28, 18);
+                    escala.Font = Arial;
+                    escala.Location = new Point( x+ 10, yLineaHorizontal3 + 20);
+                    Controls.Add(escala);
+                    escala.BringToFront() ;
+
+                    // Line Horizontal Escala   //g.DrawLine(pen, startingPoint, endPoint);
+                    g.DrawLine(penHorizontal, startX, yLineaHorizontal3, endX, yLineaHorizontal3);// Posición vertical de la línea
+                }
+                
                 xGrafico += anchoGrafico + 30;
                 n++;
                 xlabelGraficos = xlabelGraficos + 80;
@@ -204,10 +176,6 @@ namespace TP2
 
             // ********** Grafico de Sectores  **********
             Graphics g = e.Graphics;
-
-            //int w = anchoPanel ;
-            //int h = altoPanel ;
-
             int w = 380;
             int h = 380;
 
