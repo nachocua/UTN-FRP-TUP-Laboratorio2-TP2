@@ -127,6 +127,10 @@ namespace TP2
             reservasMenuItem.DropDownItems.Add(altaReservaMenuItem);
             altaReservaMenuItem.Click += altaReservaMenuItem_Click;
 
+            ToolStripMenuItem ExportarReservasItem = new ToolStripMenuItem("Exportar Reservas y Clientes");
+            reservasMenuItem.DropDownItems.Add(ExportarReservasItem);
+            ExportarReservasItem.Click += ExportarReservasClienteMenuItem_Click;
+
             // ******  "Configuracion"
             ToolStripMenuItem configuracionMenuItem = new ToolStripMenuItem("Configuracion");
             ToolStripMenuItem cambiarcontrasenaMenuItem = new ToolStripMenuItem("Cambiar Contraseña");
@@ -189,6 +193,14 @@ namespace TP2
                 ToolStripMenuItem nuevaPropiedadItem = new ToolStripMenuItem("Nueva Propiedad");
                 propiedadesMenuItem.DropDownItems.Add(nuevaPropiedadItem);
                 nuevaPropiedadItem.Click += nuevaPropiedadItem_Click;
+
+                ToolStripMenuItem ExportarCalendarioReservasItem = new ToolStripMenuItem("Exportar Calendario Reservas");
+                propiedadesMenuItem.DropDownItems.Add(ExportarCalendarioReservasItem);
+                ExportarCalendarioReservasItem.Click += ExportarCalendarioItem_Click;
+
+                ToolStripMenuItem ImportarCalendarioReservasItem = new ToolStripMenuItem("Importar Calendario Reservas");
+                propiedadesMenuItem.DropDownItems.Add(ImportarCalendarioReservasItem);
+                ImportarCalendarioReservasItem.Click += ImportarCalendarioItem_Click;
 
                 menuStrip1.Items.Add(propiedadesMenuItem);
 
@@ -471,11 +483,23 @@ namespace TP2
         }
         private void anularReservasMenuItem_Click(object sender, EventArgs e)
         {
-            /*elSistema.LimpiarClientes();
+            elSistema.LimpiarClientes();
             elSistema.LimpiarPropiedades();
             elSistema.LimpiarReservas();
-            sbReservas.Text = "Reservas: " + elSistema.cantidadReservas().ToString();*/
+            sbReservas.Text = "Reservas: " + elSistema.cantidadReservas().ToString();
+        }
+        private void ExportarReservasClienteMenuItem_Click(object sender, EventArgs e)
+        {
             elSistema.Exportable();
+        }
+        private void ImportarCalendarioItem_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ExportarCalendarioItem_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }
