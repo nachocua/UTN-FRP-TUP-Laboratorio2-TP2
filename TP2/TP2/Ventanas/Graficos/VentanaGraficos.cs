@@ -16,7 +16,7 @@ namespace TP2
         //private int[] barras = { 100, 50, 25 };
         //  personasPorHabitacion = { 58, 3, 49, 15, 20 };
         private int[] sectores = new int[2]; // datos para grafico sectores
-        private int[] personasPorHabitacion;        
+        private int[] personasPorHabitacion; // datos para grafico barras    
 
         private string[] personasPorHabLabel = { "2P", "3P", "4P", "5P", "6+P" };
         private string[] propiedades = { "Hotel", "Casas" };
@@ -34,7 +34,7 @@ namespace TP2
         int YlabelAclaracion = 480;
         int fontSm = 10;
         int fontextraSm = 8;
-
+       
         // Colores
         private Color[] coloresFavoritos = new Color[]
         {
@@ -43,7 +43,7 @@ namespace TP2
             Color.FromArgb(242, 203, 187),    // BabyPink
             Color.FromArgb(159, 164, 207),    // Blue Bell
         };
-        //public Color[] Colores  = { Color.Blue, Color.Black, Color.Yellow };
+       
 
         public VentanaGraficos(int[] barras , int[] CantidadPorTipoPropiedad)
         {
@@ -91,17 +91,14 @@ namespace TP2
             // Variables para Linea horizontal Escala
             Pen penHorizontal = new Pen(Color.Black, 1);  // Puedes ajustar el grosor según tus necesidades
             int yPenHorizontal = altoPanel / 2;  // Posición vertical de la línea
-            int startX = x;  // Punto de inicio horizontal
-            int endX = 500;   // Punto de fin horizontal          
-                     
+            int startX = x;  // Punto de inicio Linea horizontal
+            int endX = 500;   // Punto de fin Linea horizontal          
+
             // ********** Grafico de Barras  **********
 
             int fontSize = 10;
             int n = 0;
             int xlabelGraficos = xGrafico + 65;
-            int yLineaEscala = 0;
-            int xStartLinea = 50;
-            int xEndLinea = 450;
             Font Arial = new Font("Arial", fontSize, FontStyle.Bold);
 
             // Label Aclaracion
@@ -232,8 +229,8 @@ namespace TP2
 
                 // Crear un Panel que actúe como un cuadrado
                 Panel cuadradoPanel = new Panel();
-                cuadradoPanel.Size = new System.Drawing.Size(16, 16); // Establecer el tamaño para hacer un cuadrado
-                cuadradoPanel.Location = new System.Drawing.Point(xNum - 20, 434); // Establecer la posición en el formulario
+                cuadradoPanel.Size = new System.Drawing.Size(16, 16); // tamaño para hacer un cuadrado
+                cuadradoPanel.Location = new System.Drawing.Point(xNum - 20, 434); // posición en el formulario
                 cuadradoPanel.BackColor = coloresFavoritos[n]; // Establecer el color 
                 Controls.Add(cuadradoPanel);
                 cuadradoPanel.BringToFront();
