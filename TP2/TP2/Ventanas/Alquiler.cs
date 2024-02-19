@@ -128,9 +128,9 @@ namespace TP2
         bool MostrarCasaDeFinSemana(Propiedad unaPropiedad)
         {
             bool state = true;
-            if(unaPropiedad is CasaFinSemana)
+            if (unaPropiedad is CasaFinSemana)
             {
-                if(!EsFinde()) state = false;
+                if (!EsFinde()) state = false;
             }
             return state;
         }
@@ -234,7 +234,7 @@ namespace TP2
             dgView.Rows.Clear();
             propiedadSeleccionada = null;
             //if (dtFechaHasta.Value.CompareTo(dtFechaInicio.Value) >= 0) // IF VIEJO, LO DEJO POR LAS DUDAS (CAMBIADO EL 16/02 A LAS 2 32 AM)
-            if(VerificacionFecha())
+            if (VerificacionFecha())
             {
                 List<string> serviciosSeleccionados = CargarServicios();
                 List<string> tiposSeleccionados = CargarTipoSeleccionado();
@@ -421,12 +421,11 @@ namespace TP2
         private bool Imprimir()
         {
             bool state = false;
-            printPreviewDialog1.Document = printDocument1;
-            printDialog1.PrinterSettings.Copies = 2;
-            printDocument1.PrinterSettings = printDialog1.PrinterSettings;
-            printDocument1.DefaultPageSettings.PrinterSettings.PrintFileName = "Reserva_0" + elSistema.cantidadReservas();
+            //printDocument1.DefaultPageSettings.PrinterSettings.PrintFileName = "Reserva_0" + elSistema.cantidadReservas();
             if (printDialog1.ShowDialog() == DialogResult.OK)
             {
+                printDialog1.PrinterSettings.Copies = 2;
+                printDocument1.PrinterSettings = printDialog1.PrinterSettings;
                 printDocument1.Print();
                 state = true;
             }
@@ -469,7 +468,7 @@ namespace TP2
                     "Nro Factura: {0:D6}\n" +
                     "Cliente: {1} {2}\n" +
                     "FECHA DE EMISION: {3}",
-                    elSistema.cantidadReservas()  ,
+                    elSistema.cantidadReservas(),
                     unCliente.Nombres, unCliente.Apellidos, DateTime.Now.ToShortDateString()),
                     font, brush, margen + medidaAux + 20, y + 20);
                 // LISTADO DE PERSONAS
@@ -562,7 +561,7 @@ namespace TP2
         private void btnVerReservas_Click(object sender, EventArgs e)
         {
             List<Reserva> reservas = new List<Reserva>();
-            for(int i = 0; i < elSistema.cantidadReservas(); i++)
+            for (int i = 0; i < elSistema.cantidadReservas(); i++)
             {
                 reservas.Add(elSistema.GetReserva(i));
             }
