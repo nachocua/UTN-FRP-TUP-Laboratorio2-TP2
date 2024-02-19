@@ -487,10 +487,6 @@ namespace TP2
             elSistema.LimpiarClientes();
             elSistema.LimpiarPropiedades();
             */
-        }
-        private void anularReservasMenuItem_Click(object sender, EventArgs e)
-        {
-
             //limpiar reservas
             /*
             elSistema.LimpiarClientes();
@@ -498,6 +494,9 @@ namespace TP2
             elSistema.LimpiarReservas();
             sbReservas.Text = "Reservas: " + elSistema.cantidadReservas().ToString();
             */
+        }
+        private void anularReservasMenuItem_Click(object sender, EventArgs e)
+        {
             Propiedad unaPropiedad = null;
             Reserva unaReserva = null;
             AnularReserva unaVentana = new AnularReserva();
