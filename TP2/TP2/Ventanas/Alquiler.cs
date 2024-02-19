@@ -125,6 +125,15 @@ namespace TP2
                 clienteValido = false;
             }
         }
+        bool MostrarCasaDeFinSemana(Propiedad unaPropiedad)
+        {
+            bool state = true;
+            if(unaPropiedad is CasaFinSemana)
+            {
+                if(!EsFinde()) state = false;
+            }
+            return state;
+        }
         private List<Propiedad> FiltrarPropiedades(List<string> tipos, List<string> servicios, string ubicacion, int capacidad)
         {
             bool capacidadExacta = ContieneCapacidadExacta(propiedades, capacidad);
@@ -132,7 +141,7 @@ namespace TP2
 
             foreach (Propiedad propiedad in propiedades)
             {
-                if (ContieneTipoSeleccionado(propiedad, tipos) && ContieneServiciosSeleccionados(propiedad, servicios) && (propiedad.Ciudad == ubicacion || ubicacion == "Todas") && (propiedad.Habilitada))
+                if (ContieneTipoSeleccionado(propiedad, tipos) && ContieneServiciosSeleccionados(propiedad, servicios) && (propiedad.Ciudad == ubicacion || ubicacion == "Todas") && (propiedad.Habilitada) && MostrarCasaDeFinSemana(propiedad))
                 {
                     if (capacidadExacta)
                     {
@@ -212,6 +221,13 @@ namespace TP2
                 state = (mes + dias) > 0;
             }
             return state;
+        }
+        private bool EsFinde()
+        {
+            bool cantDias = (dtFechaHasta.Value.Day - dtFechaInicio.Value.Day) <= 2;
+            bool inicio = dtFechaInicio.Value.DayOfWeek == DayOfWeek.Friday || dtFechaInicio.Value.DayOfWeek == DayOfWeek.Saturday;
+            bool fin = dtFechaHasta.Value.DayOfWeek == DayOfWeek.Saturday || dtFechaHasta.Value.DayOfWeek == DayOfWeek.Sunday;
+            return inicio && fin && cantDias;
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
