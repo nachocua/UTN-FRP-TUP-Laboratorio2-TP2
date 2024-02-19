@@ -1,6 +1,7 @@
 ﻿using Biblioteca;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -280,24 +281,6 @@ namespace TP2
         {
             return clientes.Count;
         }
-        public void LimpiarClientes()
-        {
-            foreach (Cliente unCliente in clientes)
-            {
-                unCliente.Clean();
-            }
-        }
-        public void LimpiarPropiedades()
-        {
-            foreach (Propiedad unaPropiedad in propiedades)
-            {
-                unaPropiedad.Clean();
-            }
-        }
-        public void LimpiarReservas()
-        {
-            reservas.Clear();
-        }
         public void Exportable()
         {
             string[] datos = null;
@@ -319,6 +302,22 @@ namespace TP2
                 }
                 sr.Close();
             }
+        }
+        public void EliminarReserva(int indx)
+        {
+            reservas.RemoveAt(indx);
+        }
+        public void EliminarReserva(Reserva reservaARemover)
+        {
+            reservas.Remove(reservaARemover);
+            propiedades[reservaARemover.NroPropiedad].Clean(reservaARemover.NroReserva);
+            Cliente clienteABuscar = null;
+            foreach(int idCliente in reservaARemover.NrosClientes) 
+            {
+                clienteABuscar = new Cliente(idCliente, "", "", 0, DateTime.Now);
+                clientes[BuscarCliente(clienteABuscar)].Clean(reservaARemover.NroReserva);
+            }
+            
         }
     }
 }

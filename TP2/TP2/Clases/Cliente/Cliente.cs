@@ -60,9 +60,9 @@ namespace TP2
         {
             return new string[] { Nombres, Apellidos, Dni.ToString(), FechaNacimiento.ToShortDateString() };
         }
-        internal void Clean()
+        internal void Clean(int idReserva)
         {
-            IdReservas.Clear();
+            IdReservas.ToList().Remove(idReserva);
         }
     }
 }

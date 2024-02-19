@@ -60,9 +60,9 @@ namespace TP2
         {
             Habilitada = state;
         }
-        internal void Clean()
+        public void Clean(int idReserva)
         {
-            idReservas.Clear();
+            idReservas.Remove(idReserva);
         }
     }
 }

@@ -57,6 +57,13 @@ namespace TP2
             sbPropiedades.Text += elSistema.CantidadPropiedades.ToString();
             sbClientes.Text += elSistema.CantidadClientes().ToString();
             sbReservas.Text += elSistema.cantidadReservas().ToString();
+
+            /*
+            elSistema.LimpiarClientes();
+            elSistema.LimpiarPropiedades();
+            elSistema.LimpiarReservas();
+            sbReservas.Text = "Reservas: " + elSistema.cantidadReservas().ToString();
+            */
         }
 
         private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -474,7 +481,7 @@ namespace TP2
                             }
                             j++;
                         } while (j < unaPropiedad.getReservas().Count());
-                        if(valido)
+                        if (valido)
                         {
                             unaVentana.dgPropiedades.Rows.Add(unaPropiedad.getData());
                         }
@@ -531,7 +538,8 @@ namespace TP2
                         StreamWriter sw = new StreamWriter(unSaveFileDialog.FileName);
                         foreach (int unIdReserva in elSistema.GetPropiedad(idPropiedad).getReservas())
                         {
-                            sw.WriteLine(elSistema.GetReserva(unIdReserva).ToString());
+                            Reserva unaReserva = elSistema.GetReserva(unIdReserva);
+                            sw.WriteLine(unaReserva.NroReserva + ";" + unaReserva.FechaInicio.ToShortDateString() + ";" + unaReserva.FechaHasta.ToShortDateString());
                         }
                         sw.Close();
                     }
@@ -577,19 +585,52 @@ namespace TP2
         }
         private void ImportarCalendarioPropiedad(int idPropiedad)
         {
+            OpenFileDialog unOpenFileDialog = new OpenFileDialog();
+            unOpenFileDialog.Filter = "Archivo separado por comas|*.csv";
+            unOpenFileDialog.Title = "Exportar datos de propiedad";
+            unOpenFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if (unOpenFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                List<string[]> datos = Funciones_Adicionales.LeerSeparandoArchivo(unOpenFileDialog.FileName, ";");
+                if (datos.Count > 0)
+                {
+                    bool valido = true;
+                    Reserva reservaBuscada = null;
+                    int i = 0;
+                    do
+                    {
 
+                        reservaBuscada = new Reserva(Convert.ToInt32(datos[i][0].Split('\t')[0]), new List<int>(), 0, DateTime.Now, DateTime.Now, 0);
+                        if (elSistema.BuscarReserva(reservaBuscada) == -1)
+                        {
+                            valido = false;
+                        }
+                        i++;
+                    } while (i < datos.Count && valido);
+                    if (!valido)
+                    {
+                        MessageBox.Show("Los datos a importar no coinciden con la propiedad seleccionada");
+                    }
+                    else
+                    {
+                        foreach (string[] datosReserva in datos)
+                        {
+                            Reserva unaReserva = elSistema.GetReserva(Convert.ToInt32(datosReserva[0].Split('\t')[0]));
+                            string[] fecha = datosReserva[0].Split('\t')[1].Split('/');
+                            DateTime fechaDesde = new DateTime(Convert.ToInt32(fecha[2]), Convert.ToInt32(fecha[1]), Convert.ToInt32(fecha[0]));
+                            fecha = datosReserva[0].Split('\t')[2].Split('/');
+                            DateTime fechaHasta = new DateTime(Convert.ToInt32(fecha[2]), Convert.ToInt32(fecha[1]), Convert.ToInt32(fecha[0]));
+                            Reserva nuevaReserva = new Reserva(unaReserva.NroReserva, unaReserva.NrosClientes, unaReserva.NroPropiedad, fechaDesde, fechaHasta, unaReserva.Costo);
+                            if(unaReserva.Estado == "Cancelada")
+                            {
+                                nuevaReserva.Cancelar();
+                            }
+                            elSistema.EliminarReserva(unaReserva);
+                            elSistema.NuevaReserva(nuevaReserva);
+                        }
+                    }
+                }
+            }
         }
     }
 }
-
-/*
-elSistema.LimpiarClientes();
-elSistema.LimpiarPropiedades();
-*/
-//limpiar reservas
-/*
-elSistema.LimpiarClientes();
-elSistema.LimpiarPropiedades();
-elSistema.LimpiarReservas();
-sbReservas.Text = "Reservas: " + elSistema.cantidadReservas().ToString();
-*/
