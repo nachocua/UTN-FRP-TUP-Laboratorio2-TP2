@@ -124,9 +124,9 @@ namespace TP2
             //  ******  Reservas
             ToolStripMenuItem reservasMenuItem = new ToolStripMenuItem("Reservas");
 
-            ToolStripMenuItem altaReservaMenuItem = new ToolStripMenuItem("Alta Reserva");
-            reservasMenuItem.DropDownItems.Add(altaReservaMenuItem);
-            altaReservaMenuItem.Click += altaReservaMenuItem_Click;
+            ToolStripMenuItem nuevaReservaMenuItem = new ToolStripMenuItem("Nueva Reserva");
+            reservasMenuItem.DropDownItems.Add(nuevaReservaMenuItem);
+            nuevaReservaMenuItem.Click += altaReservaMenuItem_Click;
 
             ToolStripMenuItem ExportarReservasItem = new ToolStripMenuItem("Exportar Reservas y Clientes");
             reservasMenuItem.DropDownItems.Add(ExportarReservasItem);
