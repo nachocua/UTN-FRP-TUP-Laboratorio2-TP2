@@ -451,63 +451,33 @@ namespace TP2
             ventanaCliente.Dispose();
         }
 
-        private void ExportarCalendarioPropiedad(int idPropiedad)
-        {
-            if (idPropiedad < 0)
-            {
-                MessageBox.Show("No hay una propiedad seleccionada para ser exportada");
-            }
-            else
-            {
-                if (elSistema.GetPropiedad(idPropiedad).getReservas().Count() == 0)
-                {
-                    MessageBox.Show("No hay datos para exportar");
-                }
-                else
-                {
-                    SaveFileDialog unSaveFileDialog = new SaveFileDialog();
-                    unSaveFileDialog.Filter = "Archivo separado por comas|*.csv";
-                    unSaveFileDialog.Title = "Exportar datos de propiedad";
-                    unSaveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                    if (unSaveFileDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        StreamWriter sw = new StreamWriter(unSaveFileDialog.FileName);
-                        foreach (int unIdReserva in elSistema.GetPropiedad(idPropiedad).getReservas())
-                        {
-                            sw.WriteLine(elSistema.GetReserva(unIdReserva).ToString());
-                        }
-                        sw.Close();
-                    }
-                }
-            }
-        }
-        private void ImportarCalendarioPropiedad(int idPropiedad)
-        {
-            /*
-            elSistema.LimpiarClientes();
-            elSistema.LimpiarPropiedades();
-            */
-            //limpiar reservas
-            /*
-            elSistema.LimpiarClientes();
-            elSistema.LimpiarPropiedades();
-            elSistema.LimpiarReservas();
-            sbReservas.Text = "Reservas: " + elSistema.cantidadReservas().ToString();
-            */
-        }
         private void anularReservasMenuItem_Click(object sender, EventArgs e)
         {
             Propiedad unaPropiedad = null;
             Reserva unaReserva = null;
             AnularReserva unaVentana = new AnularReserva();
+            bool valido = false;
             for (int i = 0; i < elSistema.CantidadPropiedades; i++)
             {
+                valido = false;
                 unaPropiedad = elSistema.GetPropiedad(i);
                 if (unaPropiedad.Habilitada == true)
                 {
                     if (unaPropiedad.getReservas().Count() > 0)
                     {
-                        unaVentana.dgPropiedades.Rows.Add(unaPropiedad.getData());
+                        int j = 0;
+                        do
+                        {
+                            if (elSistema.GetReserva(unaPropiedad.getReservas()[j]).Estado == "Reservado")
+                            {
+                                valido = true;
+                            }
+                            j++;
+                        } while (j < unaPropiedad.getReservas().Count());
+                        if(valido)
+                        {
+                            unaVentana.dgPropiedades.Rows.Add(unaPropiedad.getData());
+                        }
                     }
                 }
             }
@@ -538,6 +508,54 @@ namespace TP2
         {
             elSistema.Exportable();
         }
+        private void ExportarCalendarioPropiedad(int idPropiedad)
+        {
+            if (idPropiedad < 0)
+            {
+                MessageBox.Show("No hay una propiedad seleccionada para ser exportada");
+            }
+            else
+            {
+                if (elSistema.GetPropiedad(idPropiedad).getReservas().Count() == 0)
+                {
+                    MessageBox.Show("No hay datos para exportar");
+                }
+                else
+                {
+                    SaveFileDialog unSaveFileDialog = new SaveFileDialog();
+                    unSaveFileDialog.Filter = "Archivo separado por comas|*.csv";
+                    unSaveFileDialog.Title = "Exportar datos de propiedad";
+                    unSaveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    if (unSaveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        StreamWriter sw = new StreamWriter(unSaveFileDialog.FileName);
+                        foreach (int unIdReserva in elSistema.GetPropiedad(idPropiedad).getReservas())
+                        {
+                            sw.WriteLine(elSistema.GetReserva(unIdReserva).ToString());
+                        }
+                        sw.Close();
+                    }
+                }
+            }
+        }
+        private void ExportarCalendarioItem_Click(object sender, EventArgs e)
+        {
+            Propiedad unaPropiedad = null;
+            VentanaExportImportProps unaVentana = new VentanaExportImportProps();
+            for (int i = 0; i < elSistema.CantidadPropiedades; i++)
+            {
+                unaPropiedad = elSistema.GetPropiedad(i);
+                if (unaPropiedad.Habilitada == true)
+                {
+                    unaVentana.dgPropiedades.Rows.Add(unaPropiedad.getData());
+                }
+            }
+            if (unaVentana.ShowDialog() == DialogResult.OK)
+            {
+                ExportarCalendarioPropiedad(Convert.ToInt32(unaVentana.dgPropiedades[0, unaVentana.numeroFila].Value.ToString()));
+            }
+            unaVentana.Dispose();
+        }
         private void ImportarCalendarioItem_Click(object sender, EventArgs e)
         {
             Propiedad unaPropiedad = null;
@@ -557,24 +575,21 @@ namespace TP2
             }
             unaVentana.Dispose();
         }
-
-        private void ExportarCalendarioItem_Click(object sender, EventArgs e)
+        private void ImportarCalendarioPropiedad(int idPropiedad)
         {
-            Propiedad unaPropiedad = null;
-            VentanaExportImportProps unaVentana = new VentanaExportImportProps();
-            for (int i = 0; i < elSistema.CantidadPropiedades; i++)
-            {
-                unaPropiedad = elSistema.GetPropiedad(i);
-                if (unaPropiedad.Habilitada == true)
-                {
-                    unaVentana.dgPropiedades.Rows.Add(unaPropiedad.getData());
-                }
-            }
-            if (unaVentana.ShowDialog() == DialogResult.OK)
-            {
-                ExportarCalendarioPropiedad(Convert.ToInt32(unaVentana.dgPropiedades[0, unaVentana.numeroFila].Value.ToString()));
-            }
-            unaVentana.Dispose();
+
         }
     }
 }
+
+/*
+elSistema.LimpiarClientes();
+elSistema.LimpiarPropiedades();
+*/
+//limpiar reservas
+/*
+elSistema.LimpiarClientes();
+elSistema.LimpiarPropiedades();
+elSistema.LimpiarReservas();
+sbReservas.Text = "Reservas: " + elSistema.cantidadReservas().ToString();
+*/
