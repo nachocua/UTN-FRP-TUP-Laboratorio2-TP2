@@ -20,9 +20,9 @@ namespace TP2
         public DateTime FechaInicio { get; private set; }
         public DateTime FechaHasta { get; private set; }
         public double Costo { get; private set; }
-        public Reserva(int reservasEfectuadas, List<int> idsClientes, int idPropiedad, DateTime fechaDesde, DateTime fechaHasta, double costo)
+        public Reserva(int nroReserva, List<int> idsClientes, int idPropiedad, DateTime fechaDesde, DateTime fechaHasta, double costo)
         {
-            NroReserva = reservasEfectuadas;
+            NroReserva = nroReserva;
             NrosClientes = new List<int>();
             foreach (int id in idsClientes) 
             {

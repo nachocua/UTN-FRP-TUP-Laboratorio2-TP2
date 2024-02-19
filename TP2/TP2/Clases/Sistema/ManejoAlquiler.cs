@@ -23,9 +23,6 @@ namespace TP2
         private string FileReservas;
         public int[] CantidadPersonas { get; private set; }
         public int[] CantidadPorTipoPropiedad { get; private set; }
-        public int CantidadCasas { get; private set; }
-        public int CantidadHoteles { get; private set; }
-        public int CantidadCasasFinde { get; private set; }
         public int CantidadPropiedades
         {
             get
@@ -302,10 +299,6 @@ namespace TP2
                 }
                 sr.Close();
             }
-        }
-        public void EliminarReserva(int indx)
-        {
-            reservas.RemoveAt(indx);
         }
         public void EliminarReserva(Reserva reservaARemover)
         {
