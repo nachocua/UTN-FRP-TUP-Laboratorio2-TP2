@@ -97,22 +97,6 @@ namespace TP2
                     datos += "*" + Servicios[i];
                 }
             }
-            //Incompleto
-            /*
-            datos += ";" + Propietario + ";";
-            if (imagenes.Count > 0)
-            {
-                datos += imagenes[0];
-                if (imagenes.Count > 1)
-                {
-                    datos += "*" + imagenes[1];
-                }
-            }
-            else
-            {
-                datos += "ninguna";
-            }
-            */
             return datos;
         }
     }
