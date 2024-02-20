@@ -23,34 +23,11 @@
     <h2>Pendientes</h2>
     <ul>
         <li>
-            TRISTAN - Editar Gráfico de Torta (Hotel + Casa)
-        </li>
-        <li>
             TRISTAN - Página de Ayuda
-        </li>
-        <li>
-            NACHO - Exportar lista de clientes
-        </li>
-        <li>
-            NACHO - respaldar CSV (en usuario base)
         </li>
         <li>
             Updatear Diagrama de clases.
         </li>
-        <!-- <li>
-            NACHO - Revisar -> Exportar Calendario Reservas
-        </li>
-        <li>
-            NACHO - Importar Calendario Reservas
-        </li>
-        <li>
-            TRISTAN - Agregar botón - Anular Reserva (admin)
-        </li>
-        <li>
-            JULI - Filtro - Revisar Numeric UpDown
-        <li>
-            Agregar casos de uso
-        </li> -->
     </ul>
 
    
