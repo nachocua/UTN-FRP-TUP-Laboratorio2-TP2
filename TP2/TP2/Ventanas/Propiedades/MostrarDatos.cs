@@ -291,7 +291,7 @@ namespace TP2
                     {
                         if (propiedad.Plazas == capacidad)
                         {
-                            propiedadesFiltradas.Add(propiedad);    
+                            propiedadesFiltradas.Add(propiedad);
                         }
                     }
                     else if (propiedad.Plazas > capacidad)
@@ -343,39 +343,55 @@ namespace TP2
 
         private void btnVerReservas_Click(object sender, EventArgs e)
         {
-            List<Reserva> reservas = new List<Reserva>();
-            for (int i = 0; i < elSistema.cantidadReservas(); i++)
+            foreach (Propiedad unaPropiedad in propiedades)
             {
-                reservas.Add(elSistema.GetReserva(i));
+                List<int> lista = unaPropiedad.getReservas();
+                for (int i = 0; i < unaPropiedad.getReservas().Count; i++)
+                {
+                    unaPropiedad.Clean(lista[i]);
+                }
+                MessageBox.Show("Cantidad de reservas de " + unaPropiedad.Nombre + ": " + unaPropiedad.getReservas().Count);
             }
-            VerReservas verReservas = new VerReservas(reservas);
-            verReservas.ShowDialog();
-            verReservas.Dispose();
         }
-        //private List<string> EliminarDuplicados(List<string> lista)
+        //if (propiedadSeleccionada != null)
         //{
-        //    List<string> sinDuplicados = new List<string>();
-
-        //    foreach (string ubicacion in lista)
+        //    Propiedad unaPropiedad = elSistema.BuscarPropiedad(Convert.ToInt32(propiedadSeleccionada[0]));
+        //    if (unaPropiedad != null)
         //    {
-        //        bool estaRepetido = false;
-
-        //        foreach (string item in sinDuplicados)
+        //        List<Reserva> reservas = new List<Reserva>();
+        //        foreach(int id in unaPropiedad.getReservas())
         //        {
-        //            if (ubicacion == item)
-        //            {
-        //                estaRepetido = true;
-        //                break;
-        //            }
+        //            reservas.Add(elSistema.GetReserva(id));
         //        }
-
-        //        if (!estaRepetido)
-        //        {
-        //            sinDuplicados.Add(ubicacion);
-        //        }
+        //        VerReservas verReservas = new VerReservas(reservas);
+        //        verReservas.ShowDialog();
+        //        verReservas.Dispose();
         //    }
-
-        //    return sinDuplicados;
         //}
     }
+    //private List<string> EliminarDuplicados(List<string> lista)
+    //{
+    //    List<string> sinDuplicados = new List<string>();
+
+    //    foreach (string ubicacion in lista)
+    //    {
+    //        bool estaRepetido = false;
+
+    //        foreach (string item in sinDuplicados)
+    //        {
+    //            if (ubicacion == item)
+    //            {
+    //                estaRepetido = true;
+    //                break;
+    //            }
+    //        }
+
+    //        if (!estaRepetido)
+    //        {
+    //            sinDuplicados.Add(ubicacion);
+    //        }
+    //    }
+
+    //    return sinDuplicados;
+    //}
 }

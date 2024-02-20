@@ -691,7 +691,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1048, 629);
+            this.ClientSize = new System.Drawing.Size(1047, 629);
             this.Controls.Add(this.btnVerReservas);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);

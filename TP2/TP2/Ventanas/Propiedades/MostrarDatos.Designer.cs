@@ -83,7 +83,7 @@
             this.dgView.Location = new System.Drawing.Point(166, 12);
             this.dgView.Name = "dgView";
             this.dgView.ReadOnly = true;
-            this.dgView.Size = new System.Drawing.Size(643, 565);
+            this.dgView.Size = new System.Drawing.Size(643, 528);
             this.dgView.TabIndex = 5;
             this.dgView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgView_CellClick);
             this.dgView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgView_CellContentClick);
@@ -369,6 +369,7 @@
             this.btnVerReservas.TabIndex = 31;
             this.btnVerReservas.Text = "Ver Reservas";
             this.btnVerReservas.UseVisualStyleBackColor = true;
+            this.btnVerReservas.Visible = false;
             this.btnVerReservas.Click += new System.EventHandler(this.btnVerReservas_Click);
             // 
             // MostrarDatos
@@ -376,7 +377,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(816, 592);
+            this.ClientSize = new System.Drawing.Size(816, 543);
             this.Controls.Add(this.btnVerReservas);
             this.Controls.Add(this.gbHabilitadas);
             this.Controls.Add(this.gbCapacidad);
