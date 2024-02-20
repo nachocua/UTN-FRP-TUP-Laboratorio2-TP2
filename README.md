@@ -22,12 +22,7 @@
 <footer>
     <h2>Pendientes</h2>
     <ul>
-        <li>
-            TRISTAN - Página de Ayuda
-        </li>
-        <li>
-            Updatear Diagrama de clases.
-        </li>
+        <li>Nada Pendiente</li>
     </ul>
 
    
