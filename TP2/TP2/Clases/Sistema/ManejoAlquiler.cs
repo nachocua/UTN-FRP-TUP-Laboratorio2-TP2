@@ -244,6 +244,7 @@ namespace TP2
                     }
                 }
                 noEncontrado = true;
+                i = 0;
                 while (i < propiedades.Count && noEncontrado)
                 {
                     if (propiedades[i].idPropiedad == unaReserva.NroPropiedad)

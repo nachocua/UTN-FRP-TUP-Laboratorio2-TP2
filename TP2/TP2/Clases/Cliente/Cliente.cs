@@ -14,11 +14,11 @@ namespace TP2
     {
         public Stack<int> IdReservas { get; }
         public int Dni { get; private set; }
-        public int Telefono { get; private set; }
+        public long Telefono { get; private set; }
         public string Nombres { get; private set; }
         public string Apellidos { get; private set; }
         public DateTime FechaNacimiento { get; private set; }
-        public Cliente(int dni, string nombres, string apellidos, int nroTelefono, DateTime fechaNacimiento)
+        public Cliente(int dni, string nombres, string apellidos, long nroTelefono, DateTime fechaNacimiento)
         {
             Dni = dni;
             Nombres = nombres;

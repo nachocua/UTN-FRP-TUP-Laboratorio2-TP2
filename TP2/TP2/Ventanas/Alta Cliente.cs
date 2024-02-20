@@ -23,11 +23,12 @@ namespace TP2
         private void btnNuevoUsuario_Click(object sender, EventArgs e)
         {
             bool state = true;
-            int dni = 0, tel = 0;
+            int dni = 0;
+            long tel = 0;
             try
             {
                 dni = Convert.ToInt32(leDni.Text);
-                tel = Convert.ToInt32(leTelefono.Text);
+                tel = Convert.ToInt64(leTelefono.Text);
                 if (!(leDni.Text.Length == 8))
                 {
                     throw new Exception("El dni debe contener 8 digitos. Si su dni tiene 7 digitos agregue un 0 al inicio");

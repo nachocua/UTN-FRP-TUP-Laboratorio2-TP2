@@ -377,7 +377,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(816, 543);
+            this.ClientSize = new System.Drawing.Size(816, 545);
             this.Controls.Add(this.btnVerReservas);
             this.Controls.Add(this.gbHabilitadas);
             this.Controls.Add(this.gbCapacidad);
