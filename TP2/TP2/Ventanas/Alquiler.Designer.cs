@@ -130,9 +130,9 @@
             this.cbCasaFinde.AutoSize = true;
             this.cbCasaFinde.Location = new System.Drawing.Point(6, 65);
             this.cbCasaFinde.Name = "cbCasaFinde";
-            this.cbCasaFinde.Size = new System.Drawing.Size(124, 17);
+            this.cbCasaFinde.Size = new System.Drawing.Size(103, 17);
             this.cbCasaFinde.TabIndex = 2;
-            this.cbCasaFinde.Text = "Casa Fin de Semana";
+            this.cbCasaFinde.Text = "CasaFinSemana";
             this.cbCasaFinde.UseVisualStyleBackColor = true;
             // 
             // cbHotel
@@ -684,14 +684,13 @@
             this.btnVerReservas.TabIndex = 42;
             this.btnVerReservas.Text = "Ver Reservas";
             this.btnVerReservas.UseVisualStyleBackColor = true;
-            this.btnVerReservas.Visible = false;
             this.btnVerReservas.Click += new System.EventHandler(this.btnVerReservas_Click);
             // 
             // Alquiler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1052, 629);
+            this.ClientSize = new System.Drawing.Size(1186, 629);
             this.Controls.Add(this.btnVerReservas);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);

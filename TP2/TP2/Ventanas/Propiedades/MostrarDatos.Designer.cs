@@ -57,6 +57,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.gbHabilitadas = new System.Windows.Forms.GroupBox();
             this.cbMostrarTodo = new System.Windows.Forms.CheckBox();
+            this.btnVerReservas = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).BeginInit();
             this.gbTipoPropiedad.SuspendLayout();
             this.gbServicios.SuspendLayout();
@@ -82,7 +83,7 @@
             this.dgView.Location = new System.Drawing.Point(166, 12);
             this.dgView.Name = "dgView";
             this.dgView.ReadOnly = true;
-            this.dgView.Size = new System.Drawing.Size(643, 528);
+            this.dgView.Size = new System.Drawing.Size(643, 565);
             this.dgView.TabIndex = 5;
             this.dgView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgView_CellClick);
             this.dgView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgView_CellContentClick);
@@ -360,12 +361,23 @@
             this.cbMostrarTodo.Text = "Mostrar todas";
             this.cbMostrarTodo.UseVisualStyleBackColor = true;
             // 
+            // btnVerReservas
+            // 
+            this.btnVerReservas.Location = new System.Drawing.Point(10, 547);
+            this.btnVerReservas.Name = "btnVerReservas";
+            this.btnVerReservas.Size = new System.Drawing.Size(150, 30);
+            this.btnVerReservas.TabIndex = 31;
+            this.btnVerReservas.Text = "Ver Reservas";
+            this.btnVerReservas.UseVisualStyleBackColor = true;
+            this.btnVerReservas.Click += new System.EventHandler(this.btnVerReservas_Click);
+            // 
             // MostrarDatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(816, 548);
+            this.ClientSize = new System.Drawing.Size(816, 592);
+            this.Controls.Add(this.btnVerReservas);
             this.Controls.Add(this.gbHabilitadas);
             this.Controls.Add(this.gbCapacidad);
             this.Controls.Add(this.gbUbicacion);
@@ -424,5 +436,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.GroupBox gbHabilitadas;
         private System.Windows.Forms.CheckBox cbMostrarTodo;
+        private System.Windows.Forms.Button btnVerReservas;
     }
 }

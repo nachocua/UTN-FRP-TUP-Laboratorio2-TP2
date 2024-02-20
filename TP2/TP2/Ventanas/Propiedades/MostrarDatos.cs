@@ -340,6 +340,18 @@ namespace TP2
             }
             return contieneCapacidadExacta;
         }
+
+        private void btnVerReservas_Click(object sender, EventArgs e)
+        {
+            List<Reserva> reservas = new List<Reserva>();
+            for (int i = 0; i < elSistema.cantidadReservas(); i++)
+            {
+                reservas.Add(elSistema.GetReserva(i));
+            }
+            VerReservas verReservas = new VerReservas(reservas);
+            verReservas.ShowDialog();
+            verReservas.Dispose();
+        }
         //private List<string> EliminarDuplicados(List<string> lista)
         //{
         //    List<string> sinDuplicados = new List<string>();

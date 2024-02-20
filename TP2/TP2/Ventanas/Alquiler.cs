@@ -27,6 +27,7 @@ namespace TP2
         int observacion = 0;
         private List<int> idsClientes;
         string ubicacionSeleccionada = "Todas";
+        int simples, dobles, triples;
         public Alquiler(ManejoAlquiler unSistema)
         {
             InitializeComponent(); elSistema = unSistema;
@@ -38,36 +39,7 @@ namespace TP2
             idsClientes = new List<int>();
             cbUbicacion.Text = "Ubicaciones";
             CargarUbicaciones();
-        }
-        private List<string> CargarServicios()
-        {
-            // Filtro las propiedades segun los servicios seleccionados desde los CheckBox
-            List<string> serviciosSeleccionados = new List<string>();
-            foreach (Control control in gbServicios.Controls)
-            {
-                if (control is CheckBox)
-                {
-                    CheckBox checkBox = (CheckBox)control;
-                    if (checkBox.Checked)
-                    {
-                        serviciosSeleccionados.Add(checkBox.Text);
-                    }
-                }
-            }
-            return serviciosSeleccionados;
-        }
-        private List<string> CargarTipoSeleccionado()
-        {
-            //Filtro propiedades segun el tipo
-            List<string> tiposSeleccionados = new List<string>();
-            foreach (Control control in gbTipoPropiedad.Controls)
-            {
-                if (((CheckBox)control).Checked)
-                {
-                    tiposSeleccionados.Add(control.Text);
-                }
-            }
-            return tiposSeleccionados;
+            simples = dobles = triples = 0;
         }
         private List<Propiedad> ExportarPropiedades(ManejoAlquiler unSistema)
         {
@@ -125,74 +97,6 @@ namespace TP2
                 clienteValido = false;
             }
         }
-        bool MostrarCasaDeFinSemana(Propiedad unaPropiedad)
-        {
-            bool state = true;
-            if (unaPropiedad is CasaFinSemana)
-            {
-                if (!EsFinde()) state = false;
-            }
-            return state;
-        }
-        private List<Propiedad> FiltrarPropiedades(List<string> tipos, List<string> servicios, string ubicacion, int capacidad)
-        {
-            bool capacidadExacta = ContieneCapacidadExacta(propiedades, capacidad);
-            List<Propiedad> propiedadesFiltradas = new List<Propiedad>();
-
-            foreach (Propiedad propiedad in propiedades)
-            {
-                if (ContieneTipoSeleccionado(propiedad, tipos) && ContieneServiciosSeleccionados(propiedad, servicios) && (propiedad.Ciudad == ubicacion || ubicacion == "Todas") && (propiedad.Habilitada) && MostrarCasaDeFinSemana(propiedad))
-                {
-                    if (capacidadExacta)
-                    {
-                        if (propiedad.Plazas == capacidad)
-                        {
-                            propiedadesFiltradas.Add(propiedad);
-                        }
-                    }
-                    else if (propiedad.Plazas > capacidad)
-                    {
-                        propiedadesFiltradas.Add(propiedad);
-                    }
-                }
-            }
-            return propiedadesFiltradas;
-        }
-        private bool ContieneCapacidadExacta(List<Propiedad> propiedades, int capacidad)
-        {
-            bool contieneCapacidadExacta = false;
-            foreach (Propiedad p in propiedades)
-            {
-                if (p.Plazas == capacidad)
-                {
-                    contieneCapacidadExacta = true;
-                }
-            }
-            return contieneCapacidadExacta;
-        }
-        private bool ContieneServiciosSeleccionados(Propiedad unaPropiedad, List<string> serviciosSeleccionados)
-        {
-            foreach (string servicioSeleccionado in serviciosSeleccionados)
-            {
-                if (!unaPropiedad.Servicios.Contains(servicioSeleccionado))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        private bool ContieneTipoSeleccionado(Propiedad unaPropiedad, List<string> tiposSeleccionados)
-        {
-            bool ret = true;
-            foreach (string tipoSeleccionado in tiposSeleccionados)
-            {
-                if (unaPropiedad.GetType().Name != tipoSeleccionado)
-                {
-                    ret = false;
-                }
-            }
-            return ret;
-        }
         private void CargarUbicaciones()
         {
             List<string> ubicaciones = new List<string>();
@@ -222,13 +126,6 @@ namespace TP2
             }
             return state;
         }
-        private bool EsFinde()
-        {
-            bool cantDias = (dtFechaHasta.Value.Day - dtFechaInicio.Value.Day) <= 2;
-            bool inicio = dtFechaInicio.Value.DayOfWeek == DayOfWeek.Friday || dtFechaInicio.Value.DayOfWeek == DayOfWeek.Saturday;
-            bool fin = dtFechaHasta.Value.DayOfWeek == DayOfWeek.Saturday || dtFechaHasta.Value.DayOfWeek == DayOfWeek.Sunday;
-            return inicio && fin && cantDias;
-        }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             dgView.Rows.Clear();
@@ -254,21 +151,18 @@ namespace TP2
                     {
                         foreach (int unaReserva in reservas)
                         {
-                            if (state)
+                            Reserva reservaABuscar = new Reserva(unaReserva, new List<int>(), 0, DateTime.Now, DateTime.Now, 0);
+                            indx = elSistema.BuscarReserva(reservaABuscar);
+                            if (indx != -1)
                             {
-                                Reserva reservaABuscar = new Reserva(unaReserva, new List<int>(), 0, DateTime.Now, DateTime.Now, 0);
-                                indx = elSistema.BuscarReserva(reservaABuscar);
-                                if (indx != -1)
+                                datosReservas = elSistema.InfoReserva(indx);
+                                string[] fecha = datosReservas[4].Split(' ')[0].Split('/');
+                                string[] fecha2 = datosReservas[5].Split(' ')[0].Split('/');
+                                fechaDesde = new DateTime(Convert.ToInt32(fecha[2]), Convert.ToInt32(fecha[1]), Convert.ToInt32(fecha[0]));
+                                fechaHasta = new DateTime(Convert.ToInt32(fecha2[2]), Convert.ToInt32(fecha2[1]), Convert.ToInt32(fecha2[0]));
+                                if ((dtFechaHasta.Value > fechaDesde) && (dtFechaInicio.Value < fechaHasta))
                                 {
-                                    datosReservas = elSistema.InfoReserva(indx);
-                                    string[] fecha = datosReservas[4].Split(' ')[0].Split('/');
-                                    string[] fecha2 = datosReservas[5].Split(' ')[0].Split('/');
-                                    fechaDesde = new DateTime(Convert.ToInt32(fecha[2]), Convert.ToInt32(fecha[1]), Convert.ToInt32(fecha[0]));
-                                    fechaHasta = new DateTime(Convert.ToInt32(fecha2[2]), Convert.ToInt32(fecha2[1]), Convert.ToInt32(fecha2[0]));
-                                    if ((dtFechaHasta.Value > fechaDesde) && (dtFechaInicio.Value < fechaHasta))
-                                    {
-                                        state = false;
-                                    }
+                                    state = false;
                                 }
                             }
                         }
@@ -418,6 +312,43 @@ namespace TP2
         {
             dias = (dtFechaHasta.Value.Day - dtFechaInicio.Value.Day);
         }
+        private void MostrarHabitacionesDisponibles(Propiedad unaPropiedad)
+        {
+            if (unaPropiedad is Hotel)
+            {
+                Hotel unHotel = unaPropiedad as Hotel;
+                simples = unHotel.Simple;
+                dobles = unHotel.Doble;
+                triples = unHotel.Triple;
+                foreach (int unaReserva in unHotel.getReservas())
+                {
+                    bool state = true;
+                    string[] datosReservas = null;
+                    DateTime fechaDesde;
+                    DateTime fechaHasta;
+                    Reserva reservaABuscar = new Reserva(unaReserva, null, 0, DateTime.Now, DateTime.Now, 0);
+                    int i = elSistema.BuscarReserva(reservaABuscar);
+                    if (i != -1)
+                    {
+                        datosReservas = elSistema.InfoReserva(i);
+                        string[] fecha = datosReservas[4].Split(' ')[0].Split('/');
+                        string[] fecha2 = datosReservas[5].Split(' ')[0].Split('/');
+                        fechaDesde = new DateTime(Convert.ToInt32(fecha[2]), Convert.ToInt32(fecha[1]), Convert.ToInt32(fecha[0]));
+                        fechaHasta = new DateTime(Convert.ToInt32(fecha2[2]), Convert.ToInt32(fecha2[1]), Convert.ToInt32(fecha2[0]));
+                        if ((dtFechaHasta.Value > fechaDesde) && (dtFechaInicio.Value < fechaHasta))
+                        {
+                            state = false;
+                            int cantHuespedes;
+                        }
+                    }
+                    if (state)
+                    {
+
+                    }
+                }
+            }
+        }
+        #region Impresion
         private bool Imprimir()
         {
             bool state = false;
@@ -449,6 +380,10 @@ namespace TP2
                 if (File.Exists(rutaImg))
                 {
                     imgpropiedad = Bitmap.FromFile(rutaImg);
+                }
+                else
+                {
+                    imgpropiedad = logo;
                 }
                 float x, y;
                 int margen = 50, columnaX = 180;
@@ -519,6 +454,7 @@ namespace TP2
                 g.DrawRectangle(pen, margen, margen, ancho, alto - margen);
             }
         }
+        #endregion
         private List<Cliente> ObtenerHuespedes()
         {
             List<Cliente> huespedes = new List<Cliente>();
@@ -533,7 +469,6 @@ namespace TP2
             }
             return huespedes;
         }
-
         private void btnQuitar_Click(object sender, EventArgs e)
         {
             if (lbDatosCliente.SelectedItem != null)
@@ -544,7 +479,6 @@ namespace TP2
                 btnQuitar.Enabled = false;
             }
         }
-
         private void lbDatosCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lbDatosCliente.SelectedItems != null)
@@ -552,12 +486,10 @@ namespace TP2
                 btnQuitar.Enabled = true;
             }
         }
-
         private void cbUbicacion_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             ubicacionSeleccionada = cbUbicacion.SelectedItem.ToString();
         }
-
         private void btnVerReservas_Click(object sender, EventArgs e)
         {
             List<Reserva> reservas = new List<Reserva>();
@@ -569,5 +501,127 @@ namespace TP2
             verReservas.ShowDialog();
             verReservas.Dispose();
         }
+        #region Filtro de propiedades
+        private void FiltrarPropiedad()
+        {
+            foreach(Propiedad unaPropiedad in propiedades)
+            {
+                
+            }
+        }
+        private List<Propiedad> FiltrarPropiedades(List<string> tipos, List<string> servicios, string ubicacion, int capacidad)
+        {
+            bool capacidadExacta = ContieneCapacidadExacta(propiedades, capacidad);
+            List<Propiedad> propiedadesFiltradas = new List<Propiedad>();
+            foreach (Propiedad propiedad in propiedades)
+            {
+                if (ContieneTipoSeleccionado(propiedad, tipos) && ContieneServiciosSeleccionados(propiedad, servicios) && (propiedad.Ciudad == ubicacion || ubicacion == "Todas") && (propiedad.Habilitada))// && MostrarCasaDeFinSemana(propiedad)
+                {
+                    if (capacidadExacta)
+                    {
+                        if (propiedad.Plazas == capacidad)
+                        {
+                            propiedadesFiltradas.Add(propiedad);
+                        }
+                    }
+                    else if (propiedad.Plazas > capacidad)
+                    {
+                        propiedadesFiltradas.Add(propiedad);
+                    }
+                }
+            }
+            return propiedadesFiltradas;
+        }
+        private List<string> CargarServicios()
+        {
+            // Filtro las propiedades segun los servicios seleccionados desde los CheckBox
+            List<string> serviciosSeleccionados = new List<string>();
+            foreach (Control control in gbServicios.Controls)
+            {
+                if (control is CheckBox)
+                {
+                    CheckBox checkBox = (CheckBox)control;
+                    if (checkBox.Checked)
+                    {
+                        serviciosSeleccionados.Add(checkBox.Text);
+                    }
+                }
+            }
+            return serviciosSeleccionados;
+        }
+        private List<string> CargarTipoSeleccionado()
+        {
+            //Filtro propiedades segun el tipo
+            List<string> tiposSeleccionados = new List<string>();
+            foreach (Control control in gbTipoPropiedad.Controls)
+            {
+                if(control is CheckBox)
+                {
+                    CheckBox checkbox = (CheckBox)control;
+                    if (checkbox.Checked)
+                    {
+                        tiposSeleccionados.Add(checkbox.Text);
+                    }
+                }
+            }
+            return tiposSeleccionados;
+        }
+        private bool ContieneTipoSeleccionado(Propiedad unaPropiedad, List<string> tiposSeleccionados)
+        {
+            bool state = false;
+            // Si no se ha seleccionado ningún tipo, mostrar todo
+            if (tiposSeleccionados.Count == 0)
+            {
+                state = true;
+            }
+            foreach (string tipoSeleccionado in tiposSeleccionados)
+            {
+                if (unaPropiedad.GetType().Name == tipoSeleccionado)
+                {
+                    state = true;
+                }
+            }
+            return state;
+        }
+        private bool ContieneServiciosSeleccionados(Propiedad unaPropiedad, List<string> serviciosSeleccionados)
+        {
+            foreach (string servicioSeleccionado in serviciosSeleccionados)
+            {
+                if (!unaPropiedad.Servicios.Contains(servicioSeleccionado))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        bool MostrarCasaDeFinSemana(Propiedad unaPropiedad)
+        {
+            bool state = true;
+            if (unaPropiedad is CasaFinSemana)
+            {
+                if (!EsFinde()) state = false;
+            }
+            return state;
+        }
+        private bool ContieneCapacidadExacta(List<Propiedad> propiedades, int capacidad)
+        {
+            bool contieneCapacidadExacta = false;
+            foreach (Propiedad p in propiedades)
+            {
+                if (p.Plazas == capacidad)
+                {
+                    contieneCapacidadExacta = true;
+                }
+            }
+            return contieneCapacidadExacta;
+        }
+        private bool EsFinde()
+        {
+            bool cantDias = (dtFechaHasta.Value.Day - dtFechaInicio.Value.Day) <= 2;
+            bool inicio = dtFechaInicio.Value.DayOfWeek == DayOfWeek.Friday || dtFechaInicio.Value.DayOfWeek == DayOfWeek.Saturday;
+            bool fin = dtFechaHasta.Value.DayOfWeek == DayOfWeek.Saturday || dtFechaHasta.Value.DayOfWeek == DayOfWeek.Sunday;
+            return inicio && fin && cantDias;
+        }
+        #endregion
     }
 }
