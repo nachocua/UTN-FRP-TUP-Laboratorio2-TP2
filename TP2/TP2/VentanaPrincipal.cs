@@ -182,6 +182,7 @@ namespace TP2
                 ToolStripMenuItem clientesMenuItem = new ToolStripMenuItem("Clientes");
                 ToolStripMenuItem verClientesMenuItem = new ToolStripMenuItem("Ver Clientes");
                 clientesMenuItem.DropDownItems.Add(verClientesMenuItem);
+                verClientesMenuItem.Click += VerClientesMenuItem_Click;
 
                 ToolStripMenuItem nuevoClientesMenuItem = new ToolStripMenuItem("Nuevo Cliente");
                 clientesMenuItem.DropDownItems.Add(nuevoClientesMenuItem);
@@ -235,6 +236,33 @@ namespace TP2
             {
                 item.MouseHover += MenuItem_MouseHover;
             }
+        }
+
+        private void VerClientesMenuItem_Click(object sender, EventArgs e)
+        {
+            VerClientes unaVentana = new VerClientes();
+            unaVentana.dgView.Rows.Clear();
+            for (int i = 0; i < elSistema.CantidadClientes(); i++)
+            {
+                Cliente unCliente = elSistema.GetCliente(i);
+                string[] txt = unCliente.ObtenerDatos();
+                unaVentana.dgView.Rows.Add(txt);
+            }
+            if (unaVentana.ShowDialog() == DialogResult.OK)
+            {
+                if (MessageBox.Show("¿Desea borrar a " + unaVentana.clienteSeleccionado[0] + " " + unaVentana.clienteSeleccionado[1] + "?", "¿Borrar cliente?", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    int dni = Convert.ToInt32(unaVentana.clienteSeleccionado[2]);
+                    int idx = elSistema.BuscarCliente(new Cliente(dni,"","",0,DateTime.Now));
+                    if(idx != -1)
+                    {
+                        Cliente unCliente = elSistema.GetCliente(idx);
+                        elSistema.EliminarCliente(unCliente);
+                        MessageBox.Show("Cliente eliminado");
+                    }
+                }
+            }
+            unaVentana.Dispose();
         }
 
         private void CambiarContrasenaMenuItem_Click(object sender, EventArgs e)
@@ -621,7 +649,7 @@ namespace TP2
                             fecha = datosReserva[0].Split('\t')[2].Split('/');
                             DateTime fechaHasta = new DateTime(Convert.ToInt32(fecha[2]), Convert.ToInt32(fecha[1]), Convert.ToInt32(fecha[0]));
                             Reserva nuevaReserva = new Reserva(unaReserva.NroReserva, unaReserva.NrosClientes, unaReserva.NroPropiedad, fechaDesde, fechaHasta, unaReserva.Costo);
-                            if(unaReserva.Estado == "Cancelada")
+                            if (unaReserva.Estado == "Cancelada")
                             {
                                 nuevaReserva.Cancelar();
                             }

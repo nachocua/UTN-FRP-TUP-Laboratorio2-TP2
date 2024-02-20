@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\Cliente\VerClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clases\Cliente\VerClientes.Designer.cs">
+      <DependentUpon>VerClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clases\IExportable.cs" />
     <Compile Include="Ventanas\AnularReserva.cs">
       <SubType>Form</SubType>
@@ -148,6 +154,9 @@
     <Compile Include="Ventanas\VerReservas.Designer.cs">
       <DependentUpon>VerReservas.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Clases\Cliente\VerClientes.resx">
+      <DependentUpon>VerClientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\AnularReserva.resx">
       <DependentUpon>AnularReserva.cs</DependentUpon>
     </EmbeddedResource>

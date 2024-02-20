@@ -313,5 +313,17 @@ namespace TP2
             }
             
         }
+        public void EliminarCliente(Cliente cliente)
+        {
+            if(cliente.IdReservas.Count > 0)
+            {
+                foreach(int id in cliente.IdReservas)
+                {
+                    Reserva unaReserva = GetReserva(id);
+                    EliminarReserva(unaReserva);
+                }
+            }
+            clientes.Remove(cliente);
+        }
     }
 }

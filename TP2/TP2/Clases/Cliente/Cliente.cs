@@ -6,6 +6,7 @@ using System.Security.Authentication;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms.VisualStyles;
 
 namespace TP2
 {
@@ -59,6 +60,10 @@ namespace TP2
         public string[] GetData()
         {
             return new string[] { Nombres, Apellidos, Dni.ToString(), FechaNacimiento.ToShortDateString() };
+        }
+        public string[] ObtenerDatos()
+        {
+            return new string[] { Nombres, Apellidos, Dni.ToString(),Telefono.ToString(), FechaNacimiento.ToShortDateString(),IdReservas.Count.ToString() };
         }
         public void Clean(int idReserva)
         {
