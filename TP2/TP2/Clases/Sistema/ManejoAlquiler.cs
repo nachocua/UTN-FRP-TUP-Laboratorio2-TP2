@@ -325,5 +325,18 @@ namespace TP2
             }
             clientes.Remove(cliente);
         }
+        /*
+        internal void limpiar()
+        {
+            foreach(Cliente cliente in clientes)
+            {
+                cliente.IdReservas.Clear();
+            }
+            foreach(Propiedad propiedad in propiedades)
+            {
+                propiedad.getReservas().Clear();
+            }
+            reservas.Clear();
+        }*/
     }
 }

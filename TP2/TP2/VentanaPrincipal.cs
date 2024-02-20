@@ -58,10 +58,9 @@ namespace TP2
             sbClientes.Text += elSistema.CantidadClientes().ToString();
             sbReservas.Text += elSistema.cantidadReservas().ToString();
 
+
             /*
-            elSistema.LimpiarClientes();
-            elSistema.LimpiarPropiedades();
-            elSistema.LimpiarReservas();
+            elSistema.limpiar();
             sbReservas.Text = "Reservas: " + elSistema.cantidadReservas().ToString();
             */
         }
