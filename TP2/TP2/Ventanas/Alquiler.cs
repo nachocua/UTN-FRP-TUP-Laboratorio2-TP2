@@ -515,7 +515,7 @@ namespace TP2
             List<Propiedad> propiedadesFiltradas = new List<Propiedad>();
             foreach (Propiedad propiedad in propiedades)
             {
-                if (ContieneTipoSeleccionado(propiedad, tipos) && ContieneServiciosSeleccionados(propiedad, servicios) && (propiedad.Ciudad == ubicacion || ubicacion == "Todas") && (propiedad.Habilitada))// && MostrarCasaDeFinSemana(propiedad)
+                if (ContieneTipoSeleccionado(propiedad, tipos) && ContieneServiciosSeleccionados(propiedad, servicios) && (propiedad.Ciudad == ubicacion || ubicacion == "Todas") && (propiedad.Habilitada) && MostrarCasaDeFinSemana(propiedad))// && 
                 {
                     if (capacidadExacta)
                     {
